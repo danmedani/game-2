@@ -17,32 +17,6 @@
   <button class="big-btn secondary" id="btn-scores-title">🏆 High Scores</button>
 </div>
 
-<!-- ══════════════════════════════════════════════════════ MODE SELECT -->
-<div id="screen-menu" class="screen">
-  <h2 class="screen-title">Choose Your Game</h2>
-  <div class="mode-grid">
-    <button class="mode-btn" data-mode="name-match">
-      <span class="mode-icon">🔍</span>
-      <span class="mode-label">Name Match</span>
-      <span class="mode-desc">See a dino, pick its name!</span>
-    </button>
-    <button class="mode-btn" data-mode="pic-match">
-      <span class="mode-icon">🖼️</span>
-      <span class="mode-label">Picture Match</span>
-      <span class="mode-desc">Hear a name, find the dino!</span>
-    </button>
-    <button class="mode-btn" data-mode="size-battle">
-      <span class="mode-icon">📏</span>
-      <span class="mode-label">Size Battle</span>
-      <span class="mode-desc">Which dino was BIGGER?</span>
-    </button>
-    <button class="mode-btn" data-mode="dino-facts">
-      <span class="mode-icon">📖</span>
-      <span class="mode-label">Dino Facts</span>
-      <span class="mode-desc">Match the clue to the dino!</span>
-    </button>
-  </div>
-</div>
 
 <!-- ══════════════════════════════════════════════════════ LOADING -->
 <div id="screen-loading" class="screen">
@@ -52,18 +26,19 @@
 
 <!-- ══════════════════════════════════════════════════════ GAME -->
 <div id="screen-game" class="screen">
-  <div class="game-hud">
-    <div class="hud-score"><span>Score</span><br><span id="hud-score">0</span></div>
-    <div id="hud-lives" class="hud-lives"></div>
-    <div id="hud-streak" class="hud-streak"></div>
-    <div class="hud-q" id="hud-q">0/10</div>
-    <button class="hud-quit" id="btn-quit-game">✕ Quit</button>
+  <div class="game-body">
+    <div id="question-area"></div>
+    <div id="progress-track">
+      <div class="track-score">
+        <div class="track-score-label">Score</div>
+        <div id="hud-score">0</div>
+        <div id="hud-streak"></div>
+      </div>
+      <div id="progress-boxes"></div>
+      <button class="hud-quit" id="btn-quit-game">✕ Quit</button>
+    </div>
   </div>
-  <div id="question-area"></div>
 </div>
-
-<!-- ══════════════════════════════════════════════════════ FEEDBACK OVERLAY -->
-<div id="feedback-overlay"></div>
 
 <!-- ══════════════════════════════════════════════════════ GAME OVER -->
 <div id="screen-gameover" class="screen">
@@ -103,6 +78,8 @@
 </div>
 
 <script src="js/dinos.js"></script>
+<script src="js/dino-data.js"></script>
+<script src="js/config.js"></script>
 <script src="js/scores.js"></script>
 <script src="js/game.js"></script>
 </body>
