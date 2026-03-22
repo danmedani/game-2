@@ -26,8 +26,20 @@ async function fetchWikiImage(wikiTitle) {
   }
 }
 
+async function batchedPreload(items, fetchFn, batchSize = 2, delayMs = 400) {
+  // Only fetch items not already in cache
+  const needed = items.filter(d => fetchFn === fetchWikiImage
+    ? imageCache[d.wiki] === undefined
+    : factCache[d.wiki] === undefined);
+  for (let i = 0; i < needed.length; i += batchSize) {
+    const batch = needed.slice(i, i + batchSize);
+    await Promise.all(batch.map(d => fetchFn(d.wiki)));
+    if (i + batchSize < needed.length) await delay(delayMs);
+  }
+}
+
 async function preloadImages(dinos) {
-  await Promise.all(dinos.map(d => fetchWikiImage(d.wiki)));
+  await batchedPreload(dinos, fetchWikiImage);
 }
 
 // ── Fact cache (Wikipedia summary API) ───────────────────────────────────────
@@ -50,7 +62,7 @@ async function fetchWikiFact(wikiTitle) {
 }
 
 async function preloadFacts(dinos) {
-  await Promise.all(dinos.map(d => fetchWikiFact(d.wiki)));
+  await batchedPreload(dinos, fetchWikiFact);
 }
 
 // ── Keyboard navigation ───────────────────────────────────────────────────────
@@ -126,22 +138,22 @@ let state = {
   score: 0,
   streak: 0,
   questionNum: 0,
-  totalQuestions: 10,
+  totalQuestions: 5,
+  level: 1,
+  lives: 3,
   pool: [],
-  imageDinos: [], // subset with loaded images, for name-match / pic-match
+  imageDinos: [],
   currentQ: null,
   answeredThisRound: false,
   usedCorrects: new Set(),
-  results: [], // 'pending' | 'current' | 'correct' | 'wrong'
+  results: [],
 };
 
 const SCORE_MULT = 1.5;
 
 // Each question gets its mode from this rotating sequence
 const MODE_SEQUENCE = [
-  'name-match', 'size-battle', 'name-match', 'dino-facts',
-  'name-match', 'pic-match',   'size-battle', 'name-match',
-  'dino-facts', 'size-battle',
+  'name-match', 'size-battle', 'dino-facts', 'pic-match', 'name-match',
 ];
 
 function buildPool() {
@@ -240,6 +252,8 @@ async function nextQuestion() {
 async function startGame() {
   state.score = 0;
   state.streak = 0;
+  state.level = 1;
+  state.lives = 3;
   state.questionNum = 0;
   state.pool = buildPool();
   state.usedCorrects = new Set();
@@ -248,7 +262,6 @@ async function startGame() {
   setLoadingMessage('Fetching dinosaur images & facts...');
 
   await Promise.all([preloadImages(state.pool), preloadFacts(state.pool)]);
-  // name-match and pic-match need images; size-battle and dino-facts don't
   const imageDinos = state.pool.filter(d => imageCache[d.wiki]);
   if (imageDinos.length < 4) {
     alert('Could not load enough dinosaur images. Check your connection!');
@@ -262,6 +275,127 @@ async function startGame() {
   updateHUD();
   updateProgressTrack();
   await nextQuestion();
+}
+
+async function endLevel() {
+  const justCompleted = state.level;
+  state.level++;
+  state.questionNum = 0;
+  state.results = Array(state.totalQuestions).fill('pending');
+  state.answeredThisRound = false;
+
+  await showMapScreen(justCompleted);
+
+  showScreen('screen-game');
+  updateHUD();
+  updateProgressTrack();
+  await nextQuestion();
+}
+
+// ── Map screen ────────────────────────────────────────────────────────────────
+
+// Node positions within a world (percentage of canvas, 8 nodes per world)
+const MAP_WORLD_POS = [
+  { x: 10, y: 74 },
+  { x: 30, y: 74 },
+  { x: 50, y: 74 },
+  { x: 70, y: 74 },
+  { x: 70, y: 30 },
+  { x: 50, y: 30 },
+  { x: 30, y: 30 },
+  { x: 10, y: 30 },
+];
+
+function getPosForLevel(level) {
+  return MAP_WORLD_POS[(level - 1) % MAP_WORLD_POS.length];
+}
+
+function renderMapCanvas(worldStart, completedLevel) {
+  const canvas = document.getElementById('map-canvas');
+  canvas.querySelectorAll('.map-node, .map-svg').forEach(el => el.remove());
+
+  // Draw SVG path lines
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('class', 'map-svg');
+  svg.setAttribute('viewBox', '0 0 100 100');
+  svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+
+  for (let i = 0; i < MAP_WORLD_POS.length - 1; i++) {
+    const a = MAP_WORLD_POS[i];
+    const b = MAP_WORLD_POS[i + 1];
+    const lvl = worldStart + i;
+    const done = lvl < completedLevel;
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', a.x); line.setAttribute('y1', a.y);
+    line.setAttribute('x2', b.x); line.setAttribute('y2', b.y);
+    if (!done) continue;
+    line.setAttribute('stroke', '#4caf50');
+    line.setAttribute('stroke-width', '2.5');
+    svg.appendChild(line);
+  }
+  canvas.insertBefore(svg, canvas.firstChild);
+
+  // Draw nodes
+  for (let i = 0; i < MAP_WORLD_POS.length; i++) {
+    const lvl = worldStart + i;
+    const pos = MAP_WORLD_POS[i];
+    const node = document.createElement('div');
+    node.className = 'map-node';
+    if (lvl < completedLevel)      { node.classList.add('done');    node.textContent = '✓'; }
+    else if (lvl === completedLevel){ node.classList.add('done');    node.textContent = '✓'; }
+    else if (lvl === completedLevel + 1) { node.classList.add('next'); node.textContent = lvl; }
+    else                           { node.classList.add('future');  node.textContent = lvl; }
+    node.style.left = pos.x + '%';
+    node.style.top  = pos.y + '%';
+    canvas.appendChild(node);
+  }
+}
+
+function showMapScreen(justCompleted) {
+  return new Promise(resolve => {
+    showScreen('screen-map');
+
+    const nextLevel = justCompleted + 1;
+    const worldIdx  = Math.floor((justCompleted - 1) / MAP_WORLD_POS.length);
+    const worldStart = worldIdx * MAP_WORLD_POS.length + 1;
+
+    document.getElementById('map-world-label').textContent  = `World ${worldIdx + 1}`;
+    document.getElementById('map-level-label').textContent  = `Level ${nextLevel}`;
+    document.getElementById('map-score-display').textContent = `Score: ${state.score}`;
+    document.getElementById('map-lives-display').textContent = '🦕'.repeat(state.lives);
+
+    renderMapCanvas(worldStart, justCompleted);
+
+    // Animate dino from completed node to next node
+    const dinoEl = document.getElementById('map-dino');
+    const from = getPosForLevel(justCompleted);
+    const to   = getPosForLevel(nextLevel);
+
+    dinoEl.style.transition = 'none';
+    dinoEl.style.left = from.x + '%';
+    dinoEl.style.top  = from.y + '%';
+
+    setTimeout(() => {
+      dinoEl.style.transition = 'left 0.7s cubic-bezier(.4,0,.2,1), top 0.7s cubic-bezier(.4,0,.2,1)';
+      dinoEl.style.left = to.x + '%';
+      dinoEl.style.top  = to.y + '%';
+    }, 500);
+
+    // Show continue button after animation
+    const btn = document.getElementById('btn-map-continue');
+    btn.style.opacity = '0';
+    btn.style.pointerEvents = 'none';
+    const onContinue = () => {
+      btn.removeEventListener('click', onContinue);
+      resolve();
+    };
+    btn.addEventListener('click', onContinue);
+    setTimeout(() => {
+      btn.style.transition = 'opacity 0.3s';
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = '';
+    }, 1400);
+  });
 }
 
 async function handleAnswer(chosen) {
@@ -287,6 +421,7 @@ async function handleAnswer(chosen) {
     showAnswerView(true, pts, q);
   } else {
     state.streak = 0;
+    state.lives--;
     state.results[state.questionNum - 1] = 'wrong';
     showAnswerView(false, 0, q);
   }
@@ -294,19 +429,55 @@ async function handleAnswer(chosen) {
   updateHUD();
   updateProgressTrack();
 
+  if (correct && state.results.every(r => r === 'correct')) {
+    setTimeout(celebratePerfectLevel, 120);
+  }
+
   await waitForAnswerDismiss();
 
-  if (state.questionNum >= state.totalQuestions) {
+  if (state.lives <= 0) {
     endGame();
+  } else if (state.questionNum >= state.totalQuestions) {
+    await endLevel();
   } else {
     await nextQuestion();
   }
 }
 
+function celebratePerfectLevel() {
+  const track = document.getElementById('progress-track');
+  const boxes = document.getElementById('progress-boxes');
+  if (!track || !boxes) return;
+
+  // Flash each box bright gold, cascading top→bottom (boxes render reversed, so index 0 = top = last question)
+  const boxEls = Array.from(boxes.querySelectorAll('.progress-box'));
+  boxEls.forEach((box, i) => {
+    setTimeout(() => {
+      box.classList.add('perfect-flash');
+      setTimeout(() => box.classList.remove('perfect-flash'), 500);
+    }, i * 80);
+  });
+
+  // Spawn sparkle particles down the right edge of the box stack
+  const CHARS = ['⭐', '✨', '🌟', '⭐', '✨', '🌟', '⭐', '✨', '🌟', '⭐'];
+  const totalH = boxes.offsetHeight;
+  const offsetTop = boxes.offsetTop;
+  CHARS.forEach((ch, i) => {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = 'perfect-particle';
+      el.textContent = ch;
+      el.style.top = (offsetTop + (i / CHARS.length) * totalH) + 'px';
+      track.appendChild(el);
+      el.addEventListener('animationend', () => el.remove());
+    }, i * 60);
+  });
+}
+
 function endGame() {
   showScreen('screen-gameover');
   document.getElementById('final-score').textContent = state.score;
-  document.getElementById('final-mode').textContent = 'DinoQuest';
+  document.getElementById('final-mode').textContent = `DinoQuest · Level ${state.level}`;
 
   const best = getLocalBest('dinoquest');
   const isHigh = state.score > best;
@@ -345,11 +516,8 @@ function updateProgressTrack() {
 
 function updateHUD() {
   document.getElementById('hud-score').textContent = state.score;
-  if (state.streak >= 2) {
-    document.getElementById('hud-streak').textContent = `🔥 x${state.streak}`;
-  } else {
-    document.getElementById('hud-streak').textContent = '';
-  }
+  document.getElementById('hud-streak').textContent = state.streak >= 2 ? `🔥 x${state.streak}` : '';
+  document.getElementById('hud-lives').textContent  = '🦕'.repeat(state.lives);
 }
 
 async function renderQuestion(q) {
@@ -445,6 +613,27 @@ function getGeoGlobes(geo) {
   return [...out].join(' ');
 }
 
+function sizeComparisonHTML(lengthM) {
+  const humanM = 1.8;
+  const maxM = Math.max(lengthM, humanM);
+  const humanPct = (humanM / maxM * 100).toFixed(1);
+  const dinoPct  = (lengthM  / maxM * 100).toFixed(1);
+  return `
+    <div class="size-comp">
+      <div class="fi-label">vs Human</div>
+      <div class="sc-row">
+        <span class="sc-emoji">🧍</span>
+        <div class="sc-bar-wrap"><div class="sc-bar sc-human" style="width:${humanPct}%"></div></div>
+        <span class="sc-val">1.8m</span>
+      </div>
+      <div class="sc-row">
+        <span class="sc-emoji">🦕</span>
+        <div class="sc-bar-wrap"><div class="sc-bar sc-dino" style="width:${dinoPct}%"></div></div>
+        <span class="sc-val">${lengthM}m</span>
+      </div>
+    </div>`;
+}
+
 function dinoInfoHTML(dino) {
   const ft = (dino.length * 3.281).toFixed(1);
 
@@ -455,7 +644,6 @@ function dinoInfoHTML(dino) {
   ).join('');
 
   // ── Period timeline ──
-  // Triassic 252–201 Ma (51), Jurassic 201–145 Ma (56), Cretaceous 145–66 Ma (79). Total 186.
   const periodName  = dino.period.replace(/\s*\([^)]*\)/, '').trim();
   const periodDates = dino.period.match(/\(([^)]+)\)/)?.[1] ?? '';
   const midMa       = parseMidMa(dino.period) ?? 100;
@@ -478,16 +666,19 @@ function dinoInfoHTML(dino) {
         <div class="pt-labels"><span>Triassic</span><span>Jurassic</span><span>Cretaceous</span></div>
       </div>
       <div class="feedback-info-item">
-        <div class="fi-label">Size</div>
-        <div class="fi-main">${dino.length}m</div>
+        <div class="fi-big">${dino.length}m</div>
         <div class="fi-sub">${ft}ft</div>
         <div class="sizometer">${pips}<span class="sizo-label">${sizeLabel}</span></div>
       </div>
       <div class="feedback-info-item fi-centered">
-        <div class="fi-main">${dino.diet}</div>
+        <div class="fi-big">${dino.diet}</div>
       </div>
-      <div class="feedback-info-item full">
-        <div class="fi-row"><span class="fi-emoji">📍</span><span class="fi-main">${dino.geo}</span><span class="fi-globes">${globes}</span></div>
+      <div class="feedback-info-item geo-item fi-centered">
+        <div class="geo-text"><span class="fi-geo">${dino.geo}</span></div>
+        <div class="fi-globes">${globes}</div>
+      </div>
+      <div class="feedback-info-item">
+        ${sizeComparisonHTML(dino.length)}
       </div>
     </div>`;
 }
@@ -538,7 +729,7 @@ function showAnswerView(correct, pts, q) {
 
 async function reportImage(dinoName, imgUrl, btnEl) {
   btnEl.disabled = true;
-  btnEl.textContent = '✓ Reported';
+  btnEl.style.display = 'none';
 
   const report = { dino: dinoName, img: imgUrl, date: new Date().toISOString() };
 
@@ -560,6 +751,19 @@ async function reportImage(dinoName, imgUrl, btnEl) {
       });
     } catch { /* non-critical */ }
   }
+
+  // Show thank-you modal (does not advance the game)
+  const overlay = document.createElement('div');
+  overlay.className = 'report-modal-overlay';
+  overlay.innerHTML = `
+    <div class="report-modal">
+      <div class="report-modal-icon">🚩</div>
+      <div class="report-modal-title">Thanks for the report!</div>
+      <div class="report-modal-body">We've logged the image for <strong>${dinoName}</strong> and will review it.</div>
+      <button class="report-modal-btn">Got it</button>
+    </div>`;
+  overlay.querySelector('.report-modal-btn').addEventListener('click', () => overlay.remove());
+  document.body.appendChild(overlay);
 }
 
 function waitForAnswerDismiss() {
@@ -567,6 +771,7 @@ function waitForAnswerDismiss() {
     const area = document.getElementById('question-area');
     function onClick(e) {
       if (e.target.closest('.answer-fact-more')) return;
+      if (e.target.closest('.report-img-btn')) return;
       area.removeEventListener('click', onClick);
       resolve();
     }
@@ -621,6 +826,15 @@ document.addEventListener('keydown', e => {
     if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
       document.getElementById('btn-play').click();
+    }
+    return;
+  }
+
+  if (document.getElementById('screen-map').classList.contains('active')) {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      const btn = document.getElementById('btn-map-continue');
+      if (btn.style.pointerEvents !== 'none') btn.click();
     }
     return;
   }
@@ -688,7 +902,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Game over
   document.getElementById('btn-submit-score').addEventListener('click', submitScore);
-  document.getElementById('btn-play-again').addEventListener('click', () => startGame());
   document.getElementById('btn-main-menu').addEventListener('click', () => showScreen('screen-title'));
 
   // Initials input: uppercase only, max 3

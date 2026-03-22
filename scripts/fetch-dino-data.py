@@ -8,9 +8,15 @@ import json
 import time
 import urllib.request
 import urllib.parse
+import ssl
 import re
 import sys
 import os
+
+# macOS Python often lacks bundled CA certs; unverified is fine for this local fetch script
+SSL_CTX = ssl.create_default_context()
+SSL_CTX.check_hostname = False
+SSL_CTX.verify_mode = ssl.CERT_NONE
 
 WIKI_TITLES = [
     # Level 1
@@ -46,7 +52,7 @@ def fetch_summary(title):
     url = f"https://en.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(title)}"
     try:
         req = urllib.request.Request(url, headers=HEADERS)
-        with urllib.request.urlopen(req, timeout=15) as r:
+        with urllib.request.urlopen(req, timeout=15, context=SSL_CTX) as r:
             data = json.loads(r.read())
         extract = data.get('extract', '')
         m = re.match(r'[^.!?]*[.!?]', extract)
@@ -69,7 +75,7 @@ def fetch_image(title):
     url = f"https://en.wikipedia.org/w/api.php?{params}"
     try:
         req = urllib.request.Request(url, headers=HEADERS)
-        with urllib.request.urlopen(req, timeout=15) as r:
+        with urllib.request.urlopen(req, timeout=15, context=SSL_CTX) as r:
             data = json.loads(r.read())
         page = list(data['query']['pages'].values())[0]
         return page.get('thumbnail', {}).get('source', '')
@@ -84,9 +90,9 @@ total = len(WIKI_TITLES)
 for i, title in enumerate(WIKI_TITLES, 1):
     print(f"[{i}/{total}] {title}")
     short, full = fetch_summary(title)
-    time.sleep(0.4)
+    time.sleep(1.0)
     img = fetch_image(title)
-    time.sleep(0.4)
+    time.sleep(1.0)
     results[title] = {'img': img, 'short': short, 'full': full}
     if not img:
         print(f"        (no image)")

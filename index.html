@@ -14,6 +14,7 @@
   <h1 class="game-title">DinoQuest</h1>
   <p class="game-subtitle">The Ultimate Dinosaur Challenge!</p>
   <button class="big-btn" id="btn-play">▶ PLAY</button>
+  <p class="play-hint">or press Space</p>
   <button class="big-btn secondary" id="btn-scores-title">🏆 High Scores</button>
 </div>
 
@@ -24,10 +25,30 @@
   <p id="loading-msg">Loading dinosaurs...</p>
 </div>
 
+<!-- ══════════════════════════════════════════════════════ MAP -->
+<div id="screen-map" class="screen">
+  <div class="map-header">
+    <div id="map-world-label" class="map-world-label">World 1</div>
+    <div class="map-meta">
+      <span id="map-score-display">Score: 0</span>
+      <span id="map-lives-display">🦕🦕🦕</span>
+    </div>
+  </div>
+  <div class="map-canvas" id="map-canvas">
+    <div class="map-dino" id="map-dino">🦕</div>
+  </div>
+  <div id="map-level-label" class="map-level-label">Level 2</div>
+  <button class="big-btn" id="btn-map-continue">Continue ▶</button>
+  <p class="play-hint">or press Space</p>
+</div>
+
 <!-- ══════════════════════════════════════════════════════ GAME -->
 <div id="screen-game" class="screen">
   <div class="game-body">
-    <div id="question-area"></div>
+    <div class="question-col">
+      <div id="question-area"></div>
+      <div class="kb-hint">← → navigate &nbsp;·&nbsp; Space to select</div>
+    </div>
     <div id="progress-track">
       <div class="track-score">
         <div class="track-score-label">Score</div>
@@ -35,6 +56,7 @@
         <div id="hud-streak"></div>
       </div>
       <div id="progress-boxes"></div>
+      <div id="hud-lives" class="hud-lives"></div>
       <button class="hud-quit" id="btn-quit-game">✕ Quit</button>
     </div>
   </div>
@@ -57,10 +79,7 @@
     <button class="big-btn" id="btn-submit-score">Save Score 🏆</button>
   </div>
 
-  <div class="btn-row">
-    <button class="big-btn" id="btn-play-again">Play Again</button>
-    <button class="big-btn secondary" id="btn-main-menu">Main Menu</button>
-  </div>
+  <button class="big-btn secondary" id="btn-main-menu">🏠 Home</button>
 </div>
 
 <!-- ══════════════════════════════════════════════════════ HIGH SCORES -->
