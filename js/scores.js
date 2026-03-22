@@ -10,7 +10,7 @@ function isValidInitials(str) {
   return !BAD_INITIALS.has(str);
 }
 
-// Score entry shape: { initials, score, mode, difficulty, date }
+// Score entry shape: { initials, score, mode, date }
 const SCORE_KEY = 'dinoquest_scores';
 
 function getScores() {
@@ -27,13 +27,13 @@ function saveScore(entry) {
   localStorage.setItem(SCORE_KEY, JSON.stringify(scores.slice(0, 100)));
 }
 
-function getTopScores(mode, difficulty, limit = 10) {
+function getTopScores(mode, limit = 10) {
   return getScores()
-    .filter(s => (!mode || s.mode === mode) && (!difficulty || s.difficulty === difficulty))
+    .filter(s => !mode || s.mode === mode)
     .slice(0, limit);
 }
 
-function getLocalBest(mode, difficulty) {
-  const scores = getTopScores(mode, difficulty, 1);
+function getLocalBest(mode) {
+  const scores = getTopScores(mode, 1);
   return scores.length ? scores[0].score : 0;
 }

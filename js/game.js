@@ -45,6 +45,46 @@ async function preloadFacts(dinos) {
   await Promise.all(dinos.map(d => fetchWikiFact(d.wiki)));
 }
 
+// ── Keyboard navigation ───────────────────────────────────────────────────────
+let focusedOptionIndex = -1;
+
+function getOptionButtons() {
+  return Array.from(document.querySelectorAll('#question-area [data-name]'));
+}
+
+function applyKeyboardFocus(buttons) {
+  buttons.forEach((btn, i) => {
+    btn.classList.toggle('keyboard-focus', i === focusedOptionIndex);
+  });
+}
+
+function resetKeyboardFocus() {
+  focusedOptionIndex = 0;
+  applyKeyboardFocus(getOptionButtons());
+}
+
+// All question layouts use 2 columns
+const GRID_COLS = 2;
+
+function gridMove(index, direction, total) {
+  const col = index % GRID_COLS;
+  const row = Math.floor(index / GRID_COLS);
+  const maxRow = Math.floor((total - 1) / GRID_COLS);
+
+  if (direction === 'right' && col < GRID_COLS - 1 && index + 1 < total) return index + 1;
+  if (direction === 'left'  && col > 0)                                   return index - 1;
+  if (direction === 'down'  && row < maxRow && index + GRID_COLS < total) return index + GRID_COLS;
+  if (direction === 'up'    && row > 0)                                   return index - GRID_COLS;
+  return null;
+}
+
+function jiggleFocused(buttons) {
+  const btn = buttons[focusedOptionIndex];
+  if (!btn) return;
+  btn.classList.add('keyboard-jiggle');
+  btn.addEventListener('animationend', () => btn.classList.remove('keyboard-jiggle'), { once: true });
+}
+
 // ── Game state ────────────────────────────────────────────────────────────────
 let state = {
   mode: null,        // 'name-match' | 'pic-match' | 'size-battle' | 'dino-facts'
@@ -60,12 +100,10 @@ let state = {
   usedCorrects: new Set(), // tracks every correct answer used this game — no repeats
 };
 
-const DIFFICULTY_LEVELS = { easy: [1, 2], medium: [1, 2, 3], hard: [1, 2, 3, 4, 5] };
-const DIFFICULTY_MULT   = { easy: 1,      medium: 1.5,        hard: 2 };
+const SCORE_MULT = 1.5;
 
-function buildPool(difficulty) {
-  const levels = DIFFICULTY_LEVELS[difficulty];
-  return DINOS.filter(d => levels.includes(d.level));
+function buildPool() {
+  return [...DINOS];
 }
 
 function pick(arr, n) {
@@ -81,9 +119,8 @@ function pick(arr, n) {
 function calcPoints(correct) {
   if (!correct) return 0;
   const base = 100;
-  const mult = DIFFICULTY_MULT[state.difficulty];
   const streakBonus = Math.min(state.streak * 10, 50);
-  return Math.round((base + streakBonus) * mult);
+  return Math.round((base + streakBonus) * SCORE_MULT);
 }
 
 // ── Question builders ─────────────────────────────────────────────────────────
@@ -144,14 +181,13 @@ async function nextQuestion() {
 
 // ── Game flow ─────────────────────────────────────────────────────────────────
 
-async function startGame(mode, difficulty) {
+async function startGame(mode) {
   state.mode = mode;
-  state.difficulty = difficulty;
   state.score = 0;
   state.lives = 3;
   state.streak = 0;
   state.questionNum = 0;
-  state.pool = buildPool(difficulty);
+  state.pool = buildPool();
   state.usedCorrects = new Set();
 
   showScreen('screen-loading');
@@ -216,9 +252,8 @@ function endGame() {
   showScreen('screen-gameover');
   document.getElementById('final-score').textContent = state.score;
   document.getElementById('final-mode').textContent = modeName(state.mode);
-  document.getElementById('final-diff').textContent = capitalize(state.difficulty);
 
-  const best = getLocalBest(state.mode, state.difficulty);
+  const best = getLocalBest(state.mode);
   const isHigh = state.score > best;
   document.getElementById('highscore-msg').textContent = isHigh
     ? '🏆 New Local High Score!'
@@ -235,8 +270,8 @@ function submitScore() {
       raw.length !== 3 ? 'Enter exactly 3 letters.' : 'Choose different initials!';
     return;
   }
-  saveScore({ initials: raw, score: state.score, mode: state.mode, difficulty: state.difficulty });
-  showHighScores(state.mode, state.difficulty);
+  saveScore({ initials: raw, score: state.score, mode: state.mode });
+  showHighScores(state.mode);
 }
 
 // ── Render ────────────────────────────────────────────────────────────────────
@@ -322,6 +357,79 @@ async function renderQuestion(q) {
     // Remove inline onclick
     btn.removeAttribute('onclick');
   });
+
+  resetKeyboardFocus();
+}
+
+function getSizeLevel(m) {
+  if (m <  1)  return { level: 1, label: 'Tiny' };
+  if (m <  4)  return { level: 2, label: 'Small' };
+  if (m < 10)  return { level: 3, label: 'Medium' };
+  if (m < 20)  return { level: 4, label: 'Large' };
+  return              { level: 5, label: 'Enormous' };
+}
+
+function parseMidMa(period) {
+  const m = period.match(/\(~?(\d+)(?:[–\-](\d+))?\s*Ma\)/);
+  if (!m) return null;
+  const a = parseInt(m[1]), b = m[2] ? parseInt(m[2]) : a;
+  return (a + b) / 2;
+}
+
+function getGeoGlobes(geo) {
+  const g = geo.toLowerCase();
+  const out = new Set();
+  if (g.includes('north america') || g.includes('south america')) out.add('🌎');
+  if (g.includes('europe') || g.includes('africa'))               out.add('🌍');
+  if (g.includes('asia'))                                          out.add('🌏');
+  if (g.includes('ocean') || g.includes('worldwide'))             out.add('🌊');
+  return [...out].join(' ');
+}
+
+function dinoInfoHTML(dino) {
+  const ft = (dino.length * 3.281).toFixed(1);
+
+  // ── Size-o-meter ──
+  const { level, label: sizeLabel } = getSizeLevel(dino.length);
+  const pips = Array.from({ length: 5 }, (_, i) =>
+    `<span class="sizo-pip ${i < level ? 'on' : 'off'}"></span>`
+  ).join('');
+
+  // ── Period timeline ──
+  // Triassic 252–201 Ma (51), Jurassic 201–145 Ma (56), Cretaceous 145–66 Ma (79). Total 186.
+  const periodName  = dino.period.replace(/\s*\([^)]*\)/, '').trim();
+  const periodDates = dino.period.match(/\(([^)]+)\)/)?.[1] ?? '';
+  const midMa       = parseMidMa(dino.period) ?? 100;
+  const markerPct   = Math.min(100, Math.max(0, (252 - midMa) / 186 * 100)).toFixed(1);
+
+  // ── Geography globes ──
+  const globes = getGeoGlobes(dino.geo);
+
+  return `
+    <div class="feedback-info">
+      <div class="feedback-info-item full">
+        <div class="fi-row"><span class="fi-emoji">🕐</span><span class="fi-main">${periodName}</span></div>
+        <div class="fi-sub">${periodDates}</div>
+        <div class="period-bar-wrap">
+          <div class="period-bar">
+            <div class="pt-t"></div><div class="pt-j"></div><div class="pt-c"></div>
+          </div>
+          <div class="period-marker" style="left:${markerPct}%"></div>
+        </div>
+        <div class="pt-labels"><span>Triassic</span><span>Jurassic</span><span>Cretaceous</span></div>
+      </div>
+      <div class="feedback-info-item">
+        <div class="fi-row"><span class="fi-emoji">📏</span><span class="fi-main">${dino.length}m</span></div>
+        <div class="fi-sub">${ft}ft</div>
+        <div class="sizometer">${pips}<span class="sizo-label">${sizeLabel}</span></div>
+      </div>
+      <div class="feedback-info-item">
+        <div class="fi-row"><span class="fi-emoji">🍖</span><span class="fi-main">${dino.diet}</span></div>
+      </div>
+      <div class="feedback-info-item full">
+        <div class="fi-row"><span class="fi-emoji">📍</span><span class="fi-main">${dino.geo}</span><span class="fi-globes">${globes}</span></div>
+      </div>
+    </div>`;
 }
 
 function showFeedback(correct, pts, q) {
@@ -343,12 +451,16 @@ function showFeedback(correct, pts, q) {
     factText = `<p class="feedback-fact">${bigger.name}: ${bigger.length}m long<br>${smaller.name}: ${smaller.length}m long</p>`;
   }
 
+  const infoDino = q.type === 'size-battle' ? q.bigger : q.correct;
+  const infoHTML = dinoInfoHTML(infoDino);
+
   overlay.innerHTML = `
     <div class="feedback-card ${correct ? 'correct' : 'wrong'}">
       <div class="feedback-icon">${correct ? '✅' : '❌'}</div>
       <div class="feedback-label">${correct ? 'Correct!' : 'Nope!'}</div>
       ${correct ? `<div class="feedback-pts">+${pts} pts</div>` : `<div class="feedback-answer">Answer: ${correctName}</div>`}
       ${factText}
+      ${infoHTML}
       <div class="feedback-tap-hint">tap to continue</div>
     </div>`;
   overlay.classList.add('active');
@@ -377,24 +489,24 @@ function waitForFeedbackDismiss() {
   });
 }
 
-function showHighScores(mode, difficulty) {
+function showHighScores(mode) {
   showScreen('screen-highscores');
-  const scores = getTopScores(mode, difficulty, 10);
+  const scores = getTopScores(mode, 10);
   const tbody = document.getElementById('scores-table-body');
   tbody.innerHTML = '';
   if (scores.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center">No scores yet!</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="2" style="text-align:center">No scores yet!</td></tr>';
   } else {
     scores.forEach((s, i) => {
       const tr = document.createElement('tr');
       if (i === 0) tr.classList.add('gold');
       if (i === 1) tr.classList.add('silver');
       if (i === 2) tr.classList.add('bronze');
-      tr.innerHTML = `<td>${i + 1}. ${s.initials}</td><td>${s.score}</td><td>${capitalize(s.difficulty)}</td>`;
+      tr.innerHTML = `<td>${i + 1}. ${s.initials}</td><td>${s.score}</td>`;
       tbody.appendChild(tr);
     });
   }
-  document.getElementById('hs-mode-label').textContent = `${modeName(mode)} — ${capitalize(difficulty)}`;
+  document.getElementById('hs-mode-label').textContent = modeName(mode);
 }
 
 // ── Screens ───────────────────────────────────────────────────────────────────
@@ -418,47 +530,59 @@ function modeName(m) {
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 
-let selectedMode = null;
-let selectedDiff = null;
+document.addEventListener('keydown', e => {
+  const overlay = document.getElementById('feedback-overlay');
+
+  // Dismiss feedback modal
+  if (overlay.classList.contains('active')) {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      overlay.click();
+    }
+    return;
+  }
+
+  // Only handle arrow/confirm keys during an active question
+  if (!document.getElementById('screen-game').classList.contains('active')) return;
+  if (state.answeredThisRound) return;
+
+  const buttons = getOptionButtons();
+  if (!buttons.length) return;
+
+  const dirMap = { ArrowRight: 'right', ArrowLeft: 'left', ArrowDown: 'down', ArrowUp: 'up' };
+  const dir = dirMap[e.key];
+
+  if (dir) {
+    e.preventDefault();
+    const next = gridMove(focusedOptionIndex, dir, buttons.length);
+    if (next !== null) {
+      focusedOptionIndex = next;
+      applyKeyboardFocus(buttons);
+    } else {
+      jiggleFocused(buttons);
+    }
+  } else if (e.key === ' ' || e.key === 'Enter') {
+    if (focusedOptionIndex >= 0 && focusedOptionIndex < buttons.length) {
+      e.preventDefault();
+      buttons[focusedOptionIndex].click();
+    }
+  }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   showScreen('screen-title');
 
-  document.getElementById('btn-play').addEventListener('click', () => showScreen('screen-menu'));
+  // Title screen
+  document.getElementById('btn-play').addEventListener('click', () => startGame('name-match'));
   document.getElementById('btn-scores-title').addEventListener('click', () => {
-    showHighScores('name-match', 'easy');
+    showHighScores('name-match');
     document.getElementById('hs-back-btn').onclick = () => showScreen('screen-title');
   });
 
-  // Mode selection
+  // Mode select — each card directly starts the game
   document.querySelectorAll('.mode-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      selectedMode = btn.dataset.mode;
-      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      document.getElementById('btn-to-difficulty').disabled = false;
-    });
+    btn.addEventListener('click', () => startGame(btn.dataset.mode));
   });
-
-  document.getElementById('btn-to-difficulty').addEventListener('click', () => {
-    if (selectedMode) showScreen('screen-difficulty');
-  });
-  document.getElementById('btn-menu-back').addEventListener('click', () => showScreen('screen-title'));
-
-  // Difficulty selection
-  document.querySelectorAll('.diff-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      selectedDiff = btn.dataset.diff;
-      document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      document.getElementById('btn-start-game').disabled = false;
-    });
-  });
-
-  document.getElementById('btn-start-game').addEventListener('click', () => {
-    if (selectedMode && selectedDiff) startGame(selectedMode, selectedDiff);
-  });
-  document.getElementById('btn-diff-back').addEventListener('click', () => showScreen('screen-menu'));
 
   // In-game
   document.getElementById('btn-quit-game').addEventListener('click', () => {
@@ -467,10 +591,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Game over
   document.getElementById('btn-submit-score').addEventListener('click', submitScore);
-  document.getElementById('btn-play-again').addEventListener('click', () => {
-    startGame(selectedMode, selectedDiff);
-  });
-  document.getElementById('btn-main-menu').addEventListener('click', () => showScreen('screen-menu'));
+  document.getElementById('btn-play-again').addEventListener('click', () => showScreen('screen-menu'));
+  document.getElementById('btn-main-menu').addEventListener('click', () => showScreen('screen-title'));
 
   // Initials input: uppercase only, max 3
   const inp = document.getElementById('initials-input');
@@ -482,5 +604,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // High scores back
-  document.getElementById('hs-back-btn').addEventListener('click', () => showScreen('screen-gameover'));
+  document.getElementById('hs-back-btn').addEventListener('click', () => showScreen('screen-menu'));
 });

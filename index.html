@@ -42,42 +42,6 @@
       <span class="mode-desc">Match the clue to the dino!</span>
     </button>
   </div>
-  <div class="btn-row">
-    <button class="big-btn" id="btn-to-difficulty" disabled>Next →</button>
-    <button class="big-btn secondary" id="btn-menu-back">← Back</button>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════════════════════ DIFFICULTY -->
-<div id="screen-difficulty" class="screen">
-  <h2 class="screen-title">Choose Difficulty</h2>
-  <div class="diff-grid">
-    <button class="diff-btn" data-diff="easy">
-      <span class="diff-icon">🌿</span>
-      <div>
-        <div class="diff-name">Easy</div>
-        <div class="diff-desc">Famous dinos — T-Rex, Triceratops, Stegosaurus...</div>
-      </div>
-    </button>
-    <button class="diff-btn" data-diff="medium">
-      <span class="diff-icon">🌋</span>
-      <div>
-        <div class="diff-name">Medium</div>
-        <div class="diff-desc">Well-known + some trickier ones</div>
-      </div>
-    </button>
-    <button class="diff-btn" data-diff="hard">
-      <span class="diff-icon">💀</span>
-      <div>
-        <div class="diff-name">Hard</div>
-        <div class="diff-desc">All dinos — including rare expert ones!</div>
-      </div>
-    </button>
-  </div>
-  <div class="btn-row">
-    <button class="big-btn" id="btn-start-game" disabled>Let's Go! 🦖</button>
-    <button class="big-btn secondary" id="btn-diff-back">← Back</button>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════════════ LOADING -->
@@ -107,7 +71,7 @@
   <div class="gameover-label">Game Over!</div>
   <div class="gameover-score" id="final-score">0</div>
   <div class="gameover-meta">
-    <span id="final-mode"></span> · <span id="final-diff"></span>
+    <span id="final-mode"></span>
   </div>
   <div class="highscore-msg" id="highscore-msg"></div>
 
@@ -131,7 +95,7 @@
   <div id="hs-mode-label"></div>
   <table class="scores-table">
     <thead>
-      <tr><th>Player</th><th>Score</th><th>Difficulty</th></tr>
+      <tr><th>Player</th><th>Score</th></tr>
     </thead>
     <tbody id="scores-table-body"></tbody>
   </table>

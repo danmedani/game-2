@@ -255,6 +255,14 @@ button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 .option-btn:hover { border-color: var(--accent); background: #3a5a3a; }
 .option-btn.correct-highlight { border-color: var(--correct); background: #1f4a1f; color: #a0ff80; }
 .option-btn.wrong-dim { opacity: 0.45; }
+.option-btn.keyboard-focus  { border-color: var(--gold); background: #3a5a2a; box-shadow: 0 0 0 3px rgba(255,215,0,0.3); }
+
+@keyframes jiggle {
+  0%, 100% { transform: translateX(0);   border-color: var(--wrong); }
+  25%       { transform: translateX(-5px); }
+  75%       { transform: translateX( 5px); }
+}
+.keyboard-jiggle { animation: jiggle 0.25s ease; border-color: var(--wrong) !important; }
 
 /* ── Picture Match ── */
 .pic-grid { gap: 8px; }
@@ -279,6 +287,7 @@ button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 }
 .pic-btn:hover { border-color: var(--accent); }
 .pic-btn.correct-highlight { border-color: var(--correct); }
+.pic-btn.keyboard-focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(255,215,0,0.3); }
 
 /* ── Size Battle ── */
 .size-battle-wrap {
@@ -328,6 +337,7 @@ button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 }
 .size-card:hover { border-color: var(--accent); background: #3a5a3a; }
 .size-card.correct-highlight { border-color: var(--correct); background: #1f4a1f; }
+.size-card.keyboard-focus { border-color: var(--gold); background: #3a5a2a; box-shadow: 0 0 0 3px rgba(255,215,0,0.3); }
 .vs-badge {
   font-family: 'Fredoka One', cursive;
   font-size: 1.8rem;
@@ -364,12 +374,14 @@ button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 .feedback-card {
   background: var(--surface);
   border-radius: 20px;
-  padding: 28px 32px;
+  padding: 24px 28px;
   text-align: center;
-  max-width: 380px;
+  max-width: 420px;
   width: 100%;
   box-shadow: var(--shadow);
   border: 3px solid var(--border);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 .feedback-card.correct { border-color: var(--correct); }
 .feedback-card.wrong   { border-color: var(--wrong); }
@@ -380,6 +392,80 @@ button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 .feedback-pts { font-size: 1.5rem; font-weight: 800; color: var(--gold); }
 .feedback-answer { font-size: 1rem; color: var(--muted); margin: 4px 0; }
 .feedback-fact { font-size: 0.88rem; color: var(--muted); margin-top: 10px; font-style: italic; line-height: 1.4; }
+/* ── Feedback info panel ── */
+.feedback-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+  text-align: left;
+}
+.feedback-info-item {
+  background: var(--card);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.feedback-info-item.full { grid-column: 1 / -1; }
+
+.fi-row   { display: flex; align-items: center; gap: 5px; }
+.fi-emoji { font-size: 1rem; flex-shrink: 0; }
+.fi-main  { font-size: 0.85rem; font-weight: 700; color: var(--text); line-height: 1.2; }
+.fi-sub   { font-size: 0.75rem; color: var(--muted); margin: 1px 0 0 1.5rem; }
+.fi-globes { margin-left: auto; font-size: 1rem; letter-spacing: 2px; }
+
+/* ── Size-o-meter ── */
+.sizometer {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 6px;
+}
+.sizo-pip {
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.sizo-pip.on  { background: var(--accent); }
+.sizo-pip.off { background: var(--border); }
+.sizo-label   { font-size: 0.7rem; color: var(--muted); font-weight: 700; margin-left: 4px; }
+
+/* ── Period timeline ── */
+.period-bar-wrap {
+  position: relative;
+  margin-top: 6px;
+}
+.period-bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.pt-t { flex: 274; background: #7D4E22; }
+.pt-j { flex: 301; background: #3A7A30; }
+.pt-c { flex: 425; background: #1F5F8A; }
+.period-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px; height: 10px;
+  background: var(--gold);
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.pt-labels {
+  display: flex;
+  margin-top: 3px;
+}
+.pt-labels span {
+  font-size: 0.58rem;
+  color: var(--muted);
+  flex: 274;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.pt-labels span:nth-child(2) { flex: 301; text-align: center; }
+.pt-labels span:nth-child(3) { flex: 425; text-align: right; }
 .feedback-tap-hint { font-size: 0.75rem; color: var(--muted); margin-top: 14px; opacity: 0.6; letter-spacing: 0.5px; }
 
 /* ── Game Over Screen ── */
