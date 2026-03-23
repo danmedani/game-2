@@ -522,8 +522,6 @@ async function renderQuestion(q) {
         `).join('')}
       </div>`;
   } else if (q.type === 'pic-match') {
-    // preload images for options
-    await preloadImages(q.options);
     area.innerHTML = `
       <p class="question-prompt">Find the picture of: <strong>${q.correct.name}</strong></p>
       <div class="options grid-2 pic-grid">
@@ -791,6 +789,8 @@ function showHighScores(mode) {
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  if (id === 'screen-title') startTitleDinos();
+  else stopTitleDinos();
 }
 
 function setLoadingMessage(msg) {
@@ -803,6 +803,105 @@ function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 function modeName(m) {
   return { 'name-match': 'Name Match', 'pic-match': 'Picture Match', 'size-battle': 'Size Battle', 'dino-facts': 'Dino Facts' }[m] || m;
+}
+
+// ── Title screen dino bouncer ─────────────────────────────────────────────────
+
+let dinoBouncerRaf = null;
+
+function startTitleDinos() {
+  const screen = document.getElementById('screen-title');
+  const els    = [...screen.querySelectorAll('.title-dino')];
+  const SIZE   = 52; // px — approximate rendered emoji size
+  const SPEED  = 1.8;
+
+  // place each dino and give it a random starting velocity
+  const dinos = els.map((el, i) => {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const x = 80 + i * (w / 4);
+    const y = 80 + i * (h / 5);
+    let vx = (Math.random() < 0.5 ? 1 : -1) * (SPEED * 0.7 + Math.random() * SPEED * 0.6);
+    let vy = (Math.random() < 0.5 ? 1 : -1) * (SPEED * 0.7 + Math.random() * SPEED * 0.6);
+    el.style.left = x + 'px';
+    el.style.top  = y + 'px';
+    return { el, x, y, vx, vy };
+  });
+
+  // get obstacle rects (title text, subtitle, buttons) relative to screen
+  function obstacles() {
+    const sr = screen.getBoundingClientRect();
+    return [...screen.querySelectorAll('.game-title,.game-subtitle,.big-btn')]
+      .map(el => {
+        const r = el.getBoundingClientRect();
+        return { l: r.left - sr.left - 4, t: r.top - sr.top - 4,
+                 r: r.right - sr.left + 4, b: r.bottom - sr.top + 4 };
+      });
+  }
+
+  function tick() {
+    const W   = window.innerWidth;
+    const H   = window.innerHeight;
+    const obs = obstacles();
+
+    for (const d of dinos) {
+      d.x += d.vx;
+      d.y += d.vy;
+
+      // wall bounce
+      if (d.x < 0)        { d.x = 0;        d.vx =  Math.abs(d.vx); }
+      if (d.x + SIZE > W) { d.x = W - SIZE;  d.vx = -Math.abs(d.vx); }
+      if (d.y < 0)        { d.y = 0;         d.vy =  Math.abs(d.vy); }
+      if (d.y + SIZE > H) { d.y = H - SIZE;  d.vy = -Math.abs(d.vy); }
+
+      // obstacle bounce
+      const cx = d.x + SIZE / 2, cy = d.y + SIZE / 2;
+      for (const o of obs) {
+        if (cx > o.l && cx < o.r && cy > o.t && cy < o.b) {
+          const dl = Math.abs(cx - o.l), dr = Math.abs(cx - o.r);
+          const dt = Math.abs(cy - o.t), db = Math.abs(cy - o.b);
+          const m  = Math.min(dl, dr, dt, db);
+          if (m === dl || m === dr) d.vx = -d.vx;
+          else                      d.vy = -d.vy;
+        }
+      }
+
+      d.el.style.left = d.x + 'px';
+      d.el.style.top  = d.y + 'px';
+    }
+
+    // dino–dino bounce
+    for (let i = 0; i < dinos.length; i++) {
+      for (let j = i + 1; j < dinos.length; j++) {
+        const a = dinos[i], b = dinos[j];
+        const dx = (b.x + SIZE / 2) - (a.x + SIZE / 2);
+        const dy = (b.y + SIZE / 2) - (a.y + SIZE / 2);
+        const dist = Math.hypot(dx, dy);
+        if (dist < SIZE && dist > 0) {
+          const nx = dx / dist, ny = dy / dist;
+          // reflect velocities along collision normal
+          const dvx = a.vx - b.vx, dvy = a.vy - b.vy;
+          const dot  = dvx * nx + dvy * ny;
+          a.vx -= dot * nx;  a.vy -= dot * ny;
+          b.vx += dot * nx;  b.vy += dot * ny;
+          // push apart
+          const overlap = SIZE - dist;
+          a.x -= nx * overlap / 2;  a.y -= ny * overlap / 2;
+          b.x += nx * overlap / 2;  b.y += ny * overlap / 2;
+        }
+      }
+    }
+
+    dinoBouncerRaf = requestAnimationFrame(tick);
+  }
+
+  cancelAnimationFrame(dinoBouncerRaf);
+  tick();
+}
+
+function stopTitleDinos() {
+  cancelAnimationFrame(dinoBouncerRaf);
+  dinoBouncerRaf = null;
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────

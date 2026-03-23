@@ -36,7 +36,7 @@ WIKI_TITLES = [
     # Level 4
     "Styracosaurus", "Therizinosaurus", "Gorgosaurus", "Amargasaurus",
     "Euoplocephalus", "Pachyrhinosaurus", "Lambeosaurus", "Albertosaurus",
-    "Pentaceratops", "Anchiceratops", "Irritator_(dinosaur)",
+    "Pentaceratops", "Anchiceratops", "Irritator",
     "Scelidosaurus", "Tsintaosaurus",
     # Level 5
     "Argentinosaurus", "Quetzalcoatlus", "Microraptor", "Giganotosaurus",
@@ -55,7 +55,7 @@ def fetch_summary(title):
         with urllib.request.urlopen(req, timeout=15, context=SSL_CTX) as r:
             data = json.loads(r.read())
         extract = data.get('extract', '')
-        m = re.match(r'[^.!?]*[.!?]', extract)
+        m = re.search(r'.+?[.!?](?=\s+[A-Z]|\s*$)', extract, re.DOTALL)
         short = m.group(0).strip() if m else extract[:200].strip()
         full = extract[len(m.group(0)):].strip() if m else ''
         return short, full

@@ -42,19 +42,23 @@ button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
 /* ── Title Screen ── */
 #screen-title {
+  position: relative;
   justify-content: center;
   gap: 20px;
   background: radial-gradient(ellipse at top, #243824 0%, #0d1a0d 100%);
 }
 .title-dinos {
-  font-size: 5rem;
-  letter-spacing: -4px;
-  user-select: none;
-  animation: float 3s ease-in-out infinite;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.title-dino {
+  position: absolute;
+  font-size: 3.5rem;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
 }
 .game-title {
   font-family: 'Fredoka One', cursive;

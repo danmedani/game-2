@@ -18,8 +18,8 @@ const DINO_DATA = {
   },
   "Brachiosaurus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Brachiosaurus_mount.jpg/960px-Brachiosaurus_mount.jpg",
-    "short": "Brachiosaurus is a genus of sauropod dinosaur that lived in North America during the Late Jurassic, about 155.",
-    "full": "6 to 145.5 million years ago. It was first described by American paleontologist Elmer S. Riggs in 1903 from fossils found in the Colorado River valley in western Colorado, United States. Riggs named the dinosaur Brachiosaurus altithorax; the generic name is Greek for \"arm lizard\", in reference to its proportionately long arms, and the specific name means \"deep chest\". Brachiosaurus is estimated to have been between 18 and 22 meters long; body mass estimates of the subadult holotype specimen range from 28.3 to 46.9 metric tons. It had a disproportionately long neck, small skull, and large overall size, all of which are typical for sauropods. Atypically, Brachiosaurus had longer forelimbs than hindlimbs, which resulted in a steeply inclined trunk, and a proportionally shorter tail."
+    "short": "Brachiosaurus is a genus of sauropod dinosaur that lived in North America during the Late Jurassic, about 155.6 to 145.5 million years ago.",
+    "full": "It was first described by American paleontologist Elmer S. Riggs in 1903 from fossils found in the Colorado River valley in western Colorado, United States. Riggs named the dinosaur Brachiosaurus altithorax; the generic name is Greek for \"arm lizard\", in reference to its proportionately long arms, and the specific name means \"deep chest\". Brachiosaurus is estimated to have been between 18 and 22 meters long; body mass estimates of the subadult holotype specimen range from 28.3 to 46.9 metric tons. It had a disproportionately long neck, small skull, and large overall size, all of which are typical for sauropods. Atypically, Brachiosaurus had longer forelimbs than hindlimbs, which resulted in a steeply inclined trunk, and a proportionally shorter tail."
   },
   "Velociraptor": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Velociraptor_skeleton_white_background.jpg/960px-Velociraptor_skeleton_white_background.jpg",
@@ -43,8 +43,8 @@ const DINO_DATA = {
   },
   "Pteranodon": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Pteranodon_amnh_martyniuk.jpg/960px-Pteranodon_amnh_martyniuk.jpg",
-    "short": "Pteranodon (; from Ancient Greek pteron 'wing', an- 'without', and odon 'tooth' is a genus of pterosaur that included some of the largest known flying reptiles, with P.",
-    "full": "longiceps having a wingspan of over 6 m. They lived during the late Cretaceous geological period of North America in present-day Kansas, Nebraska, Wyoming, South Dakota and Alabama. More fossil specimens of Pteranodon have been found than any other pterosaur, with about 1,200 specimens known to science, many of them well preserved with nearly complete skulls and articulated skeletons. It was an important part of the animal community in the Western Interior Seaway."
+    "short": "Pteranodon (; from Ancient Greek pteron 'wing', an- 'without', and odon 'tooth' is a genus of pterosaur that included some of the largest known flying reptiles, with P. longiceps having a wingspan of over 6 m.",
+    "full": "They lived during the late Cretaceous geological period of North America in present-day Kansas, Nebraska, Wyoming, South Dakota and Alabama. More fossil specimens of Pteranodon have been found than any other pterosaur, with about 1,200 specimens known to science, many of them well preserved with nearly complete skulls and articulated skeletons. It was an important part of the animal community in the Western Interior Seaway."
   },
   "Apatosaurus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Apatosaurus_louisae_-_CM.jpg/960px-Apatosaurus_louisae_-_CM.jpg",
@@ -63,8 +63,8 @@ const DINO_DATA = {
   },
   "Parasaurolophus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/FMNH_Parasaurolophus_fossil.jpg/960px-FMNH_Parasaurolophus_fossil.jpg",
-    "short": "Parasaurolophus is a genus of hadrosaurid \"duck-billed\" dinosaur that lived in what is now western North America and possibly Asia during the Late Cretaceous period, about 76.",
-    "full": "5–73 million years ago. It was a large herbivore that could reach over 9 metres (30 ft) long and weigh over 5 metric tons, and were able to move as a biped and a quadruped. Three species are universally recognized: P. walkeri, P. tubicen, and the short-crested P. cyrtocristatus. Additionally, a fourth species, P. jiayinensis, has been proposed, although it is more commonly placed in the separate genus Charonosaurus. Remains are known from Alberta, New Mexico, and Utah, as well as possibly Heilongjiang if Charonosaurus is in fact part of the genus. The genus was first described in 1922 by William Parks from a skull and partial skeleton found in Alberta."
+    "short": "Parasaurolophus is a genus of hadrosaurid \"duck-billed\" dinosaur that lived in what is now western North America and possibly Asia during the Late Cretaceous period, about 76.5–73 million years ago.",
+    "full": "It was a large herbivore that could reach over 9 metres (30 ft) long and weigh over 5 metric tons, and were able to move as a biped and a quadruped. Three species are universally recognized: P. walkeri, P. tubicen, and the short-crested P. cyrtocristatus. Additionally, a fourth species, P. jiayinensis, has been proposed, although it is more commonly placed in the separate genus Charonosaurus. Remains are known from Alberta, New Mexico, and Utah, as well as possibly Heilongjiang if Charonosaurus is in fact part of the genus. The genus was first described in 1922 by William Parks from a skull and partial skeleton found in Alberta."
   },
   "Pachycephalosaurus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Pachycephalosaurus_wyomingensis_ROM.jpg/960px-Pachycephalosaurus_wyomingensis_ROM.jpg",
@@ -108,8 +108,8 @@ const DINO_DATA = {
   },
   "Coelophysis": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Coelophysis_bauri_mount.jpg/960px-Coelophysis_bauri_mount.jpg",
-    "short": "Coelophysis is an extinct genus of coelophysid theropod dinosaurs that lived approximately 215 to 201.",
-    "full": "4 million years ago during the late Triassic period from the middle Norian to Rhaetian age in what is now the southwestern United States. Megapnosaurus was once considered to be a species within this genus, but this interpretation has been challenged and the genus Megapnosaurus is now considered valid."
+    "short": "Coelophysis is an extinct genus of coelophysid theropod dinosaurs that lived approximately 215 to 201.4 million years ago during the late Triassic period from the middle Norian to Rhaetian age in what is now the southwestern United States.",
+    "full": "Megapnosaurus was once considered to be a species within this genus, but this interpretation has been challenged and the genus Megapnosaurus is now considered valid."
   },
   "Troodon": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Troodon_MOR_full.png/960px-Troodon_MOR_full.png",
@@ -123,8 +123,8 @@ const DINO_DATA = {
   },
   "Corythosaurus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Carnegie_Corythosaurus.jpg/960px-Carnegie_Corythosaurus.jpg",
-    "short": "Corythosaurus is a genus of hadrosaurid \"duck-billed\" dinosaur from the Late Cretaceous period, about 77–75.",
-    "full": "7 million years ago, in what is now western North America. Its name is derived from the Greek word κόρυς, meaning \"helmet\", named and described in 1914 by Barnum Brown. Corythosaurus is now thought to be a lambeosaurine, thus related to Lambeosaurus, Nipponosaurus, Velafrons, Hypacrosaurus, and Olorotitan. Corythosaurus has an estimated length of 7.7–9 metres (25–30 ft) and has a skull, including the crest, that is 70.8 centimetres tall."
+    "short": "Corythosaurus is a genus of hadrosaurid \"duck-billed\" dinosaur from the Late Cretaceous period, about 77–75.7 million years ago, in what is now western North America.",
+    "full": "Its name is derived from the Greek word κόρυς, meaning \"helmet\", named and described in 1914 by Barnum Brown. Corythosaurus is now thought to be a lambeosaurine, thus related to Lambeosaurus, Nipponosaurus, Velafrons, Hypacrosaurus, and Olorotitan. Corythosaurus has an estimated length of 7.7–9 metres (25–30 ft) and has a skull, including the crest, that is 70.8 centimetres tall."
   },
   "Plateosaurus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Plateosaurus_Skelett_2.jpg/960px-Plateosaurus_Skelett_2.jpg",
@@ -143,8 +143,8 @@ const DINO_DATA = {
   },
   "Maiasaura": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Maiasaura_skeleton.jpg/960px-Maiasaura_skeleton.jpg",
-    "short": "Maiasaura is a large herbivorous saurolophine hadrosaurid (\"duck-billed\") dinosaur genus that lived in the area currently covered by the state of Montana and the Canadian province of Alberta, in the Upper Cretaceous, from 86.",
-    "full": "3 to 70.6 million years ago. Maiasaura is the state fossil of Montana."
+    "short": "Maiasaura is a large herbivorous saurolophine hadrosaurid (\"duck-billed\") dinosaur genus that lived in the area currently covered by the state of Montana and the Canadian province of Alberta, in the Upper Cretaceous, from 86.3 to 70.6 million years ago.",
+    "full": "Maiasaura is the state fossil of Montana."
   },
   "Oviraptor": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Oviraptor_holotype.jpg/960px-Oviraptor_holotype.jpg",
@@ -218,8 +218,8 @@ const DINO_DATA = {
   },
   "Gorgosaurus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Drumheller_150.jpg/960px-Drumheller_150.jpg",
-    "short": "Gorgosaurus is a genus of tyrannosaurid theropod dinosaur that lived in western North America during the Late Cretaceous Period (Campanian), between about 76.",
-    "full": "5 and 75 million years ago. Fossil remains have been found in the Canadian province of Alberta and the U.S. state of Montana. Paleontologists recognize only the type species, G. libratus, although other species have been erroneously referred to the genus."
+    "short": "Gorgosaurus is a genus of tyrannosaurid theropod dinosaur that lived in western North America during the Late Cretaceous Period (Campanian), between about 76.5 and 75 million years ago.",
+    "full": "Fossil remains have been found in the Canadian province of Alberta and the U.S. state of Montana. Paleontologists recognize only the type species, G. libratus, although other species have been erroneously referred to the genus."
   },
   "Amargasaurus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Amargasaurus_in_Prague_National_Museum.jpg/960px-Amargasaurus_in_Prague_National_Museum.jpg",
@@ -256,6 +256,11 @@ const DINO_DATA = {
     "short": "Anchiceratops is an extinct genus of chasmosaurine ceratopsid dinosaur that lived approximately 73 to 68 million years ago during the latter part of the Cretaceous Period in what is now Alberta, Canada.",
     "full": "Anchiceratops was a medium-sized, heavily built, ground-dwelling, quadrupedal herbivore that could grow up to an estimated 4.3 metres (14 ft) long. Its skull featured two long brow horns and a short horn on the nose. The skull frill was elongated and rectangular, its edges adorned by coarse triangular projections. About a dozen skulls of the genus have been found."
   },
+  "Irritator": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Irritator_challengeri_mount_01.jpg/960px-Irritator_challengeri_mount_01.jpg",
+    "short": "Irritator is a genus of spinosaurid dinosaur that lived in what is now Brazil during the Albian stage of the Early Cretaceous Period, about 113 to 110 million years ago.",
+    "full": "It is known from a nearly complete skull found in the Romualdo Formation of the Araripe Basin. Fossil dealers had acquired this skull and sold it to the State Museum of Natural History Stuttgart. In 1996, the specimen became the holotype of the type species Irritator challengeri. The genus name comes from the word \"irritation\", reflecting the feelings of paleontologists who found the skull had been heavily damaged and altered by the collectors. The species name is a homage to the fictional character Professor Challenger from Arthur Conan Doyle's novels."
+  },
   "Scelidosaurus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Scelidosaurus_harrisonii_%281%29.jpg/960px-Scelidosaurus_harrisonii_%281%29.jpg",
     "short": "Scelidosaurus is a genus of herbivorous armoured ornithischian dinosaur from the Jurassic of England.",
@@ -283,8 +288,8 @@ const DINO_DATA = {
   },
   "Giganotosaurus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Giganotosaurus_at_Fernbank.jpg/960px-Giganotosaurus_at_Fernbank.jpg",
-    "short": "Giganotosaurus is a genus of large theropod dinosaur that lived in what is now Argentina, during the early Cenomanian age of the Late Cretaceous period, approximately 99.",
-    "full": "6 to 95 million years ago. The holotype specimen was discovered in the Candeleros Formation of Patagonia in 1993 and is almost 70% complete. The animal was named Giganotosaurus carolinii in 1995; the genus name translates to \"giant southern lizard\", and the specific name honors the discoverer, Ruben Carolini. A dentary bone, a tooth, and some tracks, discovered before the holotype, were later assigned to this animal. The genus attracted much interest and became part of a scientific debate about the maximum sizes of theropod dinosaurs."
+    "short": "Giganotosaurus is a genus of large theropod dinosaur that lived in what is now Argentina, during the early Cenomanian age of the Late Cretaceous period, approximately 99.6 to 95 million years ago.",
+    "full": "The holotype specimen was discovered in the Candeleros Formation of Patagonia in 1993 and is almost 70% complete. The animal was named Giganotosaurus carolinii in 1995; the genus name translates to \"giant southern lizard\", and the specific name honors the discoverer, Ruben Carolini. A dentary bone, a tooth, and some tracks, discovered before the holotype, were later assigned to this animal. The genus attracted much interest and became part of a scientific debate about the maximum sizes of theropod dinosaurs."
   },
   "Eoraptor": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Eoraptor_Japan.jpg/960px-Eoraptor_Japan.jpg",
@@ -293,8 +298,8 @@ const DINO_DATA = {
   },
   "Sauroposeidon": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Sauroposeidon_proteles_Skeletal.png/960px-Sauroposeidon_proteles_Skeletal.png",
-    "short": "Sauroposeidon is a genus of sauropod dinosaur known from several incomplete specimens including a bone bed and fossilized trackways that have been found in the U.",
-    "full": "S. states of Oklahoma, Wyoming, and Texas."
+    "short": "Sauroposeidon is a genus of sauropod dinosaur known from several incomplete specimens including a bone bed and fossilized trackways that have been found in the U.S. states of Oklahoma, Wyoming, and Texas.",
+    "full": ""
   },
   "Sinosauropteryx": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Sinosauropteryxfossil.jpg/960px-Sinosauropteryxfossil.jpg",
@@ -305,6 +310,11 @@ const DINO_DATA = {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Herrerasaurus_skeleton.jpg/960px-Herrerasaurus_skeleton.jpg",
     "short": "Herrerasaurus is likely a genus of saurischian dinosaur from the Late Triassic period.",
     "full": "Measuring 6 m (20 ft) long and weighing around 350 kg (770 lb), this genus was one of the earliest dinosaurs from the fossil record. Its name means \"Herrera's lizard\", after the rancher who discovered the first specimen in 1958 in South America. All known fossils of this carnivore have been discovered in the Ischigualasto Formation of Carnian age in northwestern Argentina. The type species, Herrerasaurus ischigualastensis, was described by Osvaldo Reig in 1963 and is the only species assigned to the genus. Ischisaurus and Frenguellisaurus are synonyms."
+  },
+  "Dracorex": {
+    "img": "",
+    "short": "Pachycephalosaurus is a genus of pachycephalosaurid ornithischian dinosaur.",
+    "full": "The type species, P. wyomingensis, is the only known definitive species. The possibly synonymous taxon, Stygimoloch, might represent a distinct genus or a second species, P. spinifer. It lived during the Maastrichtian age of the Late Cretaceous period in what is now western North America. Remains have been excavated in Montana, South Dakota, Wyoming, and Alberta. Mainly known from a single skull and a few extremely thick skull roofs, Pachycephalosaurus is estimated to have reached 4.5 m (15 ft) long and weighed 370–450 kg (820–990 lb). More complete fossils would come to be found in the following years."
   },
   "Nothronychus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Therizinosauridae_Diversity.jpg/960px-Therizinosauridae_Diversity.jpg",
@@ -330,15 +340,5 @@ const DINO_DATA = {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Limusaurus_inextricabilis_skeleton.jpg/960px-Limusaurus_inextricabilis_skeleton.jpg",
     "short": "Limusaurus is a genus of theropod dinosaur that lived in what is now China during the Late Jurassic, around 161 to 157 million years ago.",
     "full": "The type and only species Limusaurus inextricabilis was described in 2009 from specimens found in the Upper Shishugou Formation in the Junggar Basin of China. The genus name consists of the Latin words for \"mud\" and \"lizard\", and the species name means \"impossible to extricate\", both referring to these specimens possibly dying after being mired. Limusaurus was a small, slender animal, about 1.7 m in length and 15 kg (33 lb) in weight, which had a long neck and legs but very small forelimbs. It underwent a drastic morphological transformation as it aged: while juveniles were toothed, these teeth were completely lost and replaced by a beak with age. Several of these features were convergently similar to the later ornithomimid theropods as well as the earlier non-dinosaurian shuvosaurids."
-  },
-  "Irritator": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Irritator_challengeri_mount_01.jpg/960px-Irritator_challengeri_mount_01.jpg",
-    "short": "Irritator is a genus of spinosaurid dinosaur that lived in what is now Brazil during the Albian stage of the Early Cretaceous Period, about 113 to 110 million years ago.",
-    "full": "It is known from a nearly complete skull found in the Romualdo Formation of the Araripe Basin. Fossil dealers had acquired this skull and sold it to the State Museum of Natural History Stuttgart. In 1996, the specimen became the holotype of the type species Irritator challengeri. The genus name comes from the word \"irritation\", reflecting the feelings of paleontologists who found the skull had been heavily damaged and altered by the collectors. The species name is a homage to the fictional character Professor Challenger from Arthur Conan Doyle's novels."
-  },
-  "Dracorex": {
-    "img": "https://static.wikia.nocookie.net/jurassicpark/images/4/4e/Dracorex_JWA.png/revision/latest/scale-to-width-down/1200?cb=20200911223856",
-    "short": "Pachycephalosaurus is a genus of pachycephalosaurid ornithischian dinosaur.",
-    "full": "The type species, P. wyomingensis, is the only known definitive species. The possibly synonymous taxon, Stygimoloch, might represent a distinct genus or a second species, P. spinifer. It lived during the Maastrichtian age of the Late Cretaceous period in what is now western North America. Remains have been excavated in Montana, South Dakota, Wyoming, and Alberta. Mainly known from a single skull and a few extremely thick skull roofs, Pachycephalosaurus is estimated to have reached 4.5 m (15 ft) long and weighed 370–450 kg (820–990 lb). More complete fossils would come to be found in the following years."
   }
 };
