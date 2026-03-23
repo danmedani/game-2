@@ -135,10 +135,24 @@ function calcPoints(correct) {
 
 function pickFreshCorrect() {
   const fresh = state.pool.filter(d => !state.usedCorrects.has(d.name));
-  const candidates = fresh.length >= 1 ? fresh : state.pool; // fallback if pool exhausted
+  if (fresh.length === 0 && !state.devMode) {
+    notifyLoopAround();
+  }
+  const candidates = fresh.length >= 1 ? fresh : state.pool;
   const [correct] = pick(candidates, 1);
   state.usedCorrects.add(correct.name);
   return correct;
+}
+
+function notifyLoopAround() {
+  const webhook = (typeof CONFIG !== 'undefined') && CONFIG.discordWebhook;
+  if (!webhook) return;
+  const msg = `🔁 A player looped around! Level ${state.level}, score ${state.score} — they've seen all the dinos.`;
+  fetch(webhook, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content: msg }),
+  }).catch(() => {});
 }
 
 function buildNameMatchQuestion() {

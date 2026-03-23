@@ -340,5 +340,515 @@ const DINO_DATA = {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Limusaurus_inextricabilis_skeleton.jpg/960px-Limusaurus_inextricabilis_skeleton.jpg",
     "short": "Limusaurus is a genus of theropod dinosaur that lived in what is now China during the Late Jurassic, around 161 to 157 million years ago.",
     "full": "The type and only species Limusaurus inextricabilis was described in 2009 from specimens found in the Upper Shishugou Formation in the Junggar Basin of China. The genus name consists of the Latin words for \"mud\" and \"lizard\", and the species name means \"impossible to extricate\", both referring to these specimens possibly dying after being mired. Limusaurus was a small, slender animal, about 1.7 m in length and 15 kg (33 lb) in weight, which had a long neck and legs but very small forelimbs. It underwent a drastic morphological transformation as it aged: while juveniles were toothed, these teeth were completely lost and replaced by a beak with age. Several of these features were convergently similar to the later ornithomimid theropods as well as the earlier non-dinosaurian shuvosaurids."
+  },
+  "Kritosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Kritosaurus.jpg/960px-Kritosaurus.jpg",
+    "short": "Kritosaurus is an incompletely known genus of hadrosaurid (duck-billed) dinosaur.",
+    "full": "It lived about 74.5-66 million years ago, in the Late Cretaceous of North America. The name means \"separated lizard\", but is often mistranslated as \"noble lizard\" in reference to the presumed \"Roman nose\"."
+  },
+  "Hadrosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Hadrosaurus_reconstruction.jpg/960px-Hadrosaurus_reconstruction.jpg",
+    "short": "Hadrosaurus is a genus of hadrosaurid ornithopod dinosaurs that lived in North America during the Late Cretaceous Period in what is now the Woodbury Formation in New Jersey about 83.6 to 77.9 million years ago.",
+    "full": "The holotype specimen was found in fluvial marine sedimentation, meaning that the corpse of the animal was transported by a river and washed out to sea. Some fossils are found in the Tar Heel/Coachman Formation."
+  },
+  "Diabloceratops": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Diabloceratops_skull.jpg/960px-Diabloceratops_skull.jpg",
+    "short": "Diabloceratops is an extinct genus of centrosaurine ceratopsian dinosaur that lived approximately 81.4-81 million years ago during the latter part of the Cretaceous Period in what is now Utah, in the United States.",
+    "full": "Diabloceratops was a medium-sized, moderately built, ground-dwelling, quadrupedal herbivore, that could grow up to an estimated 4.5 metres (15 ft) in length and 1.3 metric tons in body mass. At the time of its discovery, it was the oldest-known ceratopsid, and first centrosaurine known from latitudes south of the U.S. state of Montana. The generic name Diabloceratops means \"devil-horned face\", coming from Diablo, Spanish for \"devil\", and ceratops, Latinized Greek for \"horned face\". The specific name honors Jeffrey Eaton, a paleontologist at Weber State University and long time friend of the lead author Jim Kirkland. Eaton had a big role in establishing the Grand Staircase-Escalante National Monument where the specimen was found. The type species, Diabloceratops eatoni, was named and described in 2010 by James Ian Kirkland and Donald DeBlieux."
+  },
+  "Cryolophosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Cryolophosaurus_skeletal_mount.jpg/960px-Cryolophosaurus_skeletal_mount.jpg",
+    "short": "Cryolophosaurus is a genus of large theropod dinosaur known from only a single species, Cryolophosaurus ellioti, from the Early Jurassic of Antarctica.",
+    "full": "It was one of the largest theropods of the Early Jurassic, with the subadult, being estimated to have reached 6–7 metres (20–23 ft) long and weighed 350–465 kilograms (772–1,025 lb)."
+  },
+  "Charonosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Charonosaurus_jiayinensis.001_-_MSNBrussel.jpg/960px-Charonosaurus_jiayinensis.001_-_MSNBrussel.jpg",
+    "short": "Charonosaurus is a genus of lambeosaurine hadrosaurid dinosaur similar to Parasaurolophus that lived in the latest Cretaceous Yuliangze Formation of China.",
+    "full": "Its fossils were described by Godefroit, Zan, and Jin in 2000, on the south bank of the Amur River, dividing China from Russia. It is monotypic, consisting of the species, C. jiayinensis."
+  },
+  "Nemegtosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Opisthocoelicaudia_Museum_of_Evolution_in_Warsaw_14.JPG/960px-Opisthocoelicaudia_Museum_of_Evolution_in_Warsaw_14.JPG",
+    "short": "Nemegtosaurus was a sauropod dinosaur from the Late Cretaceous Period of what is now Mongolia.",
+    "full": "Measuring an estimated 12–13 m (39–43 ft) long and weighing 20 t (44,000 lb), it was named after the Nemegt Basin in the Gobi Desert, where the remains — a single skull — were found. The skull resembles diplodocoids in being long and low, with pencil-shaped teeth. However, recent work has shown that Nemegtosaurus is in fact a titanosaur, closely related to animals such as Saltasaurus, Alamosaurus, and Rapetosaurus."
+  },
+  "Einiosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Einiosaurus_LACM.jpg/960px-Einiosaurus_LACM.jpg",
+    "short": "Einiosaurus is a genus of herbivorous centrosaurine ceratopsian dinosaur from the Upper Cretaceous of northwestern Montana.",
+    "full": "The name means 'bison lizard', in a combination of Blackfeet Indian eini and Latinized Ancient Greek sauros; the specific name (procurvicornis) means 'with a forward-curving horn' in Latin. Einiosaurus is medium-sized with an estimated body length at 4.5 metres (15 ft)."
+  },
+  "Muttaburrasaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Muttaburrasaurus_mount.jpg/960px-Muttaburrasaurus_mount.jpg",
+    "short": "Muttaburrasaurus was a genus of herbivorous iguanodontian ornithopod dinosaur that lived in what is now north-eastern Australia sometime between 112 and 103 million years ago during the early Cretaceous period.",
+    "full": "It has been recovered in some analyses as a member of the iguanodontian clade Rhabdodontomorpha, or alternately as a member of Elasmaria. After Kunbarrasaurus, it is Australia's most completely known dinosaur from skeletal remains. It was named after Muttaburra, the site in Queensland, Australia, where it was found. The dinosaur was selected from twelve candidates to become the official fossil emblem of the State of Queensland."
+  },
+  "Afrovenator": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Afrovenator_mount.jpg/960px-Afrovenator_mount.jpg",
+    "short": "Afrovenator is an extinct genus of megalosaurid theropod dinosaur from the Middle or Late Jurassic Tiourarén Formation and maybe the Irhazer II Formation of the Sahara region of Niger in western Africa.",
+    "full": "Afrovenator represents the only named definitive Gondwanan megalosaur, with proposed material of the group present in the Tacuarembó Formation of Uruguay and the Tendaguru Formation of Tanzania, both dated to the Late Jurassic."
+  },
+  "Massospondylus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Neotype_skeleton_of_Massospondylus_carinatus.jpg/960px-Neotype_skeleton_of_Massospondylus_carinatus.jpg",
+    "short": "Massospondylus is a genus of sauropodomorph dinosaur from the Early Jurassic of southern Africa.",
+    "full": "It was described by Richard Owen in 1854 from remains discovered in South Africa, and is thus one of the first dinosaurs to have been named. The name Massospondylus means 'longer vertebra', alluding to what Owen identified as tail vertebrae; these vertebrae are now known to be from the neck. Although the original fossils were destroyed in London during a bombing raid in World War II, a plethora of specimens have since been assigned to the genus, making it one of the best-known sauropodomorphs from the Early Jurassic. The genus lived during the Hettangian, Sinemurian, and Pliensbachian ages, which lasted from ca. 201 to 184 million years ago. Most fossils come from the upper Elliot and Clarens formations of South Africa and Lesotho, but the genus is also found in the Forest Sandstone and the Mpandi Formation of Zimbabwe. Material from the US, India, and Argentina was previously assigned to the genus, but the US and Argentinian specimens are now assigned to their own genera. Because of their great abundance, Massospondylus fossils have been used to date rocks, and a biozone, the Massospondylus Range Zone, is named after the genus."
+  },
+  "Leaellynasaura": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Leaellynasaura-amicagraphica-dinosaur-skull-holotype-p-185991-1330043-large.jpg/960px-Leaellynasaura-amicagraphica-dinosaur-skull-holotype-p-185991-1330043-large.jpg",
+    "short": "Leaellynasaura is a genus of small herbivorous ornithischian dinosaurs from the late Aptian to early Albian stage of the Early Cretaceous, around 118-110 million years ago.",
+    "full": "It was first discovered in Dinosaur Cove, Australia. The only known species is Leaellynasaura amicagraphica. It was described in 1989, and named after Leaellyn Rich, the daughter of the Australian palaeontologist couple Tom Rich and Patricia Vickers-Rich who discovered it. The specific name, amicagraphica, translates to \"friend writing\" and honours both the Friends of the Museum of Victoria and the National Geographic Society for their support of Australian paleontology."
+  },
+  "Dacentrurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Dacentrurus_NHM.jpg/960px-Dacentrurus_NHM.jpg",
+    "short": "Dacentrurus is an extinct genus of stegosaurian dinosaur from the Late Jurassic and perhaps Early Cretaceous of Europe.",
+    "full": "Its type species, D. armatus, was named in 1875 as Omosaurus armatus, based on a skeleton found in a clay pit in the Kimmeridge Clay in Swindon, England. In 1902 the genus was renamed Dacentrurus because the name Omosaurus had already been used for a phytosaur in 1856. After 1875, half a dozen other species would be named but perhaps only Dacentrurus armatus is valid."
+  },
+  "Lufengosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Lufengosaurus_huenei_Holotype_IVPP.jpg/960px-Lufengosaurus_huenei_Holotype_IVPP.jpg",
+    "short": "Lufengosaurus is a genus of massospondylid dinosaur which lived during the Early Jurassic period in what is now southwestern China.",
+    "full": ""
+  },
+  "Futalognkosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Futalognkosaurus_Royal_Ontario_Museum.jpg/960px-Futalognkosaurus_Royal_Ontario_Museum.jpg",
+    "short": "Futalognkosaurus is a genus of titanosaurian dinosaur.",
+    "full": "The herbivorous Futalognkosaurus lived approximately 93.5 to 85.8 million years ago in the Portezuelo Formation, in what is now Argentina, of the Coniacian stage of the late Cretaceous Period. The fish and fossilized leaf debris on the site, together with other dinosaur remains, suggest a warm tropical climate in Patagonia during this period."
+  },
+  "Tarbosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Tarbosaurus_bataar_mount_-_Dinosaur_Mysteries_exhibit.jpg/960px-Tarbosaurus_bataar_mount_-_Dinosaur_Mysteries_exhibit.jpg",
+    "short": "Tarbosaurus is a genus of large tyrannosaurid dinosaur that lived in Asia during the Maastrichtian age of the Late Cretaceous epoch.",
+    "full": "It contains the type and single species Tarbosaurus bataar, which is known from the Nemegt Formation of Mongolia, with more fragmentary remains found further afield in the Subashi Formation of China. Tarbosaurus is represented by dozens of fossil specimens, including several complete skulls and skeletons. These remains have allowed studies focusing on its phylogeny, skull mechanics, and brain structure. Further fossil remains have been reported from other geologic formations of Asia, however, these remains are fragmentary and cannot be confidently assigned to Tarbosaurus or the type species."
+  },
+  "Turiasaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Turiasaurus_in_zientzia_astea.jpg/960px-Turiasaurus_in_zientzia_astea.jpg",
+    "short": "Turiasaurus is a genus of sauropod dinosaurs.",
+    "full": "It is known from a single fossil specimen representing the species Turiasaurus riodevensis, found in the Kimmeridgian Villar del Arzobispo Formation of Teruel, Spain."
+  },
+  "Shunosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Shunosaurus_-_Finnish_Museum_of_Natural_History.jpg/960px-Shunosaurus_-_Finnish_Museum_of_Natural_History.jpg",
+    "short": "Shunosaurus is a genus of sauropod dinosaur from Late Jurassic (Oxfordian) beds in Sichuan Province in China, from 161 to 157 Million years ago.",
+    "full": "The name derives from \"Shu\", an ancient name for the Sichuan province."
+  },
+  "Proceratosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Proceratosaurus_holotype_skull.jpg/960px-Proceratosaurus_holotype_skull.jpg",
+    "short": "Proceratosaurus is a genus of theropod dinosaur that lived during the Middle Jurassic in what is now England.",
+    "full": "The holotype and only known specimen consists of a mostly complete skull with an accompanying lower jaw and a hyoid bone, found near Minchinhampton, a town in Gloucestershire. It was originally described in 1910 as a species of Megalosaurus, M. bradleyi, but was moved to its own genus, Proceratosaurus, in 1926. The genus was named for its supposed close relationship with Ceratosaurus, later shown to be erroneous, due to perceived resemblance of Proceratosaurus's incomplete cranial crest to Ceratosaurus's nasal horn."
+  },
+  "Omeisaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Zigong_Dinosaur_Museum_Omeisaurus_tianfuensis_%28cropped%29.jpg/960px-Zigong_Dinosaur_Museum_Omeisaurus_tianfuensis_%28cropped%29.jpg",
+    "short": "Omeisaurus is a genus of sauropod dinosaur from the Middle to Late Jurassic Period of what is now China.",
+    "full": "Its name comes from Mount Emei, where it was discovered in the lower Shaximiao Formation of Sichuan Province."
+  },
+  "Saichania": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Saichania.jpg/960px-Saichania.jpg",
+    "short": "Saichania is a genus of herbivorous ankylosaurid dinosaur from the Late Cretaceous period of Mongolia and China.",
+    "full": "The first fossils of Saichania were found in the early 1970s in the Baruungoyot Formation. In 1977, the type species Saichania chulsanensis was named."
+  },
+  "Scipionyx": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/9121_-_Milano%2C_Museo_storia_naturale_-_Scipionyx_samniticus_-_Foto_Giovanni_Dall%27Orto_22-Apr-2007a.jpg/960px-9121_-_Milano%2C_Museo_storia_naturale_-_Scipionyx_samniticus_-_Foto_Giovanni_Dall%27Orto_22-Apr-2007a.jpg",
+    "short": "Scipionyx was a genus of theropod dinosaur from the Early Cretaceous Pietraroja Formation of Italy, around 113 million years ago.",
+    "full": ""
+  },
+  "Yi": {
+    "img": "",
+    "short": "Yi or YI may refer to:",
+    "full": ""
+  },
+  "Citipati": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Citipati_AMNH.jpg/960px-Citipati_AMNH.jpg",
+    "short": "Citipati is a genus of oviraptorid dinosaur that lived in Asia during the Late Cretaceous period, about 75 million to 71 million years ago.",
+    "full": "It is mainly known from the Ukhaa Tolgod locality at the Djadochta Formation, where the first remains were collected during the 1990s. The genus and type species Citipati osmolskae were named and described in 2001. A second species from the adjacent Zamyn Khondt locality may also exist. Citipati is one of the best-known oviraptorids thanks to a number of well-preserved specimens, including individuals found in brooding positions atop nests of eggs, though most of them were initially referred to the related Oviraptor. These nesting specimens have helped to solidify the link between non-avian dinosaurs and birds."
+  },
+  "Supersaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Supersaurus-Holotype-BYU9025-PerspectiveWarp.png/960px-Supersaurus-Holotype-BYU9025-PerspectiveWarp.png",
+    "short": "Supersaurus is a genus of diplodocid sauropod dinosaur that lived in North America during the Late Jurassic period.",
+    "full": "The type species, S. vivianae, was first discovered by Vivian Jones of Delta, Colorado, in the middle Morrison Formation of Colorado in 1972. The fossil remains came from the Brushy Basin Member of the formation, dating between 153 and 145 million years ago. It is among the longest dinosaurs ever discovered, with the three known specimens reaching 33–40 meters (108–131 ft) in length, with the largest individual possibly exceeding 40 meters (130 ft) in size. Mass estimates for the WDC and BYU specimens tend to be around 35–44 metric tons in body mass. A potential second species, S. lourinhanensis (Dinheirosaurus), is known from Portugal and has been dated to a similar time."
+  },
+  "Brachylophosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Leonardo_mummified_brachylophosaurus.jpg/960px-Leonardo_mummified_brachylophosaurus.jpg",
+    "short": "Brachylophosaurus is a genus of hadrosaurid dinosaur that lived during the Late Cretaceous period of western North America.",
+    "full": "It was first named in 1953 by Charles Mortram Sternberg for a skull and skeleton he discovered in 1936 in the Oldman Formation of Alberta, Canada, for which he named the new taxon Brachylophosaurus canadensis. While this single specimen was the only known material of Brachylophosaurus for a long time, extensive discoveries in the Judith River Formation of Montana, USA have uncovered not only additional skulls and skeletons with extensive impressions of skin, but also a bonebed of 800 specimens. The earliest of these discoveries in Montana was named Brachylophosaurus goodwini by John R. Horner, but it is now believed that there was only a single species of Brachylophosaurus, with B. goodwini as either a junior synonym of B. canadensis or an indeterminate member of Brachylophosaurini."
+  },
+  "Europasaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Europasaurus_holgeri.jpg/960px-Europasaurus_holgeri.jpg",
+    "short": "Europasaurus is a basal macronarian sauropod, a form of quadrupedal herbivorous dinosaur.",
+    "full": "It lived during the Late Jurassic of northern Germany, and has been identified as an example of insular dwarfism resulting from the isolation of a sauropod population on an island within the Lower Saxony basin."
+  },
+  "Zuniceratops": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/ZuniceratopsArizona.jpg/960px-ZuniceratopsArizona.jpg",
+    "short": "Zuniceratops is a genus of ceratopsian dinosaurs that lived during the Turonian stage of the Late Cretaceous in what is now New Mexico, United States.",
+    "full": "Only a single species is known, Zuniceratops christopheri."
+  },
+  "Anchiornis": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Anchiornis-Beijing_Museum_of_Natural_History.jpg/960px-Anchiornis-Beijing_Museum_of_Natural_History.jpg",
+    "short": "Anchiornis is a genus of small, four-winged paravian dinosaurs, with only one known species, the type species Anchiornis huxleyi, named for its similarity to modern birds.",
+    "full": "The Latin name Anchiornis derives from a Greek word meaning \"near bird\", and huxleyi refers to Thomas Henry Huxley, a contemporary of Charles Darwin. Anchiornis fossils have been found only in the Tiaojishan Formation of Liaoning, China, in rocks dated to the Late Jurassic, about 160 million years ago. It is known from hundreds of specimens, and given the exquisite preservation of some of these fossils, it became the first Mesozoic dinosaur species for which almost the entire life appearance could be determined, and an important source of information on the early evolution of birds."
+  },
+  "Bactrosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Smuggled_Bactrosaurus_skeleton.jpg/960px-Smuggled_Bactrosaurus_skeleton.jpg",
+    "short": "Bactrosaurus is a genus of herbivorous hadrosauroid dinosaur that lived in Asia during the Late Cretaceous, from about 96 to 85 million years ago.",
+    "full": "The position Bactrosaurus occupies in the Cretaceous makes it one of the earliest known hadrosauroids, and although it is not known from a full skeleton, Bactrosaurus is one of the best known of these early hadrosauroids, making its discovery a significant finding."
+  },
+  "Juravenator": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Juravenator_starkae.JPG/960px-Juravenator_starkae.JPG",
+    "short": "Juravenator is a genus of tetanuran theropod dinosaur which lived about 152 or 151 million years ago in modern day Franconian Jura of Germany during the Late Jurassic.",
+    "full": "It is known from a single, juvenile specimen measuring about 75 cm (2.46 ft) in length."
+  },
+  "Struthiomimus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Struthiomimus_isolated.png/960px-Struthiomimus_isolated.png",
+    "short": "Struthiomimus is a genus of ornithomimid dinosaurs from the Late Cretaceous of what is now western North America.",
+    "full": "They were long-legged, bipedal, ostrich-like dinosaurs with toothless beaks. The type species, Struthiomimus altus, is one of the more common, smaller dinosaurs found in Dinosaur Provincial Park. Their overall abundance, in addition to their toothless beak, suggests that these animals were mainly herbivorous or omnivorous, rather than purely carnivorous. Similar to the modern ostriches, emus, and rheas, these dinosaurs likely lived as opportunistic omnivores, supplementing a largely plant-based diet with a variety of small mammals, reptiles, amphibians, insects, invertebrates, and anything else they could fit into their mouth, as they foraged."
+  },
+  "Mapusaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Mapusaurus.jpg/960px-Mapusaurus.jpg",
+    "short": "Mapusaurus is a genus of giant carcharodontosaurid carnosaurian dinosaur that lived in Argentina during the Cenomanian–Turonian ages of the Late Cretaceous.",
+    "full": "It is known from a bonebed of between seven and nine specimens, excavated from the strata of the Huincul Formation between 1997 and 2001 as part of the Argentinian-Canadian Dinosaur Project. In 2006, Rodolfo Coria and Philip J. Currie scientifically described Mapusaurus. Only one species of Mapusaurus, M. roseae, has been described, named after the rose-colored rocks in which it was discovered and sponsor Rose Letwin."
+  },
+  "Zephyrosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Zephyrosaurus_in_Berlin.jpg/960px-Zephyrosaurus_in_Berlin.jpg",
+    "short": "Zephyrosaurus is a genus of orodromine ornithischian dinosaur based on a partial skull and postcranial fragments discovered in the Early Cretaceous (Aptian-Albian) Cloverly Formation of Carbon County, Montana, USA.",
+    "full": "New remains are under description, and tracks from Maryland and Virginia, also in the US, have been attributed to animals similar to Zephyrosaurus."
+  },
+  "Thescelosaurus": {
+    "img": "",
+    "short": "Thescelosaurus is a genus of ornithischian dinosaur that lived during the Late Cretaceous period in western North America.",
+    "full": "It was named and described in 1913 by the paleontologist Charles W. Gilmore; the type species is T. neglectus. Two other species, T. garbanii and T. assiniboiensis, were named in 1976 and 2011, respectively. Additional species have been suggested but are currently not accepted. Thescelosaurus is the eponymous member of its family, the Thescelosauridae. Thescelosaurids are either considered to be basal (\"primitive\") ornithopods, or are placed outside of this group within the broader group Neornithischia."
+  },
+  "Kosmoceratops": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/f/f8/%E3%82%B3%E3%82%B9%E3%83%A2%E3%82%B1%E3%83%A9%E3%83%88%E3%83%97%E3%82%B9%E3%83%BB%E3%83%AA%E3%82%AB%E3%83%AB%E3%82%BE%E3%83%8B%E9%A0%AD%E9%AA%A8.jpg",
+    "short": "Kosmoceratops is a genus of ceratopsid dinosaur that lived in North America about 76–75.9 million years ago during the Late Cretaceous period.",
+    "full": "Specimens were discovered in Utah in the Kaiparowits Formation of the Grand Staircase–Escalante National Monument in 2006 and 2007, including an adult skull and postcranial skeleton and partial subadults. In 2010, the adult was made the holotype of the new genus and species Kosmoceratops richardsoni; the generic name means \"ornate horned face\", and the specific name honors Scott Richardson, who found the specimens. The find was part of a spate of ceratopsian discoveries in the early 21st century, and Kosmoceratops was considered significant due to its elaborate skull ornamentation."
+  },
+  "Ichthyovenator": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Ichthyovenator_laosensis_skeletal_mount_NMNS.jpg/960px-Ichthyovenator_laosensis_skeletal_mount_NMNS.jpg",
+    "short": "Ichthyovenator is a genus of spinosaurid dinosaur that lived in what is now Laos, sometime between 120 and 113 million years ago, during the Aptian stage of the Early Cretaceous period.",
+    "full": "It is known from fossils collected from the Grès supérieurs Formation of the Savannakhet Basin, the first of which were found in 2010, consisting of a partial skeleton without the skull or limbs. This specimen became the holotype of the new genus and species Ichthyovenator laosensis, and was described by palaeontologist Ronan Allain and colleagues in 2012. The generic name, meaning \"fish hunter\", refers to its assumed piscivorous lifestyle, while the specific name alludes to the country of Laos. In 2014, it was announced that more remains from the dig site had been recovered; these fossils included teeth, more vertebrae (backbones) and a pubic bone from the same individual."
+  },
+  "Daspletosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Daspletosaurus_torosus.jpg/960px-Daspletosaurus_torosus.jpg",
+    "short": "Daspletosaurus is a genus of tyrannosaurid dinosaur that lived in Laramidia between about 77 and 74.4 million years ago, during the Late Cretaceous Period.",
+    "full": "The genus Daspletosaurus contains three named species. Fossils of the earlier type species, D. torosus, have been found in Alberta, while fossils of a later species, D. horneri, have been found in Montana and Alberta. D. wilsoni has been suggested as an intermediate species between D. torosus and D. horneri that evolved through anagenesis, though further research may be required to definitively support the theory."
+  },
+  "Yunnanosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Yunnanosaurus-Tianjin_Natural_History_Museum.jpg/960px-Yunnanosaurus-Tianjin_Natural_History_Museum.jpg",
+    "short": "Yunnanosaurus is an extinct genus of sauropodomorph dinosaur that lived approximately 199 to 183 million years ago in what is now the Yunnan Province, in China, for which it was named.",
+    "full": "Yunnanosaurus was a large sized, moderately-built, ground-dwelling, quadrupedal herbivore, that could also walk bipedally, and ranged in size from 7 meters (23 feet) long and 2 m (6.5 ft) high to 4 m (13 ft) high in the largest species."
+  },
+  "Huayangosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Huayangosaurus_taibaii_20050707_07.jpg/960px-Huayangosaurus_taibaii_20050707_07.jpg",
+    "short": "Huayangosaurus is a genus of stegosaurian dinosaur from the Middle Jurassic of China.",
+    "full": "The name derives from \"Huayang\" (華陽), an alternate name for Sichuan, and \"saurus\", meaning \"lizard\". It lived during the Bathonian to Callovian stages, around 165 million years ago, some 20 million years before its famous relative, Stegosaurus appeared in North America. At only approximately 4 metres (13 ft) long, it was also much smaller than its famous cousin. Found in the Lower Shaximiao Formation, Huayangosaurus shared the local Middle Jurassic landscape with the sauropods Shunosaurus, Datousaurus, Omeisaurus and Protognathosaurus, the ornithopod Xiaosaurus and the carnivorous Gasosaurus."
+  },
+  "Sinornithosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Sinornithosaurus_millenii_2.JPG/960px-Sinornithosaurus_millenii_2.JPG",
+    "short": "Sinornithosaurus is a genus of feathered dromaeosaurid dinosaur from the early Cretaceous Period of the Yixian Formation in what is now China.",
+    "full": "It was the fifth non–avian feathered dinosaur genus discovered by 1999. The original specimen was collected from the Sihetun locality of western Liaoning. It was found in the Jianshangou beds of the Yixian Formation, dated to 124.5 million years ago. Additional specimens have been found in the younger Dawangzhangzi bed, dating to around 122 million years ago."
+  },
+  "Mamenchisaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Zigong_Dinosaur_Museum_Mamenchisaurus_hochuanensis.jpg/960px-Zigong_Dinosaur_Museum_Mamenchisaurus_hochuanensis.jpg",
+    "short": "Mamenchisaurus is an extinct genus of sauropod dinosaurs known for their remarkably long necks, which made up nearly half the total body length.",
+    "full": "Numerous species have been assigned to the genus; however, the validity of these assignments has been questioned. Fossils have been found in the Sichuan Basin and Yunnan Province in China. Several species from the Upper Shaximiao Formation, whose geologic age is uncertain, have been described. However, evidence suggests this formation to be no earlier than the Oxfordian stage of the Late Jurassic. M. sinocanadorum dates to the Oxfordian stage, and M. anyuensis to the Aptian stage of the Early Cretaceous. Most species were medium-large to large sauropods, measuring roughly 15 to 26 meters in length—possibly up to 35 meters (115 ft), based on two undescribed vertebrae."
+  },
+  "Falcarius": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Falcarius.jpg/960px-Falcarius.jpg",
+    "short": "Falcarius is a genus of primitive therizinosaur dinosaur that lived during the Early Cretaceous period in what is now North America.",
+    "full": "Its remains were first collected in the Cedar Mountain Formation in 1999, with subsequent findings made during the 2000s. The genus is known from multiple specimens ranging from immature to fully-grown individuals."
+  },
+  "Xenoceratops": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Xenoceratops.jpg/960px-Xenoceratops.jpg",
+    "short": "Xenoceratops is a genus of centrosaurine ceratopsid dinosaur known from the Late Cretaceous, and is known to have lived in what is currently Alberta, Canada.",
+    "full": "The genus has one known species, Xenoceratops foremostensis, after its place of discovery, the Foremost Formation."
+  },
+  "Minmi": {
+    "img": "",
+    "short": "Michiko Evwana, better known by her stage name Minmi , is a Japanese hip-hop and reggae musician, as well as a singer-songwriter and record producer.",
+    "full": "She is the first soca artist from Japan. She was married to Wakadanna (若旦那), a member of Japanese reggae group Shōnan no Kaze, from 2007 until their divorce on June 28, 2016."
+  },
+  "Epidexipteryx": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Epidexipteryx_hui_Holotype_IVPP.jpg/960px-Epidexipteryx_hui_Holotype_IVPP.jpg",
+    "short": "Epidexipteryx is a genus of small maniraptoran dinosaurs, known from one fossil specimen in the collection of the Institute of Vertebrate Paleontology and Paleoanthropology in Beijing.",
+    "full": "Epidexipteryx represents the earliest known example of ornamental feathers in the fossil record."
+  },
+  "Ornitholestes": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Ornitholestes_Royal_Tyrrell_2.jpg/960px-Ornitholestes_Royal_Tyrrell_2.jpg",
+    "short": "Ornitholestes is a small theropod dinosaur of the late Jurassic of Western Laurasia.",
+    "full": ""
+  },
+  "Nanuqsaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/NanuqsaurusSkeleton.jpg/960px-NanuqsaurusSkeleton.jpg",
+    "short": "Nanuqsaurus is a genus of tyrannosaurine theropod dinosaur known from the Late Cretaceous Prince Creek Formation of the North Slope of Alaska.",
+    "full": "It contains a single species, Nanuqsaurus hoglundi, known from a partial skull and multiple undescribed postcranial and teeth elements."
+  },
+  "Giraffatitan": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Museum_f%C3%BCr_Naturkunde_%2836556352434%29.jpg/960px-Museum_f%C3%BCr_Naturkunde_%2836556352434%29.jpg",
+    "short": "Giraffatitan is a genus of sauropod dinosaur that lived during the late Jurassic Period in what is now Lindi Region, Tanzania.",
+    "full": "Only one species is known, G. brancai, named in honor of German paleontologist Wilhelm von Branca, who was a driving force behind the expedition that discovered it in the Tendaguru Formation. Giraffatitan brancai was originally described by German paleontologist Werner Janensch as a species of the North American sauropod Brachiosaurus from the Morrison Formation, as Brachiosaurus brancai. Recent research shows that the differences between the type species of Brachiosaurus and the Tendaguru material are so large that the African material should be placed in a separate genus."
+  },
+  "Dicraeosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Dicraeosaurus_Berlin.jpg/960px-Dicraeosaurus_Berlin.jpg",
+    "short": "Dicraeosaurus is a genus of diplodocoid sauropod dinosaur that lived in what is now Lindi Region, Tanzania during the late Jurassic period.",
+    "full": "The genus was named for the neural spines on the back of its neck. The first fossil was described by paleontologist Werner Janensch in 1914."
+  },
+  "Nigersaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Nigersaurus_mount.jpg",
+    "short": "Nigersaurus is a genus of rebbachisaurid sauropod dinosaur that lived during the middle Cretaceous period, about 115 to 105 million years ago.",
+    "full": "It was discovered in the Elrhaz Formation in an area called Gadoufaoua, in Niger. Fossils of this dinosaur were first described in 1976, but it was only named Nigersaurus taqueti in 1999 after further and more complete remains were found and described. The genus name means \"Niger reptile\", and the specific name honours the palaeontologist Philippe Taquet, who discovered the first remains."
+  },
+  "Caudipteryx": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Caudipteryx_zoui_-_Untere_Kreide_-_Liaoning-China.jpg/960px-Caudipteryx_zoui_-_Untere_Kreide_-_Liaoning-China.jpg",
+    "short": "Caudipteryx is a genus of small oviraptorosaurian dinosaurs that lived in China during the Early Cretaceous, around 124.6 million years ago.",
+    "full": "They were feathered and extremely bird-like in their overall appearance, to the point that some paleontologists suggested it was a bird. Two species have been described: C. zoui, in 1998, and C. dongi, in 2000. Caudipteryx had a stout trunk, long legs, and was probably a swift runner. Its discovery has led to many intensive studies and debate over the relationship between birds and dinosaurs."
+  },
+  "Rajasaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Rajasaurus_skull_%E2%80%93_Predator_of_the_Ancient_Waters_%28cropped%29.jpg/960px-Rajasaurus_skull_%E2%80%93_Predator_of_the_Ancient_Waters_%28cropped%29.jpg",
+    "short": "Rajasaurus is a genus of carnivorous abelisaurid theropod dinosaur from the Late Cretaceous of India, containing one species: Rajasaurus narmadensis.",
+    "full": "The bones were excavated from the Lameta Formation in the Gujarat state of Western India, probably inhabiting what is now the Narmada River Valley. It was formally described by palaeontologist Jeffrey A. Wilson and colleagues in 2003 based on a partial skeleton comprising the braincase, spine, hip bone, legs, and tail–a first for an Indian theropod. The dinosaur likely measured 6.6 metres (22 ft), and had a single horn on the forehead which was probably used for display and head-butting. Like other abelisaurids, Rajasaurus was probably an ambush predator."
+  },
+  "Riojasaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Riojasaurus_skull.jpg/960px-Riojasaurus_skull.jpg",
+    "short": "Riojasaurus was a herbivorous sauropodomorph dinosaur named after La Rioja Province in Argentina where it was found in the Los Colorados Formation in the Ischigualasto-Villa Unión Basin by José Bonaparte.",
+    "full": "It lived during the Late Triassic and grew to about 6.6 metres (22 ft) long. Riojasaurus is the only known riojasaurid to live in South America."
+  },
+  "Heterodontosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Heterodontosaurus_tucki_cast_-_University_of_California_Museum_of_Paleontology_-_Berkeley%2C_CA_-_DSC04696.JPG/960px-Heterodontosaurus_tucki_cast_-_University_of_California_Museum_of_Paleontology_-_Berkeley%2C_CA_-_DSC04696.JPG",
+    "short": "Heterodontosaurus is a genus of heterodontosaurid dinosaur that lived during the Early Jurassic, 200–190 million years ago.",
+    "full": "Its only known member species, Heterodontosaurus tucki, was named in 1962 based on a skull discovered in South Africa. The genus name means \"different toothed lizard\", in reference to its unusual, heterodont dentition; the specific name honours G. C. Tuck, who supported the discoverers. Further specimens have since been found, including an almost complete skeleton in 1966."
+  },
+  "Austroraptor": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Austroraptor_maxilla_%26_dentary.jpg/960px-Austroraptor_maxilla_%26_dentary.jpg",
+    "short": "Austroraptor is a genus of unenlagiine theropod dinosaur that lived during the Campanian and Maastrichtian ages of the Late Cretaceous period in what is now Argentina.",
+    "full": ""
+  },
+  "Hypacrosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Hypacrosaurus_Royal_Tyrrell.jpg/960px-Hypacrosaurus_Royal_Tyrrell.jpg",
+    "short": "Hypacrosaurus is an extinct genus of duckbill dinosaur similar in appearance to Corythosaurus.",
+    "full": "Like Corythosaurus, it had a tall, hollow rounded crest, although not as large and straight. It is known from the remains of two species that spanned 75.0 to 69.5 million years ago, in the Late Cretaceous of Alberta, Canada, and Montana, United States, and is the latest hollow-crested duckbill known from good remains in North America. It was an obscure genus until the discovery in the 1990s of nests, eggs, and hatchlings belonging to H. stebingeri."
+  },
+  "Sinovenator": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Sinovenator-Tianjin_Natural_History_Museum.jpg/960px-Sinovenator-Tianjin_Natural_History_Museum.jpg",
+    "short": "Sinovenator is a genus of troodontid dinosaur from China.",
+    "full": "It is from the early Cretaceous Period."
+  },
+  "Alamosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Alamosaurus.jpg/960px-Alamosaurus.jpg",
+    "short": "Alamosaurus is a genus of titanosaurian sauropod dinosaurs containing a single known species, Alamosaurus sanjuanensis, from the Maastrichtian age of the Late Cretaceous period in what is now southwestern North America.",
+    "full": "It is one of the few known titanosaurs to have inhabited North America after the nearly 30-million-year absence of sauropods from the North American fossil record and probably represents an immigrant from South America."
+  },
+  "Elaphrosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Elaphrosaurus_mount_MfN_Berlin_2018_2.jpg/960px-Elaphrosaurus_mount_MfN_Berlin_2018_2.jpg",
+    "short": "Elaphrosaurus is a genus of ceratosaurian theropod dinosaur that lived approximately 155 to 145 million years ago during the Late Jurassic Period in what is now Tanzania in Africa.",
+    "full": "Elaphrosaurus was a medium-sized but lightly built member of the group that could grow up to 6.2 m (20 ft) long. Morphologically, this dinosaur is significant in two ways. Firstly, it has a relatively long body but is very shallow-chested for a theropod of its size. Secondly, it has very short hindlimbs in comparison with its body. Phylogenetic analyses indicate that this genus is likely a ceratosaur. Earlier suggestions that it is a late surviving coelophysoid have been examined but generally dismissed. Elaphrosaurus is currently believed to be a very close relative of Limusaurus, an unusual beaked ceratosaurian which may have been either herbivorous or omnivorous."
+  },
+  "Wuerhosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Wuerhosaurus_by_ABelov2014.jpg/960px-Wuerhosaurus_by_ABelov2014.jpg",
+    "short": "Wuerhosaurus is an extinct genus of stegosaurine stegosaur dinosaurs from the Early Cretaceous of China.",
+    "full": "The genus contains two species, Wuerhosaurus homheni, the type species named in 1973, and Wuerhosaurus ordosensis, named in 1993. It is one of the youngest known stegosaurs in the fossil record, alongside Mongolostegus and Yanbeilong."
+  },
+  "Jobaria": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Jobaria_in_the_Australian_Museum.jpg/960px-Jobaria_in_the_Australian_Museum.jpg",
+    "short": "Jobaria is a genus of sauropod dinosaur that lived in what is now Niger during the middle Jurassic Period, between 164 and 161 million years ago.",
+    "full": "Jobaria is currently the only known valid sauropod from the Tiouraren, where it was discovered in 1997."
+  },
+  "Patagosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Patagosaurus_%281%29.jpg",
+    "short": "Patagosaurus is an extinct genus of eusauropod dinosaur from the middle Toarcian of Patagonia, Argentina.",
+    "full": "It was first found in deposits of the Cañadón Asfalto Formation, which date to around 178 million years ago. Although originally twelve specimens were assigned to the taxon, at least one of them may belong to a different genus. Patagosaurus probably lived alongside genera such as Piatnitzkysaurus, Condorraptor, and Volkheimeria."
+  },
+  "Unenlagia": {
+    "img": "",
+    "short": "Unenlagia is a genus of unenlagiine theropod dinosaur that lived in South America during the Late Cretaceous period.",
+    "full": "The genus Unenlagia has been assigned two species: U. comahuensis, the type species described by Novas and Puerta in 1997, and U. paynemili, described by Calvo et al. in 2004."
+  },
+  "Torosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Tiny_the_Torosaurus.jpg/960px-Tiny_the_Torosaurus.jpg",
+    "short": "Torosaurus is a genus of herbivorous chasmosaurine ceratopsian dinosaur that lived during the late Maastrichtian age of the Late Cretaceous period, between 68 and 66 million years ago, though it is possible that the species range might extend to as far back as 69 million years ago.",
+    "full": "Fossils have been discovered across the Western Interior of North America, from as far north as Saskatchewan to as far south as Texas."
+  },
+  "Megalosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Megalosaurus_display.JPG/960px-Megalosaurus_display.JPG",
+    "short": "Megalosaurus is an extinct genus of large carnivorous theropod dinosaurs of the Middle Jurassic Epoch of southern England.",
+    "full": "Although fossils from other areas have been assigned to the genus, the only certain remains of Megalosaurus come from Oxfordshire and date to the late Middle Jurassic."
+  },
+  "Prosaurolophus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Prosaurolophus_maximus%2C_Red_Deer_River%2C_Alberta%2C_collected_1921_by_Levi_Sternberg_-_Royal_Ontario_Museum_-_DSC09845.JPG/960px-Prosaurolophus_maximus%2C_Red_Deer_River%2C_Alberta%2C_collected_1921_by_Levi_Sternberg_-_Royal_Ontario_Museum_-_DSC09845.JPG",
+    "short": "Prosaurolophus is a genus of hadrosaurid dinosaur from the Late Cretaceous of North America.",
+    "full": "It is known from the remains of at least 25 individuals, including skulls and skeletons, but this remains obscure. Its fossils have been found in the late Campanian-aged Dinosaur Park Formation in Alberta, and the roughly contemporaneous Two Medicine Formation in Montana, dating to around 75.7 to 74.1 million years ago. Its most recognizable feature is a small solid crest formed by the nasal bones, sticking up in front of the eyes. The type species is P. maximus, described by American paleontologist Barnum Brown of the American Museum of Natural History in 1916. A second species, P. blackfeetensis, was described by Jack Horner of the Museum of the Rockies in 1992. However, subsequent research has found P. blackfeetensis to be synonymous with P. maximus making the genus monotypic."
+  },
+  "Ornithomimus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/OrnithomimusROM.JPG/960px-OrnithomimusROM.JPG",
+    "short": "Ornithomimus is a genus of ornithomimid theropod dinosaurs from the Campanian and Maastrichtian ages of the Late Cretaceous in western North America.",
+    "full": "Ornithomimus was a swift, bipedal dinosaur which was covered in feathers and equipped with a small toothless beak that may indicate an omnivorous diet. It is usually classified into two species: the type species, Ornithomimus velox, and a referred species, Ornithomimus edmontonicus."
+  },
+  "Dromaeosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Dromaeosaurus_in_Canadian_Museum_of_Nature.jpg/960px-Dromaeosaurus_in_Canadian_Museum_of_Nature.jpg",
+    "short": "Dromaeosaurus is a genus of dromaeosaurid theropod dinosaur that lived during the Late Cretaceous period, sometime between 80 and 69 million years ago, in the Canadian province of Alberta and the western United States.",
+    "full": "The type species is Dromaeosaurus albertensis, which was described by William Diller Matthew and Barnum Brown in 1922. Its fossils were unearthed in the Hell Creek Formation, Horseshoe Canyon Formation and Dinosaur Park Formation. Teeth attributed to this genus have been found in the Prince Creek Formation. Dromaeosaurus is the type genus of both Dromaeosauridae and Dromaeosaurinae, which include many genera with similar characteristics to Dromaeosaurus such as possibly its closest relative Dakotaraptor. Dromaeosaurus was heavily built, more so than other dromaeosaurids that are similar in size, like Velociraptor."
+  },
+  "Stegoceras": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Royal_Tyrrell_Museum_Stegoceras.jpg/960px-Royal_Tyrrell_Museum_Stegoceras.jpg",
+    "short": "Stegoceras is a genus of pachycephalosaurid (dome-headed) dinosaur that lived in what is now North America during the Late Cretaceous period, about 77.5 to 74 million years ago (mya).",
+    "full": "The first specimens from Alberta, Canada, were described in 1902, and the type species Stegoceras validum was based on these remains. The generic name means \"horn roof\", and the specific name means \"strong\". Several other species have been placed in the genus over the years, but these have since been moved to other genera or deemed junior synonyms. Currently only S. validum and S. novomexicanum, named in 2011 from fossils found in New Mexico, remain. The validity of the latter species has also been debated, and it may not even belong to the genus Stegoceras."
+  },
+  "Melanorosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Melanorosaurus_readi_steveoc.jpg/960px-Melanorosaurus_readi_steveoc.jpg",
+    "short": "Melanorosaurus is a genus of basal sauropodomorph dinosaur that lived during the Late Triassic period.",
+    "full": "An omnivore from South Africa, it had a large body and sturdy limbs, suggesting it moved quadrupedally. Its limb bones were massive and heavy like the limb bones of true sauropods."
+  },
+  "Masiakasaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Masiakasaurus.JPG/960px-Masiakasaurus.JPG",
+    "short": "Masiakasaurus is a genus of small predatory theropod dinosaurs from the Late Cretaceous of Madagascar.",
+    "full": "In Malagasy, masiaka means \"vicious\"; thus, the genus name means \"vicious lizard\". The type species, Masiakasaurus knopfleri, was named after the musician Mark Knopfler, whose music inspired the expedition crew. It was named in 2001 by Scott D. Sampson, Matthew Carrano, and Catherine A. Forster. Unlike most theropods, the front teeth of Masiakasaurus projected forwards instead of straight down. This unique dentition suggests that they had a specialized diet, perhaps including fish and other small prey. Other bones of the skeleton indicate that Masiakasaurus were bipedal, with much shorter forelimbs than hindlimbs. It was a small theropod, reaching 1.8–2.1 m (5.9–6.9 ft) long and weighing 20 kg (44 lb). Masiakasaurus lived from 72.1 to 66 million years ago, along with animals such as Majungasaurus, Rapetosaurus, and Rahonavis. Masiakasaurus was a member of the group Noasauridae, small predatory ceratosaurs found primarily in South America."
+  },
+  "Medusaceratops": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Medusaceratops_lokii.jpg/960px-Medusaceratops_lokii.jpg",
+    "short": "Medusaceratops is an extinct genus of centrosaurine ceratopsian dinosaur known from the Late Cretaceous Judith River Formation of Montana, northern United States.",
+    "full": "It contains a single species, Medusaceratops lokii."
+  },
+  "Prenocephale": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Prenocephale_prenes.JPG/960px-Prenocephale_prenes.JPG",
+    "short": "Prenocephale is a genus of small pachycephalosaurid dinosaur from the Late Cretaceous Nemegt Formation of Mongolia.",
+    "full": "It was similar in many ways to its close relative, Homalocephale."
+  },
+  "Monolophosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Monolophosaurus_jiangi.jpg/960px-Monolophosaurus_jiangi.jpg",
+    "short": "Monolophosaurus is an extinct genus of tetanuran theropod dinosaur from the Middle Jurassic Shishugou Formation in what is now Xinjiang, China.",
+    "full": "It was named for the single crest on top of its skull. Monolophosaurus was a mid-sized theropod at about 5–5.5 metres (16–18 ft) long and weighed 475 kilograms (1,047 lb)."
+  },
+  "Hypsilophodon": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/HypsilophodonBrussels.jpg/960px-HypsilophodonBrussels.jpg",
+    "short": "Hypsilophodon is a neornithischian dinosaur genus from the Early Cretaceous period of England.",
+    "full": "It has traditionally been considered an early member of the group Ornithopoda, but recent research has put this into question."
+  },
+  "Zhenyuanlong": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Zhenyuanlong.jpg",
+    "short": "Zhenyuanlong is a genus of dromaeosaurid dinosaur from the Yixian Formation of Liaoning, China.",
+    "full": "It lived during the Aptian age of the early Cretaceous period, approximately 125 million years ago. It is known from a single specimen belonging to the species Zhenyuanlong suni. This type specimen preserved a nearly complete skeleton that contains traces of feathers, including long tail feathers and large wings. In addition to further complicating diversity of Liaoning dromaeosaurids, this specimen provides the first direct evidence of well-developed pennaceous feathers in a large, non-flying dromaeosaur, raising the question of what function such wings would serve."
+  },
+  "Centrosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Centrosaurus_apertus_skull_and_jaws%2C_Dinosaur_Provincial_Park%2C_Alberta%2C_Canada%2C_Late_Cretaceous_-_Royal_Ontario_Museum_-_DSC00078.JPG/960px-Centrosaurus_apertus_skull_and_jaws%2C_Dinosaur_Provincial_Park%2C_Alberta%2C_Canada%2C_Late_Cretaceous_-_Royal_Ontario_Museum_-_DSC00078.JPG",
+    "short": "Centrosaurus is a genus of centrosaurine ceratopsid dinosaur from the Campanian age of the Late Cretaceous of Canada.",
+    "full": "Its remains have been found in the Dinosaur Park Formation, dating from 76.5 to 75.5 million years ago. The type and only species seen as valid today is Centrosaurus apertus."
+  },
+  "Beipiaosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Beipiaosaurus_holotype_fossil.png/960px-Beipiaosaurus_holotype_fossil.png",
+    "short": "Beipiaosaurus is a genus of therizinosauroid theropod dinosaurs that lived in China during the Early Cretaceous in the Yixian Formation.",
+    "full": "The first remains were found in 1996 and formally described in 1999. Before the discovery of Yutyrannus, Beipiaosaurus were among the heaviest dinosaurs known from direct evidence to be feathered. Beipiaosaurus is known from three reported specimens. Numerous impressions of feather structures were preserved that allowed researchers to determine the feathering color which turned out to be brownish."
+  },
+  "Torvosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Torvosaurus_Museum_of_Ancient_Life_2.jpg/960px-Torvosaurus_Museum_of_Ancient_Life_2.jpg",
+    "short": "Torvosaurus is a genus of large megalosaurine theropod dinosaur that lived approximately 165 to 146.5 million years ago during the Callovian to Tithonian ages of the late Middle and Late Jurassic period in what is now Colorado, Portugal, Germany, and possibly England, Spain, Tanzania, and Uruguay.",
+    "full": "It contains two currently recognized species, Torvosaurus tanneri and Torvosaurus gurneyi, plus a third unnamed species from Germany."
+  },
+  "Zanabazar": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Zanabanzar_self-portrait.jpg",
+    "short": "Öndör Gegeen Zanabazar was the first Jebtsundamba Khutuktu and the first Bogd Gegeen or supreme spiritual authority, of the Gelugpa lineage of Tibetan Mahayana Buddhism in Mongolia.",
+    "full": ""
+  },
+  "Alioramus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Texas_Alioramus.jpg/960px-Texas_Alioramus.jpg",
+    "short": "Alioramus is a genus of tyrannosaurid theropod dinosaurs from the Late Cretaceous period of Asia.",
+    "full": "It currently contains two species. The type species, A. remotus is known from a partial skull and three foot bones recovered from the Mongolian Nemegt Formation, which was deposited in a humid floodplain. These remains were named and described by Soviet paleontologist Sergei Kurzanov in 1976. A second species, A. altai, known from a much more complete skeleton also from the Nemegt Formation, was named and described by Stephen L. Brusatte and colleagues in 2009. Its relationships to other tyrannosaurid genera were at first unclear, with some evidence supporting a hypothesis that Alioramus was closely related to the contemporary species Tarbosaurus bataar. However, the discovery of Qianzhousaurus indicates that it belongs to a distinct branch of tyrannosaurs, namely the tribe Alioramini."
+  },
+  "Tenontosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Perot_Museum_Tenontosaurus.jpg/960px-Perot_Museum_Tenontosaurus.jpg",
+    "short": "Tenontosaurus is a genus of iguanodontian ornithopod dinosaur.",
+    "full": "It had an unusually long, broad tail, which like its back was stiffened with a network of bony tendons. The genus is known from the late Aptian to Albian ages of the Early Cretaceous period sediments of western North America, dating between 115 and 108 million years ago. It contains two species, Tenontosaurus tilletti and Tenontosaurus dossi. Many specimens of T. tilletti have been collected from several geological formations throughout western North America. T. dossi is known from only a handful of specimens collected from the Twin Mountains Formation of Parker County, Texas."
+  },
+  "Rapetosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FMNH_Rapetosaurus.jpg/960px-FMNH_Rapetosaurus.jpg",
+    "short": "Rapetosaurus is a genus of titanosaurian sauropod dinosaur that lived in Madagascar from 70 to 66 million years ago, at the end of the Cretaceous Period.",
+    "full": "Only one species, Rapetosaurus krausei, has been identified. Like other sauropods, Rapetosaurus was a quadrupedal herbivore. It is calculated to have reached lengths of 15 m (49 ft) in adulthood."
+  },
+  "Pinacosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pinacosaurus.jpg/960px-Pinacosaurus.jpg",
+    "short": "Pinacosaurus is a genus of ankylosaurid thyreophoran dinosaur that lived in Asia during the Late Cretaceous, mainly in Mongolia and China.",
+    "full": ""
+  },
+  "Compsognathus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Compy.jpg/960px-Compy.jpg",
+    "short": "Compsognathus is a genus of small, bipedal, carnivorous theropod dinosaur.",
+    "full": "Members of its single species Compsognathus longipes could grow to around the size of a chicken. They lived about 150 million years ago, during the Tithonian age of the late Jurassic period, in what is now Europe. Paleontologists have found two well-preserved fossils, one in Germany in the 1850s and the second in France more than a century later. Today, C. longipes is the only recognized species, although the French specimen was once thought to belong to a separate species named C. corallestris."
+  },
+  "Dreadnoughtus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Dreadnoughtus_Published_Reconstruction_%28Version_2%29.jpg/960px-Dreadnoughtus_Published_Reconstruction_%28Version_2%29.jpg",
+    "short": "Dreadnoughtus is a genus of titanosaurian sauropod dinosaur containing a single species, Dreadnoughtus schrani.",
+    "full": "It is known from two partial skeletons discovered in Upper Cretaceous rocks of the Cerro Fortaleza Formation in Santa Cruz Province, Argentina. It is one of the largest terrestrial vertebrates known from reasonably complete remains, with the immature type specimen measuring 26 metres (85 ft) in total body length and weighing up to 48–49 metric tons."
+  },
+  "Acrocanthosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/9/91/Acrocanthosaurus_skeleton_%281%29.jpg",
+    "short": "Acrocanthosaurus is a genus of carcharodontosaurid dinosaurs that existed in what is now North America during the Barremian and early Cenomanian stages of the Early Cretaceous and Late Cretaceous, from 125 to 99.6 million years ago.",
+    "full": "Like most dinosaur genera, Acrocanthosaurus contains only a single species, A. atokensis. It had a continent-wide range, with fossil remains known from the U.S. states of Oklahoma, Texas, and Wyoming in the west and Maryland in the east. However, most of these remains are assigned to the species based on the assumption that Acrocanthosaurus is the only large carcharodontosaurid from North America during this time, and the possibility exists that some referred specimens could represent distinct taxa."
+  },
+  "Yangchuanosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Yangchuanosaurus_shangyouensis.JPG/960px-Yangchuanosaurus_shangyouensis.JPG",
+    "short": "Yangchuanosaurus is an extinct genus of metriacanthosaurid theropod dinosaur that lived in China from the Middle Jurassic to Late Jurassic periods, and was similar in size and appearance to its North American and European relative, Allosaurus.",
+    "full": "Yangchuanosaurus hails from the Upper Shaximiao Formation and was the largest predator in a landscape that included the sauropods Mamenchisaurus and Omeisaurus and the stegosaurs Chialingosaurus, Tuojiangosaurus and Chungkingosaurus. This theropod was named after the area in which was discovered, Yongchuan, in China."
+  },
+  "Stygimoloch": {
+    "img": "",
+    "short": "Pachycephalosaurus is a genus of pachycephalosaurid ornithischian dinosaur.",
+    "full": "The type species, P. wyomingensis, is the only known definitive species. The possibly synonymous taxon, Stygimoloch, might represent a distinct genus or a second species, P. spinifer. It lived during the Maastrichtian age of the Late Cretaceous period in what is now western North America. Remains have been excavated in Montana, South Dakota, Wyoming, and Alberta. Mainly known from a single skull and a few extremely thick skull roofs, Pachycephalosaurus is estimated to have reached 4.5 m (15 ft) long and weighed 370–450 kg (820–990 lb). More complete fossils would come to be found in the following years."
+  },
+  "Homalocephale": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Homalocephale_lateral.jpg/960px-Homalocephale_lateral.jpg",
+    "short": "Homalocephale is a genus of pachycephalosaurid dinosaur that lived during the Late Cretaceous period of what is now the Nemegt Formation, Mongolia.",
+    "full": "The genus was described in 1974 by Halszka Osmólska and Teresa Maryańska, and consists of a single species, H. calathocercos. Though Homalocephale has been regarded as a synonym of Prenocephale, juvenile specimens of the latter indicate that they were distinct. Homalocephale was 1.8 m (5.9 ft) long and possibly an omnivore."
+  },
+  "Puertasaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Puertasaurus_Skeletal_V2.svg/960px-Puertasaurus_Skeletal_V2.svg.png",
+    "short": "Puertasaurus is a genus of sauropod dinosaur that lived in South America during the Late Cretaceous Period.",
+    "full": "It is known from a single specimen recovered from sedimentary rocks of the Cerro Fortaleza Formation in southwestern Patagonia, Argentina, which probably is Campanian or Maastrichtian in age. The only species is Puertasaurus reuili. Described by the paleontologist Fernando Novas and colleagues in 2005, it was named in honor of Pablo Puerta and Santiago Reuil, who discovered and prepared the specimen. It consists of four well-preserved vertebrae, including one cervical, one dorsal, and two caudal vertebrae. Puertasaurus is a member of Titanosauria, the dominant group of sauropods during the Cretaceous."
+  },
+  "Avimimus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Avimimus_skeleton.jpg/960px-Avimimus_skeleton.jpg",
+    "short": "Avimimus, meaning \"bird mimic\", is a genus of oviraptorosaurian theropod dinosaur, named for its bird-like characteristics, that lived in the late Cretaceous in what is now Mongolia, during the Maastrichtian.",
+    "full": ""
+  },
+  "Polacanthus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Polacanthus_armour.jpg/960px-Polacanthus_armour.jpg",
+    "short": "Polacanthus is an extinct genus of ankylosaurian dinosaurs from the early Cretaceous of England.",
+    "full": "Several species have been named in the genus Polacanthus, but only the type species, Polacanthus foxii, is currently seen as valid. There are not many fossil remains of this dinosaur, and some important anatomical features, such as its skull, are poorly known. It grew to about 4–5 metres (13–16 ft) long. Its body was covered with armour plates and spikes. It may be a basal member of the Nodosauridae or part of a separate family, the Polacanthidae."
+  },
+  "Nodosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/The_American_journal_of_science_%281921%29_%2817529968373%29.jpg/960px-The_American_journal_of_science_%281921%29_%2817529968373%29.jpg",
+    "short": "Nodosaurus is a genus of herbivorous nodosaurid ankylosaurian dinosaur from the Late Cretaceous, the fossils of which are found exclusively in the Frontier Formation in Wyoming.",
+    "full": ""
+  },
+  "Nasutoceratops": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/NasutoceratopsArizona.jpg/960px-NasutoceratopsArizona.jpg",
+    "short": "Nasutoceratops is a genus of ceratopsid dinosaur that lived in North America during the Late Cretaceous period, about 76.0–75.5 million years ago.",
+    "full": "The first known specimens were discovered in Utah in the Kaiparowits Formation of the Grand Staircase–Escalante National Monument (GSENM) from 2006 onwards, including a subadult skull with both a partial postcranial skeleton and rare skin impressions, and two other partial skulls. In 2013, the subadult was made the holotype of the new genus and species Nasutoceratops titusi; the generic name means \"large-nosed horned face\", and the specific name honors the paleontologist Alan L. Titus for his work at the GSENM. The dinosaur was noted for its large nose in news reports, and later featured in Jurassic World films."
+  },
+  "Saltasaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Saltasaurus_dinosaur.png/960px-Saltasaurus_dinosaur.png",
+    "short": "Saltasaurus is a genus of saltasaurid dinosaur of the Late Cretaceous period of Argentina.",
+    "full": "Small among sauropods, though still heavy by the standards of modern creatures, Saltasaurus was characterized by a short neck and stubby limbs. It was the first genus of sauropod known to possess armour of bony plates embedded in its skin. Such small bony plates, called osteoderms, have since been found on other titanosaurians."
+  },
+  "Majungasaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Majungasaurus_SBU_right.jpg/960px-Majungasaurus_SBU_right.jpg",
+    "short": "Majungasaurus is a genus of abelisaurid theropod dinosaur that lived in Madagascar from 70 to 66 million years ago, at the end of the Cretaceous Period, making it one of the last-known non-avian dinosaurs that went extinct during the Cretaceous–Paleogene extinction event.",
+    "full": "The genus contains a single species, Majungasaurus crenatissimus. This dinosaur is also called Majungatholus, a name which is considered a junior synonym of Majungasaurus."
+  },
+  "Barosaurus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Barosaurus_mount_1.jpg/960px-Barosaurus_mount_1.jpg",
+    "short": "Barosaurus is an extinct genus of giant, long-tailed, long-necked, plant-eating sauropod dinosaur closely related to the more familiar Diplodocus.",
+    "full": "Definitive remains have been found in the Morrison Formation from the Upper Jurassic Period of South Dakota, Utah and Montana, with other possible remains also found in Colorado, eastern Wyoming and Oklahoma. The generic name, Barosaurus, comes from the Greek words barys (βαρυς) meaning \"heavy\" and sauros (σαυρος) meaning \"lizard\", and thus meaning \"heavy lizard\"."
+  },
+  "Bambiraptor": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Dans_l%27ombre_des_dinosaures_-_Bambiraptor_jeune_-_04.jpg/960px-Dans_l%27ombre_des_dinosaures_-_Bambiraptor_jeune_-_04.jpg",
+    "short": "Bambiraptor is a genus of bird-like dromaeosaurid theropod dinosaur that lived during the Late Cretaceous of Montana.",
+    "full": "It was described by scientists at the University of Kansas, Yale University, and the University of New Orleans. The holotype fossil is less than 1 m (3.3 ft) long, although this specimen appears to be a juvenile, and it is possible that Bambiraptor is a juvenile Saurornitholestes. It is even suspected that the type specimen is a chimera, based on the fact that \"there are elements of three different similarly sized lower legs included in the holotype.\" Because of its small size, it was named Bambiraptor feinbergi, after the popular Disney movie character and the surname of the wealthy family who bought and lent the specimen to the new Graves Museum of Natural History in Florida."
+  },
+  "Dromiceiomimus": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/DromiceiomimusSkull.JPG/960px-DromiceiomimusSkull.JPG",
+    "short": "Dromiceiomimus is a genus of ornithomimid theropod from the Late Cretaceous of Alberta, Canada.",
+    "full": "The type species, D. brevitertius, is considered a synonym of Ornithomimus edmontonicus by some authors, while others consider it a distinct and valid taxon. It was a small ornithomimid that weighed about 135 kilograms (298 lb)."
+  },
+  "Tarchia": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Dinosauria_-_Saichania_02.jpg/960px-Dinosauria_-_Saichania_02.jpg",
+    "short": "Tarchia is a genus of herbivorous ankylosaurid dinosaur from the late Cretaceous of Mongolia.",
+    "full": ""
+  },
+  "Guanlong": {
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Guanlong_-_Baoding.jpg/960px-Guanlong_-_Baoding.jpg",
+    "short": "Guanlong is an extinct genus of proceratosaurid tyrannosauroid dinosaur from the Late Jurassic (Oxfordian) Shishugou Formation of China.",
+    "full": "It was first described in 2006 by Xu Xing and colleagues, who found it to represent a new taxon related to Tyrannosaurus. Two individuals are currently known, consisting of a partially complete adult and a nearly complete juvenile."
   }
 };

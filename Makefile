@@ -1,4 +1,4 @@
-.PHONY: all local fetch-data fetch-one clean
+.PHONY: all local fetch-data fetch-one add-dinos fill-dinos count clean
 
 all:
 	open http://localhost:8080 & python3 -m http.server 8080
@@ -11,6 +11,15 @@ fetch-data:
 
 fetch-one:
 	python3 scripts/fetch-one.py "$(DINO)"
+
+add-dinos:
+	python3 scripts/add-dinos.py $(if $(FILE),"$(FILE)","$(N)")
+
+fill-dinos:
+	python3 scripts/fill-dinos.py
+
+count:
+	@python3 scripts/count.py
 
 clean:
 	echo 'const DINO_DATA = {};' > js/dino-data.js
