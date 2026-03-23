@@ -356,11 +356,17 @@ const MAP_NODE_POS = [
 ];
 
 const WORLD_THEMES = [
-  { label: 'Jungle',  accent: '#4caf50', done: '#2e7d32', line: '#66bb6a', bg: '#1b2e1b', border: '#3d5e3d', glow: '#0d3b0d' },
-  { label: 'Ocean',   accent: '#40c4ff', done: '#0288d1', line: '#80d8ff', bg: '#052035', border: '#0d4a7a', glow: '#063660' },
-  { label: 'Desert',  accent: '#ffa726', done: '#c65d00', line: '#ffb74d', bg: '#2a1800', border: '#5a3a10', glow: '#3d2000' },
-  { label: 'Cavern',  accent: '#ab47bc', done: '#6a1b9a', line: '#ce93d8', bg: '#160d22', border: '#3d1f5a', glow: '#2a0d45' },
-  { label: 'Volcano', accent: '#ef5350', done: '#b71c1c', line: '#ff7043', bg: '#220808', border: '#5a1a1a', glow: '#450808' },
+  { label: 'Jungle',           accent: '#4caf50', done: '#2e7d32', line: '#66bb6a', bg: '#1b2e1b', border: '#3d5e3d', glow: '#0d3b0d' },
+  { label: 'Ocean',            accent: '#40c4ff', done: '#0288d1', line: '#80d8ff', bg: '#052035', border: '#0d4a7a', glow: '#063660' },
+  { label: 'Desert',           accent: '#ffa726', done: '#c65d00', line: '#ffb74d', bg: '#2a1800', border: '#5a3a10', glow: '#3d2000' },
+  { label: 'Cavern',           accent: '#ab47bc', done: '#6a1b9a', line: '#ce93d8', bg: '#160d22', border: '#3d1f5a', glow: '#2a0d45' },
+  { label: 'Volcano',          accent: '#ef5350', done: '#b71c1c', line: '#ff7043', bg: '#220808', border: '#5a1a1a', glow: '#450808' },
+  { label: 'Mountain Top',     accent: '#e0f0ff', done: '#7bafd4', line: '#cce8ff', bg: '#0d1a26', border: '#2a4a6a', glow: '#0a1520' },
+  { label: 'Mariana Trench',   accent: '#00bcd4', done: '#006064', line: '#4dd0e1', bg: '#010d10', border: '#013a40', glow: '#000a0d' },
+  { label: 'The Moon',         accent: '#c8c8d8', done: '#707080', line: '#e8e8f0', bg: '#0d0d12', border: '#303040', glow: '#07070e' },
+  { label: 'Mars',             accent: '#e8694a', done: '#8b2500', line: '#ff8a65', bg: '#1a0800', border: '#4a1a08', glow: '#2d0a00' },
+  { label: 'Neptune',          accent: '#7986cb', done: '#303f9f', line: '#9fa8da', bg: '#08091a', border: '#1a1f50', glow: '#050610' },
+  { label: 'Andromeda Galaxy', accent: '#ce93d8', done: '#6a0080', line: '#e040fb', bg: '#05000d', border: '#2a0038', glow: '#0d0018' },
 ];
 
 function getPosForLevel(level) {

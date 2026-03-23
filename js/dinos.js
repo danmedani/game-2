@@ -159,7 +159,6 @@ const DINOS = [
   { name: "Centrosaurus", wiki: "Centrosaurus", level: 3, length: 6.0, period: "Late Cretaceous", diet: "", geo: "Canada" },
   { name: "Beipiaosaurus", wiki: "Beipiaosaurus", level: 4, length: 2.2, period: "Early Cretaceous", diet: "Carnivore", geo: "China" },
   { name: "Torvosaurus", wiki: "Torvosaurus", level: 3, length: 10.7, period: "Late Jurassic", diet: "Carnivore", geo: "Tanzania, Portugal, England" },
-  { name: "Zanabazar", wiki: "Zanabazar", level: 4, length: 2.0, period: "", diet: "", geo: "Mongolia" },
   { name: "Alioramus", wiki: "Alioramus", level: 3, length: 6.0, period: "Late Cretaceous", diet: "Carnivore", geo: "Asia, Mongolia" },
   { name: "Tenontosaurus", wiki: "Tenontosaurus", level: 3, length: 7.0, period: "Early Cretaceous", diet: "Herbivore", geo: "North America" },
   { name: "Rapetosaurus", wiki: "Rapetosaurus", level: 4, length: 15.0, period: "Cretaceous", diet: "Herbivore", geo: "" },

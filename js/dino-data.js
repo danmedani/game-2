@@ -736,11 +736,6 @@ const DINO_DATA = {
     "short": "Torvosaurus is a genus of large megalosaurine theropod dinosaur that lived approximately 165 to 146.5 million years ago during the Callovian to Tithonian ages of the late Middle and Late Jurassic period in what is now Colorado, Portugal, Germany, and possibly England, Spain, Tanzania, and Uruguay.",
     "full": "It contains two currently recognized species, Torvosaurus tanneri and Torvosaurus gurneyi, plus a third unnamed species from Germany."
   },
-  "Zanabazar": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Zanabanzar_self-portrait.jpg",
-    "short": "Öndör Gegeen Zanabazar was the first Jebtsundamba Khutuktu and the first Bogd Gegeen or supreme spiritual authority, of the Gelugpa lineage of Tibetan Mahayana Buddhism in Mongolia.",
-    "full": ""
-  },
   "Alioramus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Texas_Alioramus.jpg/960px-Texas_Alioramus.jpg",
     "short": "Alioramus is a genus of tyrannosaurid theropod dinosaurs from the Late Cretaceous period of Asia.",
