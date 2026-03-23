@@ -771,8 +771,8 @@ button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 .map-meta span:last-child { font-size: 1.1rem; }
 .map-canvas {
   position: relative;
-  width: min(480px, 90vw);
-  height: min(220px, 45vw);
+  width: min(520px, 92vw);
+  height: 110px;
   background: var(--surface);
   border: 2px solid var(--border);
   border-radius: 16px;

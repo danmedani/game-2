@@ -88,6 +88,7 @@ let state = {
   totalQuestions: 5,
   level: 1,
   lives: 3,
+  devMode: false,
   perfectStreak: 0,  // consecutive perfect levels
   pool: [],
   imageDinos: [],
@@ -203,10 +204,12 @@ async function nextQuestion() {
 // ── Game flow ─────────────────────────────────────────────────────────────────
 
 async function startGame() {
+  const qp = new URLSearchParams(window.location.search);
+  state.devMode = qp.get('dev') === '1';
   state.score = 0;
   state.streak = 0;
-  state.level = 1;
-  state.lives = 3;
+  state.level = Math.max(1, parseInt(qp.get('level') ?? '1', 10) || 1);
+  state.lives = state.devMode ? 99 : Math.max(1, parseInt(qp.get('lives') ?? '3', 10) || 3);
   state.perfectStreak = 0;
   state.questionNum = 0;
   state.pool = buildPool();
@@ -258,57 +261,75 @@ async function endLevel() {
 
 // ── Map screen ────────────────────────────────────────────────────────────────
 
-// Node positions within a world (percentage of canvas, 8 nodes per world)
-const MAP_WORLD_POS = [
-  { x: 10, y: 74 },
-  { x: 30, y: 74 },
-  { x: 50, y: 74 },
-  { x: 70, y: 74 },
-  { x: 70, y: 30 },
-  { x: 50, y: 30 },
-  { x: 30, y: 30 },
-  { x: 10, y: 30 },
+const LEVELS_PER_WORLD = 5;
+
+// 5 nodes evenly spaced on a single horizontal row
+const MAP_NODE_POS = [
+  { x: 12, y: 50 },
+  { x: 31, y: 50 },
+  { x: 50, y: 50 },
+  { x: 69, y: 50 },
+  { x: 88, y: 50 },
+];
+
+const WORLD_THEMES = [
+  { label: 'Jungle',  accent: '#4caf50', done: '#2e7d32', line: '#66bb6a', bg: '#1b2e1b', border: '#3d5e3d' },
+  { label: 'Ocean',   accent: '#29b6f6', done: '#0277bd', line: '#4fc3f7', bg: '#0d1f2d', border: '#1a4060' },
+  { label: 'Desert',  accent: '#ffa726', done: '#c65d00', line: '#ffb74d', bg: '#2a1800', border: '#5a3a10' },
+  { label: 'Cavern',  accent: '#ab47bc', done: '#6a1b9a', line: '#ce93d8', bg: '#160d22', border: '#3d1f5a' },
+  { label: 'Volcano', accent: '#ef5350', done: '#b71c1c', line: '#ff7043', bg: '#220808', border: '#5a1a1a' },
 ];
 
 function getPosForLevel(level) {
-  return MAP_WORLD_POS[(level - 1) % MAP_WORLD_POS.length];
+  return MAP_NODE_POS[(level - 1) % LEVELS_PER_WORLD];
 }
 
-function renderMapCanvas(worldStart, completedLevel) {
+function renderMapCanvas(worldStart, completedLevel, theme) {
   const canvas = document.getElementById('map-canvas');
   canvas.querySelectorAll('.map-node, .map-svg').forEach(el => el.remove());
 
-  // Draw SVG path lines
+  // Apply world theme
+  canvas.style.background   = theme.bg;
+  canvas.style.borderColor  = theme.border;
+
+  // SVG lines — preserveAspectRatio:none so % coords match CSS exactly
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.setAttribute('class', 'map-svg');
   svg.setAttribute('viewBox', '0 0 100 100');
-  svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+  svg.setAttribute('preserveAspectRatio', 'none');
 
-  for (let i = 0; i < MAP_WORLD_POS.length - 1; i++) {
-    const a = MAP_WORLD_POS[i];
-    const b = MAP_WORLD_POS[i + 1];
-    const lvl = worldStart + i;
-    const done = lvl < completedLevel;
+  for (let i = 0; i < MAP_NODE_POS.length - 1; i++) {
+    const a = MAP_NODE_POS[i];
+    const b = MAP_NODE_POS[i + 1];
+    if (worldStart + i >= completedLevel) continue; // only already-completed segments
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     line.setAttribute('x1', a.x); line.setAttribute('y1', a.y);
     line.setAttribute('x2', b.x); line.setAttribute('y2', b.y);
-    if (!done) continue;
-    line.setAttribute('stroke', '#4caf50');
-    line.setAttribute('stroke-width', '2.5');
+    line.setAttribute('stroke', theme.line);
+    line.setAttribute('stroke-width', '3');
+    line.setAttribute('stroke-linecap', 'round');
     svg.appendChild(line);
   }
   canvas.insertBefore(svg, canvas.firstChild);
 
-  // Draw nodes
-  for (let i = 0; i < MAP_WORLD_POS.length; i++) {
+  // Nodes
+  for (let i = 0; i < MAP_NODE_POS.length; i++) {
     const lvl = worldStart + i;
-    const pos = MAP_WORLD_POS[i];
+    const pos = MAP_NODE_POS[i];
     const node = document.createElement('div');
     node.className = 'map-node';
-    if (lvl < completedLevel)      { node.classList.add('done');    node.textContent = '✓'; }
-    else if (lvl === completedLevel){ node.classList.add('done');    node.textContent = '✓'; }
-    else if (lvl === completedLevel + 1) { node.classList.add('next'); node.textContent = lvl; }
-    else                           { node.classList.add('future');  node.textContent = lvl; }
+    if (lvl <= completedLevel) {
+      node.classList.add('done');
+      node.textContent = '✓';
+      node.style.background   = theme.done;
+      node.style.borderColor  = theme.line;
+    } else if (lvl === completedLevel + 1) {
+      node.classList.add('next');
+      node.textContent = lvl;
+    } else {
+      node.classList.add('future');
+      node.textContent = lvl;
+    }
     node.style.left = pos.x + '%';
     node.style.top  = pos.y + '%';
     canvas.appendChild(node);
@@ -319,31 +340,64 @@ function showMapScreen(justCompleted) {
   return new Promise(resolve => {
     showScreen('screen-map');
 
-    const nextLevel = justCompleted + 1;
-    const worldIdx  = Math.floor((justCompleted - 1) / MAP_WORLD_POS.length);
-    const worldStart = worldIdx * MAP_WORLD_POS.length + 1;
+    const nextLevel  = justCompleted + 1;
+    const worldIdx   = Math.floor((nextLevel - 1) / LEVELS_PER_WORLD);
+    const worldStart = worldIdx * LEVELS_PER_WORLD + 1;
+    const theme      = WORLD_THEMES[worldIdx % WORLD_THEMES.length];
+    const isNewWorld = justCompleted % LEVELS_PER_WORLD === 0;
 
-    document.getElementById('map-world-label').textContent  = `World ${worldIdx + 1}`;
-    document.getElementById('map-level-label').textContent  = `Level ${nextLevel}`;
+    // Theme the screen background
+    document.getElementById('screen-map').style.background =
+      `radial-gradient(ellipse at top, ${theme.bg} 0%, #080808 100%)`;
+
+    const worldLabel = document.getElementById('map-world-label');
+    worldLabel.textContent = theme.label;
+    worldLabel.style.color = theme.accent;
+
+    document.getElementById('map-level-label').textContent   = `Level ${nextLevel}`;
     document.getElementById('map-score-display').textContent = `Score: ${state.score}`;
-    document.getElementById('map-lives-display').textContent = '🦕'.repeat(state.lives);
+    document.getElementById('map-lives-display').textContent = state.devMode ? '🦕 ∞' : '🦕'.repeat(Math.max(0, state.lives));
 
-    renderMapCanvas(worldStart, justCompleted);
+    // completedLevel relative to this world: 0 if entering fresh, otherwise the last done node
+    const completedInWorld = isNewWorld ? worldStart - 1 : justCompleted;
+    renderMapCanvas(worldStart, completedInWorld, theme);
 
-    // Animate dino from completed node to next node
+    // Dino animation
     const dinoEl = document.getElementById('map-dino');
-    const from = getPosForLevel(justCompleted);
-    const to   = getPosForLevel(nextLevel);
+    const to     = getPosForLevel(nextLevel);
 
-    dinoEl.style.transition = 'none';
-    dinoEl.style.left = from.x + '%';
-    dinoEl.style.top  = from.y + '%';
-
-    setTimeout(() => {
-      dinoEl.style.transition = 'left 0.7s cubic-bezier(.4,0,.2,1), top 0.7s cubic-bezier(.4,0,.2,1)';
-      dinoEl.style.left = to.x + '%';
+    if (isNewWorld) {
+      // Enter from off-screen left
+      dinoEl.style.transition = 'none';
+      dinoEl.style.left = '-8%';
       dinoEl.style.top  = to.y + '%';
-    }, 500);
+      setTimeout(() => {
+        dinoEl.style.transition = 'left 0.7s cubic-bezier(.4,0,.2,1)';
+        dinoEl.style.left = to.x + '%';
+      }, 500);
+    } else {
+      const from = getPosForLevel(justCompleted);
+      dinoEl.style.transition = 'none';
+      dinoEl.style.left = from.x + '%';
+      dinoEl.style.top  = from.y + '%';
+      setTimeout(() => {
+        // Move dino and draw line simultaneously
+        dinoEl.style.transition = 'left 0.7s cubic-bezier(.4,0,.2,1), top 0.7s cubic-bezier(.4,0,.2,1)';
+        dinoEl.style.left = to.x + '%';
+        dinoEl.style.top  = to.y + '%';
+
+        const svg = document.querySelector('#map-canvas .map-svg');
+        if (svg) {
+          const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          line.setAttribute('x1', from.x); line.setAttribute('y1', from.y);
+          line.setAttribute('x2', to.x);   line.setAttribute('y2', to.y);
+          line.setAttribute('stroke', theme.line);
+          line.setAttribute('stroke-width', '3');
+          line.setAttribute('stroke-linecap', 'round');
+          svg.appendChild(line);
+        }
+      }, 500);
+    }
 
     // Show continue button after animation
     const btn = document.getElementById('btn-map-continue');
@@ -399,7 +453,7 @@ async function handleAnswer(chosen) {
 
   await waitForAnswerDismiss();
 
-  if (state.lives <= 0) {
+  if (state.lives <= 0 && !state.devMode) {
     endGame();
   } else if (state.questionNum >= state.totalQuestions) {
     await endLevel();
@@ -498,7 +552,7 @@ function updateProgressTrack() {
 function updateHUD() {
   document.getElementById('hud-score').textContent = state.score;
   document.getElementById('hud-streak').textContent = state.streak >= 2 ? `🔥 x${state.streak}` : '';
-  document.getElementById('hud-lives').textContent  = '🦕'.repeat(state.lives);
+  document.getElementById('hud-lives').textContent  = state.devMode ? '🦕 ∞' : '🦕'.repeat(Math.max(0, state.lives));
   document.getElementById('hud-level-num').textContent = state.level;
 
   // Perfect streak pips — 3 circles, filled up to perfectStreak count
