@@ -80,6 +80,32 @@ function jiggleFocused(buttons) {
   btn.addEventListener('animationend', () => btn.classList.remove('keyboard-jiggle'), { once: true });
 }
 
+// ── Session persistence ───────────────────────────────────────────────────────
+const SESSION_KEY = 'dinogame_session';
+
+function saveSession() {
+  const data = {
+    level: state.level,
+    score: state.score,
+    lives: state.lives,
+    streak: state.streak,
+    perfectStreak: state.perfectStreak,
+    usedCorrects: [...state.usedCorrects],
+  };
+  localStorage.setItem(SESSION_KEY, JSON.stringify(data));
+}
+
+function loadSession() {
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch { return null; }
+}
+
+function clearSession() {
+  localStorage.removeItem(SESSION_KEY);
+}
+
 // ── Game state ────────────────────────────────────────────────────────────────
 let state = {
   score: 0,
@@ -258,6 +284,36 @@ async function startGame() {
   await nextQuestion();
 }
 
+async function resumeGame() {
+  const session = loadSession();
+  if (!session) { startGame(); return; }
+
+  const qp = new URLSearchParams(window.location.search);
+  state.devMode     = qp.get('dev') === '1';
+  state.level       = session.level;
+  state.score       = session.score;
+  state.lives       = session.lives;
+  state.streak      = session.streak;
+  state.perfectStreak = session.perfectStreak;
+  state.questionNum = 0;
+  state.pool        = buildPool();
+  state.usedCorrects = new Set(session.usedCorrects || []);
+  state.results     = Array(state.totalQuestions).fill('pending');
+  state.answeredThisRound = false;
+
+  const imageDinos = state.pool.filter(d => imageCache[d.wiki]);
+  state.imageDinos = imageDinos;
+  state.noImages   = false;
+
+  // Show map for current level (level-1 was just completed)
+  await showMapScreen(state.level - 1);
+
+  showScreen('screen-game');
+  updateHUD();
+  updateProgressTrack();
+  await nextQuestion();
+}
+
 async function endLevel() {
   const justCompleted = state.level;
   const wasPerfect = state.results.every(r => r === 'correct');
@@ -364,6 +420,7 @@ function renderMapCanvas(worldStart, completedLevel, theme) {
 }
 
 function showMapScreen(justCompleted) {
+  saveSession();
   return new Promise(resolve => {
     showScreen('screen-map');
 
@@ -548,6 +605,7 @@ function awardExtraLife() {
 }
 
 function endGame() {
+  clearSession();
   showScreen('screen-gameover');
   document.getElementById('final-score').textContent = state.score;
   document.getElementById('final-mode').textContent = `DinoQuest · Level ${state.level}`;
@@ -892,8 +950,19 @@ async function showHighScores() {
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  if (id === 'screen-title') startTitleDinos();
-  else stopTitleDinos();
+  if (id === 'screen-title') {
+    startTitleDinos();
+    const session = loadSession();
+    const btnContinue = document.getElementById('btn-continue');
+    if (session && session.level > 1) {
+      btnContinue.textContent = `▶ Continue — Level ${session.level}`;
+      btnContinue.style.display = '';
+    } else {
+      btnContinue.style.display = 'none';
+    }
+  } else {
+    stopTitleDinos();
+  }
 }
 
 function setLoadingMessage(msg) {
@@ -1077,7 +1146,8 @@ document.addEventListener('DOMContentLoaded', () => {
   showScreen('screen-title');
 
   // Title screen
-  document.getElementById('btn-play').addEventListener('click', () => startGame());
+  document.getElementById('btn-continue').addEventListener('click', resumeGame);
+  document.getElementById('btn-play').addEventListener('click', () => { clearSession(); startGame(); });
   document.getElementById('btn-scores-title').addEventListener('click', () => {
     showHighScores();
     document.getElementById('hs-back-btn').onclick = () => showScreen('screen-title');
@@ -1085,7 +1155,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // In-game
   document.getElementById('btn-quit-game').addEventListener('click', () => {
-    if (confirm('Quit this game?')) showScreen('screen-title');
+    if (confirm('Quit this game?')) { clearSession(); showScreen('screen-title'); }
   });
 
   // Game over
