@@ -7,4 +7,5 @@
 
 const CONFIG = {
   discordWebhook: '',  // set in js/config.local.js
+  scoresUrl: 'https://script.google.com/macros/s/AKfycbzUDs88NQvP6YV-JuhLmQpEhJsQVSGjUgDbkb-8PgqR7emtW0pXFHULkVCG5VZw__aN/exec',
 };

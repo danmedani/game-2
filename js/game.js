@@ -541,25 +541,28 @@ function endGame() {
   document.getElementById('final-score').textContent = state.score;
   document.getElementById('final-mode').textContent = `DinoQuest · Level ${state.level}`;
 
-  const best = getLocalBest('dinoquest');
+  const best = getLocalBest();
   const isHigh = state.score > best;
   document.getElementById('highscore-msg').textContent = isHigh
-    ? '🏆 New Local High Score!'
-    : `Local Best: ${best}`;
+    ? '🏆 New High Score!'
+    : `Your Best: ${best}`;
 
   document.getElementById('initials-input').value = '';
   document.getElementById('initials-error').textContent = '';
 }
 
-function submitScore() {
+async function submitScore() {
   const raw = document.getElementById('initials-input').value.toUpperCase().trim();
   if (!isValidInitials(raw)) {
     document.getElementById('initials-error').textContent =
       raw.length !== 3 ? 'Enter exactly 3 letters.' : 'Choose different initials!';
     return;
   }
-  saveScore({ initials: raw, score: state.score, mode: 'dinoquest' });
-  showHighScores('dinoquest');
+  const btn = document.getElementById('btn-submit-score');
+  btn.disabled = true;
+  await saveScore({ initials: raw, score: state.score });
+  btn.disabled = false;
+  showHighScores();
 }
 
 // ── Render ────────────────────────────────────────────────────────────────────
@@ -845,10 +848,13 @@ function waitForAnswerDismiss() {
   });
 }
 
-function showHighScores(mode) {
+async function showHighScores() {
   showScreen('screen-highscores');
-  const scores = getTopScores(mode, 10);
   const tbody = document.getElementById('scores-table-body');
+  tbody.innerHTML = '<tr><td colspan="2" style="text-align:center;opacity:.5">Loading...</td></tr>';
+  document.getElementById('hs-mode-label').textContent = 'Global Leaderboard';
+
+  const scores = await getTopScores(10);
   tbody.innerHTML = '';
   if (scores.length === 0) {
     tbody.innerHTML = '<tr><td colspan="2" style="text-align:center">No scores yet!</td></tr>';
@@ -862,7 +868,6 @@ function showHighScores(mode) {
       tbody.appendChild(tr);
     });
   }
-  document.getElementById('hs-mode-label').textContent = modeName(mode);
 }
 
 // ── Screens ───────────────────────────────────────────────────────────────────
@@ -1057,7 +1062,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Title screen
   document.getElementById('btn-play').addEventListener('click', () => startGame());
   document.getElementById('btn-scores-title').addEventListener('click', () => {
-    showHighScores('dinoquest');
+    showHighScores();
     document.getElementById('hs-back-btn').onclick = () => showScreen('screen-title');
   });
 
