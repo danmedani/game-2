@@ -1,4 +1,4 @@
-.PHONY: all local fetch-data fetch-one add-dinos fill-dinos assign-levels count clean
+.PHONY: all local fetch-data fetch-one fetch-prehistoric merge-prehistoric add-dinos fill-dinos fill-lengths assign-levels count clean
 
 all:
 	open http://localhost:8080 & python3 -m http.server 8080
@@ -9,6 +9,12 @@ local:
 fetch-data:
 	python3 scripts/fetch-dino-data.py
 
+fetch-prehistoric:
+	python3 scripts/fetch-prehistoric-wiki.py
+
+merge-prehistoric:
+	python3 scripts/merge-prehistoric.py
+
 fetch-one:
 	python3 scripts/fetch-one.py "$(DINO)"
 
@@ -17,6 +23,9 @@ add-dinos:
 
 fill-dinos:
 	python3 scripts/fill-dinos.py
+
+fill-lengths:
+	python3 scripts/fill-lengths.py
 
 assign-levels:
 	python3 scripts/assign-levels.py

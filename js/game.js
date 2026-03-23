@@ -762,18 +762,18 @@ function showAnswerView(correct, pts, q) {
     : '';
 
   let factText = '';
-  if (q.type !== 'size-battle') {
-    const cached = factCache[q.correct.wiki] || { short: '', full: '' };
-    if (cached.short) {
-      const more = cached.full
-        ? `<details class="answer-fact-more"><summary>Read more</summary><p>${cached.full}</p></details>`
-        : '';
-      factText = `<p class="answer-fact">${cached.short}</p>${more}`;
-    }
-  } else {
+  const factDino = q.type === 'size-battle' ? q.bigger : q.correct;
+  const cached = factCache[factDino.wiki] || { short: '', full: '' };
+  if (cached.short) {
+    const more = cached.full
+      ? `<details class="answer-fact-more"><summary>Read more</summary><p>${cached.full}</p></details>`
+      : '';
+    factText = `<p class="answer-fact">${cached.short}</p>${more}`;
+  }
+  if (q.type === 'size-battle') {
     const bigger = q.bigger;
     const smaller = bigger.name === q.a.name ? q.b : q.a;
-    factText = `<p class="answer-fact">${bigger.name}: ${bigger.length}m &nbsp;·&nbsp; ${smaller.name}: ${smaller.length}m</p>`;
+    factText += `<p class="answer-fact">${bigger.name}: ${bigger.length}m &nbsp;·&nbsp; ${smaller.name}: ${smaller.length}m</p>`;
   }
 
   area.innerHTML = `
