@@ -133,13 +133,24 @@ function calcPoints(correct) {
 
 // ── Question builders ─────────────────────────────────────────────────────────
 
+// Map game level → max dino difficulty level shown as correct answer
+function maxDinoLevel() {
+  const g = state.level;
+  if (g <=  5) return 2;
+  if (g <= 10) return 3;
+  if (g <= 15) return 4;
+  return 5;
+}
+
 function pickFreshCorrect() {
-  const fresh = state.pool.filter(d => !state.usedCorrects.has(d.name));
-  if (fresh.length === 0 && !state.devMode) {
+  const unused = state.pool.filter(d => !state.usedCorrects.has(d.name));
+  // Prefer dinos at or below the current difficulty ceiling
+  const inRange = unused.filter(d => d.level <= maxDinoLevel());
+  const candidates = inRange.length >= 1 ? inRange : unused;
+  if (candidates.length === 0 && !state.devMode) {
     notifyLoopAround();
   }
-  const candidates = fresh.length >= 1 ? fresh : state.pool;
-  const [correct] = pick(candidates, 1);
+  const [correct] = pick(candidates.length >= 1 ? candidates : state.pool, 1);
   state.usedCorrects.add(correct.name);
   return correct;
 }
@@ -176,8 +187,10 @@ function buildPicMatchQuestion() {
 }
 
 function buildSizeBattleQuestion() {
-  const fresh = state.pool.filter(d => !state.usedCorrects.has(d.name));
-  const [a, b] = pick(fresh.length >= 2 ? fresh : state.pool, 2);
+  const unused  = state.pool.filter(d => !state.usedCorrects.has(d.name));
+  const inRange = unused.filter(d => d.level <= maxDinoLevel());
+  const fresh   = inRange.length >= 2 ? inRange : unused;
+  const [a, b]  = pick(fresh.length >= 2 ? fresh : state.pool, 2);
   state.usedCorrects.add(a.name);
   state.usedCorrects.add(b.name);
   const bigger = a.length >= b.length ? a : b;

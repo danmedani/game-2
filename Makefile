@@ -1,4 +1,4 @@
-.PHONY: all local fetch-data fetch-one add-dinos fill-dinos count clean
+.PHONY: all local fetch-data fetch-one add-dinos fill-dinos assign-levels count clean
 
 all:
 	open http://localhost:8080 & python3 -m http.server 8080
@@ -17,6 +17,9 @@ add-dinos:
 
 fill-dinos:
 	python3 scripts/fill-dinos.py
+
+assign-levels:
+	python3 scripts/assign-levels.py
 
 count:
 	@python3 scripts/count.py
