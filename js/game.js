@@ -300,11 +300,11 @@ const MAP_NODE_POS = [
 ];
 
 const WORLD_THEMES = [
-  { label: 'Jungle',  accent: '#4caf50', done: '#2e7d32', line: '#66bb6a', bg: '#1b2e1b', border: '#3d5e3d' },
-  { label: 'Ocean',   accent: '#29b6f6', done: '#0277bd', line: '#4fc3f7', bg: '#0d1f2d', border: '#1a4060' },
-  { label: 'Desert',  accent: '#ffa726', done: '#c65d00', line: '#ffb74d', bg: '#2a1800', border: '#5a3a10' },
-  { label: 'Cavern',  accent: '#ab47bc', done: '#6a1b9a', line: '#ce93d8', bg: '#160d22', border: '#3d1f5a' },
-  { label: 'Volcano', accent: '#ef5350', done: '#b71c1c', line: '#ff7043', bg: '#220808', border: '#5a1a1a' },
+  { label: 'Jungle',  accent: '#4caf50', done: '#2e7d32', line: '#66bb6a', bg: '#1b2e1b', border: '#3d5e3d', glow: '#0d3b0d' },
+  { label: 'Ocean',   accent: '#40c4ff', done: '#0288d1', line: '#80d8ff', bg: '#052035', border: '#0d4a7a', glow: '#063660' },
+  { label: 'Desert',  accent: '#ffa726', done: '#c65d00', line: '#ffb74d', bg: '#2a1800', border: '#5a3a10', glow: '#3d2000' },
+  { label: 'Cavern',  accent: '#ab47bc', done: '#6a1b9a', line: '#ce93d8', bg: '#160d22', border: '#3d1f5a', glow: '#2a0d45' },
+  { label: 'Volcano', accent: '#ef5350', done: '#b71c1c', line: '#ff7043', bg: '#220808', border: '#5a1a1a', glow: '#450808' },
 ];
 
 function getPosForLevel(level) {
@@ -372,10 +372,9 @@ function showMapScreen(justCompleted) {
     const worldStart = worldIdx * LEVELS_PER_WORLD + 1;
     const theme      = WORLD_THEMES[worldIdx % WORLD_THEMES.length];
     const isNewWorld = justCompleted % LEVELS_PER_WORLD === 0;
+    state.theme = theme;
 
-    // Theme the screen background
-    document.getElementById('screen-map').style.background =
-      `radial-gradient(ellipse at top, ${theme.bg} 0%, #080808 100%)`;
+    document.getElementById('screen-map').style.background = '#0d0d0d';
 
     const worldLabel = document.getElementById('map-world-label');
     worldLabel.textContent = theme.label;
@@ -394,14 +393,26 @@ function showMapScreen(justCompleted) {
     const to     = getPosForLevel(nextLevel);
 
     if (isNewWorld) {
-      // Enter from off-screen left
+      // World transition overlay
+      const announce     = document.getElementById('world-announce');
+      const announceNum  = document.getElementById('world-announce-num');
+      const announceName = document.getElementById('world-announce-name');
+      announceNum.textContent  = `World ${worldIdx + 1}`;
+      announceName.textContent = theme.label;
+      announceName.style.color = theme.accent;
+      announce.classList.remove('active');
+      void announce.offsetWidth; // force reflow to restart animation
+      announce.classList.add('active');
+      setTimeout(() => announce.classList.remove('active'), 2600);
+
+      // Enter dino from off-screen left, delayed until after overlay peaks
       dinoEl.style.transition = 'none';
       dinoEl.style.left = '-8%';
       dinoEl.style.top  = to.y + '%';
       setTimeout(() => {
         dinoEl.style.transition = 'left 0.7s cubic-bezier(.4,0,.2,1)';
         dinoEl.style.left = to.x + '%';
-      }, 500);
+      }, 1400);
     } else {
       const from = getPosForLevel(justCompleted);
       dinoEl.style.transition = 'none';
@@ -439,7 +450,7 @@ function showMapScreen(justCompleted) {
       btn.style.transition = 'opacity 0.3s';
       btn.style.opacity = '1';
       btn.style.pointerEvents = '';
-    }, 1400);
+    }, isNewWorld ? 2800 : 1400);
   });
 }
 
@@ -584,6 +595,12 @@ function updateHUD() {
   document.getElementById('hud-streak').textContent = state.streak >= 2 ? `🔥 x${state.streak}` : '';
   document.getElementById('hud-lives').textContent  = state.devMode ? '🦕 ∞' : '🦕'.repeat(Math.max(0, state.lives));
   document.getElementById('hud-level-num').textContent = state.level;
+
+  const worldIdx = Math.floor((state.level - 1) / LEVELS_PER_WORLD);
+  const theme = WORLD_THEMES[worldIdx % WORLD_THEMES.length];
+  const worldEl = document.getElementById('hud-world-label');
+  worldEl.textContent = theme.label;
+  worldEl.style.color = theme.accent;
 
   // Perfect streak pips — 3 circles, filled up to perfectStreak count
   const pips = document.querySelectorAll('#hud-perfect-streak .streak-pip');
