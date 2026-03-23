@@ -59,7 +59,7 @@ const DINOS = [
   { name: "Albertosaurus",        wiki: "Albertosaurus",        level: 4, length: 9,    period: "Late Cretaceous (73–70 Ma)",    diet: "Carnivore",   geo: "North America"         },
   { name: "Pentaceratops",        wiki: "Pentaceratops",        level: 4, length: 8,    period: "Late Cretaceous (76–73 Ma)",    diet: "Herbivore",   geo: "North America"         },
   { name: "Anchiceratops",        wiki: "Anchiceratops",        level: 4, length: 6,    period: "Late Cretaceous (72–71 Ma)",    diet: "Herbivore",   geo: "North America"         },
-  { name: "Irritator",            wiki: "Irritator_(dinosaur)", level: 4, length: 8,    period: "Early Cretaceous (~110 Ma)",    diet: "Piscivore",   geo: "South America"         },
+  { name: "Irritator",            wiki: "Irritator",            level: 4, length: 8,    period: "Early Cretaceous (~110 Ma)",    diet: "Piscivore",   geo: "South America"         },
   { name: "Scelidosaurus",        wiki: "Scelidosaurus",        level: 4, length: 4,    period: "Early Jurassic (196–183 Ma)",   diet: "Herbivore",   geo: "Europe"                },
   { name: "Tsintaosaurus",        wiki: "Tsintaosaurus",        level: 4, length: 8,    period: "Late Cretaceous (84–71 Ma)",    diet: "Herbivore",   geo: "Asia"                  },
 

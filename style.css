@@ -192,6 +192,59 @@ button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 }
 .hud-streak { font-size: 0.85rem; font-weight: 800; color: #ff9800; text-align: center; min-height: 1.2em; }
 .hud-lives  { font-size: 1.1rem; text-align: center; letter-spacing: 1px; flex-shrink: 0; }
+
+/* ── Level display ── */
+.track-level { text-align: center; flex-shrink: 0; }
+.hud-level-num {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2.2rem;
+  color: var(--gold);
+  text-shadow: 0 2px 0 #8b6914;
+  line-height: 1;
+}
+.track-level-label { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+/* ── Perfect streak pips ── */
+.perfect-streak { display: flex; justify-content: center; gap: 5px; flex-shrink: 0; }
+.streak-pip {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.streak-pip.lit {
+  background: var(--gold);
+  border-color: #ffe066;
+  box-shadow: 0 0 6px rgba(255,215,0,0.55);
+}
+
+/* ── Extra life toast ── */
+.extra-life-toast {
+  position: absolute;
+  left: 50%; bottom: 60px;
+  transform: translateX(-50%);
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  color: var(--gold);
+  text-shadow: 0 1px 0 #8b6914;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 100;
+  animation: life-float 1.4s ease-out forwards;
+}
+@keyframes life-float {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(0); }
+  15%  { opacity: 1; }
+  80%  { opacity: 1; transform: translateX(-50%) translateY(-40px); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-55px); }
+}
+@keyframes lives-bonus-flash {
+  0%, 100% { transform: scale(1); }
+  40%       { transform: scale(1.35); filter: brightness(1.8); }
+}
+.lives-bonus { animation: lives-bonus-flash 0.6s ease; }
+
 .hud-quit {
   background: transparent;
   color: var(--muted);

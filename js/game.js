@@ -10,60 +10,7 @@ if (typeof DINO_DATA !== 'undefined') {
   }
 }
 
-async function fetchWikiImage(wikiTitle) {
-  if (imageCache[wikiTitle]) return imageCache[wikiTitle];
-  try {
-    const url = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(wikiTitle)}&prop=pageimages&format=json&pithumbsize=500&origin=*`;
-    const res = await fetch(url);
-    const data = await res.json();
-    const page = Object.values(data.query.pages)[0];
-    const src = page?.thumbnail?.source || null;
-    imageCache[wikiTitle] = src;
-    return src;
-  } catch {
-    imageCache[wikiTitle] = null;
-    return null;
-  }
-}
-
-async function batchedPreload(items, fetchFn, batchSize = 2, delayMs = 400) {
-  // Only fetch items not already in cache
-  const needed = items.filter(d => fetchFn === fetchWikiImage
-    ? imageCache[d.wiki] === undefined
-    : factCache[d.wiki] === undefined);
-  for (let i = 0; i < needed.length; i += batchSize) {
-    const batch = needed.slice(i, i + batchSize);
-    await Promise.all(batch.map(d => fetchFn(d.wiki)));
-    if (i + batchSize < needed.length) await delay(delayMs);
-  }
-}
-
-async function preloadImages(dinos) {
-  await batchedPreload(dinos, fetchWikiImage);
-}
-
-// ── Fact cache (Wikipedia summary API) ───────────────────────────────────────
-async function fetchWikiFact(wikiTitle) {
-  if (factCache[wikiTitle] !== undefined) return factCache[wikiTitle];
-  try {
-    const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wikiTitle)}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    const extract = data.extract || '';
-    const firstMatch = extract.match(/[^.!?]*[.!?]/);
-    const short = firstMatch?.[0]?.trim() || extract.slice(0, 160).trim();
-    const full = firstMatch ? extract.slice(firstMatch[0].length).trim() : '';
-    factCache[wikiTitle] = { short, full };
-    return factCache[wikiTitle];
-  } catch {
-    factCache[wikiTitle] = { short: '', full: '' };
-    return factCache[wikiTitle];
-  }
-}
-
-async function preloadFacts(dinos) {
-  await batchedPreload(dinos, fetchWikiFact);
-}
+// ── No live Wikipedia fetching — all data must come from dino-data.js ─────────
 
 // ── Keyboard navigation ───────────────────────────────────────────────────────
 let focusedOptionIndex = -1;
@@ -141,12 +88,14 @@ let state = {
   totalQuestions: 5,
   level: 1,
   lives: 3,
+  perfectStreak: 0,  // consecutive perfect levels
   pool: [],
   imageDinos: [],
   currentQ: null,
   answeredThisRound: false,
   usedCorrects: new Set(),
   results: [],
+  noImages: false,
 };
 
 const SCORE_MULT = 1.5;
@@ -154,6 +103,10 @@ const SCORE_MULT = 1.5;
 // Each question gets its mode from this rotating sequence
 const MODE_SEQUENCE = [
   'name-match', 'size-battle', 'dino-facts', 'pic-match', 'name-match',
+];
+// Fallback when no images are available (rate-limited / no dino-data.js yet)
+const MODE_SEQUENCE_NO_IMAGES = [
+  'size-battle', 'dino-facts', 'size-battle', 'dino-facts', 'size-battle',
 ];
 
 function buildPool() {
@@ -254,21 +207,19 @@ async function startGame() {
   state.streak = 0;
   state.level = 1;
   state.lives = 3;
+  state.perfectStreak = 0;
   state.questionNum = 0;
   state.pool = buildPool();
   state.usedCorrects = new Set();
 
-  showScreen('screen-loading');
-  setLoadingMessage('Fetching dinosaur images & facts...');
-
-  await Promise.all([preloadImages(state.pool), preloadFacts(state.pool)]);
   const imageDinos = state.pool.filter(d => imageCache[d.wiki]);
   if (imageDinos.length < 4) {
-    alert('Could not load enough dinosaur images. Check your connection!');
-    showScreen('screen-title');
+    showScreen('screen-loading');
+    setLoadingMessage('⚠️ Run "make fetch-data" to load dino images & facts.');
     return;
   }
   state.imageDinos = imageDinos;
+  state.noImages = false;
 
   state.results = Array(state.totalQuestions).fill('pending');
   showScreen('screen-game');
@@ -279,6 +230,19 @@ async function startGame() {
 
 async function endLevel() {
   const justCompleted = state.level;
+  const wasPerfect = state.results.every(r => r === 'correct');
+
+  if (wasPerfect) {
+    state.perfectStreak++;
+    if (state.perfectStreak >= 3) {
+      state.perfectStreak = 0;
+      state.lives++;
+      await awardExtraLife();
+    }
+  } else {
+    state.perfectStreak = 0;
+  }
+
   state.level++;
   state.questionNum = 0;
   state.results = Array(state.totalQuestions).fill('pending');
@@ -474,6 +438,23 @@ function celebratePerfectLevel() {
   });
 }
 
+function awardExtraLife() {
+  return new Promise(resolve => {
+    const livesEl = document.getElementById('hud-lives');
+    // Flash the lives display gold briefly
+    livesEl.classList.add('lives-bonus');
+    livesEl.addEventListener('animationend', () => livesEl.classList.remove('lives-bonus'), { once: true });
+
+    // Floating "+1 🦕" toast on the sidebar
+    const track = document.getElementById('progress-track');
+    const toast = document.createElement('div');
+    toast.className = 'extra-life-toast';
+    toast.textContent = '+1 🦕';
+    track.appendChild(toast);
+    toast.addEventListener('animationend', () => { toast.remove(); resolve(); }, { once: true });
+  });
+}
+
 function endGame() {
   showScreen('screen-gameover');
   document.getElementById('final-score').textContent = state.score;
@@ -518,6 +499,11 @@ function updateHUD() {
   document.getElementById('hud-score').textContent = state.score;
   document.getElementById('hud-streak').textContent = state.streak >= 2 ? `🔥 x${state.streak}` : '';
   document.getElementById('hud-lives').textContent  = '🦕'.repeat(state.lives);
+  document.getElementById('hud-level-num').textContent = state.level;
+
+  // Perfect streak pips — 3 circles, filled up to perfectStreak count
+  const pips = document.querySelectorAll('#hud-perfect-streak .streak-pip');
+  pips.forEach((pip, i) => pip.classList.toggle('lit', i < state.perfectStreak));
 }
 
 async function renderQuestion(q) {
