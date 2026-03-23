@@ -1,0 +1,7 @@
+# Local config (contains secrets — never commit)
+js/config.local.js
+
+# Python
+__pycache__/
+*.py[cod]
+.env
