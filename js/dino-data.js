@@ -198,7 +198,7 @@ const DINO_DATA = {
   },
   "Megaraptor": {
     "img": "https://static01.nyt.com/images/2025/09/30/multimedia/23tb-mega-raptor-01-vfck/23tb-mega-raptor-01-vfck-googleFourByThree.jpg",
-    "short": "Megaraptor is a genus of large theropod dinosaur, the type genus and namesake of the clade Megaraptora and family Megaraptoridae.",
+    "short": "Megaraptor (lit. 'large thief') is a genus of large theropod dinosaur, the type genus and namesake of the clade Megaraptora and family Megaraptoridae.",
     "full": "Its fossils have been discovered in the Patagonian Portezuelo Formation of Argentina, South America, dating to the Turonian and Coniacian ages of the Late Cretaceous, roughly 90–88 million years ago. One species of Megaraptor, M. namunhuaiquii, has thus been named, known from seven partial or fragmentary skeletons, with only two including skull elements."
   },
   "Concavenator": {
@@ -208,13 +208,13 @@ const DINO_DATA = {
   },
   "Styracosaurus": {
     "img": "https://images.dinosaurpictures.org/Styracosaurus/Styracosaurus_2f8a90b9.jpg",
-    "short": "Styracosaurus is an extinct genus of herbivorous dinosaur from the Late Cretaceous of North America.",
-    "full": "It had four to six long parietal spikes extending from its neck frill, a smaller jugal horn on each of its cheeks, and a single horn protruding from its nose, which may have been up to 60 centimeters long and 15 centimeters wide. The function or functions of the horns and frills have been debated for many years."
+    "short": "Styracosaurus is an extinct genus of herbivorous dinosaur from the Late Cretaceous of North America. It had four to six long parietal spikes extending from its neck frill, a smaller jugal horn on each of its cheeks, and a single horn protruding from its nose, which may have been up to 60 centimeters long and 15 centimeters wide. The function or functions of the horns and frills have been debated for many years.",
+    "full": "Styracosaurus was a relatively large dinosaur, reaching lengths of 5–5.5 metres (16–18 ft) and weighing about 1.8–2.7 metric tons (2.0–3.0 short tons). It stood about 1.8 meters (5.9 feet) tall. Styracosaurus possessed four short legs and a bulky body. Its tail was rather short. The skull had a beak and shearing cheek teeth arranged in continuous dental batteries, suggesting that the animal sliced up plants. Like other ceratopsians, this dinosaur may have been a herd animal, travelling in large groups, as suggested by bone beds."
   },
   "Therizinosaurus": {
     "img": "https://cdn.animalmatchup.com/images/animals/animal/therizinosaurus-animal-animalmatchup.com.webp",
     "short": "Therizinosaurus is a genus of very large therizinosaurid dinosaurs that lived during the Late Cretaceous period in what is now Asia.",
-    "full": "It contains a single species, Therizinosaurus cheloniformis, known from the fossiliferous Nemegt Formation. The first remains of Therizinosaurus were found in 1948 by a Mongolian field expedition in the Gobi Desert and later described by Evgeny Maleev in 1954. The genus is only known from a few bones, including gigantic manual unguals, from which it gets its name, and additional findings comprising fore and hindlimb elements that were discovered from the 1960s through the 1980s."
+    "full": "It contains a single species, Therizinosaurus cheloniformis, known from the fossiliferous Nemegt Formation. The first remains of Therizinosaurus were found in 1948 by a Mongolian field expedition in the Gobi Desert and later described by Evgeny Maleev in 1954. The genus is only known from a few bones, including gigantic manual unguals, from which it gets its name, and additional findings comprising fore and hindlimb elements that were discovered from the 1960s through the 1980s. \n\nLike other therizinosaurids, it would have been a slow-moving, long-necked, high browser equipped with a rhamphotheca (horny beak) and a wide torso for food processing. Its forelimbs were particularly robust and had three fingers that bore unguals which, unlike other relatives, were very stiffened, elongated, and only had significant curvatures at the tips."
   },
   "Gorgosaurus": {
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Sib3YL2qI7vuXd9zM-MxLa774uirNrEUMw&s",
