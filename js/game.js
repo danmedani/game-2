@@ -128,9 +128,9 @@ let state = {
 const SCORE_MULT = 1.5;
 
 // Each question gets its mode from this rotating sequence
-// All 5 modes rotate across questions AND levels so every mode appears regularly
+// All 4 modes rotate across questions AND levels so every mode appears regularly
 const ALL_MODES = [
-  'name-match', 'size-battle', 'dino-facts', 'pic-match', 'true-or-false',
+  'name-match', 'size-battle', 'dino-facts', 'pic-match',
 ];
 // Fallback when no images are available (rate-limited / no dino-data.js yet)
 const MODE_SEQUENCE_NO_IMAGES = [
@@ -238,36 +238,6 @@ function buildDinoFactsQuestion() {
 }
 
 
-function buildTrueOrFalseQuestion() {
-  const dino = pickFreshCorrect();
-  state.usedCorrects.add(dino.name);
-
-  // Build a pool of statement generators; pick one at random
-  const generators = [
-    () => {
-      const isTrue = Math.random() < 0.5;
-      const wrongDiets = ['Carnivore', 'Herbivore', 'Omnivore'].filter(d => d !== dino.diet);
-      const diet = isTrue ? dino.diet : wrongDiets[Math.floor(Math.random() * wrongDiets.length)];
-      return { statement: `${dino.name} was a ${diet}.`, answer: isTrue };
-    },
-    () => {
-      const isTrue = Math.random() < 0.5;
-      const periodName = dino.period.replace(/\s*\([^)]*\)/, '').trim();
-      const allPeriods = ['Triassic', 'Jurassic', 'Cretaceous'];
-      const wrongPeriod = allPeriods.find(p => p !== periodName) || 'Jurassic';
-      const stated = isTrue ? periodName : wrongPeriod;
-      return { statement: `${dino.name} lived during the ${stated} period.`, answer: isTrue };
-    },
-    () => {
-      const threshold = Math.round(dino.length * (Math.random() < 0.5 ? 0.7 : 1.4));
-      const over = dino.length >= threshold;
-      return { statement: `${dino.name} was over ${threshold}m long.`, answer: over };
-    },
-  ];
-
-  const { statement, answer } = generators[Math.floor(Math.random() * generators.length)]();
-  return { type: 'true-or-false', dino, statement, answer };
-}
 
 async function nextQuestion() {
   state.answeredThisRound = false;
@@ -283,7 +253,6 @@ async function nextQuestion() {
     case 'pic-match':     q = buildPicMatchQuestion();     break;
     case 'size-battle':   q = buildSizeBattleQuestion();   break;
     case 'dino-facts':    q = buildDinoFactsQuestion();    break;
-    case 'true-or-false': q = buildTrueOrFalseQuestion(); break;
   }
   state.currentQ = q;
   await renderQuestion(q);
@@ -563,8 +532,6 @@ async function handleAnswer(chosen) {
     correct = chosen.name === q.correct.name;
   } else if (q.type === 'size-battle') {
     correct = chosen.name === q.bigger.name;
-  } else if (q.type === 'true-or-false') {
-    correct = (chosen === 'true') === q.answer;
   }
 
   if (correct) {
@@ -771,16 +738,6 @@ async function renderQuestion(q) {
           <button class="option-btn" onclick="handleAnswer(DINOS.find(x=>x.name===this.dataset.name))" data-name="${d.name}">${d.name}</button>
         `).join('')}
       </div>`;
-  } else if (q.type === 'true-or-false') {
-    const imgSrc = imageCache[q.dino.wiki];
-    area.innerHTML = `
-      <p class="question-prompt">True or False?</p>
-      ${imgSrc ? `<div class="dino-image-wrap"><img src="${imgSrc}" alt="${q.dino.name}" class="dino-img" onerror="this.src='img/dino-placeholder.svg'"/></div>` : ''}
-      <div class="fact-box">"${q.statement}"</div>
-      <div class="options grid-2">
-        <button class="option-btn tof-btn tof-true" data-answer="true">✓ True</button>
-        <button class="option-btn tof-btn tof-false" data-answer="false">✗ False</button>
-      </div>`;
   }
 
   // Wire up button clicks properly (replace inline onclick with event listeners)
@@ -895,9 +852,7 @@ function dinoInfoHTML(dino) {
 
 function showAnswerView(correct, pts, q) {
   const area = document.getElementById('question-area');
-  const infoDino = q.type === 'size-battle' ? q.bigger
-    : q.type === 'true-or-false' ? (q.correct || q.dino)
-    : q.correct;
+  const infoDino = q.type === 'size-battle' ? q.bigger : q.correct;
   const correctName = infoDino.name;
 
   const imgSrc = imageCache[infoDino.wiki];
