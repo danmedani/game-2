@@ -128,9 +128,9 @@ let state = {
 const SCORE_MULT = 1.5;
 
 // Each question gets its mode from this rotating sequence
-// All 6 modes rotate across questions AND levels so every mode appears regularly
+// All 5 modes rotate across questions AND levels so every mode appears regularly
 const ALL_MODES = [
-  'name-match', 'size-battle', 'dino-facts', 'pic-match', 'diet-guess', 'true-or-false',
+  'name-match', 'size-battle', 'dino-facts', 'pic-match', 'true-or-false',
 ];
 // Fallback when no images are available (rate-limited / no dino-data.js yet)
 const MODE_SEQUENCE_NO_IMAGES = [
@@ -237,14 +237,6 @@ function buildDinoFactsQuestion() {
   return { type: 'dino-facts', correct, options, fact };
 }
 
-function buildDietGuessQuestion() {
-  const imgPool = state.imageDinos;
-  const correct = pick(imgPool.filter(d => !state.usedCorrects.has(d.name)), 1)[0]
-    || pick(imgPool, 1)[0];
-  state.usedCorrects.add(correct.name);
-  const allDiets = ['Carnivore', 'Herbivore', 'Omnivore'];
-  return { type: 'diet-guess', correct, allDiets };
-}
 
 function buildTrueOrFalseQuestion() {
   const dino = pickFreshCorrect();
@@ -291,7 +283,6 @@ async function nextQuestion() {
     case 'pic-match':     q = buildPicMatchQuestion();     break;
     case 'size-battle':   q = buildSizeBattleQuestion();   break;
     case 'dino-facts':    q = buildDinoFactsQuestion();    break;
-    case 'diet-guess':    q = buildDietGuessQuestion();    break;
     case 'true-or-false': q = buildTrueOrFalseQuestion(); break;
   }
   state.currentQ = q;
@@ -572,8 +563,6 @@ async function handleAnswer(chosen) {
     correct = chosen.name === q.correct.name;
   } else if (q.type === 'size-battle') {
     correct = chosen.name === q.bigger.name;
-  } else if (q.type === 'diet-guess') {
-    correct = chosen === q.correct.diet;
   } else if (q.type === 'true-or-false') {
     correct = (chosen === 'true') === q.answer;
   }
@@ -641,18 +630,31 @@ function celebratePerfectLevel() {
 
 function awardExtraLife() {
   return new Promise(resolve => {
+    const overlay = document.createElement('div');
+    overlay.className = 'extra-life-overlay';
+    overlay.innerHTML = `
+      <div class="el-dinos" aria-hidden="true">
+        <span class="el-dino el-dino-l">🦕</span>
+        <span class="el-dino el-dino-r">🦕</span>
+      </div>
+      <div class="el-streak">🔥 3 Perfect Levels! 🔥</div>
+      <div class="el-main">+1 🦕</div>
+      <div class="el-sub">Extra Life!</div>
+      <div class="el-sparks" aria-hidden="true">
+        ${Array.from({length: 12}, (_, i) => `<span class="el-spark" style="--i:${i}"></span>`).join('')}
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    // Flash the lives display too
     const livesEl = document.getElementById('hud-lives');
-    // Flash the lives display gold briefly
     livesEl.classList.add('lives-bonus');
     livesEl.addEventListener('animationend', () => livesEl.classList.remove('lives-bonus'), { once: true });
 
-    // Floating "+1 🦕" toast on the sidebar
-    const track = document.getElementById('progress-track');
-    const toast = document.createElement('div');
-    toast.className = 'extra-life-toast';
-    toast.textContent = '+1 🦕';
-    track.appendChild(toast);
-    toast.addEventListener('animationend', () => { toast.remove(); resolve(); }, { once: true });
+    setTimeout(() => {
+      overlay.classList.add('el-out');
+      overlay.addEventListener('animationend', () => { overlay.remove(); resolve(); }, { once: true });
+    }, 2400);
   });
 }
 
@@ -766,19 +768,6 @@ async function renderQuestion(q) {
       <div class="options grid-2">
         ${q.options.map(d => `
           <button class="option-btn" onclick="handleAnswer(DINOS.find(x=>x.name===this.dataset.name))" data-name="${d.name}">${d.name}</button>
-        `).join('')}
-      </div>`;
-  } else if (q.type === 'diet-guess') {
-    const imgSrc = imageCache[q.correct.wiki];
-    area.innerHTML = `
-      <p class="question-prompt">What did this dinosaur eat?</p>
-      <div class="dino-image-wrap">
-        <img src="${imgSrc}" alt="${q.correct.name}" class="dino-img" onerror="this.src='img/dino-placeholder.svg'"/>
-      </div>
-      <p class="question-subprompt">${q.correct.name}</p>
-      <div class="options grid-3">
-        ${q.allDiets.map(diet => `
-          <button class="option-btn diet-btn" data-answer="${diet}">${diet}</button>
         `).join('')}
       </div>`;
   } else if (q.type === 'true-or-false') {
@@ -906,7 +895,7 @@ function dinoInfoHTML(dino) {
 function showAnswerView(correct, pts, q) {
   const area = document.getElementById('question-area');
   const infoDino = q.type === 'size-battle' ? q.bigger
-    : q.type === 'diet-guess' || q.type === 'true-or-false' ? (q.correct || q.dino)
+    : q.type === 'true-or-false' ? (q.correct || q.dino)
     : q.correct;
   const correctName = infoDino.name;
 

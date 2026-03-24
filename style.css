@@ -232,7 +232,99 @@ button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
   box-shadow: 0 0 6px rgba(255,215,0,0.55);
 }
 
-/* ── Extra life toast ── */
+/* ── Extra life overlay ── */
+.extra-life-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+  animation: el-in 0.35s cubic-bezier(.2,1.4,.4,1) forwards;
+  pointer-events: none;
+}
+.extra-life-overlay.el-out {
+  animation: el-out 0.4s ease forwards;
+}
+@keyframes el-in {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes el-out {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(1.06); }
+}
+
+.el-streak {
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
+  font-weight: 800;
+  color: #ff9800;
+  letter-spacing: 0.04em;
+  animation: el-pop 0.5s 0.1s cubic-bezier(.2,1.6,.4,1) both;
+}
+.el-main {
+  font-size: clamp(3.5rem, 14vw, 6rem);
+  font-weight: 900;
+  font-family: 'Fredoka One', sans-serif;
+  color: #ffd700;
+  text-shadow: 0 0 30px #ffd70088, 0 4px 0 #b8860b;
+  animation: el-pop 0.5s 0.2s cubic-bezier(.2,1.6,.4,1) both;
+}
+.el-sub {
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.06em;
+  animation: el-pop 0.5s 0.3s cubic-bezier(.2,1.6,.4,1) both;
+}
+@keyframes el-pop {
+  from { opacity: 0; transform: scale(0.5) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Side dinos that slide in */
+.el-dinos { position: absolute; inset: 0; pointer-events: none; }
+.el-dino {
+  position: absolute;
+  top: 50%;
+  font-size: clamp(3rem, 10vw, 5rem);
+  animation: el-dino-in 0.6s 0.15s cubic-bezier(.2,1.4,.4,1) both;
+}
+.el-dino-l { left: 6%; transform: translateY(-50%); }
+.el-dino-r { right: 6%; transform: translateY(-50%) scaleX(-1); animation-delay: 0.25s; }
+@keyframes el-dino-in {
+  from { opacity: 0; transform: translateY(-50%) translateX(-40px); }
+  to   { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+.el-dino-r { animation-name: el-dino-in-r; }
+@keyframes el-dino-in-r {
+  from { opacity: 0; transform: translateY(-50%) scaleX(-1) translateX(-40px); }
+  to   { opacity: 1; transform: translateY(-50%) scaleX(-1) translateX(0); }
+}
+
+/* Spark particles */
+.el-sparks { position: absolute; inset: 0; pointer-events: none; }
+.el-spark {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #ffd700;
+  animation: el-spark-fly 1s calc(var(--i) * 0.08s) ease-out both;
+  --angle: calc(var(--i) * 30deg);
+  --dist: clamp(80px, 20vw, 160px);
+}
+@keyframes el-spark-fly {
+  0%   { opacity: 1; transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0); }
+  60%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(-1 * var(--dist))); }
+}
+
+/* ── Extra life toast (legacy, keep for safety) ── */
 .extra-life-toast {
   position: absolute;
   left: 50%; bottom: 60px;
