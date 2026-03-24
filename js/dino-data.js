@@ -212,7 +212,7 @@ const DINO_DATA = {
     "full": "It had four to six long parietal spikes extending from its neck frill, a smaller jugal horn on each of its cheeks, and a single horn protruding from its nose, which may have been up to 60 centimeters long and 15 centimeters wide. The function or functions of the horns and frills have been debated for many years."
   },
   "Therizinosaurus": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/8/82/Therizinosaurus.png",
+    "img": "https://cdn.animalmatchup.com/images/animals/animal/therizinosaurus-animal-animalmatchup.com.webp",
     "short": "Therizinosaurus is a genus of very large therizinosaurid dinosaurs that lived during the Late Cretaceous period in what is now Asia.",
     "full": "It contains a single species, Therizinosaurus cheloniformis, known from the fossiliferous Nemegt Formation. The first remains of Therizinosaurus were found in 1948 by a Mongolian field expedition in the Gobi Desert and later described by Evgeny Maleev in 1954. The genus is only known from a few bones, including gigantic manual unguals, from which it gets its name, and additional findings comprising fore and hindlimb elements that were discovered from the 1960s through the 1980s."
   },

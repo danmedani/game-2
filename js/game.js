@@ -577,6 +577,7 @@ async function handleAnswer(chosen) {
     state.streak = 0;
     state.lives--;
     state.results[state.questionNum - 1] = 'wrong';
+    saveSession();
     showAnswerView(false, 0, q);
   }
 
