@@ -7,7 +7,7 @@ const DINO_DATA = {
     "full": "The type species Tyrannosaurus rex, often shortened to T. rex or colloquially t-rex, is one of the best represented theropods. It lived throughout what is now western North America, on what was then an island continent known as Laramidia. Tyrannosaurus had a much wider range than other tyrannosaurids. Fossils are found in a variety of geological formations dating to the late Maastrichtian age of the late Cretaceous period, 69 to 66 million years ago, with isolated specimens possibly indicating an earlier origin in the middle Campanian age. It was one of the last known members of the tyrannosaurids and among the last non-avian dinosaurs to exist before the Cretaceous–Paleogene extinction event."
   },
   "Triceratops": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/LA-Triceratops_mount-2.jpg/960px-LA-Triceratops_mount-2.jpg",
+    "img": "https://cdn.mos.cms.futurecdn.net/cQaU66W38BMTX9Fasovdwa.jpg",
     "short": "Triceratops is a genus of chasmosaurine ceratopsian dinosaur that lived during the late Maastrichtian age of the Late Cretaceous period, about 68 to 66 million years ago on the island continent of Laramidia, now forming western North America.",
     "full": "It was one of the last-known non-avian dinosaurs and lived until the Cretaceous–Paleogene extinction event 66 million years ago. The name Triceratops, which means 'three-horned face', is derived from the Ancient Greek words τρί-, meaning \"three\", κέρας, meaning \"horn\", and ὤψ, meaning \"face\"."
   },
@@ -52,7 +52,7 @@ const DINO_DATA = {
     "full": "Othniel Charles Marsh described and named the first-known species, Apatosaurus ajax, in 1877, and a second species, Apatosaurus louisae, was discovered and named by William H. Holland in 1916. Apatosaurus lived about 152 to 151 million years ago (mya), during the late Kimmeridgian to early Tithonian age, and are now known from fossils in the Morrison Formation of modern-day Colorado, Oklahoma, New Mexico, Wyoming, and Utah in the United States. Apatosaurus had an average length of 21–23 m (69–75 ft), and an average mass of 16.4–22.4 t. A few specimens indicate a maximum length of 11–30% greater than average and a mass of approximately 33 t."
   },
   "Allosaurus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/WLA_hmns_Allosaurus_White_Background.jpg/960px-WLA_hmns_Allosaurus_White_Background.jpg",
+    "img": "https://images.dinosaurpictures.org/Allosaurus/Allosaurus_f614bc6d.jpg",
     "short": "Allosaurus is a genus of theropod dinosaur that lived 155 to 145 million years ago during the Late Jurassic period.",
     "full": "The first fossil remains that could definitively be ascribed to this genus were described in 1877 by Othniel C. Marsh. The name \"Allosaurus\" means \"different lizard\", alluding to its lightweight vertebrae, which Marsh believed were unique. The genus has a very complicated taxonomy and includes at least three valid species, the best known of which is A. fragilis. The bulk of Allosaurus remains come from North America's Morrison Formation, with material also known from the Alcobaça, Bombarral, and Lourinhã formations in Portugal. It was known for over half of the 20th century as Antrodemus, but a study of the abundant remains from the Cleveland-Lloyd Dinosaur Quarry returned the name \"Allosaurus\" to prominence. As one of the first well-known theropod dinosaurs, it has long attracted attention outside of paleontological circles."
   },
@@ -82,7 +82,7 @@ const DINO_DATA = {
     "full": "Three skeletons were discovered in northern Arizona in 1940, and the two best preserved were collected in 1942. The most complete specimen became the holotype of a new species in the genus Megalosaurus, named M. wetherilli by Samuel P. Welles in 1954. Welles found a larger skeleton belonging to the same species in 1964. Realizing it bore crests on its skull, he assigned the species to the new genus Dilophosaurus in 1970, as Dilophosaurus wetherilli. The genus name means \"two-crested lizard\", and the species name honors John Wetherill, an explorer and amateur archeologist. Further specimens have since been found, including an infant. Fossil footprints have also been attributed to the animal, including resting traces. Another species, Dilophosaurus sinensis from China, was named in 1993, but was later found to belong to the genus Sinosaurus."
   },
   "Gallimimus": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/1/13/Gallimimus_Steveoc86.jpg",
+    "img": "https://64.media.tumblr.com/0cfeab8ead214b1950ab577c48322bdb/tumblr_inline_ourdp6J4wb1rkapbx_1280.jpg",
     "short": "Gallimimus is a genus of theropod dinosaur that lived in what is now Mongolia during the Late Cretaceous period.",
     "full": "Several fossils in various stages of growth were discovered by Polish-Mongolian expeditions in the Gobi Desert of Mongolia during the 1960s; a large skeleton discovered in this region was made the holotype specimen of the new genus and species Gallimimus bullatus in 1972. The generic name means \"chicken mimic\", referring to the similarities between its neck vertebrae and those of the Galliformes. The specific name is derived from bulla, a golden capsule worn by Roman youth, in reference to a bulbous structure at the base of the skull of Gallimimus. At the time it was named, the fossils of Gallimimus represented the most complete and best preserved ornithomimid material yet discovered, and the genus remains one of the best known members of the group."
   },
@@ -102,7 +102,7 @@ const DINO_DATA = {
     "full": "It contains two known species: Edmontosaurus regalis and Edmontosaurus annectens. Fossils of E. regalis have been found in rocks of western North America that date from the late Campanian age of the Cretaceous period 73 million years ago, while those of E. annectens were found in the same geographic region from rocks dated to the end of the Maastrichtian age, 66 million years ago. Edmontosaurus was one of the last non-avian dinosaurs ever to exist, and lived alongside dinosaurs like Triceratops, Tyrannosaurus, Ankylosaurus, and Pachycephalosaurus shortly before the Cretaceous–Paleogene extinction event."
   },
   "Deinonychus": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/0/0e/Deinonychus.jpg",
+    "img": "https://sites.create-cdn.net/siteimages/28/7/7/287788/21/2/4/21245236/1586x725.png?1729706416",
     "short": "Deinonychus is a genus of dromaeosaurid theropod dinosaur with one described species, Deinonychus antirrhopus.",
     "full": "This species, which could grow up to 3.4 meters (11 ft) long, lived during the Early and Late Cretaceous Period, about 115–93.9 million years ago. Fossils have been recovered from the U.S. states of Montana, Utah, Wyoming, and Oklahoma, in rocks of the Cloverly Formation and Antlers Formation, though teeth that may belong to Deinonychus have been found much farther east in Maryland."
   },
@@ -162,52 +162,52 @@ const DINO_DATA = {
     "full": "The only known species is S. tenerensis, originally described in 1998 by paleontologist Paul Sereno and colleagues from several fossils discovered one year earlier in the Elrhaz Formation. Although these fossils come from multiple specimens, they represent one of the most anatomically well-documented spinosaurids. The animal's generic name, which means \"crocodile mimic\", alludes to its elongated skull and piscivorous adaptations, while the specific name refers to the Ténéré Desert, where the fossils were discovered."
   },
   "Kentrosaurus": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/f/f9/Kentrosaurus.jpg",
+    "img": "https://www.dododex.com/media/creature/kentrosaurus.png",
     "short": "Kentrosaurus is a genus of stegosaurid dinosaur from the Late Jurassic in Lindi Region of Tanzania.",
     "full": "The type species is K. aethiopicus, named and described by German palaeontologist Edwin Hennig in 1915. Often thought to be a \"primitive\" member of the Stegosauria, several recent cladistic analyses find it as more derived than many other stegosaurs, and a close relative of Stegosaurus from the North American Morrison Formation within the Stegosauridae."
   },
   "Protoceratops": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/4/43/9614dc30d26362ca2beac99e53084797.jpg",
+    "img": "https://www.thoughtco.com/thmb/mXtDaFm_XMaeiLn6oyHN5dR88jo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-627628998-5c5c6b7cc9e77c00010a478a.jpg",
     "short": "Protoceratops is a genus of small protoceratopsid dinosaurs that lived in Asia during the Late Cretaceous, around 75 to 71 million years ago.",
     "full": "The genus Protoceratops includes two species: P. andrewsi and the larger P. hellenikorhinus. The former was described in 1923 with fossils from the Mongolian Djadokhta Formation, and the latter in 2001 with fossils from the Chinese Bayan Mandahu Formation. Protoceratops was initially believed to be an ancestor of ankylosaurians and larger ceratopsians, such as Triceratops and relatives, until the discoveries of other protoceratopsids. Populations of P. andrewsi may have evolved into Bagaceratops rozhdestvenskyi through anagenesis."
   },
   "Camarasaurus": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/5/5c/Ei71cIfXsAELqWt.jpg",
+    "img": "https://www.thoughtco.com/thmb/F--X4_GY4MasL70ptGo0KSHf0cs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/camarasaurusDB-56a253b15f9b58b7d0c916b6.jpg",
     "short": "Camarasaurus is a genus of sauropod dinosaur that lived during the Late Jurassic in what is now the United States.",
     "full": "Its fossils are primarily known from the Morrison Formation dating to the Kimmeridgian and Tithonian ages of the Jurassic, between 155 and 145 million years ago (mya). It was named by Edward Drinker Cope in 1877; it definitively contains three species, C. supremus, the type species, C. grandis, and C. lentus, while some researchers consider C. lewisi to be in its own genus, Cathetosaurus. The generic name means \"chambered lizard\", referring to the hollow chambers, known as pleurocoels, in its cervical vertebrae. Hundreds of specimens have been excavated to date, including some nearly complete skeletons. It is among the best understood dinosaurs, with detailed studies of its anatomy, paleobiology, paleoecology, and more."
   },
   "Camptosaurus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Camptosaurus_dispar_skeleton.jpg/960px-Camptosaurus_dispar_skeleton.jpg",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Camptosaurus.jpg/250px-Camptosaurus.jpg",
     "short": "Camptosaurus is an extinct genus of plant-eating, beaked ornithischian dinosaurs of the Late Jurassic period of western North America and possibly also Europe.",
     "full": "The name means 'flexible lizard'."
   },
   "Ouranosaurus": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/e/ed/Ouranosaurus.jpg",
+    "img": "https://images.dinosaurpictures.org/Ouranosaurus/Ouranosaurus_14b47f51.jpg",
     "short": "Ouranosaurus is a genus of herbivorous basal hadrosauriform dinosaur that lived during the Aptian stage of the Early Cretaceous of modern-day Niger and Cameroon.",
     "full": "Ouranosaurus measured about 7–8.3 metres (23–27 ft) long and weighed 2.2 metric tons. Two rather complete fossils were found in the Elrhaz Formation, Gadoufaoua deposits, Agadez, Niger, in 1965 and 1970, with a third indeterminate specimen known from the Koum Formation of Cameroon. The animal was named in 1976 by French paleontologist Philippe Taquet, the type species being Ouranosaurus nigeriensis. The generic name is a combination of ourane, a word with multiple meanings, and sauros, the Greek word for lizard. The specific epithet nigeriensis alludes to Niger, its country of discovery. As such, Ouranosaurus nigeriensis could be interpreted as \"brave lizard originating from Niger\"."
   },
   "Psittacosaurus": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/7/78/Psittacosaurus_sp_smf_r_4970_by_olorotitan_dan6b7a-fullview.jpg",
+    "img": "https://image-service.zaonce.net/eyJidWNrZXQiOiJmcm9udGllci1jbXMiLCJrZXkiOiIyMDI1LTA4L2p3ZTMtZGlub3NhdXJzaG93Y2FzZS10aHVtYm5haWwtcHNpdHRhY29zYXVydXNfMTkyMHgxMDgwLWNsZWFuLmpwZyIsImVkaXRzIjp7IndlYnAiOnsicXVhbGl0eSI6ODV9LCJ0b0Zvcm1hdCI6IndlYnAiLCJyZXNpemUiOnsid2lkdGgiOjE5MjAsImZpdCI6ImNvbnRhaW4ifX19",
     "short": "Psittacosaurus is a genus of extinct ceratopsian dinosaur from the Early Cretaceous of what is now Asia, existing between 125 and 105 million years ago.",
     "full": "It is notable for being the most species-rich non-avian dinosaur genus. Up to 13 species are known, from across China, Mongolia, Russia, and Thailand. The species of Psittacosaurus were obligate bipeds at adulthood, with a high skull and a robust beak. One individual was found preserved with long filaments on the tail, similar to those of Tianyulong. Psittacosaurus probably had complex behaviours, based on the proportions and relative size of the brain. It may have been active for short periods of time during the day and night, and had well-developed senses of smell and vision."
   },
   "Saurolophus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Saurolophus_mount.jpg/960px-Saurolophus_mount.jpg",
+    "img": "https://64.media.tumblr.com/3d4ebc4af87cba36648aba6bc11f2165/tumblr_inline_ogkdy6ckH31rx4yme_1280.png",
     "short": "Saurolophus is a genus of large hadrosaurid dinosaur that lived during the Late Cretaceous period of North America and Asia, in what is now the Horseshoe Canyon and Nemegt formations respectively.",
     "full": "It is one of the few dinosaur genera known from multiple continents. The type species, S. osborni, was described by Barnum Brown in 1912 from Canadian fossils. A second valid species, S. angustirostris, is represented by numerous specimens from Mongolia, and was described by Anatoly Konstantinovich Rozhdestvensky. Saurolophus is distinguished by a spike-like crest which projects up and back from the skull. It was a herbivorous dinosaur which could move either bipedally or quadrupedally."
   },
   "Megaraptor": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Megaraptor_mount.jpg/960px-Megaraptor_mount.jpg",
+    "img": "https://static01.nyt.com/images/2025/09/30/multimedia/23tb-mega-raptor-01-vfck/23tb-mega-raptor-01-vfck-googleFourByThree.jpg",
     "short": "Megaraptor is a genus of large theropod dinosaur, the type genus and namesake of the clade Megaraptora and family Megaraptoridae.",
     "full": "Its fossils have been discovered in the Patagonian Portezuelo Formation of Argentina, South America, dating to the Turonian and Coniacian ages of the Late Cretaceous, roughly 90–88 million years ago. One species of Megaraptor, M. namunhuaiquii, has thus been named, known from seven partial or fragmentary skeletons, with only two including skull elements."
   },
   "Concavenator": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/3/31/Concavenator.jpg",
+    "img": "https://image-service.zaonce.net/eyJidWNrZXQiOiJmcm9udGllci1jbXMiLCJrZXkiOiIyMDI1LTA1L2p3ZS1kZWx1eGUtc2NyZWVuc2hvdF9kaW5vc2F1ci1mYW1pbGllcy1jb25jYXZlbmF0b3ItbWlkXzE5MjB4MTA4MC13bS5qcGciLCJlZGl0cyI6eyJ3ZWJwIjp7InF1YWxpdHkiOjg1fSwidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoxOTIwLCJmaXQiOiJjb250YWluIn19fQ==",
     "short": "Concavenator is a genus of carcharodontosaurian dinosaur that lived in Spain during the Early Cretaceous epoch, about 125 million years ago.",
     "full": "The genus contains a single species, Concavenator corcovatus, named and described in 2010 from a nearly complete skeleton collected from the Las Hoyas fossil site of the La Huérguina Formation."
   },
   "Styracosaurus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/StyracosaurCMN2.jpg/960px-StyracosaurCMN2.jpg",
+    "img": "https://images.dinosaurpictures.org/Styracosaurus/Styracosaurus_2f8a90b9.jpg",
     "short": "Styracosaurus is an extinct genus of herbivorous dinosaur from the Late Cretaceous of North America.",
     "full": "It had four to six long parietal spikes extending from its neck frill, a smaller jugal horn on each of its cheeks, and a single horn protruding from its nose, which may have been up to 60 centimeters long and 15 centimeters wide. The function or functions of the horns and frills have been debated for many years."
   },
@@ -217,67 +217,67 @@ const DINO_DATA = {
     "full": "It contains a single species, Therizinosaurus cheloniformis, known from the fossiliferous Nemegt Formation. The first remains of Therizinosaurus were found in 1948 by a Mongolian field expedition in the Gobi Desert and later described by Evgeny Maleev in 1954. The genus is only known from a few bones, including gigantic manual unguals, from which it gets its name, and additional findings comprising fore and hindlimb elements that were discovered from the 1960s through the 1980s."
   },
   "Gorgosaurus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Drumheller_150.jpg/960px-Drumheller_150.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Sib3YL2qI7vuXd9zM-MxLa774uirNrEUMw&s",
     "short": "Gorgosaurus is a genus of tyrannosaurid theropod dinosaur that lived in western North America during the Late Cretaceous Period (Campanian), between about 76.5 and 75 million years ago.",
     "full": "Fossil remains have been found in the Canadian province of Alberta and the U.S. state of Montana. Paleontologists recognize only the type species, G. libratus, although other species have been erroneously referred to the genus."
   },
   "Amargasaurus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Amargasaurus_in_Prague_National_Museum.jpg/960px-Amargasaurus_in_Prague_National_Museum.jpg",
+    "img": "https://www.thoughtco.com/thmb/d9v3R-SlZZZ8VEwUM5q3cAqdueI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/amargasaurusNT-58b5a0d95f9b5860468bac07.jpg",
     "short": "Amargasaurus is a genus of sauropod dinosaur from the Early Cretaceous epoch of what is now Argentina.",
     "full": "The only known skeleton was discovered in 1984 and is virtually complete, including a fragmentary skull, making Amargasaurus one of the best-known sauropods of its epoch. Amargasaurus was first described in 1991 and contains a single known species, Amargasaurus cazaui. It was a large animal, but small for a sauropod, reaching 9 to 13 meters in length. Most distinctively, it sported two parallel rows of tall spines down its neck and back, taller than in any other known sauropod. In life, these spines could have stuck out of the body as solitary structures that supported a keratinous sheath. An alternate hypothesis, now more favored, postulates that they could have formed a scaffold supporting a skin sail. They might have been used for display, combat, or defense."
   },
   "Euoplocephalus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Euoplocephalus_TMP_1991.127.1.tif/lossy-page1-960px-Euoplocephalus_TMP_1991.127.1.tif.jpg",
+    "img": "https://images.squarespace-cdn.com/content/v1/647c3f974c6910145932e1dc/d5d928d5-ba65-49d8-91d5-5b5fed744dcb/Euoplocephalus.jpg",
     "short": "Euoplocephalus is a genus of large herbivorous ankylosaurid dinosaurs, living during the Late Cretaceous of Canada.",
     "full": "It has only one named species, Euoplocephalus tutus."
   },
   "Pachyrhinosaurus": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/0/06/Pachyrhinosaurus.jpg",
+    "img": "https://images.dinosaurpictures.org/PachyrhinosaurusPromo_7616.jpg",
     "short": "Pachyrhinosaurus is a genus of centrosaurine ceratopsid dinosaur from the Late Cretaceous period of North America.",
     "full": "The first examples were discovered by Charles M. Sternberg in Alberta, Canada, in 1946, and named in 1950. Over a dozen partial skulls and a large assortment of other fossils from various species have been found in Alberta and Alaska. A great number were not available for study until the 1980s, resulting in a relatively recent increase of interest in Pachyrhinosaurus."
   },
   "Lambeosaurus": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/0/0b/Lambeosaurus.png",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnOc09LamuMtkk0W3qpNhYJgyyHOZuKpZq5g&s",
     "short": "Lambeosaurus is a genus of hadrosaurid dinosaur that lived during the Late Cretaceous period of western North America.",
     "full": "The first skull of Lambeosaurus found was used by palaeontologist Lawrence M. Lambe to justify the creation of the new genus Stephanosaurus, although it was not part of the latter's original material. Its incomplete nature led William A. Parks to name Lambeosaurus lambei for this skull in 1923 to honour Lambe. Multiple species of Lambeosaurus have been named since, including L. clavinitialis and L. magnicristatus in 1935, and L. laticaudus in 1981 which was later moved to its own genus Magnapaulia. It has also been identified that some species earlier identified as belonging to Tetragonosaurus and Corythosaurus are now considered juveniles of Lambeosaurus. It is the eponymous member of the subfamily Lambeosaurinae and tribe Lambeosaurini. Lambeosaurins, which also includes Corythosaurus and Hypacrosaurus from western North America, are understood to be some of the most specialized ornithopods."
   },
   "Albertosaurus": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/f/f8/Albertosaurus3.jpg",
+    "img": "https://preview.redd.it/what-is-your-opinion-on-jurassic-world-evolutions-v0-8ahi925fgf791.jpg?width=640&crop=smart&auto=webp&s=ea512391ef38b6948772bed49903ba0706ef4c77",
     "short": "Albertosaurus is a genus of large tyrannosaurid theropod dinosaur that lived in northwestern North America during the early to middle Maastrichtian age of the Late Cretaceous period, about 71 million years ago.",
     "full": "The type species, A. sarcophagus, was apparently restricted in range to the modern-day Canadian province of Alberta, after which the genus is named, although an indeterminate species has been discovered in the Corral de Enmedio and Packard Formations of Mexico. Scientists disagree on the content of the genus and some recognize Gorgosaurus libratus as a second species."
   },
   "Pentaceratops": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/e/ed/Pentaceratops.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsOwf812TW1otjd3JPqixXocSHXpNU4ruItA&s",
     "short": "Pentaceratops is a genus of herbivorous ceratopsid dinosaur from the late Cretaceous Period of what is now North America.",
     "full": "Fossils of this animal were first discovered in 1921, but the genus was named in 1923 when its type species, Pentaceratops sternbergii, was described. Pentaceratops lived around 76–73 million years ago, its remains having been mostly found in the Kirtland Formation in the San Juan Basin in New Mexico. Another species, P. aquilonius, was named by Nick W. Longrich in 2014, but it is debated if it belongs to that genus or a separate taxon. About a dozen skulls and skeletons have been uncovered, so anatomical understanding of Pentaceratops is fairly complete. One exceptionally large specimen later became its own genus, Titanoceratops, due to its more derived morphology, similarities to Triceratops, and lack of unique characteristics shared with Pentaceratops."
   },
   "Anchiceratops": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Anchiceratops_UMMNH.jpg/960px-Anchiceratops_UMMNH.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT85Bu_3BIFqlm2q16vzoWk__SkK1vC38FLRw&s",
     "short": "Anchiceratops is an extinct genus of chasmosaurine ceratopsid dinosaur that lived approximately 73 to 68 million years ago during the latter part of the Cretaceous Period in what is now Alberta, Canada.",
     "full": "Anchiceratops was a medium-sized, heavily built, ground-dwelling, quadrupedal herbivore that could grow up to an estimated 4.3 metres (14 ft) long. Its skull featured two long brow horns and a short horn on the nose. The skull frill was elongated and rectangular, its edges adorned by coarse triangular projections. About a dozen skulls of the genus have been found."
   },
   "Irritator": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Irritator_challengeri_mount_01.jpg/960px-Irritator_challengeri_mount_01.jpg",
+    "img": "https://www.nhm.ac.uk/discover/dino-directory/_next/image?url=https%3A%2F%2Fwww.nhm.ac.uk%2Fresources%2Fnature-online%2Flife%2Fdinosaurs%2Fdinosaur-directory%2Fimages%2Freconstruction%2Fsmall%2FIrritator.jpg&w=828&q=75",
     "short": "Irritator is a genus of spinosaurid dinosaur that lived in what is now Brazil during the Albian stage of the Early Cretaceous Period, about 113 to 110 million years ago.",
     "full": "It is known from a nearly complete skull found in the Romualdo Formation of the Araripe Basin. Fossil dealers had acquired this skull and sold it to the State Museum of Natural History Stuttgart. In 1996, the specimen became the holotype of the type species Irritator challengeri. The genus name comes from the word \"irritation\", reflecting the feelings of paleontologists who found the skull had been heavily damaged and altered by the collectors. The species name is a homage to the fictional character Professor Challenger from Arthur Conan Doyle's novels."
   },
   "Scelidosaurus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Scelidosaurus_harrisonii_%281%29.jpg/960px-Scelidosaurus_harrisonii_%281%29.jpg",
+    "img": "https://images.dinosaurpictures.org/Scelidosaurus/Scelidosaurus_1d4298cb.jpg",
     "short": "Scelidosaurus is a genus of herbivorous armoured ornithischian dinosaur from the Jurassic of England.",
     "full": ""
   },
   "Tsintaosaurus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Tsintaosaurus_nasal.png/960px-Tsintaosaurus_nasal.png",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMeySFRsRXyMhdUB3efGmhYuinz12DOv0e6A&s",
     "short": "Tsintaosaurus is a genus of hadrosaurid dinosaur from the Late Cretaceous of China.",
     "full": "It was about 8.3 metres (27 ft) long and weighed 2.5 tonnes. The type species is Tsintaosaurus spinorhinus, first described by Chinese paleontologist C. C. Young in 1958. As a hadrosaur, Tsintaosaurus had the characteristic 'duck bill' snout and a battery of powerful teeth which it used to chew vegetation. It usually walked on all fours, but could rear up on its hind legs to scout for predators and flee when it spotted one. Like other hadrosaurs, Tsintaosaurus probably lived and traveled in herds."
   },
   "Argentinosaurus": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/a/ab/Argentinosaurus_huinculensis_by_sphenaphinae_ddjivqv-fullview.jpg",
+    "img": "https://preview.redd.it/is-argentinosaurus-still-considered-to-be-the-largest-v0-q787128tu5fb1.png?auto=webp&s=88e9b13281b4c4c58716da752dda035fbc53ea50",
     "short": "Argentinosaurus is a genus of giant sauropod dinosaur that lived during the Late Cretaceous period in what is now Argentina.",
     "full": "Although it is only known from fragmentary remains, Argentinosaurus is one of the largest known land animals of all time, perhaps the largest, measuring 30–35 m (98–115 ft) long and weighing 65–80 t. It was a member of Titanosauria, the dominant group of sauropods during the Cretaceous."
   },
   "Quetzalcoatlus": {
-    "img": "https://static.wikia.nocookie.net/prehistoric-wiki/images/f/fa/Quetzalcoatlus-northropi_julio-lacerda.jpg",
+    "img": "https://images.dinosaurpictures.org/Quetzalcoatlus/Quetzalcoatlus_62ead9db.jpg",
     "short": "Quetzalcoatlus is a genus of azhdarchid pterosaur that lived during the Maastrichtian age of the Late Cretaceous in North America.",
     "full": "The type specimen, recovered in 1971 from the Javelina Formation of Texas, United States, consists of several wing fragments and was described as Quetzalcoatlus northropi in 1975 by Douglas Lawson. The generic name refers to the Aztec serpent god of the sky, Quetzalcōātl, while the specific name honors Jack Northrop, designer of a tailless fixed-wing aircraft. The remains of a second species were found between 1972 and 1974, also by Lawson, around 40 km (25 mi) from the Q. northropi locality. In 2021, these remains were assigned to the name Quetzalcoatlus lawsoni by Brian Andres and (posthumously) Wann Langston Jr., as part of a series of publications on the genus."
   },
