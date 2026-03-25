@@ -217,10 +217,18 @@ function buildSizeBattleQuestion() {
   const unused  = state.pool.filter(d => !state.usedCorrects.has(d.name));
   const inRange = unused.filter(d => d.level <= maxDinoLevel());
   const fresh   = inRange.length >= 2 ? inRange : unused;
-  const [a, b]  = pick(fresh.length >= 2 ? fresh : state.pool, 2);
+  const sourcePool = fresh.length >= 2 ? fresh : state.pool;
+
+  // Keep picking pairs until we get two with different lengths
+  let a, b, attempts = 0;
+  do {
+    [a, b] = pick(sourcePool, 2);
+    attempts++;
+  } while (a.length === b.length && attempts < 20);
+
   state.usedCorrects.add(a.name);
   state.usedCorrects.add(b.name);
-  const bigger = a.length >= b.length ? a : b;
+  const bigger = a.length > b.length ? a : b;
   return { type: 'size-battle', a, b, bigger };
 }
 

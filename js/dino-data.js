@@ -3,7 +3,7 @@
 const DINO_DATA = {
   "Tyrannosaurus": {
     "img": "https://www.harrisburgu.edu/wp-content/uploads/Tyrannosaurus-mcraeensis.jpg",
-    "short": "Tyrannosaurus is a genus of large theropod dinosaur. It was among the last non-avian dinosaurs to exist before the Cretaceous–Paleogene extinction event.",
+    "short": "Tyrannosaurus is a genus of large theropod dinosaur. It was among the last non-avian dinosaurs to exist before the Cretaceous–Paleogene extinction event. It is the most famous dino.",
     "full": "The type species Tyrannosaurus rex, often shortened to T. rex or colloquially t-rex, is one of the best represented theropods. It lived throughout what is now western North America, on what was then an island continent known as Laramidia. Tyrannosaurus had a much wider range than other tyrannosaurids. Fossils are found in a variety of geological formations dating to the late Maastrichtian age of the late Cretaceous period, 69 to 66 million years ago, with isolated specimens possibly indicating an earlier origin in the middle Campanian age. It was one of the last known members of the tyrannosaurids and among the last non-avian dinosaurs to exist before the Cretaceous–Paleogene extinction event."
   },
   "Triceratops": {
@@ -778,7 +778,7 @@ const DINO_DATA = {
   },
   "Stygimoloch": {
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9GCnN7epsyhQO1wyPEbLjeMuaV9SO6YsYpg&s",
-    "short": "Pachycephalosaurus is a genus of pachycephalosaurid ornithischian dinosaur.",
+    "short": "Stygimoloch is actually just a juvenile Pachycephalosaurus, probably.",
     "full": "The type species, P. wyomingensis, is the only known definitive species. The possibly synonymous taxon, Stygimoloch, might represent a distinct genus or a second species, P. spinifer. It lived during the Maastrichtian age of the Late Cretaceous period in what is now western North America. Remains have been excavated in Montana, South Dakota, Wyoming, and Alberta. Mainly known from a single skull and a few extremely thick skull roofs, Pachycephalosaurus is estimated to have reached 4.5 m (15 ft) long and weighed 370–450 kg (820–990 lb). More complete fossils would come to be found in the following years."
   },
   "Homalocephale": {
