@@ -839,11 +839,11 @@ const DINO_DATA = {
   "Tarchia": {
     "img": "https://preview.redd.it/with-tarchia-already-being-confirmed-what-animals-do-you-v0-tyknsjbwibla1.jpg?auto=webp&s=7d01e50a9b254e36cd8888554b842e0bb1e54d90",
     "short": "Tarchia is a genus of herbivorous ankylosaurid dinosaur from the late Cretaceous of Mongolia.",
-    "full": ""
+    "full": "As an ankylosaurid, Tarchia would have had a broad, low-slung body, positioned on strong short legs. The body would have been protected by skin ossifications, named osteoderms. It probably had a bony tail club, for active defence against predators."
   },
   "Guanlong": {
     "img": "https://i.etsystatic.com/31368146/r/il/395c57/3561195273/il_1080xN.3561195273_d9a0.jpg",
-    "short": "Guanlong is an extinct genus of proceratosaurid tyrannosauroid dinosaur from the Late Jurassic (Oxfordian) Shishugou Formation of China.",
+    "short": "Guanlong (lit. 'crown dragon') is an extinct genus of proceratosaurid tyrannosauroid dinosaur from the Late Jurassic (Oxfordian) Shishugou Formation of China.",
     "full": "It was first described in 2006 by Xu Xing and colleagues, who found it to represent a new taxon related to Tyrannosaurus. Two individuals are currently known, consisting of a partially complete adult and a nearly complete juvenile."
   }
 };
