@@ -58,18 +58,21 @@ function jiggleKbCursor() {
   cursor.addEventListener('animationend', () => cursor.classList.remove('keyboard-jiggle'), { once: true });
 }
 
-// All question layouts use 2 columns
-const GRID_COLS = 2;
+// size-battle uses 1 column (vertical stack); all other layouts use 2 columns
+function getGridCols() {
+  return (state.currentQ && state.currentQ.type === 'size-battle') ? 1 : 2;
+}
 
 function gridMove(index, direction, total) {
-  const col = index % GRID_COLS;
-  const row = Math.floor(index / GRID_COLS);
-  const maxRow = Math.floor((total - 1) / GRID_COLS);
+  const cols = getGridCols();
+  const col = index % cols;
+  const row = Math.floor(index / cols);
+  const maxRow = Math.floor((total - 1) / cols);
 
-  if (direction === 'right' && col < GRID_COLS - 1 && index + 1 < total) return index + 1;
-  if (direction === 'left'  && col > 0)                                   return index - 1;
-  if (direction === 'down'  && row < maxRow && index + GRID_COLS < total) return index + GRID_COLS;
-  if (direction === 'up'    && row > 0)                                   return index - GRID_COLS;
+  if (direction === 'right' && col < cols - 1 && index + 1 < total) return index + 1;
+  if (direction === 'left'  && col > 0)                              return index - 1;
+  if (direction === 'down'  && row < maxRow && index + cols < total) return index + cols;
+  if (direction === 'up'    && row > 0)                              return index - cols;
   return null;
 }
 
@@ -761,6 +764,13 @@ async function renderQuestion(q) {
   });
 
   resetKeyboardFocus();
+
+  const hint = document.querySelector('.kb-hint');
+  if (hint) {
+    hint.innerHTML = q.type === 'size-battle'
+      ? '↑ ↓ navigate &nbsp;·&nbsp; Space to select'
+      : '← → navigate &nbsp;·&nbsp; Space to select';
+  }
 }
 
 function getSizeLevel(m) {
@@ -1148,8 +1158,9 @@ document.addEventListener('keydown', e => {
   if (dir) {
     e.preventDefault();
     if (focusedOptionIndex === -1) {
-      // Any arrow enters the grid at index 0; left/up jiggle the cursor
-      if (dir === 'left' || dir === 'up') {
+      // Entry: "back" directions jiggle; "forward" directions enter at index 0
+      const backDir = getGridCols() === 1 ? (dir === 'up') : (dir === 'left' || dir === 'up');
+      if (backDir) {
         jiggleKbCursor();
       } else {
         focusedOptionIndex = 0;
