@@ -332,7 +332,7 @@ const DINO_DATA = {
     "full": "It was a bipedal herbivore or omnivore and was one of the most basal heterodontosaurids. It was approximately 1.2 metres (3.9 ft) long and weighed less than 45 kilograms (99 lb)."
   },
   "Yinlong": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Guanlong_and_Yinlong.jpg/250px-Guanlong_and_Yinlong.jpg",
+    "img": "https://dinosauriacreatures.com/cdn/shop/files/Yinlongdownsi_1.jpg?v=1697384307",
     "short": "Yinlong is a genus of basal ceratopsian dinosaur from the Late Jurassic Period of China.",
     "full": "By far the earliest known ceratopsian, it was a small, primarily bipedal herbivore."
   },
@@ -689,7 +689,7 @@ const DINO_DATA = {
   "Melanorosaurus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Melanorosaurus_readi_steveoc.jpg/960px-Melanorosaurus_readi_steveoc.jpg",
     "short": "Melanorosaurus is a genus of basal sauropodomorph dinosaur that lived during the Late Triassic period.",
-    "full": "An omnivore from South Africa, it had a large body and sturdy limbs, suggesting it moved quadrupedally. Its limb bones were massive and heavy like the limb bones of true sauropods."
+    "full": "An herbivore from South Africa, it had a large body and sturdy limbs, suggesting it moved quadrupedally. Its limb bones were massive and heavy like the limb bones of true sauropods."
   },
   "Masiakasaurus": {
     "img": "https://i.redd.it/ptwk2gkv0fb51.jpg",
@@ -782,7 +782,7 @@ const DINO_DATA = {
     "full": "The type species, P. wyomingensis, is the only known definitive species. The possibly synonymous taxon, Stygimoloch, might represent a distinct genus or a second species, P. spinifer. It lived during the Maastrichtian age of the Late Cretaceous period in what is now western North America. Remains have been excavated in Montana, South Dakota, Wyoming, and Alberta. Mainly known from a single skull and a few extremely thick skull roofs, Pachycephalosaurus is estimated to have reached 4.5 m (15 ft) long and weighed 370–450 kg (820–990 lb). More complete fossils would come to be found in the following years."
   },
   "Homalocephale": {
-    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb55Pt07cUZi9zL4IkbuVlEoPjdN_edoNUlg&s",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/0/00/Homalocephale_body.jpg",
     "short": "Homalocephale is a genus of pachycephalosaurid dinosaur that lived during the Late Cretaceous period of what is now the Nemegt Formation, Mongolia.",
     "full": "The genus was described in 1974 by Halszka Osmólska and Teresa Maryańska, and consists of a single species, H. calathocercos. Though Homalocephale has been regarded as a synonym of Prenocephale, juvenile specimens of the latter indicate that they were distinct. Homalocephale was 1.8 m (5.9 ft) long and possibly an omnivore."
   },
