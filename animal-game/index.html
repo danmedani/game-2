@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CenozoiQuest 🦣</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════ TITLE -->
+<div id="screen-title" class="screen">
+  <div class="title-dinos" aria-hidden="true">
+    <span class="title-dino">🦣</span>
+    <span class="title-dino">🦁</span>
+    <span class="title-dino">🦣</span>
+  </div>
+  <h1 class="game-title">CenozoiQuest</h1>
+  <p class="game-subtitle">Animals through the ages</p>
+  <button class="big-btn" id="btn-play">▶ PLAY</button>
+  <p class="play-hint">or press Space</p>
+  <button class="big-btn" id="btn-continue" style="display:none">▶ Continue</button>
+  <button class="big-btn secondary" id="btn-scores-title">🏆 High Scores</button>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════ LOADING -->
+<div id="screen-loading" class="screen">
+  <div class="loading-spinner">🦣</div>
+  <p id="loading-msg">Loading animals...</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ MAP -->
+<div id="screen-map" class="screen">
+  <div id="world-announce" class="world-announce" aria-hidden="true">
+    <div class="world-announce-num" id="world-announce-num">World 2</div>
+    <div class="world-announce-name" id="world-announce-name">Eocene Jungles</div>
+  </div>
+  <div class="map-header">
+    <div id="map-world-label" class="map-world-label">World 1</div>
+    <div class="map-meta">
+      <span id="map-score-display">Score: 0</span>
+      <span id="map-lives-display">🦣🦣🦣</span>
+    </div>
+  </div>
+  <div class="map-canvas" id="map-canvas">
+    <div class="map-dino" id="map-dino">🦣</div>
+  </div>
+  <div id="map-level-label" class="map-level-label">Level 2</div>
+  <button class="big-btn" id="btn-map-continue">Continue ▶</button>
+  <p class="play-hint">or press Space</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ GAME -->
+<div id="screen-game" class="screen">
+  <div class="game-body">
+    <div class="question-col">
+      <div id="question-area"></div>
+      <div class="kb-hint">← → navigate &nbsp;·&nbsp; Space to select</div>
+    </div>
+    <div id="progress-track">
+      <div class="track-level">
+        <div id="hud-level-num" class="hud-level-num">1</div>
+        <div class="track-level-label">Level</div>
+      </div>
+      <div id="hud-world-label" class="hud-world-label"></div>
+      <div class="track-score">
+        <div class="track-score-label">Score</div>
+        <div id="hud-score">0</div>
+        <div id="hud-streak"></div>
+      </div>
+      <div id="progress-boxes"></div>
+      <div id="hud-perfect-streak" class="perfect-streak">
+        <div class="streak-pip" title="Perfect level 1"></div>
+        <div class="streak-pip" title="Perfect level 2"></div>
+        <div class="streak-pip" title="Perfect level 3 = +1 life!"></div>
+      </div>
+      <div id="hud-lives" class="hud-lives"></div>
+      <button class="hud-quit" id="btn-quit-game">✕ Quit</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ GAME OVER -->
+<div id="screen-gameover" class="screen">
+  <div style="font-size:3rem">🦣</div>
+  <div class="gameover-label">Game Over!</div>
+  <div class="gameover-score" id="final-score">0</div>
+  <div class="gameover-meta">
+    <span id="final-mode"></span>
+  </div>
+  <div class="highscore-msg" id="highscore-msg"></div>
+
+  <div class="initials-wrap">
+    <label for="initials-input">Enter Your Initials</label>
+    <input type="text" id="initials-input" maxlength="3" placeholder="AAA" autocomplete="off" autocorrect="off" spellcheck="false"/>
+    <div id="initials-error"></div>
+    <button class="big-btn" id="btn-submit-score">Save Score 🏆</button>
+  </div>
+
+  <button class="big-btn secondary" id="btn-main-menu">🏠 Home</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ HIGH SCORES -->
+<div id="screen-highscores" class="screen">
+  <div style="font-size:2.5rem">🏆</div>
+  <h2 class="screen-title">High Scores</h2>
+  <div id="hs-mode-label"></div>
+  <table class="scores-table">
+    <thead>
+      <tr><th>Player</th><th>Score</th></tr>
+    </thead>
+    <tbody id="scores-table-body"></tbody>
+  </table>
+  <button class="big-btn secondary" id="hs-back-btn">← Back</button>
+</div>
+
+<script src="js/animals.js"></script>
+<script src="js/animal-data.js"></script>
+<script src="js/config.js"></script>
+<script src="js/config.local.js" onerror="/* local overrides not present, that's fine */"></script>
+<script src="js/scores.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

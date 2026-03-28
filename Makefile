@@ -12,6 +12,9 @@ admin:
 fetch-data:
 	python3 scripts/fetch-dino-data.py
 
+fetch-animal-data:
+	python3 scripts/fetch-animal-data.py
+
 fetch-prehistoric:
 	python3 scripts/fetch-prehistoric-wiki.py
 
