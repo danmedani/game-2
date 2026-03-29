@@ -61,7 +61,7 @@ function jiggleKbCursor() {
 // battle-type questions use 1 column (vertical stack); other layouts use 2 columns
 function getGridCols() {
   const t = state.currentQ && state.currentQ.type;
-  return (t === 'evolved-first' || t === 'faster') ? 1 : 2;
+  return t === 'faster' ? 1 : 2;
 }
 
 function gridMove(index, direction, total) {
@@ -133,11 +133,11 @@ const SCORE_MULT = 1.5;
 
 // Each question gets its mode from this rotating sequence
 const ALL_MODES = [
-  'name-match', 'evolved-first', 'faster', 'pic-match',
+  'name-match', 'faster', 'pic-match',
 ];
 // Fallback when no images are available (no animal-data.js yet)
 const MODE_SEQUENCE_NO_IMAGES = [
-  'evolved-first', 'faster', 'evolved-first', 'faster', 'evolved-first',
+  'faster', 'faster', 'faster', 'faster', 'faster',
 ];
 
 function buildPool() {
@@ -264,7 +264,6 @@ async function nextQuestion() {
   switch (mode) {
     case 'name-match':    q = buildNameMatchQuestion();    break;
     case 'pic-match':     q = buildPicMatchQuestion();     break;
-    case 'evolved-first': q = buildEvolvedFirstQuestion(); break;
     case 'faster':        q = buildFasterQuestion();       break;
   }
   state.currentQ = q;
@@ -542,8 +541,6 @@ async function handleAnswer(chosen) {
 
   if (q.type === 'name-match' || q.type === 'pic-match') {
     correct = chosen.name === q.correct.name;
-  } else if (q.type === 'evolved-first') {
-    correct = chosen.name === q.earlier.name;
   } else if (q.type === 'faster') {
     correct = chosen.name === q.faster.name;
   }
@@ -734,14 +731,6 @@ async function renderQuestion(q) {
             </button>`;
         }).join('')}
       </div>`;
-  } else if (q.type === 'evolved-first') {
-    area.innerHTML = `
-      <p class="question-prompt">Which evolved <strong>FIRST</strong>?</p>
-      <div class="size-battle-wrap">
-        ${animalCard(q.a)}
-        <div class="vs-badge">VS</div>
-        ${animalCard(q.b)}
-      </div>`;
   } else if (q.type === 'faster') {
     area.innerHTML = `
       <p class="question-prompt">Which is <strong>FASTER</strong>?</p>
@@ -899,8 +888,8 @@ function animalInfoHTML(animal) {
 
 function showAnswerView(correct, pts, q) {
   const area = document.getElementById('question-area');
-  const isBattle = q.type === 'evolved-first' || q.type === 'faster';
-  const infoAnimal = isBattle ? (q.type === 'evolved-first' ? q.earlier : q.faster) : q.correct;
+  const isBattle = q.type === 'faster';
+  const infoAnimal = isBattle ? q.faster : q.correct;
   const correctName = infoAnimal.name;
 
   const imgSrc = imageCache[infoAnimal.wiki];
@@ -921,14 +910,7 @@ function showAnswerView(correct, pts, q) {
   }
 
   // Battle-type extra feedback
-  if (q.type === 'evolved-first') {
-    const earlier = q.earlier;
-    const later = earlier.name === q.a.name ? q.b : q.a;
-    factText += `<p class="answer-fact">
-      ${earlier.name}: ~${earlier.appeared} Ma ago &nbsp;·&nbsp;
-      ${later.name}: ~${later.appeared} Ma ago
-    </p>`;
-  } else if (q.type === 'faster') {
+  if (q.type === 'faster') {
     const fast = q.faster;
     const slow = fast.name === q.a.name ? q.b : q.a;
     factText += `<p class="answer-fact">
@@ -1057,7 +1039,7 @@ function setLoadingMessage(msg) {
 function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 function modeName(m) {
-  return { 'name-match': 'Name Match', 'pic-match': 'Picture Match', 'evolved-first': 'Evolved First', 'faster': 'Who\'s Faster' }[m] || m;
+  return { 'name-match': 'Name Match', 'pic-match': 'Picture Match', 'faster': 'Who\'s Faster' }[m] || m;
 }
 
 // ── Title screen dino bouncer ─────────────────────────────────────────────────
