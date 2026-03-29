@@ -977,14 +977,19 @@ async function reportImage(dinoName, imgUrl, btnEl) {
 function waitForAnswerDismiss() {
   return new Promise(resolve => {
     const area = document.getElementById('question-area');
+    let dismissReady = false;
     function onClick(e) {
+      if (!dismissReady) return;
       if (e.target.closest('.answer-fact-more')) return;
       if (e.target.closest('.report-img-btn')) return;
       area.removeEventListener('click', onClick);
       resolve();
     }
-    // Delay so the click that triggered the answer doesn't immediately dismiss
-    setTimeout(() => area.addEventListener('click', onClick), 0);
+    // Install listener synchronously so there is no gap where DOM clearing can race.
+    // The dismissReady flag (set after one animation frame) prevents the click that
+    // triggered the answer from also dismissing the facts view before it's even painted.
+    area.addEventListener('click', onClick);
+    requestAnimationFrame(() => { dismissReady = true; });
   });
 }
 
