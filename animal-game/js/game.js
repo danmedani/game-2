@@ -1056,8 +1056,14 @@ function startTitleDinos() {
   const dinos = els.map((el, i) => {
     const w = window.innerWidth;
     const h = window.innerHeight;
-    const x = 80 + i * (w / 4);
-    const y = 80 + i * (h / 5);
+    // Start in corners, well away from the centered UI
+    const corners = [
+      { x: SIZE, y: SIZE },
+      { x: w - SIZE * 2, y: SIZE },
+      { x: SIZE, y: h - SIZE * 2 },
+      { x: w - SIZE * 2, y: h - SIZE * 2 },
+    ];
+    const { x, y } = corners[i % corners.length];
     let vx = (Math.random() < 0.5 ? 1 : -1) * (SPEED * 0.7 + Math.random() * SPEED * 0.6);
     let vy = (Math.random() < 0.5 ? 1 : -1) * (SPEED * 0.7 + Math.random() * SPEED * 0.6);
     el.style.left = x + 'px';
