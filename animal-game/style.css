@@ -1095,3 +1095,66 @@ button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
   padding: 2px 10px;
   margin-top: 4px;
 }
+
+/* ── Lifespan bar ── */
+.lifespan-bar-wrap {
+  margin-top: 10px;
+  overflow: hidden;
+}
+.lifespan-stage {
+  position: relative;
+  padding-top: 10px; /* room for the floating lifespan above the era bar */
+}
+.lifespan-float {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+}
+.lifespan-fill {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 3px;
+  border-radius: 2px;
+  background: var(--gold);
+  opacity: 0.9;
+}
+.lifespan-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px;
+  height: 9px;
+  background: var(--gold);
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+.ls-impact-icon {
+  position: absolute;
+  left: 0;
+  font-size: 0.7rem;
+  line-height: 1;
+  transform: none;
+}
+.lifespan-track {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.lifespan-epoch-row {
+  position: relative;
+  height: 14px;
+  margin-top: 3px;
+}
+.ls-epoch-label {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 0.58rem;
+  color: var(--muted);
+  white-space: nowrap;
+}

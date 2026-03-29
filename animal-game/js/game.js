@@ -817,6 +817,12 @@ function sizeComparisonHTML(lengthM) {
     </div>`;
 }
 
+function parseEndMa(animal) {
+  if (!animal.extinct) return 0;
+  const m = animal.period.match(/[–\-]([\d.]+)\s*Ma/);
+  return m ? parseFloat(m[1]) : 0;
+}
+
 function animalInfoHTML(animal) {
   const ft = (animal.length * 3.281).toFixed(1);
   const mph = Math.round(animal.speed * 0.621);
@@ -829,12 +835,48 @@ function animalInfoHTML(animal) {
     ? '<span class="extinct-badge">💀 Extinct</span>'
     : '<span class="extant-badge">🌿 Still alive today!</span>';
 
+  // ── Lifespan bar (66 Ma = K-Pg impact, left; 0 Ma = today, right) ──
+  const TOTAL_MA = 66;
+  const ERAS = [
+    { abbr: 'Paleogene',  start: 66,  end: 23,  color: '#8B6844' },
+    { abbr: 'Neogene',    start: 23,  end: 2.6, color: '#3A8A78' },
+    { abbr: 'Quaternary',  start: 2.6, end: 0,   color: '#5A78A8' },
+  ];
+  const eraSegs = ERAS.map(e => {
+    const w = ((e.start - e.end) / TOTAL_MA * 100).toFixed(2);
+    return `<div style="flex:${w};background:${e.color}"></div>`;
+  }).join('');
+  const eraLabels = ERAS.map(e => {
+      const w  = ((e.start - e.end) / TOTAL_MA * 100);
+      const left = ((TOTAL_MA - e.start) / TOTAL_MA * 100).toFixed(2);
+      const center = (parseFloat(left) + w / 2).toFixed(2);
+      const abbr = w < 6 ? 'Q' : e.abbr;
+      return `<span class="ls-epoch-label" style="left:${center}%">${abbr}</span>`;
+  }).join('');
+
+  const startMa  = Math.min(animal.appeared, TOTAL_MA);
+  const endMa    = parseEndMa(animal);
+  const startPct = ((TOTAL_MA - startMa) / TOTAL_MA * 100).toFixed(1);
+  const endPct   = ((TOTAL_MA - endMa)   / TOTAL_MA * 100).toFixed(1);
+  const widthPct = (parseFloat(endPct) - parseFloat(startPct)).toFixed(1);
+
   return `
     <div class="feedback-info">
       <div class="feedback-info-item full">
-        <div class="fi-row"><span class="fi-main">${animal.period}</span></div>
+        <div class="fi-row"><span class="fi-main">${animal.period.replace(/\s*\([^)]*\)/, '').trim()}</span></div>
         <div class="fi-sub">First appeared: ~${animal.appeared} Ma ago</div>
         ${extinctBadge}
+        <div class="lifespan-bar-wrap">
+          <div class="lifespan-stage">
+            <div class="lifespan-float">
+              <div class="lifespan-fill" style="left:${startPct}%;width:${widthPct}%"></div>
+              <div class="lifespan-marker" style="left:${startPct}%"></div>
+              ${animal.extinct ? `<div class="lifespan-marker" style="left:${endPct}%"></div>` : ''}
+            </div>
+            <div class="lifespan-track">${eraSegs}</div>
+          </div>
+          <div class="lifespan-epoch-row">${eraLabels}</div>
+        </div>
       </div>
       <div class="feedback-info-item">
         <div class="fi-big">${animal.length}m</div>
