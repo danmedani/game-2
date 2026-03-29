@@ -1,4 +1,4 @@
-.PHONY: all local admin animal-admin fetch-data fetch-one fetch-prehistoric merge-prehistoric add-dinos fill-dinos fill-lengths assign-levels count clean
+.PHONY: all local admin animal-admin fetch-data fetch-one fetch-animal-one fetch-prehistoric merge-prehistoric add-dinos fill-dinos fill-lengths assign-levels count clean
 
 all:
 	open http://localhost:8080 & python3 -m http.server 8080
@@ -17,6 +17,9 @@ fetch-data:
 
 fetch-animal-data:
 	python3 scripts/fetch-animal-data.py
+
+fetch-animal-one:
+	python3 scripts/fetch-animal-one.py "$(ANIMAL)"
 
 fetch-prehistoric:
 	python3 scripts/fetch-prehistoric-wiki.py

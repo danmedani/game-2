@@ -1000,5 +1000,30 @@ const ANIMAL_DATA = {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Patriofelis22DB.jpg/250px-Patriofelis22DB.jpg",
     "short": "Patriofelis is an extinct genus of carnivorous placental mammals from the extinct subfamily Oxyaeninae within the extinct family Oxyaenidae, which lived from the early to middle Eocene, during the Bridgerian stage of NALMA.",
     "full": "The first remains were discovered in 1869 by geologist Ferdinand Vandeveer Hayden, and the genus was named the following year by Joseph Leidy. Over the next few decades, additional specimens would be named from the same locality, many assigned to genera of their own or to separate species within Patriofelis. Now, only two are recognised: Patriofelis ulta, the type species, from the lower Bridger Formation and the Huerfano Formation of Colorado, and P. ferox, from the lower Bridger and lower Washakie Formations of Wyoming and Colorado, and the Clarno Formations at the John Day Fossil Beds National Monument, Oregon."
+  },
+  "Homo_sapiens": {
+    "img": "https://t3.ftcdn.net/jpg/03/58/93/04/360_F_358930412_rodvr4vvY4LG0bUG8MKC3wwCZhWGozcW.jpg",
+    "short": "Humans are the most common and widespread species of primate, and the only extant species of the genus Homo. They are great apes characterized by hairlessness, obligate bipedality, manual dexterity with opposable thumbs, precision grip, and high intelligence.",
+    "full": "Humans have large brains compared to body size, enabling more advanced cognitive skills that facilitate successful adaptation to varied environments, development of sophisticated tools, and formation of complex social structures and civilizations. Humans possess a disproportionately larger volume of both cerebral white matter and gray matter present in the prefrontal cortex (PFC) than any other primate species, which facilitated the expansion of higher-order executive functions."
+  },
+  "Neanderthal": {
+    "img": "https://humanorigins.si.edu/sites/default/files/styles/grid_thumbnail/public/neanderthalensis_JG_Recon_Head_CC_3qtr_lt_l.jpg.webp?h=34bbd072&itok=qtcnTy8R",
+    "short": "Neanderthals are an extinct group of archaic humans who inhabited Europe and Western and Central Asia during the Middle to Late Pleistocene.",
+    "full": "Neanderthal extinction occurred roughly 40,000 years ago with the immigration of modern humans (Cro-Magnons), but Neanderthals in Gibraltar may have persisted for thousands of years longer."
+  },
+  "Homo_erectus": {
+    "img": "https://humanorigins.si.edu/sites/default/files/styles/grid_thumbnail/public/images/landscape/erectus_JC_Recon_Head_CC_f_l.jpg.webp?h=34bbd072&itok=TYqVFFcz",
+    "short": "Homo erectus is an extinct species of archaic human from the Pleistocene, spanning nearly 2 million years.",
+    "full": "It is the first human species to evolve a humanlike body plan and gait, to leave Africa and colonize Asia and Europe, and to wield fire. Some populations of H. erectus were ancestors of later human species, including H. heidelbergensis — the last common ancestor of modern humans, Neanderthals, and Denisovans. As such a widely distributed species both geographically and temporally, H. erectus anatomy varies considerably. Subspecies are sometimes recognized: H. e. erectus, H. e. pekinensis, H. e. soloensis, H. e. ergaster, H. e. georgicus, and H. e. tautavelensis."
+  },
+  "Australopithecus": {
+    "img": "https://humanorigins.si.edu/sites/default/files/styles/grid_thumbnail/public/images/landscape/africanus_JG_Recon_head_CC_f_l.jpg.webp?h=34bbd072&itok=8bdsGG8S",
+    "short": "Australopithecus is a genus of early hominins that existed in Africa during the Pliocene and Early Pleistocene.",
+    "full": "The genera Homo, Paranthropus, and Kenyanthropus evolved from some Australopithecus species. Australopithecus is a member of the subtribe Australopithecina, which sometimes also includes Ardipithecus, though the term \"australopithecine\" is sometimes used to refer only to members of Australopithecus. Species include A. garhi, A. africanus, A. sediba, A. afarensis, A. anamensis, A. bahrelghazali, and A. deyiremeda. Debate exists as to whether some Australopithecus species should be reclassified into new genera, or if Paranthropus and Kenyanthropus are synonymous with Australopithecus, in part because of the taxonomic inconsistency."
+  },
+  "Ardipithecus": {
+    "img": "https://humanorigins.si.edu/sites/default/files/styles/grid_thumbnail/public/images/portrait/ramidus_illustration_KC_p.jpg.webp?h=bc4a59b8&itok=xWdmLax9",
+    "short": "Ardipithecus is a genus of an extinct hominine that lived during the Late Miocene and Early Pliocene epochs in the Afar Depression, Ethiopia.",
+    "full": "Originally described as one of the earliest ancestors of humans after they diverged from the last common ancestor shared with chimpanzees, the relation of this genus to human ancestors and whether it is a hominin is now a matter of debate. Two fossil species are described in the literature: A. ramidus, which lived about 4.4 million years ago during the early Pliocene, and A. kadabba, dated to approximately 5.6 million years ago. Initial behavioral analysis indicated that Ardipithecus could be very similar to chimpanzees; however, more recent analysis based on canine size and lack of canine sexual dimorphism indicates that Ardipithecus was characterised by reduced aggression, and that they more closely resemble bonobos."
   }
 };
