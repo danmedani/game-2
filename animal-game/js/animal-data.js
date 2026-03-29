@@ -1002,7 +1002,7 @@ const ANIMAL_DATA = {
     "full": "The first remains were discovered in 1869 by geologist Ferdinand Vandeveer Hayden, and the genus was named the following year by Joseph Leidy. Over the next few decades, additional specimens would be named from the same locality, many assigned to genera of their own or to separate species within Patriofelis. Now, only two are recognised: Patriofelis ulta, the type species, from the lower Bridger Formation and the Huerfano Formation of Colorado, and P. ferox, from the lower Bridger and lower Washakie Formations of Wyoming and Colorado, and the Clarno Formations at the John Day Fossil Beds National Monument, Oregon."
   },
   "Homo_sapiens": {
-    "img": "https://t3.ftcdn.net/jpg/03/58/93/04/360_F_358930412_rodvr4vvY4LG0bUG8MKC3wwCZhWGozcW.jpg",
+    "img": "https://i.pinimg.com/474x/3b/dc/d5/3bdcd5a3d1f2229729047d547730537f.jpg",
     "short": "Humans are the most common and widespread species of primate, and the only extant species of the genus Homo. They are great apes characterized by hairlessness, obligate bipedality, manual dexterity with opposable thumbs, precision grip, and high intelligence.",
     "full": "Humans have large brains compared to body size, enabling more advanced cognitive skills that facilitate successful adaptation to varied environments, development of sophisticated tools, and formation of complex social structures and civilizations. Humans possess a disproportionately larger volume of both cerebral white matter and gray matter present in the prefrontal cortex (PFC) than any other primate species, which facilitated the expansion of higher-order executive functions."
   },
