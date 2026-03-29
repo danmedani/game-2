@@ -18,12 +18,12 @@ const ANIMAL_DATA = {
   },
   "Giraffe": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Giraffe_Mikumi_National_Park.jpg/960px-Giraffe_Mikumi_National_Park.jpg",
-    "short": "Giraffes are large African hoofed mammals.",
+    "short": "Giraffes are large African hoofed mammals with super long necks.",
     "full": "They are the tallest living terrestrial animals and the largest ruminants on Earth. They are classified under the family Giraffidae, along with their closest extant relative, the okapi. Traditionally, giraffes have been thought of as one species, Giraffa camelopardalis, with nine subspecies. Most recently, researchers proposed dividing them into four extant species, with seven subspecies, which can be distinguished morphologically by their fur coat patterns. Six valid extinct species of Giraffa are known from the fossil record."
   },
   "Plains_zebra": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Equus_quagga_burchellii_-_Etosha%2C_2014.jpg/960px-Equus_quagga_burchellii_-_Etosha%2C_2014.jpg",
-    "short": "The plains zebra is the most common and geographically widespread species of zebra.",
+    "short": "The plains zebra is the most common and geographically widespread species of zebra. They have fun white and black stripes.",
     "full": "Its range is fragmented, but spans much of southern and eastern Africa south of the Sahara. Six or seven subspecies have been recognised, including the quagga which was thought to be a separate species. More recent research supports variations in zebra populations being clines rather than subspecies."
   },
   "Gorilla": {
@@ -43,8 +43,8 @@ const ANIMAL_DATA = {
   },
   "Giant_panda": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/960px-Grosser_Panda.JPG",
-    "short": "The giant panda, also known as the panda bear or simply panda, is a bear species endemic to China.",
-    "full": "It is characterised by its white coat with black patches around the eyes, ears, legs and shoulders. Its body is rotund; adult individuals weigh 100 to 115 kg and are typically 1.2 to 1.9 m long. It is sexually dimorphic, with males being typically 10–20% larger than females. A thumb is visible on its forepaw, which helps in holding bamboo in place for feeding. It has large molar teeth and expanded temporal fossae to meet its dietary requirements. It can digest starch and is mostly herbivorous with a diet consisting almost entirely of bamboo and bamboo shoots."
+    "short": "The giant panda, also known as the panda bear or simply panda, is a bear species endemic to China. It is characterized by its white coat with black patches around the eyes, ears, legs and shoulders.",
+    "full": "Its body is rotund; adult individuals weigh 100 to 115 kg and are typically 1.2 to 1.9 m long. It is sexually dimorphic, with males being typically 10–20% larger than females. A thumb is visible on its forepaw, which helps in holding bamboo in place for feeding. It has large molar teeth and expanded temporal fossae to meet its dietary requirements. It can digest starch and is mostly herbivorous with a diet consisting almost entirely of bamboo and bamboo shoots."
   },
   "Blue_whale": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg/960px-Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg",
@@ -92,7 +92,7 @@ const ANIMAL_DATA = {
     "full": "It is found across mainland Australia, except for the more fertile areas, such as southern Western Australia, the eastern and southeastern coasts, and the rainforests along the northern coast."
   },
   "Gray_wolf": {
-    "img": "",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkMDWzaVqjRULu6R-rHktvNY5OkAnMkLkqLA&s",
     "short": "The wolf, also known as the grey wolf or gray wolf, is a canine native to Eurasia and North America.",
     "full": "More than thirty subspecies of Canis lupus have been recognized, including the dog and dingo, though grey wolves, as popularly understood, include only naturally occurring wild subspecies. The wolf is the largest wild extant member of the family Canidae, and is further distinguished from other Canis species by its less pointed ears and muzzle, as well as a shorter torso and a longer tail. The wolf is nonetheless related closely enough to smaller Canis species, such as the coyote and the golden jackal, to produce fertile hybrids with them. The wolf's fur is usually mottled white, brown, grey, and black, although subspecies in the arctic region may be nearly all white."
   },
@@ -147,7 +147,7 @@ const ANIMAL_DATA = {
     "full": "It is one of the longest and heaviest known extant snake species. Like all boas, it is a non-venomous constrictor. Green anacondas only have a lifespan of 10 years in the wild but some of them live longer when they are taken care of. Green anacondas live in tropical rainforests and tend to prefer shallow, slow-moving waters, such as streams, rivers and flooded grasslands. They spend most of their time in the water but are also found on land in thick vegetation."
   },
   "Oceanic_manta_ray": {
-    "img": "",
+    "img": "https://images.squarespace-cdn.com/content/v1/5a196500914e6b09132e911f/1595922319847-AKO0JNUC35P8R9Z784IO/Oceanic+Manta+%283%29.jpg",
     "short": "",
     "full": ""
   },
@@ -173,7 +173,7 @@ const ANIMAL_DATA = {
   },
   "Greater_flamingo": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/010_Greater_flamingos_male_and_female_in_the_Camargue_during_mating_season_Photo_by_Giles_Laurent.jpg/960px-010_Greater_flamingos_male_and_female_in_the_Camargue_during_mating_season_Photo_by_Giles_Laurent.jpg",
-    "short": "The greater flamingo is the most widespread and largest species of the flamingo family.",
+    "short": "The greater flamingo is the most widespread and largest species of the flamingo family. It's pink!",
     "full": "Common in the Old World, they are found in Northern (coastal) and Sub-Saharan Africa, the Indian subcontinent, the Middle East, the Levant, the Persian Gulf, the Gulf of Aden, the Red Sea, and the Mediterranean countries of Southern Europe."
   },
   "Red_fox": {
@@ -202,7 +202,7 @@ const ANIMAL_DATA = {
     "full": "The species is endemic to the Seychelles, with the nominate subspecies, A. g. gigantea native to Aldabra atoll. It is one of the largest tortoises in the world. Historically, giant tortoises were found on many of the western Indian Ocean islands, as well as Madagascar, and the fossil record indicates giant tortoises once occurred on every continent and many islands with the exception of Antarctica."
   },
   "Musk_ox": {
-    "img": "",
+    "img": "https://cdn.britannica.com/66/138866-050-BA994892/Musk-ox.jpg?w=400&h=225&c=crop",
     "short": "The muskox is a hoofed mammal of the family Bovidae.",
     "full": "Native to the Arctic, it is noted for its thick coat and for the strong odor emitted by males during the seasonal rut, from which its name derives. This musky odor has the effect of attracting females during mating season. Its Inuktitut name umingmak translates to \"the bearded one\"."
   },
@@ -272,9 +272,9 @@ const ANIMAL_DATA = {
     "full": "It is one of three extant species of vampire bats, the other two being the hairy-legged and the white-winged vampire bats."
   },
   "Red_howler_monkey": {
-    "img": "",
-    "short": "The red howlers are five species of howler monkeys that used to be considered conspecific:Colombian red howler or Venezuelan red howler – northwestern South America\nBolivian red howler – Santa Cruz De",
-    "full": ""
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9o96v5Y0qxNxFcowI_8QxUJ4OOWi1tWP6jw&s",
+    "short": "The Colombian red howler or Venezuelan red howler (Alouatta seniculus) is a South American species of howler monkey, a type of New World monkey, found in the western Amazon Basin in Venezuela, Colombia, Ecuador, Peru and Brazil.",
+    "full": "The population in the Santa Cruz Department in Bolivia was split off as a separate species, the Bolivian red howler, in 1986, and more recently, splitting off the population in northeastern South America and Trinidad as the Guyanan red howler has occurred. All howler monkeys belong to the family Atelidae and the infraorder Platyrrhini (New World monkeys)."
   },
   "Proboscis_monkey": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Proboscis_Monkey_in_Borneo.jpg/960px-Proboscis_Monkey_in_Borneo.jpg",
@@ -347,7 +347,7 @@ const ANIMAL_DATA = {
     "full": "It lives in South America, ranging throughout as far south as northern Argentina. This species is considered vulnerable to extinction."
   },
   "Brown_kiwi": {
-    "img": "",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnybbLOqqf-ee4vsnM5SU5i7YUUpXreKBRLA&s",
     "short": "Kiwi are flightless birds endemic to New Zealand of the order Apterygiformes.",
     "full": "The five extant species fall into the family Apterygidae and genus Apteryx. Approximately the size of a domestic chicken, kiwi are the smallest ratites."
   },
@@ -407,7 +407,7 @@ const ANIMAL_DATA = {
     "full": "It was first described in 1993 following a discovery of remains in Vũ Quang National Park by a joint survey of the Vietnamese Ministry of Forestry and the World Wide Fund for Nature, Saolas have since been kept in captivity multiple times, although only for short periods as they died within a matter of weeks to months."
   },
   "Vaquita": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Vaquita_size.svg/960px-Vaquita_size.svg.png",
+    "img": "https://www.wildlifenomads.com/wp-content/uploads/2025/09/vaquita-swimming.webp",
     "short": "The vaquita is a species of porpoise endemic to the northern end of the Gulf of California in Baja California, Mexico.",
     "full": "Reaching a maximum body length of 150 cm (4.9 ft) (females) or 140 cm (4.6 ft) (males), it is the smallest of all living cetaceans. The species is currently on the brink of extinction, and is listed as Critically Endangered by the IUCN Red List; the steep decline in abundance is primarily due to bycatch in gillnets from the illegal totoaba fishery."
   },
@@ -417,22 +417,22 @@ const ANIMAL_DATA = {
     "full": "As sarcopterygians, they are more closely related to lungfish and tetrapods than to ray-finned fish."
   },
   "Goblin_shark": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Goblin_shark_size.svg/960px-Goblin_shark_size.svg.png",
+    "img": "https://i.natgeofe.com/k/ea4142c2-3b11-4cc0-99b9-bf3a37073ba1/goblin-shark-jaw_16x9.jpg?w=1200",
     "short": "The goblin shark is a rare species of deep-sea shark.",
     "full": "Sometimes called a \"living fossil\", it is the only extant representative of the family Mitsukurinidae, a lineage some 125 million years old. This pink-skinned animal has a distinctive profile with an elongated, flat snout, and highly protrusible jaws containing prominent nail-like teeth. It typically reaches a length of 3 to 4 meters when fully grown, although it can grow significantly larger—such as one specimen captured in 2000, which was believed to measure around 6 meters. Goblin sharks are benthopelagic creatures that inhabit upper continental slopes, submarine canyons, and seamounts throughout the world at depths greater than 100 m (330 ft), with adults found deeper than juveniles. Some researchers believed that these sharks could also dive to depths of up to 1,300 m (4,270 ft), for short periods; footage captured in 2024 suggests that their range could be deeper than previously thought, with a confirmed sighting of an adult swimming at 2,000 m (6,560 ft)."
   },
   "Spotted-tailed_quoll": {
-    "img": "",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW6q8g0RUuSOY6fWoFAMZUvkgmKoTTd6xmQQ&s",
     "short": "The tiger quoll, also known as the spotted-tailed quoll, spotted quoll, spotted-tailed dasyure, or tiger cat, is a carnivorous marsupial of the quoll genus Dasyurus native to Australia.",
     "full": "With males and females weighing around 3.5 and 1.8 kg, respectively, it is the world's second-largest extant carnivorous marsupial, behind the Tasmanian devil. Two subspecies are recognised; the nominate is found in wet forests of southeastern Australia and Tasmania, and a northern subspecies, D. m. gracilis, is found in a small area of northern Queensland and is endangered."
   },
   "Western_long-beaked_echidna": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Long-beakedEchidna.jpg",
+    "img": "https://imgs.mongabay.com/wp-content/uploads/sites/20/2015/10/03142644/8-echidna.jpg",
     "short": "The western long-beaked echidna, also called Bruijin's long-beaked echidna, is one of the four extant echidnas and one of three species of Zaglossus that occurs in New Guinea.",
     "full": "Originally described as Tachyglossus bruijnii, this is the type species of Zaglossus."
   },
   "Naked_mole_rat": {
-    "img": "",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZBdcpZeGdi_sNsZPA08UiGwZTneBbdHPtEA&s",
     "short": "The naked mole-rat, also known as the sand puppy, is a burrowing rodent native to the Horn of Africa and parts of Kenya, notably in Somali regions.",
     "full": "It is closely related to the blesmols and is the only species in the genus Heterocephalus."
   },
@@ -502,47 +502,47 @@ const ANIMAL_DATA = {
     "full": "Despite bearing some resemblance to a skunk, it belongs in a separate family known as the Mustelidae, and genetic analysis suggests that its closest living relative is the African striped weasel. It is adaptable and lives in a wide range of habitats and elevations, preferring open environments with lower levels of shrubs. This species measures 30–38 cm (12–15 in) in length excluding the tail, with males growing larger than females. Its fur is mostly black, with distinctive white stripes running down its back and white patches on its face and tail, though the exact patterning is highly variable."
   },
   "Woolly_mammoth": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Siegsdorfer_Mammut.jpg/960px-Siegsdorfer_Mammut.jpg",
+    "img": "https://i.natgeofe.com/k/bd4b6059-a72d-4158-ae47-086d077cede8/woolly-mammoth-standing.jpg?w=1436&h=932",
     "short": "The woolly mammoth is an extinct species of mammoth that lived from the Middle Pleistocene until its extinction in the Holocene epoch.",
     "full": "It was one of the last in a line of mammoth species, beginning with the African Mammuthus subplanifrons in the early Pliocene. The woolly mammoth began to diverge from the steppe mammoth about 800,000 years ago in Siberia. Its closest extant relative is the Asian elephant. The Columbian mammoth lived alongside the woolly mammoth in North America, and DNA studies show that the two hybridised with each other. Mammoth remains were long known in Asia before they became known to Europeans. The origin of these remains was long debated and often explained as the remains of legendary creatures. The mammoth was identified as an extinct elephant species by Georges Cuvier in 1796."
   },
   "Smilodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Smilodon_populator_fossil%2C_Tellus_Science_Museum_1.jpg/960px-Smilodon_populator_fossil%2C_Tellus_Science_Museum_1.jpg",
-    "short": "Smilodon is a genus of extinct felids.",
-    "full": "It is one of the best-known saber-toothed predators and prehistoric mammals. Although commonly known as the saber-toothed tiger, it was not closely related to the tiger or other modern cats, belonging to the extinct subfamily Machairodontinae, with an estimated date of divergence from the ancestor of living cats around 20 million years ago. Smilodon was one of the last surviving machairodonts alongside Homotherium. Smilodon lived in the Americas during the Pleistocene to early Holocene epoch. The genus was named in 1842 based on fossils from Brazil; the generic name means 'scalpel' or 'two-edged knife' combined with 'tooth'. Three species are recognized today: S. gracilis, S. fatalis, and S. populator. The two latter species were probably descended from S. gracilis, which itself probably evolved from Megantereon. The hundreds of specimens obtained from the La Brea Tar Pits in Los Angeles constitute the largest collection of Smilodon fossils."
+    "img": "https://www.fossilera.com/p/894/1024px-Smilodon_fatalis.jpg",
+    "short": "Smilodon is a genus of extinct felids. It is one of the best-known saber-toothed predators and prehistoric mammals.",
+    "full": "Although commonly known as the saber-toothed tiger, it was not closely related to the tiger or other modern cats, belonging to the extinct subfamily Machairodontinae, with an estimated date of divergence from the ancestor of living cats around 20 million years ago. Smilodon was one of the last surviving machairodonts alongside Homotherium. Smilodon lived in the Americas during the Pleistocene to early Holocene epoch. The genus was named in 1842 based on fossils from Brazil; the generic name means 'scalpel' or 'two-edged knife' combined with 'tooth'. Three species are recognized today: S. gracilis, S. fatalis, and S. populator. The two latter species were probably descended from S. gracilis, which itself probably evolved from Megantereon. The hundreds of specimens obtained from the La Brea Tar Pits in Los Angeles constitute the largest collection of Smilodon fossils."
   },
   "Megatherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Megatherium_americanum_Skeleton_NHM.JPG/960px-Megatherium_americanum_Skeleton_NHM.JPG",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3GyMpIF9b56_AZdkfTkAarNFeLEU6dcv0Kw&s",
     "short": "Megatherium is an extinct genus of large ground sloths endemic to South America that lived from the Early Pliocene through the end of the Late Pleistocene.",
     "full": "It is best known for the elephant-sized, 3.5–4 tonnes (7,700–8,800 lb) type species Megatherium americanum, primarily known from the Pampas, but ranging southwards to northernmost Patagonia and northwards to southern Bolivia during the late Middle Pleistocene and Late Pleistocene. Various other species have been described, including those belonging to the Andean subgenus Pseudomegatherium, which range in size from comparable to M. americanum down to approximately 1 tonne (2,200 lb)."
   },
   "Gastornis": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Gastornis%2C_a_large_flightless_bird_from_the_Eocene_of_Wyoming.jpg/960px-Gastornis%2C_a_large_flightless_bird_from_the_Eocene_of_Wyoming.jpg",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Gastornis.png/250px-Gastornis.png",
     "short": "Gastornis is an extinct genus of large, flightless birds that lived during the mid-Paleocene to mid-Eocene epochs of the Paleogene period.",
     "full": "Most fossils have been found in Europe, and some species typically referred to the genus are known from North America and Asia. Several genera, including the well-studied genus Diatryma, have historically been considered junior synonyms of Gastornis. However, this interpretation has been challenged recently, and some researchers currently consider Diatryma to be a valid genus."
   },
   "Dire_wolf": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Canis_dirus_Sternberg_Museum.jpg/960px-Canis_dirus_Sternberg_Museum.jpg",
+    "img": "https://static.scientificamerican.com/sciam/cache/file/306E689F-691A-4B98-8540048E9C1C2759_source.jpeg",
     "short": "The dire wolf is an extinct species of canine which was native to the Americas during the Late Pleistocene and Early Holocene epochs.",
     "full": "The species was named in 1858, four years after the first specimen had been found. Two subspecies are proposed, Aenocyon dirus guildayi and Aenocyon dirus dirus, but this assignment has been recently considered questionable. The largest collection of its fossils has been obtained from the Rancho La Brea Tar Pits in Los Angeles."
   },
   "Cave_bear": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Teufelsh%C3%B6hle-H%C3%B6hlenb%C3%A4r-Dreiviertelprofil.jpg/960px-Teufelsh%C3%B6hle-H%C3%B6hlenb%C3%A4r-Dreiviertelprofil.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTir55WJnCaBKeExJFD-qQBJsXGWeZoyHnkYg&s",
     "short": "The cave bear is a prehistoric species of bear that lived in Europe and Asia during the Pleistocene and became extinct about 24,000 years ago during the Last Glacial Maximum.",
     "full": ""
   },
   "Megaloceros": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/WLANL_-_Urville_Djasim_-_Iers_reuzenhert_-_Irish_elk_%282%29.jpg/960px-WLANL_-_Urville_Djasim_-_Iers_reuzenhert_-_Irish_elk_%282%29.jpg",
+    "img": "https://www.nhm.ac.uk/content/dam/nhm-www/discover/irish-elk-giant-deer/irish-elk-giant-deer-megaloceros-giganteus-reconstruction-mark-witton-full-width.jpg",
     "short": "Megaloceros is an extinct genus of deer whose members lived throughout Eurasia from the Pleistocene to the early Holocene.",
     "full": "The type and only undisputed member of the genus, Megaloceros giganteus, vernacularly known as the \"Irish elk\" or \"giant deer\", is also the best known. Fallow deer are thought to be their closest living relatives. Megaloceros has been suggested to be closely related to other genera of \"giant deer\", like the East Asian genus Sinomegaceros and the largely European Praemegaceros, the species of both genera having been historically attributed to Megaloceros."
   },
   "Paraceratherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/%D0%9F%D0%B0%D0%BB%D0%B5%D0%BE%D0%BD%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D1%83%D0%B7%D0%B5%D0%B9_%D0%9E%D1%80%D0%BB%D0%BE%D0%B2%D0%B0_%2820221008151051%29.jpg/960px-%D0%9F%D0%B0%D0%BB%D0%B5%D0%BE%D0%BD%D1%82%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D1%83%D0%B7%D0%B5%D0%B9_%D0%9E%D1%80%D0%BB%D0%BE%D0%B2%D0%B0_%2820221008151051%29.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8dgCj3KQrEwfBOpls3-NP2-k1uShpgt01Sw&s",
     "short": "Paraceratherium is an extinct genus of hornless rhinocerotoids belonging to the family Paraceratheriidae.",
     "full": "It is one of the largest terrestrial mammals that has ever existed and lived from the Early to Late Oligocene epoch. The first fossils were discovered in what is now Pakistan, and remains have been found across Eurasia between China and the Balkans. Paraceratherium means \"near the hornless beast\", in reference to Aceratherium, the genus in which the type species P. bugtiense was originally placed."
   },
   "Megalodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Megalodon_jaw%2C_Tellus_Science_Museum.jpg/960px-Megalodon_jaw%2C_Tellus_Science_Museum.jpg",
+    "img": "https://www.nhm.ac.uk/content/dam/nhm-www/discover/megalodon/megalodon_warpaint_shutterstock-full-width.jpg.thumb.1160.1160.png",
     "short": "Otodus megalodon, commonly known as megalodon, is an extinct species of giant mackerel shark that lived approximately 23 to 3.6 million years ago (Mya), from the Early Miocene to the Early Pliocene epochs.",
     "full": "This prehistoric fish was once thought to be a member of the family Lamnidae and a close relative of the great white shark, but has been reclassified into the extinct family Otodontidae, which diverged from the great white shark during the Early Cretaceous."
   },
@@ -552,37 +552,37 @@ const ANIMAL_DATA = {
     "full": "It is one of, if not the, best-known genera of glyptodont. Glyptodon has a long and storied past, being the first named extinct cingulate and the type genus of the subfamily Glyptodontinae. Fossils of Glyptodon have been recorded as early as 1814 from Pleistocene aged deposits from Uruguay, though many were incorrectly referred to the ground sloth Megatherium by early paleontologists."
   },
   "Gigantopithecus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Gigantopithecus_UIMNH_%28cropped%29.jpg/960px-Gigantopithecus_UIMNH_%28cropped%29.jpg",
+    "img": "https://cdn.discovermagazine.com/assets/image/57250/gigantopithecus-x.jpg",
     "short": "Gigantopithecus is an extinct genus of ape that lived in central to southern China from 2 million to approximately 200,000–300,000 years ago during the Early to Middle Pleistocene, represented by one species, Gigantopithecus blacki.",
     "full": "The first remains of Gigantopithecus, two third-molar teeth, were identified in a drugstore by anthropologist Ralph von Koenigswald in 1935 in England, who subsequently described the ape. In 1956, the first mandible and more than 1,000 teeth were found in Liucheng, and numerous more remains have since been found in at least 16 sites. Only teeth and four mandibles are known currently. Other skeletal elements were likely consumed by porcupines before they could fossilize. Gigantopithecus was once argued to be a hominin, a member of the human line, but it is now thought to be closely allied with orangutans, classified in the subfamily Ponginae."
   },
   "Andrewsarchus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Andrewsarchus_AMNH.jpg/960px-Andrewsarchus_AMNH.jpg",
+    "img": "https://a-z-animals.com/media/2022/11/shutterstock_1629904135.jpg",
     "short": "Andrewsarchus, meaning \"Andrews' ruler\", is an extinct genus of artiodactyl that lived during the Middle Eocene in what is now China.",
     "full": "The genus was first described by Henry Fairfield Osborn in 1924 with the type species A. mongoliensis based on a largely complete cranium. A second species, A. crassum, was described in 1977 based on teeth. A mandible, formerly described as Paratriisodon, does probably belong to Andrewsarchus as well. The genus has been historically placed in the families Mesonychidae or Arctocyonidae, or was considered to be a close relative of whales. It is now regarded as the sole member of its own family, Andrewsarchidae, and may have been related to entelodonts. Fossils of Andrewsarchus have been recovered from the Middle Eocene Irdin Manha, Lushi and Dongjun Formations of Inner Mongolia, each dated to the Irdinmanhan Asian land mammal age."
   },
   "Woolly_rhinoceros": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Coelodonta_antiquitatis_.jpg/960px-Coelodonta_antiquitatis_.jpg",
+    "img": "https://media.wired.com/photos/5932797252d99d6b984ded17/3:2/w_2560%2Cc_limit/42-466838981.jpg",
     "short": "The woolly rhinoceros is an extinct species of rhinoceros that inhabited northern Eurasia during the Pleistocene epoch.",
     "full": "The woolly rhinoceros was large, comparable in size to the largest living rhinoceros species, the white rhinoceros, and covered with long, thick hair that allowed it to survive in the extremely cold, harsh mammoth steppe. It had a massive hump reaching from its shoulder and fed mainly by grazing on herbaceous plants that grew in the steppe. Mummified carcasses preserved in permafrost and many bone remains of woolly rhinoceroses have been found. Images of woolly rhinoceroses are found among cave paintings in Europe and Asia, and evidence has been found suggesting that the species was hunted by humans. Like other Pleistocene megafauna, the species became extinct as part of the end-Pleistocene extinction event. The range of the woolly rhinoceros contracted towards Siberia beginning around 17,000 years ago, with the youngest reliable records being around 14,000 years old in northeast Siberia, coinciding with the Bølling–Allerød warming, which likely disrupted its habitat, with environmental DNA records possibly extending the range of the species around 9,800 years ago. Its closest living relative is the Sumatran rhinoceros."
   },
   "South_Island_giant_moa": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Dinornis_robustus%2C_South_Island_Giant_Moa_-_three_quarter_view_on_black_YORYM_2004_20.jpg/960px-Dinornis_robustus%2C_South_Island_Giant_Moa_-_three_quarter_view_on_black_YORYM_2004_20.jpg",
+    "img": "https://media.cnn.com/api/v1/images/stellar/prod/southisland-giantmoa-2.jpg?c=original",
     "short": "The South Island giant moa is an extinct species of moa in the genus Dinornis, known in Māori by the name moa nunui.",
     "full": "It was one of the tallest-known bird species to walk the Earth, exceeded in weight only by the heavier but shorter extinct elephant bird of Madagascar."
   },
   "Dodo": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oxford_Dodo_display.jpg/960px-Oxford_Dodo_display.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdzWZzR0VPDB9j8VGtUjvou6gqH5_j4iKeMQ&s",
     "short": "The dodo is an extinct flightless bird that was endemic to Mauritius, an island east of Madagascar in the Indian Ocean.",
     "full": "The dodo's closest relative was the also-extinct and flightless Rodrigues solitaire. The two formed the subtribe Raphina, a clade of extinct flightless birds that are a part of the group that includes pigeons and doves. The closest living relative of the dodo is the Nicobar pigeon. A white dodo was once thought to have existed on the nearby island of Réunion, but it is now believed that this assumption was merely confusion based on the also-extinct Réunion ibis and paintings of white dodos."
   },
   "Giant_short-faced_bear": {
-    "img": "",
+    "img": "https://cdn.discovermagazine.com/assets/image/2237/short-faced-bear-x.jpg",
     "short": "The Tremarctinae or short-faced bears is a subfamily of Ursidae that contains one living representative, the spectacled bear of South America, and several extinct species from four genera: the Florida spectacled bear, the North American giant short-faced bears Arctodus, the South American giant short-faced bear Arctotherium as well as Plionarctos (P. edensis and P. harroldorum), which is thought to be ancestral to the other three genera.",
     "full": "Of these, the giant short-faced bears may have been the largest ever carnivorans in the Americas. The group is thought to have originated in eastern North America, and then invaded South America as part of the Great American Interchange. Most short-faced bears became extinct at the end of the Pleistocene."
   },
   "Doedicurus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Doedicurus.png",
+    "img": "https://a-z-animals.com/media/2022/08/Doedicurus-1024x730.jpg",
     "short": "Doedicurus, from Ancient Greek δοῖδυξ (doîdux), meaning \"pestle\" and oυρά (ourá), meaning \"tail\", is an extinct genus of glyptodont from South America containing one species, D. clavicaudatus.",
     "full": "Glyptodonts are a member of the family Chlamyphoridae, which also includes some modern armadillo species, and they are classified in the superorder Xenarthra alongside sloths and anteaters. Being a glyptodont, it was a rotund animal with heavy armor and a carapace. Averaging at an approximate 1,400 kg (3,100 lb), it was one of the largest glyptodonts to have ever lived. Though glyptodonts were quadrupeds, large ones like Doedicurus may have been able to stand on two legs like other xenarthrans. It notably sported a spiked tail club, which may have weighed 40 or 65 kg in life, and it may have swung this in defense against predators or in fights with other Doedicurus at speeds of perhaps 11 m/s."
   },
@@ -592,182 +592,182 @@ const ANIMAL_DATA = {
     "full": "The thylacine died out in New Guinea and mainland Australia around 3,600–3,200 years ago, possibly because of the introduction of the dingo, whose earliest record dates to around the same time, but which never reached Tasmania. Prior to European settlement, around 5,000 remained in the wild on the island of Tasmania. Beginning in the nineteenth century, they were perceived as a threat to the livestock of farmers and bounty hunting was introduced. The last known of its species died in 1936 at Hobart Zoo in Tasmania. The thylacine is widespread in popular culture and is a cultural icon in Australia."
   },
   "Cave_lion": {
-    "img": "",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPdSieBNSSrbkXcwyyCvcEm6tdm7ozxESG-Q&s",
     "short": "Cave lions are large extinct carnivorous felids that are classified either as subspecies of the lion, or as distinct but closely related species, depending on the authority.",
     "full": ""
   },
   "Sivatherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/3/33/Sivatherium_giganteum_skeleton.jpg",
+    "img": "https://a-z-animals.com/media/2022/11/shutterstock_1684979470.jpg",
     "short": "Sivatherium is an extinct genus of giraffid that ranged throughout Africa and Eurasia.",
     "full": "The species Sivatherium giganteum is, by weight, one of the largest giraffids known, and also one of the largest ruminants of all time. Sivatherium originated during the Late Miocene in Africa and survived through to the late Early Pleistocene (Calabrian) until around 1 million years ago."
   },
   "Titanoboa": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Titanoboa_paratype_precloacal_vertebra_UF-IGM_2_edited_with_scale_bar.jpg/960px-Titanoboa_paratype_precloacal_vertebra_UF-IGM_2_edited_with_scale_bar.jpg",
+    "img": "https://preview.redd.it/what-was-the-titanoboas-behavior-like-v0-934zcx2wpmyc1.png?width=640&crop=smart&auto=webp&s=2a7af0400c47b385815871c0bf37d61b675d8bae",
     "short": "Titanoboa is a genus of extinct giant boid snake that lived during the middle and late Paleocene epoch.",
     "full": "Titanoboa was first discovered in the early 2000s by members of the Smithsonian Tropical Research Institute, which–along with students from the University of Florida–recovered 186 fossils of Titanoboa from the Cerrejón coal mines in the La Guajira department of northeastern Colombia. It was named and described in 2009 as Titanoboa cerrejonensis, and lauded as the largest snake ever found at that time. The original type material consisted of thoracic vertebrae and ribs, but later expeditions collected parts of the skull and teeth."
   },
   "Basilosaurus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Basilosaurus_cetoides_%281%29.jpg/960px-Basilosaurus_cetoides_%281%29.jpg",
+    "img": "https://a-z-animals.com/media/2022/05/Basilosaurus-1.jpg",
     "short": "Basilosaurus is a genus of large, predatory, prehistoric archaeocete whale from the late Eocene, approximately 41.3 to 33.9 million years ago (mya).",
     "full": "First described in 1834, it was the first archaeocete and prehistoric whale known to science. Fossils attributed to the type species B. cetoides were discovered in the southeastern United States. The generic name, meaning \"king lizard\", was given due to the initial misconception about the fossil material as that of a giant reptile. The animal was later found to be an early marine mammal, prompting attempts at renaming the creature, which failed as the rules of zoological nomenclature dictate using the original name given. The second species named in 1904, B. isis, lived in the region currently known as the Mediterranean Sea, with fossils found in North Africa and Jordan."
   },
   "Macrauchenia": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Macrauchenia_patachonica_AMNH.jpg/960px-Macrauchenia_patachonica_AMNH.jpg",
+    "img": "https://www.nhm.ac.uk/content/dam/nhm-www/our-science/our-work/digital-nhm/machrauchenia%20two%20column.jpg",
     "short": "Macrauchenia is an extinct genus of large ungulate native to South America from the Pliocene or Middle Pleistocene to the end of the Late Pleistocene.",
     "full": "It was one of the last surviving members of the extinct order Litopterna, a group of South American native ungulates distinct from the two orders which contain all living ungulates which had been present in South America since the early Cenozoic, over 60 million years ago, prior to the arrival of living ungulates in South America around 2.5 million years ago as part of the Great American Interchange. The bodyform of Macrauchenia has been described as similar to a camel, being one of the largest-known litopterns, with an estimated body mass of around 1 tonne. The genus gives its name to its family, Macraucheniidae, which like Macrauchenia typically had long necks and three-toed feet, as well as a retracted nasal region, which in Macrauchenia manifests as the nasal opening being on the top of the skull between the eye sockets. This has historically been argued to correspond to the presence of a tapir-like proboscis, though recent authors suggest a moose-like prehensile lip or a saiga antelope-like nose to filter dust are more likely."
   },
   "Hyracotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/FMNH_Hyracotherium.jpg/960px-FMNH_Hyracotherium.jpg",
+    "img": "https://miro.medium.com/1*a1iaYfWvkLlO0Tqb2xSpZg.jpeg",
     "short": "Hyracotherium is an extinct genus of small perissodactyl ungulates that was found in the London Clay formation.",
     "full": "This small, fox-sized animal is considered to be the earliest known member of Equidae before the type species, H. leporinum, was reclassified as a palaeothere, a perissodactyl family related to both horses and brontotheres. The remaining species are now thought to belong to different genera, such as Eohippus, which had previously been synonymised with Hyracotherium."
   },
   "Entelodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Entelodon_magnus_2_canines_MHNT.PAL.2013.0.1016.1-2.jpg/960px-Entelodon_magnus_2_canines_MHNT.PAL.2013.0.1016.1-2.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvDvmREDtjqQgNnNK6gt2CvXMop3MXi5lm2g&s",
     "short": "Entelodon, formerly called Elotherium, is an extinct genus of entelodont artiodactyl found in Eurasia.",
     "full": "Fossils of species of Entelodon are found in Paleogene strata ranging in age from the Houldjinian until the Rupelian epoch of the early Oligocene."
   },
   "Chalicotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/31_-_Chalicotherium_goldfussi_-_Astaracien_-_St_Gaudens_-_MHNT.PAL.2010.31.1_Up.jpg/960px-31_-_Chalicotherium_goldfussi_-_Astaracien_-_St_Gaudens_-_MHNT.PAL.2010.31.1_Up.jpg",
+    "img": "https://www.thoughtco.com/thmb/ePrzf-Gem12zkGIb17GwS163BrY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/ChalicotheriumDB1-5b4c819246e0fb0037ab365b.jpg",
     "short": "Chalicotherium is a genus of extinct perissodactyls in the family Chalicotheriidae.",
     "full": "The genus is known from Europe and Asia, from the Early Miocene to Late Miocene, 23.0~5.3 million years ago."
   },
   "Thylacoleo": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Thylacoleo_skeleton_diagram.tiff/lossy-page1-960px-Thylacoleo_skeleton_diagram.tiff.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBrnTBvauecVWUF1IHYxfsWz4Ng8rw4-3Fag&s",
     "short": "Thylacoleo is an extinct genus of carnivorous marsupials that lived in Australia from the late Pliocene to the Late Pleistocene, often known as marsupial lions.",
     "full": "They were the largest and last members of the family Thylacoleonidae, occupying the position of apex predator within Australian ecosystems. The largest and last species, Thylacoleo carnifex, had an estimated average weight of 101 to 130 kg, approaching the weight of a modern lioness."
   },
   "Procoptodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Simosthenurus_gilli_skull.jpg/960px-Simosthenurus_gilli_skull.jpg",
+    "img": "https://media.australian.museum/media/dd/images/Procoptodon_goliah.width-1200.7dd7c4c.jpg",
     "short": "Procoptodon is an extinct genus of giant short-faced (sthenurine) kangaroos that lived in Australia during the Pleistocene Epoch.",
     "full": "P. goliah, the largest known kangaroo species that ever existed, stood at about 2 m (6.6 ft). They weighed about 200–240 kg (440–530 lb). Other members of the genus were smaller, however; Procoptodon gilli was the smallest of all of the sthenurine kangaroos, standing approximately 1 m tall."
   },
   "Diprotodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Diprotodon_australis_skeleton_1.JPG/960px-Diprotodon_australis_skeleton_1.JPG",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7YUFZu7hsGf1CXMyeKnDqOQduU8TVlqQrUw&s",
     "short": "Diprotodon, from Ancient Greek δί- (dí-), meaning \"two\", πρῶτος (prôtos), meaning \"first\", and ὀδούς (odoús), meaning \"tooth\", is an extinct genus of diprotodontid marsupial from the Pleistocene of Australia containing one species, D. optatum.",
     "full": "The earliest finds date to 1.77 million to 780,000 years ago, but most specimens are dated to after 110,000 years ago. Its remains were first unearthed in 1830, in Wellington Caves, New South Wales, and contemporary paleontologists guessed they belonged to rhinos, elephants, hippos or dugongs."
   },
   "Elasmotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Elasmotherium_skeleton%2C_Azov_Museum_%281%29.jpg/960px-Elasmotherium_skeleton%2C_Azov_Museum_%281%29.jpg",
+    "img": "https://www.nhm.ac.uk/content/dam/nhm-www/discover/siberian-unicorn/siberian-unicorn-painting-full-width.jpg",
     "short": "Elasmotherium is an extinct genus of very large rhinoceros that lived in Eastern Europe, Central Asia and East Asia from the late Miocene through to the Late Pleistocene, until at least 39,000 years ago.",
     "full": "It was the last surviving member of the subfamily Elasmotheriinae, a formerly diverse group of rhinoceroses separate from the subfamily Rhinocerotinae, that contains all living rhinoceroses."
   },
   "Deinotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Azov._History%2C_Archaeology_and_Paleontology_Museum-Reserve._Deinotherium_P4300150_2350.jpg/960px-Azov._History%2C_Archaeology_and_Paleontology_Museum-Reserve._Deinotherium_P4300150_2350.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1o7LJDg3UILxjBKc8KjhC_L9lRfwkWDk1jA&s",
     "short": "Deinotherium is an extinct genus of large, elephant-like proboscideans that lived from the Middle Miocene until the end of the Early Pleistocene.",
     "full": "Although its appearance is reminiscent of modern elephants, Deinotherium differered considerably from modern elephants in several anatomical details: it possessed a notably more flexible neck, proportionally more slender limbs, tapir-like teeth, as well as tusks which grew down and curved back from the lower jaw (mandible), and lacked tusks growing from the upper jaw. Several species of Deinotherium grew larger than modern elephants, not uncommonly reaching shoulder heights of 4 metres (13 ft) and body masses of 12 tonnes (26,000 lb), making them among the largest land mammals ever. Deinotherium was a widespread genus, during the Miocene they ranged across East Africa, and Eurasia from Western Europe to the Indian subcontinent. They were browsing animals, with a diet largely consisting of leaves. The genus most likely went extinct due to environmental changes, such as forested areas gradually being replaced by open grasslands, during the latter half of the Neogene. Deinotherium thrived the longest in Africa, where they survived until the end of the Early Pleistocene, around 1 million years ago."
   },
   "Thylacosmilus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/MEF_Thylacosmilus.jpg/960px-MEF_Thylacosmilus.jpg",
+    "img": "https://i.redd.it/nyra4euhm2jb1.jpg",
     "short": "Thylacosmilus is an extinct genus of saber-toothed metatherian mammals that inhabited South America from the Late Miocene to Pliocene epochs.",
     "full": "Though Thylacosmilus looks similar to the \"saber-toothed cats\", it was not a felid, like the well-known American Smilodon, but a sparassodont, a group closely related to marsupials, and only superficially resembled other saber-toothed mammals due to convergent evolution, with the aforementioned Thylacosmilus being one of the last known sparassodonts. A 2005 study found that the bite forces of Thylacosmilus and Smilodon were low, which indicates that the killing techniques of saber-toothed animals differed from those of extant species. Remains of Thylacosmilus have been found primarily in Catamarca, Entre Ríos, and La Pampa Provinces in northern Argentina. Mass estimates of Thylacosmilus have varied depending on mass regressions, weighing 41–150 kg (90–331 lb), this makes Thylacosmilus one of the largest known metatherian predators."
   },
   "Arsinoitherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Arsinoitherium_zitteli.jpg/960px-Arsinoitherium_zitteli.jpg",
+    "img": "https://www.fossilguy.com/gallery/vert/mammal/land/arsinoitherium/Arsinoitherium_hharder.jpg",
     "short": "Arsinoitherium is an extinct genus of paenungulate mammals belonging to the extinct order Embrithopoda.",
     "full": "It is related to elephants, sirenians, and hyraxes. Arsinoitheres were superficially rhinoceros-like herbivores that lived during the Late Eocene and the Early Oligocene of North Africa from 36 to 30 million years ago, in areas of tropical rainforest and at the margin of mangrove swamps. A species described in 2004, A. giganteum, lived in Ethiopia about 27 million years ago."
   },
   "Ambulocetus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/AmbulocetusNatansPisa.JPG/960px-AmbulocetusNatansPisa.JPG",
+    "img": "https://i.redd.it/pxorgbdp9yr31.jpg",
     "short": "Ambulocetus is a genus of early semiaquatic cetacean from the Kuldana Formation in Pakistan, roughly 48 or 47 million years ago during the Early Eocene (Lutetian).",
     "full": "It contains one species, Ambulocetus natans, known solely from one near-complete skeleton. Ambulocetus is among the best-studied of Eocene cetaceans, and serves as an instrumental find in the study of cetacean evolution and their transition from land to sea, as it was the first cetacean discovered to preserve a suite of adaptations consistent with an amphibious lifestyle. Ambulocetus is classified in the group Archaeoceti—the ancient forerunners of modern cetaceans whose members span the transition from land to sea—and in the family Ambulocetidae, which includes Himalayacetus and Gandakasia."
   },
   "Palaeomastodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Palaeomastodon_beadnelli.jpg/960px-Palaeomastodon_beadnelli.jpg",
+    "img": "https://www.dinofan.com/Life/LifeFormImages/Palaeomastodon1.gif",
     "short": "Palaeomastodon is an extinct genus of basal proboscideans from the Oligocene of North Africa.",
     "full": "The first specimen discovered was recovered from strata belonging to the Fayum fossil deposits of Egypt. It was described and named in 1901 by Charles Williams Andrews, who named its type species, P. beadnelli, after a colleague. Multiple species have been named since, though have either been reassigned to Phiomia or synonymised with P. beadnelli. Three (possible) unnamed taxa are known from Ethiopia and Libya. All remains are from strata that date to 33–27 million years ago."
   },
   "Megantereon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Megantereon_cultridens_skeleton.jpg/960px-Megantereon_cultridens_skeleton.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5ktuRRulamI87RPHjSsGUg6sZgflpIDMjfA&s",
     "short": "Megantereon is an extinct genus of prehistoric machairodontine saber-toothed cat that lived in Eurasia, Africa and possibly North America from the late Pliocene to the Middle Pleistocene, first described by George Cuvier in 1824.",
     "full": "It is a member of the tribe Smilodontini, and closely related to and possibly the ancestor of the more widely-known American sabertooth Smilodon, with which it shared greatly elongated saber canine teeth. In comparison to Smilodon, Megantereon was somewhat smaller, around the size of a jaguar, although it is thought to have had a similar hunting strategy as an ambush predator. Megantereon began to decline towards the end of the Early Pleistocene, becoming extinct in Africa first around 1.3 Ma and later in Europe around 1 Ma, surviving latest in East Asia into the Middle Pleistocene until sometime around 780-350,000 years ago. Environmental change, changes in prey availability, and competition from early humans have been suggested as reasons for its extinction."
   },
   "Pelagornis": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Pelagornis_miocaenus.jpg/960px-Pelagornis_miocaenus.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2vFqyP6ytz-VG6ppRX9DVEVyeBAL03eRVtA&s",
     "short": "Pelagornis is an extinct genus of prehistoric pseudotooth birds, a group of extinct seabirds.",
     "full": "Species span from the Oligocene to the Early Pleistocene. Members of Pelagornis represent among the largest pseudotooth birds, with one species, P. sandersi, having the widest wingspan of any bird known."
   },
   "Aepyornis": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Aepyornis_maximus.jpg",
+    "img": "https://a-z-animals.com/media/2022/07/shutterstock_2058181508.jpg",
     "short": "Aepyornis is an extinct genus of elephant bird formerly endemic to Madagascar.",
     "full": "The genus had two species, the smaller A. hildebrandti and the larger A. maximus, which is possibly the largest bird ever to have lived. Its closest living relative is the New Zealand kiwi. They became extinct sometime around AD 1000, probably as a result of human activity."
   },
   "Haast's_eagle": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Canterbury_Museum%2C_Christchurch_-_Joy_of_Museums_-_Haast%27s_Eagle.jpg/960px-Canterbury_Museum%2C_Christchurch_-_Joy_of_Museums_-_Haast%27s_Eagle.jpg",
+    "img": "https://www.nzbirdsonline.org.nz/assets/95597/1691018805-ma_i043829.jpg?auto=format&fit=crop&w=1200",
     "short": "Haast's eagle, sometimes known as Fuller's eagle, is an extinct species of eagle that lived in the South Island of New Zealand, commonly accepted to be the pouākai of Māori mythology.",
     "full": "It is the largest eagle known to have existed, with an estimated weight of 10–18 kilograms, compared to the next-largest and extant harpy eagle, at up to 9 kg (20 lb). Its massive size is explained as an evolutionary response to the size of its prey—the flightless moa—the largest of which could weigh 200 kg (440 lb). Haast's eagle became extinct around 1445, following the arrival of the Māori, who hunted moa to extinction, introduced the Polynesian rat, and destroyed large tracts of forest by fire."
   },
   "Moropus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Moropus_elatus.jpg/960px-Moropus_elatus.jpg",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Moropus_oregonensis.jpg/250px-Moropus_oregonensis.jpg",
     "short": "Moropus is an extinct genus of large perissodactyl mammal in the chalicothere family.",
     "full": "They were endemic to North America during the Miocene from ~20.4–13.6 Mya, existing for approximately 6.8 million years. Moropus belonged to the schizotheriine subfamily of chalicotheres, and has the best fossil record of any member of this group; numbers of individuals, including complete skeletons, have been found. The type species of Moropus, M. distans, was named by Othniel Charles Marsh in 1877, alongside two other species, M. elatus and M. senex. Three more species have been named since. Others have been named, but have either been invalidated for one reason or another, or reclassified to other genera."
   },
   "Megacerops": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Titanothere_brontops_%28Thunderbeast%29.jpg/960px-Titanothere_brontops_%28Thunderbeast%29.jpg",
+    "img": "https://www.nps.gov/articles/images/95848504_3064093496968338_1521556043656593408_o-1.jpg",
     "short": "Megacerops is an extinct genus of brontothere, an extinct group of rhinoceros-like browsers traditionally classified as relatives of horses.",
     "full": "Megacerops was endemic to North America during the Late Eocene, during the Chadronian land mammal age."
   },
   "Uintatherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Museum_of_Natural_History_Uintatherium.jpg/960px-Museum_of_Natural_History_Uintatherium.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEM0v3dO5xWftZT2FyH04egReVdDdZLcavUw&s",
     "short": "Uintatherium is an extinct genus of dinoceratan mammal that lived during the Eocene epoch.",
     "full": "Two species are currently recognized: U. anceps is found in the United States and lived during the early to middle Eocene, while U. insperatus is found in China and lived during the middle and late Eocene. The first fossils of Uintatherium were recovered from the Fort Bridger Basin and were initially believed to belong to a new species of brontothere. Several previously recognized species, as well as genera such as Edward Drinker Cope's Loxolophodon and Othniel Charles Marsh's Tinoceras, are now assigned to Uintatherium anceps."
   },
   "Mesohippus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Mesohippus_barbouri_Harvard.jpg/960px-Mesohippus_barbouri_Harvard.jpg",
+    "img": "https://cdn.britannica.com/04/88904-050-19BF70E1/Mesohippus.jpg",
     "short": "Mesohippus is an extinct genus of early horse.",
     "full": "It lived 37 to 32 million years ago in the Early Oligocene. Like many fossil horses, Mesohippus was common in North America. Its shoulder height is estimated at 60 cm."
   },
   "Daeodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Daeodon_skull.jpg/960px-Daeodon_skull.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuYYoxXENfNt2OKGsDagPMGoWk2g6SkfdunA&s",
     "short": "Daeodon is an extinct genus of entelodont even-toed ungulates that inhabited North America about 29 to 15.97 million years ago from the early Oligocene to late early Miocene.",
     "full": "The type species is Daeodon shoshonensis, described from a very fragmentary holotype by Cope. Some authors synonymize it with Dinohyus hollandi and several other species, but due to the lack of diagnostic material, this may be questionable."
   },
   "Homotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Homotheriumtex1.JPG",
+    "img": "https://i0.wp.com/depositsmag.com/wp-content/uploads/2020/06/uuu.jpeg?fit=1024%2C846&ssl=1",
     "short": "Homotherium is an extinct genus of scimitar-toothed cat belonging to the extinct subfamily Machairodontinae that inhabited North America, Eurasia, and Africa, as well as possibly South America during the Pliocene and Pleistocene epochs from around 4 million to 12,000 years ago.",
     "full": "A probable descendant of Amphimachairodus, it was one of the last surviving members of Machairodontinae alongside the more famous sabertooth Smilodon, to which it was not particularly closely related. It was a large cat, comparable in size to a lion with a body mass of up to 200 kilograms (440 lb), functioning as an apex predator in the ecosystems it inhabited. It had an elongate neck and relatively elongate legs, a relatively short back and a very short tail, with the mummy of a H. latidens cub of Late Pleistocene age found in Siberia having a plain dark brown coat colour. In comparison to Smilodon, the canines of Homotherium were shorter, though still longer than those of living cats, and it is suggested to have had a different ecology from Smilodon as a moderate speed endurance pursuit predator adapted to running down large prey, such as antelope, equines, bovines, and juvenile mammoths in open habitats, with Homotherium also proposed to have likely engaged in cooperative hunting."
   },
   "Miracinonyx": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Miracinonyx_inexpectatus.png/960px-Miracinonyx_inexpectatus.png",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhOJvedJWq2AybqExbJQJRN5ZWRiqsIYwzlw&s",
     "short": "Miracinonyx, colloquially known as the American cheetah or the New World cheetah, is an extinct genus of felids belonging to the subfamily Felinae that was endemic to North America from the Pleistocene epoch and morphologically similar to the modern cheetah, although its apparent similar ecological niches have been considered questionable due to anatomical morphologies of the former that would have limited its ability to act as a specialized pursuit predator.",
     "full": "The genus was originally known from fragments of skeletons, but nearly complete skeletons have been recovered from Natural Trap Cave in northern Wyoming."
   },
   "Titanis": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/9/97/Skeleton_of_Titanis_at_the_Florida_Museum_of_Natural_History.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC03ZhH1rH6ASNL_7rN-EDSTrmOW0F1Po4jA&s",
     "short": "Titanis is a genus of phorusrhacid, an extinct family of large, predatory birds, in the order Cariamiformes that inhabited the United States from the early Pliocene to early Pleistocene.",
     "full": "The first fossils were unearthed by amateur archaeologists Benjamin Waller and Robert Allen from the Santa Fe River in Florida and were named Titanis walleri by ornithologist Pierce Brodkorb in 1963, the species name honoring Waller. The holotype material is fragmentary, consisting of only an incomplete right tarsometatarsus and phalanx, but comes from one of the largest phorusrhacid individuals known. In the years following the description, many more isolated elements have been unearthed from sites from other areas of Florida, Texas, and California. The species was classified in the subfamily Phorusrhacinae, which includes some of the last and largest phorusrhacids like Devincenzia and Kelenken."
   },
   "Kelenken": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Kelenken_skeleton.jpg/960px-Kelenken_skeleton.jpg",
+    "img": "https://64.media.tumblr.com/6242fd14fa87965bc59fd6c951cbd8d5/tumblr_inline_pnxgaqw0t81rx4yme_540.png",
     "short": "Kelenken is a genus of phorusrhacid, an extinct group of large, predatory birds, which lived in what is now Argentina in the middle Miocene about 15 million years ago.",
     "full": "The only known specimen was discovered by high school student Guillermo Aguirre-Zabala in Comallo, in the region of Patagonia, and was made the holotype of the new genus and species Kelenken guillermoi in 2007. The genus name references a spirit in Tehuelche mythology, and the specific name honors the discoverer. The holotype consists of one of the most complete skulls known of a large phorusrhacid, as well as a tarsometatarsus lower leg bone and a phalanx toe bone. The discovery of Kelenken clarified the anatomy of large phorusrhacids, as these were previously much less well known. The closest living relatives of the phorusrhacids are the seriemas. Kelenken was found to belong in the subfamily Phorusrhacinae, along with for example Devincenzia."
   },
   "Sivapithecus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Sivapithecus_sivalensis.JPG",
+    "img": "https://images.imagerenderer.com/images-medium-large-5/sivapithecus-michael-longscience-photo-library.jpg",
     "short": "Sivapithecus is a genus of extinct apes.",
     "full": "Fossil remains of animals now assigned to this genus, dated from 12.2 million years old in the Miocene, have been found since the 19th century in the Sivalik Hills of the Indian subcontinent as well as in Kutch. Any one of the species in this genus may have been the ancestor to the modern orangutans."
   },
   "Merychippus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Merychippus_skeletal_reconstruction.png/960px-Merychippus_skeletal_reconstruction.png",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwScFUH4rYjTlJisFjHB3Vr6frH45Qcod4lg&s",
     "short": "Merychippus is an extinct proto-horse of the family Equidae that was endemic to North America during the Miocene, 15.97–5.33 million years ago.",
     "full": "It had three toes on each foot and is the first horse known to have grazed."
   },
   "Anoplotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Anoplotherium_commune.jpg/960px-Anoplotherium_commune.jpg",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Paleotherium_magnum.jpg/250px-Paleotherium_magnum.jpg",
     "short": "Anoplotherium is the type genus of the extinct Palaeogene artiodactyl family Anoplotheriidae, which was endemic to Western Europe.",
     "full": "It lived from the Late Eocene to the earliest Oligocene. It was the fifth fossil mammal genus to be described with official taxonomic authority, with a history extending back to 1804 when its fossils from Montmartre in Paris, France were first described by the French naturalist Georges Cuvier. Discoveries of incomplete skeletons of A. commune in 1807 led Cuvier to thoroughly describe unusual features for which there are no modern analogues. His drawn skeletal and muscle reconstructions of A. commune in 1812 were amongst the first instances of anatomical reconstructions based on fossil evidence. Cuvier's contributions to palaeontology based on his works on the genus were revolutionary for the field, not only proving the developing ideas of extinction and ecological succession but also paving the way for subfields such as palaeoneurology. Today, there are four known species."
   },
   "Aepycamelus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Aepycamelus_giraffinus_and_Procamelus_grandis.jpg/960px-Aepycamelus_giraffinus_and_Procamelus_grandis.jpg",
+    "img": "https://i.redd.it/aepycamelus-was-a-prairie-dweller-of-north-america-colorado-v0-vzan49tyzy7b1.jpg?width=1280&format=pjpg&auto=webp&s=8c5431f2462f6b466d7d01933c2357537fc383a4",
     "short": "Aepycamelus is an extinct genus of camelids that lived during the Miocene 20.6–4.9 million years ago, existing for about 15.7 million years.",
     "full": "Its name is derived from the Homeric Greek αἰπύς, \"high and steep\" and κάμηλος – \"camel\"; thus, \"high camel\"; alticamelus in Latin."
   },
   "Cervalces_scotti": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Cervalces_scotti_-_MUSE.JPG/960px-Cervalces_scotti_-_MUSE.JPG",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvBugKqLqlt9dBaBOHScnyYNl8VrvdTMp3Iw&s",
     "short": "Cervalces scotti, also known as stag-moose, is an extinct species of large deer that lived in North America during the Late Pleistocene epoch.",
     "full": "It is the only known North American member of the genus Cervalces. Its closest living relative is the modern moose."
   },
   "American_mastodon": {
-    "img": "",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEh7dcGUmrNnLDxBoE3VqWJWFIcqYTGHor_w&s",
     "short": "A mastodon is a member of the genus Mammut, which was endemic to North America and lived from the late Miocene to the early Holocene.",
     "full": "Mastodons belong to the order Proboscidea, the same order as elephants and mammoths. Mammut is the type genus of the extinct family Mammutidae, which diverged from the ancestors of modern elephants at least 28 million years ago, during the Oligocene."
   },
@@ -777,117 +777,117 @@ const ANIMAL_DATA = {
     "full": "The first specimen, a near-complete skull, was discovered in 1963 by Robert J. G. Savage in Libya, and was kept at the Natural History Museum in London alongside postcrania discovered in the prior few years. In 1973, Savage described Megistotherium based on these elements, with the skull serving as the type specimen. It was later determined that the assigned postcrania actually came from an amphicyonid, or \"bear-dog\". One species of Megistotherium, M. osteothlastes, has been described. There is some debate over whether Megistotherium is a genus of its own or a junior synonym of another, related genus, Hyainailouros."
   },
   "Phorusrhacus": {
-    "img": "",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMWP6m9yQUNGVswkwBL9MK-VGQsptrWNhDvw&s",
     "short": "Phorusrhacos is an extinct genus of giant flightless terror birds that inhabited South America during the Miocene epoch.",
     "full": "Phorusrhacos was one of the dominant land predators in South America at the time it existed. It is thought to have lived in woodlands and grasslands."
   },
   "Pakicetus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Pakicetus_Canada.jpg/960px-Pakicetus_Canada.jpg",
+    "img": "https://i.redd.it/agapzi8fesse1.jpeg",
     "short": "Pakicetus is an extinct genus of amphibious cetacean of the family Pakicetidae, which was endemic to South Asia during the Ypresian period, about 50 million years ago.",
     "full": "It was a wolf-like mammal, about 1–2 m long, and lived in and around water where it ate fish and other animals. The name Pakicetus comes from the fact that the first fossils of this extinct amphibious whale were discovered in Pakistan. The vast majority of paleontologists regard it as the most basal whale, representing a transitional stage between land mammals and whales. It belongs to the even-toed ungulates with the closest living non-cetacean relative being the hippopotamus."
   },
   "Toxodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Toxodon_skeleton_in_BA.JPG/960px-Toxodon_skeleton_in_BA.JPG",
+    "img": "https://vignette.wikia.nocookie.net/cryptidarchives/images/5/58/Toxodon_by_Velizar_Simeonovski.jpg/revision/latest?cb=20181229075955",
     "short": "Toxodon is an extinct genus of large ungulate native to South America from the Pliocene to the end of the Late Pleistocene.",
     "full": "Toxodon is a member of Notoungulata, an order of extinct South American native ungulates distinct from the two living ungulate orders that had been indigenous to the continent for over 60 million years since the early Cenozoic, prior to the arrival of living ungulates into South America around 2.5 million years ago during the Great American Interchange. Toxodon is a member of the family Toxodontidae, which includes medium to large sized herbivores. Toxodon was one of the largest members of Toxodontidae and Notoungulata, with Toxodon platensis having an estimated body mass of 1,000–1,200 kilograms (2,200–2,600 lb)."
   },
   "Josephoartigasia": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Josephoartigasia_monesi_skull.png/960px-Josephoartigasia_monesi_skull.png",
+    "img": "https://lh7-rt.googleusercontent.com/docsz/AD_4nXdjS_dKneLxym8SuSPE6xBqlIZqRZM1ZXjZlBYBz2hrSclofwUbFd1t-XgYHomVn-4QvClj3mfhTYL_dd3TM7Mat3o5s7TC0inB4HXG_9Wz--N7gQWBN_8G_v174fvNxfE-amRTIw?key=Z5FjkNggPcy3JYlftoDUW_ZG",
     "short": "Josephoartigasia is an extinct genus of enormous dinomyid rodent from the Early Pliocene to Early Pleistocene of Uruguay.",
     "full": "Its closest living relative is the pacarana. Josephoartigasia is named after Uruguayan national hero José Artigas. It contains two species: J. magna, described in 1966 based on a left mandible, and J. monesi, described in 2008 based on a nearly complete skull. Both are reported from the San José Member of the Raigón Formation by the Barrancas de San Gregorio along Kiyú beach."
   },
   "Agriotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/OR39721-S.jpg/960px-OR39721-S.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnqZn2CL1UgWiKJoWIikGzB38fotPAjj4GZQ&s",
     "short": "Agriotherium is an extinct genus of bears whose fossils are found in Miocene through Pleistocene-aged strata of Eurasia and Africa.",
     "full": "The earliest species, A. inexpetans, evolved during the Late Miocene, around 7.6 Mya. The latest record for the genus was around 1.8 Mya, during the Early Pleistocene."
   },
   "Embolotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Embolotherium_andrewsi_skull_%28cropped%29.jpg/960px-Embolotherium_andrewsi_skull_%28cropped%29.jpg",
+    "img": "https://uchytel.com/image/cache/catalog/original/Embolotherium-grangeri-(WB)1-414x331.jpg",
     "short": "Embolotherium is an extinct genus of brontothere that lived in Mongolia during the late Eocene epoch.",
     "full": "It is most easily recognized by a large bony protuberance emanating from the anterior (front) of the skull. This resembles a battering ram, hence the name Embolotherium. The animal is known from about 12 skulls, several jaws, and a variety of other skeletal elements from the Ulan Gochu formation of Inner Mongolia as well as the Ergilin Dzo Formation of Outer Mongolia."
   },
   "Hyaenodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Hyaenodon_%281%29.jpg/960px-Hyaenodon_%281%29.jpg",
+    "img": "https://a-z-animals.com/media/2022/06/Hyaenodon_Heinrich_Harder.jpg",
     "short": "Hyaenodon (\"hyena-tooth\") is an extinct genus of carnivorous placental mammals from the tribe Hyaenodontini, part of the subfamily Hyaenodontinae, that belonged to the now extinct order Hyaenodonta.",
     "full": "The genus was found lived in Eurasia and North America from the Middle Eocene to the Early Miocene, from 38 to 17 million years ago, existing for 21 million years. Hyaenodon first evolved in Asia, probably evolving from Propterodon."
   },
   "Platybelodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Hohhot.inner_mongolia_museum.Platybelodon_grangeri.2.jpg/960px-Hohhot.inner_mongolia_museum.Platybelodon_grangeri.2.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdrwuz5H-jamwia47oHhOj4QoKXKvOXk68Eg&s",
     "short": "Platybelodon is an extinct genus of amebelodontid proboscidean mammal, distantly related to modern-day elephants.",
     "full": "Fossils are known from middle Miocene strata from parts of Asia and the Caucasus. The first specimens of Platybelodon, consisting of a partial skull, a nearly complete lower jaw, and multiple disarticulated remains, were discovered in the Tchokrak beds of north Caucasus, in the summer of 1927. The following year, Russian palaeontologist Alexey Borissiako described them, giving them the name Platybelodon danovi. Several additional species have been described, including Platybelodon grangeri, named by Henry Fairfield Osborn in 1928."
   },
   "Stegodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg/960px-Giant_Mastodon_Skeleton_%2810096915486%29_%28cropped%29.jpg",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Stegodon_ganesaDB.jpg/250px-Stegodon_ganesaDB.jpg",
     "short": "Stegodon is an extinct genus of proboscidean, related to elephants.",
     "full": "It was originally assigned to the family Elephantidae along with modern elephants but is now placed in the extinct family Stegodontidae. Like elephants, Stegodon had teeth with plate-like lophs that are different from those of more primitive proboscideans like gomphotheres and mammutids. Fossils of the genus are known from Africa and across much of Asia, as far southeast as Timor. The oldest fossils of the genus are found in Late Miocene strata in Asia, likely originating from the more archaic Stegolophodon, subsequently migrating into Africa. While the genus became extinct in Africa during the Pliocene, Stegodon persisted in South, Southeast and Eastern Asia into the Late Pleistocene."
   },
   "Barbourofelis": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Barbourofelis_loveorum.jpg/960px-Barbourofelis_loveorum.jpg",
+    "img": "https://preview.redd.it/barbourofelis-a-top-predator-of-the-miocene-find-themselves-v0-85h2rkrrm76e1.jpeg?auto=webp&s=e2bc937afe6c0eaf9fab75003b432baf2e9b029b",
     "short": "Barbourofelis is an extinct genus of large feliform, from the subfamily Barbourofelinae, which is part of the family of false-sabertooth cats known as Nimravidae.",
     "full": "Barbourofelis, along with Albanosmilus, were the last known nimravids. Barbourofelis lived in North America and Eurasia during the Miocene epoch from 12 to 7 Ma."
   },
   "Nimravus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Nimravus_gomphodus.jpg/960px-Nimravus_gomphodus.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6wXu2AS02Z7Sdsna2GDPuVXR0Q89cRqgYZw&s",
     "short": "Nimravus is an extinct genus of \"false\" saber-toothed cat that lived in North America and Eurasia during the Eocene and Oligocene epochs 35.3—27.1 mya, existing for approximately 7.9 million years.",
     "full": "Not closely related to true saber-toothed cats, they evolved a similar form through parallel evolution. Fossils have been uncovered from western U.S. from Oregon to Southern California and Nebraska, and also from Eurasia from France to Mongolia."
   },
   "Leptictidium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Leptictidium_auderiense.JPG/960px-Leptictidium_auderiense.JPG",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Leptictidium_Artist%27s_Impression.png/250px-Leptictidium_Artist%27s_Impression.png",
     "short": "Leptictidium is an extinct genus of small mammals that were likely bipedal.",
     "full": "Comprising eight species, they resembled today's bilbies, bandicoots, and elephant shrews, and occupied a similar niche. They are especially interesting for their combination of characteristics typical of primitive eutherians with highly specialized adaptations, such as powerful hind legs and a long tail which aided in locomotion. They were omnivorous, their diet a combination of insects, lizards, frogs, and small mammals. Leptictidium and other leptictids are not placentals, but are non-placental eutherians, although they are closely related to placental eutherians. They appeared in the Lower Eocene, a time of warm temperatures and high humidity, roughly fifty million years ago. Although they were widespread throughout Europe, they became extinct around thirty-five million years ago with no descendants, as they were adapted to live in forest ecosystems and were unable to adapt to the open plains of the Oligocene."
   },
   "Borhyaena": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Borhyaena_tuberata.JPG/960px-Borhyaena_tuberata.JPG",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXpy2QCkv50JYTQaR8ct77ye5Iz-TFYSNmQA&s",
     "short": "Borhyaena is an extinct genus of South American metatherian within borhyaenaid, a family of mammalian predators part of the now extinct order Sparassodonta.",
     "full": "The genus lived from 21 to 15.5 million years ago from the Early to Middle Miocene."
   },
   "Miacis": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/5/50/Miacis_parvivorus_Cope.jpg",
+    "img": "https://i.redd.it/1pah4zfflw051.jpg",
     "short": "Miacis is an extinct genus of placental mammals from clade Carnivoraformes, that lived in North America from the early to middle Eocene.",
     "full": ""
   },
   "Phenacodus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Phenacodus_AMNH.jpg/960px-Phenacodus_AMNH.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrA4rlYXBltB0X8hkdrNZkRFNcDuZUqGPlXQ&s",
     "short": "Phenacodus is an extinct genus of mammals from the late Paleocene through middle Eocene, about 55 million years ago.",
     "full": "It is one of the earliest and most primitive of the ungulates, typifying the family Phenacodontidae and the order Perissodactyla."
   },
   "Pezosiren": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Dans_l%27ombre_des_dinosaures_-_Pezosiren_-_016.jpg/960px-Dans_l%27ombre_des_dinosaures_-_Pezosiren_-_016.jpg",
+    "img": "https://africanaquaticconservation.org/wp-content/uploads/2012/10/Pezosirendrawinglocolobo.org_-1.jpg",
     "short": "Pezosiren portelli, also known as the \"walking manatee\", is a basal sirenian from the early Eocene of Jamaica, 50 million years ago.",
     "full": "The type specimen is represented by a Jamaican fossil skeleton, described in 2001 by Daryl Domning, a marine mammal paleontologist at Howard University in Washington, DC. It is believed to have had a hippopotamus-like amphibious lifestyle, and is considered a transitional form between land and sea mammals."
   },
   "Icaronycteris": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Fossil_holotype_of_Icaronycteris_gunnelli_%28AMNH_FM.145747A%29_dorsal_view.jpg/960px-Fossil_holotype_of_Icaronycteris_gunnelli_%28AMNH_FM.145747A%29_dorsal_view.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXRj7gKy4L6K1jhe1ApZOTJPegQzvYcvHQ0w&s",
     "short": "Icaronycteris is an extinct genus of microchiropteran (echolocating) bat that lived in the early Eocene, approximately 52.2 million years ago, making it the earliest bat genus known from complete skeletons, and the earliest known bat from North America.",
     "full": ""
   },
   "Archaeoindris": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Archaeoindris_fontoynonti_skull_58.jpg/960px-Archaeoindris_fontoynonti_skull_58.jpg",
+    "img": "https://i.redd.it/archaeoindris-a-gorilla-sized-fossil-lemur-the-largest-ever-v0-o3nq71y81mf81.jpg?width=1455&format=pjpg&auto=webp&s=b56f346655e3be139e47262952f3452da7f97d34",
     "short": "Archaeoindris fontoynontii is an extinct giant lemur and the largest primate known to have evolved on Madagascar, comparable in size to a male gorilla.",
     "full": "It belonged to a family of extinct lemurs known as \"sloth lemurs\" (Palaeopropithecidae), and because of its extremely large size, it has been compared to the ground sloths that once roamed North and South America. It was most closely related to Palaeopropithecus, the second-largest type of sloth lemur. Along with the other sloth lemurs, Archaeoindris was related to the living indri, sifakas, and woolly lemurs, as well as the recently extinct monkey lemurs (Archaeolemuridae). The genus, Archaeoindris translates to \"ancient indri-like lemur\"."
   },
   "Odobenocetops": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Odobenocetops_leptodon_MNHN_SAO_202.png/960px-Odobenocetops_leptodon_MNHN_SAO_202.png",
+    "img": "https://nixillustration.com/wp-content/uploads/2023/03/22a-odobenocetops_peruvianus.png",
     "short": "Odobenocetops is an extinct genus of small toothed whale known from Chile and Peru.",
     "full": "Its fossils are found in Miocene-aged marine strata of the Bahía Inglesa Formation and Pisco Formation. Two species of Odobenocetops are currently recognized, O. peruvianus and the slightly younger O. leptodon."
   },
   "Cetotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Cetotherium.jpg/960px-Cetotherium.jpg",
+    "img": "https://64.media.tumblr.com/c1b0add7e9be916137de8ff1547f8694/tumblr_ntlgaaiiMB1s5f2yxo1_1280.png",
     "short": "Cetotherium is an extinct genus of baleen whales from the family Cetotheriidae.",
     "full": ""
   },
   "Notharctus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Notharctus_AMNH.jpg/960px-Notharctus_AMNH.jpg",
+    "img": "https://open-images.acast.com/shows/638fae9eebaaed00108c0d80/1731914970021-43de7893-556e-4dae-907b-18a221b5b82e.jpeg?height=750",
     "short": "Notharctus is a genus of adapiform primate that lived in North America and Europe during the early to middle Eocene.",
     "full": ""
   },
   "Telicomys": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/9/92/Telicomys_giganteus_%28MACN_8011%2C_Dinomyidae%29.jpg",
+    "img": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzEcICkVE2JvGO7tP_-2pNshxPHUeDablQKwEI_BJ1O3svBf2YVZc47aZ5BqPH3sXN-QPsXqjuIazHkOMOVH195TrLekZnp9r9D1Jos5K9gofzDDb4_-yZ9jXdSesFpUhCL2kPOFwGcFOr/s1600/telicomys.jpg",
     "short": "Telicomys is an extinct genus of rodent from the Solimões Formation, Brazil, South America.",
     "full": ""
   },
   "Palaeoloxodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Elephas_antiquus_Rom_%28cropped%29.JPG/960px-Elephas_antiquus_Rom_%28cropped%29.JPG",
+    "img": "https://cdn.sci.news/images/enlarge10/image_11619_1e-Palaeoloxodon-antiquus.jpg",
     "short": "Palaeoloxodon is an extinct genus of elephant.",
     "full": "It originated in Africa during the Early Pleistocene, and expanded into Eurasia at the beginning of the Middle Pleistocene. Palaeoloxodon contains the largest known species of elephants, with mature bulls over 4 metres (13 ft) tall at the shoulders and over 13 tonnes (29,000 lb) in weight, representing among the largest land mammals ever, including the African Palaeoloxodon recki, the European straight-tusked elephant and the South Asian Palaeoloxodon namadicus. P. namadicus has been suggested to be the largest known land mammal by some authors based on extrapolation from fragmentary remains, though these estimates are highly speculative. In contrast, the genus also contains many species of dwarf elephants on islands in the Mediterranean, some like Palaeoloxodon falconeri less than 1 metre (3.3 ft) in shoulder height as fully grown adults, making them the smallest elephants known. The genus has a long and complex taxonomic history, and at various times, it has been considered to belong to Loxodonta or Elephas, but today is usually considered a valid and separate genus in its own right."
   },
@@ -897,7 +897,7 @@ const ANIMAL_DATA = {
     "full": "It is closely related to Andrewsiphius with which it was synonymized by Gingerich et al. 2001. Thewissen & Bajpai 2009 proposed a new clade, Andrewsiphiinae, for the two species. Later authors, however, still accept both as separate genera."
   },
   "Archaeobelodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Archaeobelodon_filholi_skeleton.JPG/960px-Archaeobelodon_filholi_skeleton.JPG",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIYSuGPCTWN9Oqcdca0TvPnKGJqG7sg3NMTA&s",
     "short": "Archaeobelodon is an extinct genus of proboscidean of the family Amebelodontidae that lived in Europe and North Africa (Egypt) during the Miocene from 16.9 to 16.0 Ma, living for approximately 0.9 million years.",
     "full": ""
   },
@@ -907,17 +907,17 @@ const ANIMAL_DATA = {
     "full": ""
   },
   "Astrapotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Astrapotherium_FMNH.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJvuNAY6Xy84ATLVGQUsTXIugj9wKDEciZPQ&s",
     "short": "Astrapotherium is an extinct genus of large astrapotherian ungulate native to South America during the early-middle Miocene.",
     "full": "It is the best known member of the group. The type species. A. magnum have been found in the Santa Cruz Formation in Argentina. Other fossils have been found in the Deseado, Sarmiento, and Aisol Formations of Argentina and Chile."
   },
   "Pyrotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Beneski_Museum_of_Natural_History_Pyrotherium.jpg/960px-Beneski_Museum_of_Natural_History_Pyrotherium.jpg",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/7/70/Pyrotherium_romeroi_NT_small.jpg",
     "short": "Pyrotherium is an extinct genus of South American ungulates, in the order Pyrotheria, that lived in what is now Argentina and Bolivia during the Late Oligocene.",
     "full": "It was named Pyrotherium because the first specimens were excavated from an ancient volcanic ash deposit. Fossils of the genus have been found in the Deseado and Sarmiento Formations of Argentina and the Salla Formation of Bolivia."
   },
   "Hapalops": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Hapalops.jpg/960px-Hapalops.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnfLV8ZjDXNDbPOvYaEA7BKJKov4MnYiwEnQ&s",
     "short": "Hapalops is an extinct genus of ground sloth from the Early to Late Miocene of Brazil, Bolivia, Colombia, and Argentina in South America.",
     "full": ""
   },
@@ -927,7 +927,7 @@ const ANIMAL_DATA = {
     "full": ""
   },
   "Protypotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Protypotherium_australe_-_National_Museum_of_Nature_and_Science%2C_Tokyo_-_DSC07782.JPG/960px-Protypotherium_australe_-_National_Museum_of_Nature_and_Science%2C_Tokyo_-_DSC07782.JPG",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrJZM5fMOCTkGQ6iDBcb2ivUofyZDOLC2qlw&s",
     "short": "Protypotherium is an extinct genus of notoungulate mammals native to South America during the Oligocene and Miocene epochs.",
     "full": "A number of closely related animals date back further, to the Eocene. Fossils of Protypotherium have been found in the Deseadan Fray Bentos Formation of Uruguay, Muyu Huasi and Nazareno Formations of Bolivia, Cura-Mallín and Río Frías Formations of Chile, and Santa Cruz, Salicas, Ituzaingó, Aisol, Cerro Azul, Cerro Bandera, Cerro Boleadoras, Chichinales, Sarmiento and Collón Curá Formations of Argentina."
   },
@@ -937,32 +937,32 @@ const ANIMAL_DATA = {
     "full": "Notably, the scutes on its head were so developed that they formed horns. Aside from the horned gophers of North America, it is the only known fossorial horned mammal."
   },
   "Necrolestes": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Necrolestes.svg/960px-Necrolestes.svg.png",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCT44UTiifOQbxoAfTETie1tMafBESQm5T5g&s",
     "short": "Necrolestes is an extinct genus of mammals, which lived during the Early Miocene in what is now Argentine Patagonia.",
     "full": "It is the most recent known genus of Meridiolestida, an extinct group of mammals more closely related to therians than to monotremes, which were the dominant mammals in South America during the Late Cretaceous. It contains two species, N. patagonensis and N. mirabilis; the type species N. patagonensis was named by Florentino Ameghino in 1891 based on remains found by his brother, Carlos Ameghino in Patagonia. Fossils of Necrolestes have been found in the Sarmiento and Santa Cruz Formations. Its morphology suggests that it was a digging, subterranean-dwelling mole-like mammal that fed on invertebrates."
   },
   "Microchoerus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/6/66/The_Quarterly_journal_of_the_Geological_Society_of_London_%2813889873748%29.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc22xbX5dTRZ8ev6YMtBtuo23PimWrDInhow&s",
     "short": "Microchoerus is a genus of extinct microchoerine primate from Late Eocene Europe.",
     "full": ""
   },
   "Xotodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Xotodon.jpg/960px-Xotodon.jpg",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Xotodon_prominens.png/960px-Xotodon_prominens.png",
     "short": "Xotodon is an extinct genus of toxodontid mammal that lived during the Late Miocene in Argentina, South America.",
     "full": "Fossils of Xotodon have been found in the Ituzaingó, Maimará and Chiquimil Formations of Argentina."
   },
   "Kolponomos": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Kolponomos_clallamensis_skull.jpg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqHpGDYU7OWp9C7nSVK91GS_xpdndbixB53g&s",
     "short": "Kolponomos is an extinct genus of carnivoran mammal that existed in the Late Arikareean North American Land Mammal Age, early Miocene epoch, about 20 million years ago.",
     "full": "It was likely a marine mammal. The genus was erected in 1960 by Ruben A. Stirton, a paleontologist at the University of California Museum of Paleontology, Berkeley, for the species K. clallamensis, on the basis of a partial skull and jaw found on the Clallam Formation of the Olympic Peninsula. At the time, Stirton questionably assigned it to Procyonidae, its systematic position remained problematic until the discovery of more fossils including a nearly complete cranium from the original locality of K. clallamensis which helped identify it as part of the group from which pinnipeds evolved."
   },
   "Anthracotherium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Anthracotherium_gastaldii.JPG/960px-Anthracotherium_gastaldii.JPG",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReanHIZLjTUUU-a0bQxWGGkxSXtGVICyY8_A&s",
     "short": "Anthracotherium is an extinct genus of anthracotheriid artiodactyls characterized by having 44 teeth, with five semi-crescentic cusps on the crowns of the upper molars.",
     "full": "The genus ranged from the middle Eocene period until the early Miocene, having a distribution throughout Eurasia probably even reaching South East Asia. Material subjectively assigned to Anthracotherium from Pakistan suggests the last species died out soon after the start of the Miocene."
   },
   "Eurohippus": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Eurohippus_with_fetus.PNG/960px-Eurohippus_with_fetus.PNG",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzmtL4R136P6-RThCgx8W89xoehWyGuRTdQg&s",
     "short": "Eurohippus is an extinct genus of equoid ungulate.",
     "full": "Its species were long considered part of Propalaeotherium and Lophiotherium. A pregnant specimen was described in 2015."
   },
@@ -972,12 +972,12 @@ const ANIMAL_DATA = {
     "full": "It lived from 50.3—48.6 mya, existing for approximately 1.7 million years."
   },
   "Deltatheridium": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/7/77/Deltatheridium_praetrituberculare.JPG",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Deltatheridium_DB24.jpg/250px-Deltatheridium_DB24.jpg",
     "short": "Deltatheridium is an extinct species of metatherian.",
     "full": "It lived in what is now Mongolia during the Upper Cretaceous, circa 80 million years ago. A study in 2022 strongly suggested that Deltatheridium was a marsupial, making it the earliest known member of this group."
   },
   "Andrewsornis": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Andrewsornis_skull_holotype.jpg/960px-Andrewsornis_skull_holotype.jpg",
+    "img": "https://images.squarespace-cdn.com/content/v1/5fbbf5363c8e8724072a6bc2/1632052105010-A2ZTHF0VVI2K0FQI13BH/Psilopterus.jpg",
     "short": "Andrewsornis is an extinct genus of giant flightless predatory birds of the family Phorusrhacidae or \"terror birds\" that lived in Oligocene Argentina.",
     "full": "Fossils have been found in the Sarmiento Formation, and possibly the Agua de la Piedra Formation."
   },
@@ -987,17 +987,17 @@ const ANIMAL_DATA = {
     "full": "It stood at about 150 cm (59 in) and weighed around 600 kg (1,300 lb). It is thought that the animal's clawed forelimbs would have allowed it to pull down tree branches in order to browse, as well as deter Miocene predators such as bear-dogs and saber-toothed cats."
   },
   "Coryphodon": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Hutchinson_coryphodon.jpg/960px-Hutchinson_coryphodon.jpg",
+    "img": "https://images.imagerenderer.com/images-medium-large-5/coryphodon-michael-longscience-photo-library.jpg",
     "short": "Coryphodon is an extinct genus of pantodonts of the family Coryphodontidae.",
     "full": ""
   },
   "Barylambda": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/FMNH_Barylamda.jpg/960px-FMNH_Barylamda.jpg",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Barylambda-faberi.jpg/250px-Barylambda-faberi.jpg",
     "short": "Barylambda is an extinct genus of pantodont mammal from the middle to late Paleocene, well known from several finds in the Wasatchian DeBeque Formation of Colorado and the Clarkforkian Wasatch Formation to Tiffanian Fort Union Formation in Wyoming.",
     "full": "Three species of Barylambda are currently recognized. The creature likely lived a life similar to that of a modern tapir, browsing on foliage and soft vegetation. Barylambda seems to have been quite successful for an early pantodont, though eventually it seems to have been replaced in its ecosystem by other pantodonts, such as Coryphodon."
   },
   "Patriofelis": {
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Patriofelis-mount.jpg/960px-Patriofelis-mount.jpg",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Patriofelis22DB.jpg/250px-Patriofelis22DB.jpg",
     "short": "Patriofelis is an extinct genus of carnivorous placental mammals from the extinct subfamily Oxyaeninae within the extinct family Oxyaenidae, which lived from the early to middle Eocene, during the Bridgerian stage of NALMA.",
     "full": "The first remains were discovered in 1869 by geologist Ferdinand Vandeveer Hayden, and the genus was named the following year by Joseph Leidy. Over the next few decades, additional specimens would be named from the same locality, many assigned to genera of their own or to separate species within Patriofelis. Now, only two are recognised: Patriofelis ulta, the type species, from the lower Bridger Formation and the Huerfano Formation of Colorado, and P. ferox, from the lower Bridger and lower Washakie Formations of Wyoming and Colorado, and the Clarno Formations at the John Day Fossil Beds National Monument, Oregon."
   }
