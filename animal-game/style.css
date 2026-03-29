@@ -81,17 +81,17 @@ button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
   font-weight: 800;
   border-radius: 50px;
   background: var(--accent);
-  color: #1a2e1a;
-  box-shadow: 0 4px 0 #4a8a2a, var(--shadow);
+  color: #0d1a24;
+  box-shadow: 0 4px 0 #2a6e8a, var(--shadow);
   letter-spacing: 1px;
   transition: transform 0.1s, box-shadow 0.1s;
 }
-.big-btn:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 6px 0 #4a8a2a, var(--shadow); }
-.big-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #4a8a2a; }
+.big-btn:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 6px 0 #2a6e8a, var(--shadow); }
+.big-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #2a6e8a; }
 .big-btn.secondary {
   background: var(--card);
   color: var(--text);
-  box-shadow: 0 4px 0 #1a2e1a, var(--shadow);
+  box-shadow: 0 4px 0 #0d1a24, var(--shadow);
 }
 .play-hint {
   font-size: 0.75rem;
