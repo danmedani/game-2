@@ -644,7 +644,7 @@ function endGame() {
   clearSession();
   showScreen('screen-gameover');
   document.getElementById('final-score').textContent = state.score;
-  document.getElementById('final-mode').textContent = `CenozoiQuest · Level ${state.level}`;
+  document.getElementById('final-mode').textContent = `After Impact · Level ${state.level}`;
 
   const best = getLocalBest();
   const isHigh = state.score > best;
