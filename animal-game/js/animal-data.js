@@ -148,8 +148,8 @@ const ANIMAL_DATA = {
   },
   "Oceanic_manta_ray": {
     "img": "https://images.squarespace-cdn.com/content/v1/5a196500914e6b09132e911f/1595922319847-AKO0JNUC35P8R9Z784IO/Oceanic+Manta+%283%29.jpg",
-    "short": "",
-    "full": ""
+    "short": "The giant oceanic manta ray, giant manta ray, or oceanic manta ray (Mobula birostris) is a species of ray in the family Mobulidae and the largest type of ray in the world. It is circumglobal and is typically found in tropical and subtropical waters but can also be found in temperate waters.",
+    "full": "Until 2017, the species was classified in the genus Manta, along with the smaller reef manta ray (Mobula alfredi). DNA testing revealed that both mantas are closer related to some Mobula species than these are to other Mobula, being claded together. As a result, the two Manta species were absorbed into Mobula to reflect the new classification."
   },
   "Leatherback_sea_turtle": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Leatherback_sea_turtle_Tinglar%2C_USVI_%285839996547%29.jpg/960px-Leatherback_sea_turtle_Tinglar%2C_USVI_%285839996547%29.jpg",
@@ -263,8 +263,8 @@ const ANIMAL_DATA = {
   },
   "Pale-throated_sloth": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Bradypus_tridactylus_-Parque_del_Este%2C_Caracas%2C_Venezuela-8_%282%29.jpg/960px-Bradypus_tridactylus_-Parque_del_Este%2C_Caracas%2C_Venezuela-8_%282%29.jpg",
-    "short": "The pale-throated sloth, occasionally known as the ai, is a species of three-toed sloth that inhabits tropical rainforests in northern South America.",
-    "full": ""
+    "short": "The pale-throated sloth (Bradypus tridactylus), occasionally known as the ai, is a species of three-toed sloth that inhabits tropical rainforests in northern South America.",
+    "full": "It is similar in appearance to, and often confused with, the brown-throated sloth, which has a much wider distribution. Genetic evidence has been interpreted to suggest the two species diverged only around 400,000 years ago, although the most recent evidence indicates the split was closer to 6 million years."
   },
   "Common_vampire_bat": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Desmo-Flug-01.jpg/960px-Desmo-Flug-01.jpg",
@@ -308,8 +308,8 @@ const ANIMAL_DATA = {
   },
   "Aye-aye": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Wild_aye_aye.jpg/960px-Wild_aye_aye.jpg",
-    "short": "The aye-aye is a long-fingered lemur, a strepsirrhine primate native to Madagascar with rodent-like teeth that perpetually grow and a special thin middle finger that they can use to catch grubs and larvae out of tree trunks.",
-    "full": ""
+    "short": "The aye-aye (Daubentonia madagascariensis) is a long-fingered lemur, a strepsirrhine primate native to Madagascar with rodent-like teeth that perpetually grow and a special thin middle finger that they can use to catch grubs and larvae out of tree trunks.",
+    "full": "It is the world's largest nocturnal primate. It is characterized by its unusual method of finding food: it taps on trees to find grubs, then gnaws holes in the wood using its forward-slanting incisors to create a small hole into which it inserts its narrow middle finger to pull the grubs out. This foraging method is called percussive foraging, and takes up 5–41% of foraging time.  The only other living mammal species known to find food in this way are the striped possum and trioks (genus Dactylopsila) of northern Australia and New Guinea, which are marsupials. From an ecological perspective, the aye-aye fills the niche of a woodpecker, as it is capable of penetrating wood to extract the invertebrates within.\nThe aye-aye is the only extant member of the genus Daubentonia and family Daubentoniidae.  It is currently classified as Endangered by the IUCN. A second species, Daubentonia robusta, appears to have become extinct at some point within the last 1000 years, and is known from subfossil finds."
   },
   "Kākāpō": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Sirocco_full_length_portrait.jpg",
@@ -528,8 +528,8 @@ const ANIMAL_DATA = {
   },
   "Cave_bear": {
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTir55WJnCaBKeExJFD-qQBJsXGWeZoyHnkYg&s",
-    "short": "The cave bear is a prehistoric species of bear that lived in Europe and Asia during the Pleistocene and became extinct about 24,000 years ago during the Last Glacial Maximum.",
-    "full": ""
+    "short": "The cave bear (Ursus spelaeus) is a prehistoric species of bear that lived in Europe and Asia during the Pleistocene and became extinct about 24,000 years ago during the Last Glacial Maximum.",
+    "full": "The common and scientific name for the species comes from their remains having been found largely in caves. This reflects the views of experts that cave bears spent more time in caves than the brown bear, frequently using them to hibernate during the winter months. Unlike brown bears, cave bears are thought to have been almost entirely or exclusively herbivorous.\nCave bears exhibit a great degree of size, morphological and genetic variability, and Late Pleistocene cave bears are often (though not universally) considered to be species complex of up to 6 different species."
   },
   "Megaloceros": {
     "img": "https://www.nhm.ac.uk/content/dam/nhm-www/discover/irish-elk-giant-deer/irish-elk-giant-deer-megaloceros-giganteus-reconstruction-mark-witton-full-width.jpg",
@@ -593,8 +593,8 @@ const ANIMAL_DATA = {
   },
   "Cave_lion": {
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPdSieBNSSrbkXcwyyCvcEm6tdm7ozxESG-Q&s",
-    "short": "Cave lions are large extinct carnivorous felids that are classified either as subspecies of the lion, or as distinct but closely related species, depending on the authority.",
-    "full": ""
+    "short": "Cave lions are large extinct carnivorous felids that are classified either as subspecies of the lion (Panthera leo), or as distinct but closely related species, depending on the authority.",
+    "full": "The subspecies or species known by this name include:\n\nPanthera spelaea formerly P. leo spelaea, the Eurasian or European cave lion\nPanthera fossilis or P. spelaea fossilis or P. leo fossilis, the Early Middle Pleistocene European cave lion\nPanthera atrox or P. atrox, the American lion or American cave lion"
   },
   "Sivatherium": {
     "img": "https://a-z-animals.com/media/2022/11/shutterstock_1684979470.jpg",
@@ -844,7 +844,7 @@ const ANIMAL_DATA = {
   "Miacis": {
     "img": "https://i.redd.it/1pah4zfflw051.jpg",
     "short": "Miacis is an extinct genus of placental mammals from clade Carnivoraformes, that lived in North America from the early to middle Eocene.",
-    "full": ""
+    "full": "Miacis was five-clawed, similar in size to a stoat (~30 cm, tail not included), weighed between 1 and 7 kg, and likely had highly reversible hind feet that assisted in its arboreal lifestyle, similar to those of a squirrel. It retained some primitive characteristics such as a low skull, a long slender body, a long tail, and short legs. Miacis retained 44 teeth, although some reductions in this number were apparently in progress and some of the teeth were reduced in size."
   },
   "Phenacodus": {
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrA4rlYXBltB0X8hkdrNZkRFNcDuZUqGPlXQ&s",
@@ -858,8 +858,8 @@ const ANIMAL_DATA = {
   },
   "Icaronycteris": {
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXRj7gKy4L6K1jhe1ApZOTJPegQzvYcvHQ0w&s",
-    "short": "Icaronycteris is an extinct genus of microchiropteran (echolocating) bat that lived in the early Eocene, approximately 52.2 million years ago, making it the earliest bat genus known from complete skeletons, and the earliest known bat from North America.",
-    "full": ""
+    "short": "Icaronycteris is an extinct genus of microchiropteran (echolocating) bat that lived in the early Eocene, approximately 52.2 million years ago, making it the earliest bat genus known from complete skeletons, and the earliest known bat from North America.",
+    "full": "Multiple exceptionally preserved specimens, among the best preserved bat fossils, are known from the Green River Formation of North America. The best known species is  I. index. Fragmentary material from France has also been tentatively placed within Icaronycteris as the second species I. menui. I. sigei is based on well-preserved fragments of dentaries and lower teeth found in Western India. In 2023, the species I. gunnelli also from the Green River Formation was distinguished from I. index, and  I. menui and I. sigei were proposed to be removed from the genus due to them not being closely related."
   },
   "Archaeoindris": {
     "img": "https://i.redd.it/archaeoindris-a-gorilla-sized-fossil-lemur-the-largest-ever-v0-o3nq71y81mf81.jpg?width=1455&format=pjpg&auto=webp&s=b56f346655e3be139e47262952f3452da7f97d34",
@@ -873,13 +873,13 @@ const ANIMAL_DATA = {
   },
   "Cetotherium": {
     "img": "https://64.media.tumblr.com/c1b0add7e9be916137de8ff1547f8694/tumblr_ntlgaaiiMB1s5f2yxo1_1280.png",
-    "short": "Cetotherium is an extinct genus of baleen whales from the family Cetotheriidae.",
+    "short": "Cetotherium (\"whale beast\") is an extinct genus of baleen whales from the family Cetotheriidae.",
     "full": ""
   },
   "Notharctus": {
     "img": "https://open-images.acast.com/shows/638fae9eebaaed00108c0d80/1731914970021-43de7893-556e-4dae-907b-18a221b5b82e.jpeg?height=750",
     "short": "Notharctus is a genus of adapiform primate that lived in North America and Europe during the early to middle Eocene.",
-    "full": ""
+    "full": "The body form of Notharctus is similar to that of modern rats. Its fingers were elongated for clamping onto branches, including the development of a thumb. Its spine is flexible and the animal was about 40 centimetres in length, excluding the long tail.\n\nThere were at least four different Notharctus species. Fossils from at least seven other potential species have also been discovered."
   },
   "Telicomys": {
     "img": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzEcICkVE2JvGO7tP_-2pNshxPHUeDablQKwEI_BJ1O3svBf2YVZc47aZ5BqPH3sXN-QPsXqjuIazHkOMOVH195TrLekZnp9r9D1Jos5K9gofzDDb4_-yZ9jXdSesFpUhCL2kPOFwGcFOr/s1600/telicomys.jpg",
@@ -899,12 +899,12 @@ const ANIMAL_DATA = {
   "Archaeobelodon": {
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIYSuGPCTWN9Oqcdca0TvPnKGJqG7sg3NMTA&s",
     "short": "Archaeobelodon is an extinct genus of proboscidean of the family Amebelodontidae that lived in Europe and North Africa (Egypt) during the Miocene from 16.9 to 16.0 Ma, living for approximately 0.9 million years.",
-    "full": ""
+    "full": "Archaeobelodon was an ancestor of Platybelodon and Amebelodon. Archaeobelodon had a trunk and tusks. It reached a weight of about 2305 - 3477 kg, being smaller than a modern elephant."
   },
   "Argyrolagus": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Argyrolagus_NT.jpg",
     "short": "Argyrolagus is an extinct genus of South American metatherian, belonging to the order Polydolopimorpha from the Early Pliocene Monte Hermoso Formation, Patagonia, Argentina.",
-    "full": ""
+    "full": "Jumping on its hind legs, the 15–20-centimetre (5.9–7.9 in) long (without tail) Argyrolagus resembled a gerbil or kultarr. It had a long tail for balance, and a narrow head with a pointed snout. Judging from its huge eyes, Argyrolagus was nocturnal. The form of its teeth suggest that it would have fed on desert plants. A 2019 study confirmed that Argyrolagus was probably adapted for bipedal jumping and was probably also well adapted for digging."
   },
   "Astrapotherium": {
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJvuNAY6Xy84ATLVGQUsTXIugj9wKDEciZPQ&s",
@@ -918,12 +918,12 @@ const ANIMAL_DATA = {
   },
   "Hapalops": {
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnfLV8ZjDXNDbPOvYaEA7BKJKov4MnYiwEnQ&s",
-    "short": "Hapalops is an extinct genus of ground sloth from the Early to Late Miocene of Brazil, Bolivia, Colombia, and Argentina in South America.",
+    "short": "Hapalops is an extinct genus of ground sloth from the Early to Late Miocene of Brazil (Solimões Formation), Bolivia (Honda Group), Colombia (Honda Group), and Argentina (Santa Cruz Formation) in South America.",
     "full": ""
   },
   "Gobiatherium": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Gobiatherium_mirificum.png/960px-Gobiatherium_mirificum.png",
-    "short": "Gobiatherium was one of the last uintatheriids, from the Mid Eocene of Mongolia.",
+    "short": "Gobiatherium (from Gobi Desert, and Ancient Greek θηρίον (thēríon), meaning \"beast\") was one of the last uintatheriids, from the Mid Eocene of Mongolia.",
     "full": ""
   },
   "Protypotherium": {
@@ -988,8 +988,8 @@ const ANIMAL_DATA = {
   },
   "Coryphodon": {
     "img": "https://images.imagerenderer.com/images-medium-large-5/coryphodon-michael-longscience-photo-library.jpg",
-    "short": "Coryphodon is an extinct genus of pantodonts of the family Coryphodontidae.",
-    "full": ""
+    "short": "Coryphodon (from Greek κορῦφὴ, \"point\", and ὀδοὺς, \"tooth\", meaning peaked tooth, referring to \"the development of the angles of the ridges into points [on the molars].\") is an extinct genus of pantodonts of the family Coryphodontidae.",
+    "full": "Coryphodon was a pantodont, a member of the world's first group of large browsing mammals. It migrated across what is now northern North America (being among the largest of fauna in Wasatch Formation), replacing Barylambda, an earlier pantodont. It is regarded as the ancestor of the genus Hypercoryphodon of Late Eocene Mongolia.\nCoryphodon is known from many specimens in North America and considerably fewer in Europe, Mongolia, and China. It is a small to medium-sized coryphodontid which differs from other members of the family in dental characteristics."
   },
   "Barylambda": {
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Barylambda-faberi.jpg/250px-Barylambda-faberi.jpg",
@@ -1025,5 +1025,10 @@ const ANIMAL_DATA = {
     "img": "https://humanorigins.si.edu/sites/default/files/styles/grid_thumbnail/public/images/portrait/ramidus_illustration_KC_p.jpg.webp?h=bc4a59b8&itok=xWdmLax9",
     "short": "Ardipithecus is a genus of an extinct hominine that lived during the Late Miocene and Early Pliocene epochs in the Afar Depression, Ethiopia.",
     "full": "Originally described as one of the earliest ancestors of humans after they diverged from the last common ancestor shared with chimpanzees, the relation of this genus to human ancestors and whether it is a hominin is now a matter of debate. Two fossil species are described in the literature: A. ramidus, which lived about 4.4 million years ago during the early Pliocene, and A. kadabba, dated to approximately 5.6 million years ago. Initial behavioral analysis indicated that Ardipithecus could be very similar to chimpanzees; however, more recent analysis based on canine size and lack of canine sexual dimorphism indicates that Ardipithecus was characterised by reduced aggression, and that they more closely resemble bonobos."
+  },
+  "Mobula_birostris": {
+    "img": "https://images.squarespace-cdn.com/content/v1/5a196500914e6b09132e911f/1595922319847-AKO0JNUC35P8R9Z784IO/Oceanic+Manta+%283%29.jpg",
+    "short": "The giant oceanic manta ray, giant manta ray, or oceanic manta ray is a species of ray in the family Mobulidae and the largest type of ray in the world.",
+    "full": "It is circumglobal and is typically found in tropical and subtropical waters but can also be found in temperate waters. Until 2017, the species was classified in the genus Manta, along with the smaller reef manta ray. DNA testing revealed that both mantas are closer related to some Mobula species than these are to other Mobula, being claded together. As a result, the two Manta species were absorbed into Mobula to reflect the new classification."
   }
 };
