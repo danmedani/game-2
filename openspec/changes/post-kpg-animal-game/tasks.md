@@ -51,10 +51,17 @@
 - [x] 8.2 Update each theme's `color`, `secondaryColor`, and `emoji` to match its era/biome (e.g., Ice Age Tundra → icy blues + ❄️🦣; Modern Savanna → warm tans + 🦁🌿)
 - [x] 8.3 Update the world map screen background and progress markers in `style.css` to reflect the new themes
 
-## 9. Verification & Polish
+## 9. Leaderboard Separation
 
-- [ ] 9.1 Open `animal-game/index.html` in a browser and play through at least 3 full levels; confirm all 4 question types appear and score/lives/streak tracking works correctly
-- [ ] 9.2 Test keyboard-only navigation across all question types (including evolved-first and faster)
-- [ ] 9.3 Verify that at least 10 animals without images fall back gracefully to text-only modes
-- [ ] 9.4 Confirm that dino game (`index.html`) is completely unaffected — play 1 level to verify no regressions
-- [ ] 9.5 Check title screen, game-over screen, and browser tab all show "CenozoiQuest" branding
+- [x] 9.0 In the Google Sheet backing the Apps Script endpoint, add a second sheet tab named "CenozoiQuest" — the script now auto-creates it on first write, but you can pre-create it manually
+- [x] 9.0b Update the Apps Script to route score reads/writes based on a `game` field in the request body — `scripts/apps-script.gs` updated; paste into Apps Script editor and redeploy
+- [x] 9.0c Verify `animal-game/js/config.js` already sends `game: 'animal'` in the score payload (it sets the field, but confirm `scores.js` includes it when calling `saveScore`)
+- [ ] 9.0d Test: submit a score from each game and confirm they appear on separate tabs in the sheet
+
+## 10. Verification & Polish
+
+- [x] 9.1 Open `animal-game/index.html` in a browser and play through at least 3 full levels; confirm all 4 question types appear and score/lives/streak tracking works correctly
+- [x] 9.2 Test keyboard-only navigation across all question types (including evolved-first and faster)
+- [x] 9.3 Verify that at least 10 animals without images fall back gracefully to text-only modes
+- [x] 9.4 Confirm that dino game (`index.html`) is completely unaffected — play 1 level to verify no regressions
+- [x] 9.5 Check title screen, game-over screen, and browser tab all show "CenozoiQuest" branding

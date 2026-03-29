@@ -1,22 +1,29 @@
-// Google Apps Script for Dino Game global leaderboard
+// Google Apps Script for DinoQuest + CenozoiQuest global leaderboards
 //
 // Setup:
-//   1. Create a Google Sheet
+//   1. Create a Google Sheet with two tabs: "DinoQuest" and "CenozoiQuest"
+//      (or let the script auto-create them on first write)
 //   2. Extensions → Apps Script → paste this file → Save
 //   3. Deploy → New Deployment → Web App
 //      - Execute as: Me
 //      - Who has access: Anyone
-//   4. Copy the deployment URL into js/config.local.js:
+//   4. Copy the deployment URL into js/config.local.js (both games share the same URL):
 //      const CONFIG = { ..., scoresUrl: 'YOUR_DEPLOYMENT_URL' }
+//
+// Routing: requests with game:'animal' go to the CenozoiQuest tab; all others → DinoQuest.
 
-const SHEET_NAME = 'Scores';
+const SHEET_NAMES = {
+  animal: 'CenozoiQuest',
+  dino:   'DinoQuest',
+};
 const MAX_SCORES = 200;
 
-function getSheet() {
+function getSheet(game) {
+  const sheetName = SHEET_NAMES[game] || SHEET_NAMES.dino;
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = ss.getSheetByName(SHEET_NAME);
+  let sheet = ss.getSheetByName(sheetName);
   if (!sheet) {
-    sheet = ss.insertSheet(SHEET_NAME);
+    sheet = ss.insertSheet(sheetName);
     sheet.appendRow(['initials', 'score', 'date']);
     sheet.setFrozenRows(1);
   }
@@ -24,7 +31,8 @@ function getSheet() {
 }
 
 function doGet(e) {
-  const sheet = getSheet();
+  const game = (e.parameter && e.parameter.game) || 'dino';
+  const sheet = getSheet(game);
   const rows  = sheet.getDataRange().getValues().slice(1); // skip header
   const scores = rows
     .map(r => ({ initials: r[0], score: Number(r[1]), date: r[2] }))
@@ -36,13 +44,13 @@ function doGet(e) {
 
 function doPost(e) {
   try {
-    const { initials, score, date } = JSON.parse(e.postData.contents);
+    const { initials, score, date, game } = JSON.parse(e.postData.contents);
 
     // Basic validation
     if (!/^[A-Z]{3}$/.test(initials)) return json({ error: 'bad initials' });
     if (typeof score !== 'number' || score < 0 || score > 999999) return json({ error: 'bad score' });
 
-    const sheet = getSheet();
+    const sheet = getSheet(game);
     sheet.appendRow([initials, score, date || new Date().toISOString()]);
 
     // Trim sheet if it gets huge

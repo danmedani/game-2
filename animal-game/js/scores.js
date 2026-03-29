@@ -39,6 +39,7 @@ function scoresUrl() {
 
 async function saveScore(entry) {
   const fullEntry = { ...entry, date: new Date().toISOString() };
+  if (typeof CONFIG !== 'undefined' && CONFIG.game) fullEntry.game = CONFIG.game;
   saveLocalScore(fullEntry);
 
   const url = scoresUrl();
@@ -58,7 +59,8 @@ async function getTopScores(limit = 10) {
   const url = scoresUrl();
   if (url) {
     try {
-      const res = await fetch(`${url}?t=${Date.now()}`); // bust cache
+      const game = (typeof CONFIG !== 'undefined' && CONFIG.game) ? `&game=${CONFIG.game}` : '';
+      const res = await fetch(`${url}?t=${Date.now()}${game}`); // bust cache
       if (res.ok) {
         const global = await res.json();
         if (Array.isArray(global)) return global.slice(0, limit);
