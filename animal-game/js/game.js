@@ -373,17 +373,16 @@ const MAP_NODE_POS = [
 ];
 
 const WORLD_THEMES = [
-  { label: 'Paleocene Wilds',    accent: '#8bc34a', done: '#558b2f', line: '#aed581', bg: '#161e0d', border: '#3a4a1a', glow: '#0d1508' },
-  { label: 'Eocene Jungles',     accent: '#26c6da', done: '#00838f', line: '#80deea', bg: '#031618', border: '#0a3a40', glow: '#021012' },
-  { label: 'Oligocene Steppes',  accent: '#c8a96e', done: '#8d6e3a', line: '#e0c890', bg: '#1a1408', border: '#4a3818', glow: '#130e04' },
-  { label: 'Miocene Savannas',   accent: '#ffca28', done: '#c79100', line: '#ffe082', bg: '#1a1400', border: '#4a3c00', glow: '#110d00' },
-  { label: 'Pliocene Grasslands',accent: '#66bb6a', done: '#2e7d32', line: '#a5d6a7', bg: '#0d1a0d', border: '#204020', glow: '#081208' },
-  { label: 'Ice Age Tundra',     accent: '#90caf9', done: '#1565c0', line: '#e3f2fd', bg: '#050d18', border: '#0d2a4a', glow: '#030810' },
-  { label: 'Holocene Dawn',      accent: '#ffd54f', done: '#c6a000', line: '#fff9c4', bg: '#1a1600', border: '#4a4000', glow: '#120f00' },
-  { label: 'Modern Savanna',     accent: '#d4a843', done: '#8d6e37', line: '#f5d58a', bg: '#1a1208', border: '#4a3414', glow: '#120b04' },
-  { label: 'Deep Ocean',         accent: '#29b6f6', done: '#0277bd', line: '#b3e5fc', bg: '#020d18', border: '#063550', glow: '#010a12' },
-  { label: 'Frozen Arctic',      accent: '#b2ebf2', done: '#006064', line: '#e0f7fa', bg: '#020e12', border: '#0d3a40', glow: '#010a0d' },
-  { label: 'Ancient Rainforest', accent: '#69f0ae', done: '#00695c', line: '#ccff90', bg: '#031510', border: '#0d3826', glow: '#02100b' },
+  { label: 'Dust Bowl',   accent: '#d4915a', done: '#8d5a2a', line: '#e8b98a', bg: '#1a1008', border: '#4a2e12', glow: '#120a04' },
+  { label: 'River',       accent: '#4fc3f7', done: '#0277bd', line: '#a8d8f0', bg: '#020e18', border: '#08304a', glow: '#010912' },
+  { label: 'Glades',      accent: '#81c784', done: '#2e7d32', line: '#c8e6c9', bg: '#081408', border: '#1a3a1a', glow: '#040d04' },
+  { label: 'White Sand',  accent: '#f5e6c8', done: '#b8a070', line: '#fffde7', bg: '#1a1810', border: '#4a4430', glow: '#120f08' },
+  { label: 'Tundra',      accent: '#b3d9e8', done: '#4a90b8', line: '#e8f4f8', bg: '#080e14', border: '#1a3040', glow: '#04080d' },
+  { label: 'Neptune',     accent: '#3f51b5', done: '#1a237e', line: '#9fa8da', bg: '#04051a', border: '#10144a', glow: '#020310' },
+  { label: 'Black Hole',  accent: '#ce93d8', done: '#6a1b9a', line: '#f3e5f5', bg: '#020004', border: '#1a0820', glow: '#010002' },
+  { label: 'X7 Star',     accent: '#fff176', done: '#c8a800', line: '#fffff0', bg: '#1a1800', border: '#4a4400', glow: '#100f00' },
+  { label: 'School Yard', accent: '#aed581', done: '#558b2f', line: '#dcedc8', bg: '#0d1408', border: '#283a10', glow: '#080d04' },
+  { label: 'X-Pluto',     accent: '#80cbc4', done: '#00695c', line: '#e0f2f1', bg: '#020e0c', border: '#0a2e28', glow: '#010908' },
 ];
 
 function getPosForLevel(level) {
