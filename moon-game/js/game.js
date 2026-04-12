@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', () => {
 function scaleCanvas() {
   const c = G.canvas;
   const container = c.parentElement;
-  const avW = container.clientWidth;
+  const avW = container.clientWidth || window.innerWidth;
   const avH = window.innerHeight - 160;
   const scale = Math.min(avW / CANVAS_W, avH / CANVAS_H);
   c.style.width  = Math.round(CANVAS_W * scale) + 'px';
@@ -85,6 +85,7 @@ function showScreen(name) {
   G.screen = name;
 
   if (name === 'game') {
+    scaleCanvas();
     startLoop();
   } else {
     stopLoop();
@@ -219,18 +220,25 @@ function update(dt) {
       }
     }
 
-    // Bucket walls — win triggers when ball hits the bottom wall
-    if (G.bucket && !G.bucketSealed) {
+    // Bucket walls
+    if (G.bucket) {
       const { px: bx, py: by, width, height } = G.bucket;
       const hw = width / 2;
       resolveSegmentCollision(ball, bx - hw, by, bx - hw, by + height, bounciness); // left inner
       resolveSegmentCollision(ball, bx + hw, by, bx + hw, by + height, bounciness); // right inner
-      if (resolveSegmentCollision(ball, bx - hw, by + height, bx + hw, by + height, bounciness)) {
-        bucketBottomHit = true;
-      }
-      // One-way lid: only blocks when ball center is inside, so entry is free but exit is not
-      if (ball.y > by) {
-        resolveSegmentCollision(ball, bx - hw, by, bx + hw, by, bounciness);
+      if (G.bucketSealed) {
+        // Fully sealed — all 4 walls keep the ball contained
+        resolveSegmentCollision(ball, bx - hw, by + height, bx + hw, by + height, bounciness); // bottom
+        resolveSegmentCollision(ball, bx - hw, by, bx + hw, by, bounciness);                   // top cap
+      } else {
+        // Win triggers when ball hits the bottom wall
+        if (resolveSegmentCollision(ball, bx - hw, by + height, bx + hw, by + height, bounciness)) {
+          bucketBottomHit = true;
+        }
+        // One-way lid: only blocks when ball center is inside, so entry is free but exit is not
+        if (ball.y > by) {
+          resolveSegmentCollision(ball, bx - hw, by, bx + hw, by, bounciness);
+        }
       }
     }
   }

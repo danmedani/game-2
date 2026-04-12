@@ -783,17 +783,21 @@ function updateTestPhysics(dt) {
       );
     }
 
-    if (testBucket && !testBucketSealed) {
+    if (testBucket) {
       const { px: bx, py: by, width, height } = testBucket;
       const hw = width / 2;
       resolveSegmentCollision(ball, bx-hw, by, bx-hw, by+height, bounciness);
       resolveSegmentCollision(ball, bx+hw, by, bx+hw, by+height, bounciness);
-      if (resolveSegmentCollision(ball, bx-hw, by+height, bx+hw, by+height, bounciness)) {
-        bucketBottomHit = true;
-      }
-      // One-way lid: only blocks when ball center is inside, so entry is free but exit is not
-      if (ball.y > by) {
+      if (testBucketSealed) {
+        resolveSegmentCollision(ball, bx-hw, by+height, bx+hw, by+height, bounciness);
         resolveSegmentCollision(ball, bx-hw, by, bx+hw, by, bounciness);
+      } else {
+        if (resolveSegmentCollision(ball, bx-hw, by+height, bx+hw, by+height, bounciness)) {
+          bucketBottomHit = true;
+        }
+        if (ball.y > by) {
+          resolveSegmentCollision(ball, bx-hw, by, bx+hw, by, bounciness);
+        }
       }
     }
   }
