@@ -46,7 +46,7 @@ async function getTopScores(limit = 10) {
   const url = scoresUrl();
   if (url) {
     try {
-      const res = await fetch(`${url}?game=moon&t=${Date.now()}`);
+      const res = await fetch(`${url}?game=${CONFIG.game}&t=${Date.now()}`);
       if (res.ok) {
         const global = await res.json();
         if (Array.isArray(global)) return global.slice(0, limit);

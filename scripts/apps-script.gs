@@ -1,20 +1,21 @@
-// Google Apps Script for DinoQuest + CenozoiQuest global leaderboards
+// Google Apps Script for DinoQuest + CenozoiQuest + MoonGame global leaderboards
 //
 // Setup:
-//   1. Create a Google Sheet with two tabs: "DinoQuest" and "CenozoiQuest"
+//   1. Create a Google Sheet with tabs: "DinoQuest", "CenozoiQuest", "MoonGame"
 //      (or let the script auto-create them on first write)
 //   2. Extensions → Apps Script → paste this file → Save
 //   3. Deploy → New Deployment → Web App
 //      - Execute as: Me
 //      - Who has access: Anyone
-//   4. Copy the deployment URL into js/config.local.js (both games share the same URL):
+//   4. Copy the deployment URL into js/config.local.js (all games share the same URL):
 //      const CONFIG = { ..., scoresUrl: 'YOUR_DEPLOYMENT_URL' }
 //
-// Routing: requests with game:'animal' go to the CenozoiQuest tab; all others → DinoQuest.
+// Routing: game tag → sheet tab name. Unknown tags fall back to DinoQuest.
 
 const SHEET_NAMES = {
-  animal: 'CenozoiQuest',
-  dino:   'DinoQuest',
+  animal:   'CenozoiQuest',
+  dino:     'DinoQuest',
+  MoonGame: 'MoonGame',
 };
 const MAX_SCORES = 200;
 
