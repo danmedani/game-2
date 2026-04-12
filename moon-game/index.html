@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Moon Game 🌙</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── Title Screen ─────────────────────────────────────────── -->
+<div class="screen active" id="title-screen">
+  <div class="title-content">
+    <div class="title-moon">🌙</div>
+    <h1 class="title-text">Moon Game</h1>
+    <p class="title-sub">Drop the ball. Find the bucket.</p>
+    <div class="title-buttons">
+      <button class="btn btn-primary" id="play-btn">Play</button>
+      <button class="btn btn-secondary" id="continue-btn" style="display:none">Continue</button>
+      <button class="btn btn-ghost" id="high-scores-btn">High Scores</button>
+    </div>
+    <a href="../animal-game/" class="other-game-link">🦣 Animal Game</a>
+  </div>
+</div>
+
+<!-- ── Game Screen ──────────────────────────────────────────── -->
+<div class="screen" id="game-screen">
+  <div class="game-hud">
+    <span id="level-display" class="hud-level">Level 1</span>
+    <span id="attempts-display" class="hud-attempts"></span>
+  </div>
+
+  <div class="canvas-container">
+    <canvas id="game-canvas"></canvas>
+  </div>
+
+  <div class="game-controls">
+    <button class="btn btn-drop" id="drop-btn">Drop!</button>
+    <button class="btn btn-next" id="next-level-btn" style="display:none">Next Level →</button>
+  </div>
+
+  <div class="bar-hint" id="bar-hint">
+    ← Drag the bar to position it, rotate by dragging the ends →
+  </div>
+</div>
+
+<!-- ── High Scores Screen ───────────────────────────────────── -->
+<div class="screen" id="highscores-screen">
+  <div class="scores-content">
+    <h2 class="scores-title">🏆 High Scores</h2>
+    <div id="highscores-list" class="scores-list">
+      <p class="loading-scores">Loading…</p>
+    </div>
+    <button class="btn btn-ghost" id="back-to-title-btn">← Back</button>
+  </div>
+</div>
+
+<!-- ── Game Over Screen ─────────────────────────────────────── -->
+<div class="screen" id="gameover-screen">
+  <div class="gameover-content">
+    <div class="gameover-moon">🌙</div>
+    <h2 class="gameover-title">Mission Complete</h2>
+    <p class="gameover-score" id="gameover-score">0 levels complete!</p>
+    <p class="gameover-best" id="gameover-best"></p>
+
+    <div id="gameover-submit-section" class="submit-section">
+      <p class="initials-label">Enter your initials</p>
+      <input type="text" id="initials-input" class="initials-input"
+             maxlength="3" autocomplete="off" autocorrect="off" spellcheck="false"
+             placeholder="AAA">
+      <p class="initials-error" id="initials-error"></p>
+      <button class="btn btn-primary" id="gameover-submit-btn">Submit Score</button>
+    </div>
+
+    <div id="gameover-submitted" class="submitted-msg" style="display:none">
+      <p>Score submitted! 🌙</p>
+    </div>
+
+    <button class="btn btn-ghost" id="gameover-home-btn">← Home</button>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/config.local.js" onerror="void 0"></script>
+<script src="js/scores.js"></script>
+<script src="js/levels.js"></script>
+<script src="js/physics.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
