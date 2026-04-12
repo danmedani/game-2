@@ -20,9 +20,9 @@ const DEFAULT_LEVELS = [
     "id": 1,
     "ballX": 0.5,
     "playerBar": {
-      "x": 0.34223918575063633,
-      "y": 0.7584296619411124,
-      "rotation": 143,
+      "x": 0.44656488549618345,
+      "y": 0.703177026535805,
+      "rotation": -10,
       "length": 160
     },
     "items": [
@@ -43,8 +43,8 @@ const DEFAULT_LEVELS = [
       }
     ],
     "bucket": {
-      "x": 0.74,
-      "y": 0.77,
+      "x": 0.8494147582697201,
+      "y": 0.883413304252999,
       "width": 68,
       "height": 54,
       "wallThickness": 10,
