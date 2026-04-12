@@ -306,6 +306,36 @@ function drawPlayerBar(ctx, bar, showHandles) {
   }
 }
 
+// Returns the 4 rotated corners of the bucket + inward direction (opening → interior).
+// Used for collision detection with rotated buckets.
+function getBucketWalls(bucket) {
+  const bx = 'px' in bucket ? bucket.px : bucket.x * CANVAS_W;
+  const by = 'py' in bucket ? bucket.py : bucket.y * CANVAS_H;
+  const { width, height } = bucket;
+  const hw = width / 2;
+  const theta = (bucket.rotation || 0) * Math.PI / 180;
+  const cos_a = Math.cos(theta), sin_a = Math.sin(theta);
+  const rcx = bx, rcy = by + height / 2; // rotate around bucket center
+
+  function rot(x, y) {
+    const dx = x - rcx, dy = y - rcy;
+    return { x: dx * cos_a - dy * sin_a + rcx, y: dx * sin_a + dy * cos_a + rcy };
+  }
+
+  const tl = rot(bx - hw, by);           // top-left  (opening)
+  const tr = rot(bx + hw, by);           // top-right (opening)
+  const bl = rot(bx - hw, by + height);  // bottom-left
+  const br = rot(bx + hw, by + height);  // bottom-right
+
+  // Inward normal: local "down" (0,1) rotated → (-sin, cos)
+  return {
+    tl, tr, bl, br,
+    inX: -sin_a, inY: cos_a,
+    openMidX: (tl.x + tr.x) / 2,
+    openMidY: (tl.y + tr.y) / 2,
+  };
+}
+
 function drawBucket(ctx, bucket, sealed) {
   const bx = 'px' in bucket ? bucket.px : bucket.x * CANVAS_W;
   const by = 'py' in bucket ? bucket.py : bucket.y * CANVAS_H;
@@ -314,6 +344,13 @@ function drawBucket(ctx, bucket, sealed) {
   const glowing = (glowT || 0) > 0;
 
   ctx.save();
+
+  // Apply rotation around bucket center
+  const theta = (bucket.rotation || 0) * Math.PI / 180;
+  ctx.translate(bx, by + height / 2);
+  ctx.rotate(theta);
+  ctx.translate(-bx, -(by + height / 2));
+
   ctx.shadowBlur = glowing ? 35 : 10;
   ctx.shadowColor = '#ffd700';
 
@@ -340,18 +377,16 @@ function drawBucket(ctx, bucket, sealed) {
   ctx.fillStyle = 'rgba(255,200,0,0.08)';
   ctx.fillRect(bx - hw, by, width, height);
 
-  ctx.restore();
-
   // "GOAL" label
   if (!sealed) {
-    ctx.save();
     ctx.font = 'bold 10px Nunito, sans-serif';
     ctx.fillStyle = 'rgba(255,215,0,0.6)';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'bottom';
     ctx.fillText('GOAL', bx, by - 7);
-    ctx.restore();
   }
+
+  ctx.restore();
 }
 
 function drawBallAt(ctx, x, y, squash) {

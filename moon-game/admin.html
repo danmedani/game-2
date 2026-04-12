@@ -261,24 +261,30 @@
       <div class="row">
         <select id="level-select" onchange="switchLevel(this.value)"></select>
         <button class="btn-ghost" onclick="addLevel()">+ New</button>
+        <button class="btn-ghost" onclick="duplicateLevel()">⧉ Dup</button>
         <button class="btn-danger" onclick="deleteLevel()" style="padding:6px 10px;">✕</button>
       </div>
     </div>
 
-    <!-- Global settings -->
+    <!-- Physics (global) -->
     <div class="section">
-      <div class="section-title">Global Settings</div>
+      <div class="section-title">Physics (Global)</div>
+      <div class="row">
+        <label>Gravity
+          <input type="number" id="gravity" min="0.001" max="1.5" step="0.001" oninput="updatePhysicsGlobals()">
+        </label>
+        <label>Bounciness
+          <input type="number" id="bounciness" min="0" max="1.5" step="0.01" oninput="updatePhysicsGlobals()">
+        </label>
+      </div>
+    </div>
+
+    <!-- Level settings -->
+    <div class="section">
+      <div class="section-title">Level Settings</div>
       <label>Ball Start X (0–1)
         <input type="number" id="ballX" min="0" max="1" step="0.01" oninput="updateGlobal()">
       </label>
-      <div class="row">
-        <label>Gravity
-          <input type="number" id="gravity" min="0.01" max="1.5" step="0.01" oninput="updateGlobal()">
-        </label>
-        <label>Bounciness
-          <input type="number" id="bounciness" min="0" max="1.5" step="0.01" oninput="updateGlobal()">
-        </label>
-      </div>
     </div>
 
     <!-- Player Bar (initial) -->
@@ -323,6 +329,9 @@
       </div>
       <label>Wall Thickness (px)
         <input type="number" id="bkt-wt" min="3" max="30" step="1" oninput="updateBucket()">
+      </label>
+      <label>Rotation (°)
+        <input type="number" id="bkt-rot" min="-180" max="180" step="1" oninput="updateBucket()">
       </label>
     </div>
 
@@ -389,6 +398,7 @@ const ADMIN_H = 700;
 let adminCanvas, adminCtx;
 let adminLevel = null;    // deep copy of the level being edited
 let allLevels = [];       // all levels (from storage)
+let adminGlobals = null;  // global physics settings
 let currentLevelIdx = 0;
 
 // Edit mode state
@@ -419,8 +429,10 @@ window.addEventListener('DOMContentLoaded', () => {
   generateStars(adminStars);
 
   allLevels = getLevels();
+  adminGlobals = getGlobals();
   currentLevelIdx = 0;
   loadLevelForEdit(0);
+  populatePhysicsFields();
 
   bindAdminPointer();
   startAdminLoop();
@@ -457,10 +469,13 @@ function populateLevelSelect() {
   sel.value = currentLevelIdx;
 }
 
+function populatePhysicsFields() {
+  document.getElementById('gravity').value   = adminGlobals.gravity;
+  document.getElementById('bounciness').value = adminGlobals.bounciness;
+}
+
 function populateGlobalFields() {
-  document.getElementById('ballX').value     = adminLevel.ballX;
-  document.getElementById('gravity').value   = adminLevel.gravity;
-  document.getElementById('bounciness').value = adminLevel.bounciness;
+  document.getElementById('ballX').value = adminLevel.ballX;
 }
 
 function populatePlayerBarFields() {
@@ -478,6 +493,7 @@ function populateBucketFields() {
   document.getElementById('bkt-w').value  = b.width;
   document.getElementById('bkt-h').value  = b.height;
   document.getElementById('bkt-wt').value = b.wallThickness;
+  document.getElementById('bkt-rot').value = b.rotation || 0;
 }
 
 function buildItemList() {
@@ -495,9 +511,12 @@ function buildItemList() {
 
 // ── Field update callbacks ─────────────────────────────────────────
 function updateGlobal() {
-  adminLevel.ballX      = parseFloat(document.getElementById('ballX').value) || 0.5;
-  adminLevel.gravity    = parseFloat(document.getElementById('gravity').value) || 0.22;
-  adminLevel.bounciness = parseFloat(document.getElementById('bounciness').value) || 0.62;
+  adminLevel.ballX = parseFloat(document.getElementById('ballX').value) || 0.5;
+}
+
+function updatePhysicsGlobals() {
+  adminGlobals.gravity    = parseFloat(document.getElementById('gravity').value) || 0.095;
+  adminGlobals.bounciness = parseFloat(document.getElementById('bounciness').value) || 0.9;
 }
 
 function updatePlayerBar() {
@@ -515,6 +534,7 @@ function updateBucket() {
   b.width         = parseFloat(document.getElementById('bkt-w').value) || 68;
   b.height        = parseFloat(document.getElementById('bkt-h').value) || 54;
   b.wallThickness = parseFloat(document.getElementById('bkt-wt').value) || 10;
+  b.rotation      = parseFloat(document.getElementById('bkt-rot').value) || 0;
 }
 
 // ── Item management ────────────────────────────────────────────────
@@ -610,16 +630,38 @@ function deleteLevel() {
 
 function saveLevelsBtn() {
   allLevels[currentLevelIdx] = JSON.parse(JSON.stringify(adminLevel));
-  saveLevels(allLevels);
-  setStatus('Saved! ' + allLevels.length + ' level(s) stored.');
+  fetch('/api/save-levels', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ levels: allLevels, globals: adminGlobals }),
+  })
+    .then(r => r.json())
+    .then(r => {
+      if (r.ok) setStatus('Saved! ' + allLevels.length + ' level(s) written to levels.js');
+      else setStatus('Server error: ' + r.error);
+    })
+    .catch(() => setStatus('⚠️  No admin server running — use `make moon-admin`'));
 }
 
 function resetToDefault() {
   if (!confirm('Reset all levels to built-in defaults? This will overwrite saved data.')) return;
   localStorage.removeItem('moon_levels');
-  allLevels = getLevels(); // reloads DEFAULT_LEVELS
+  localStorage.removeItem('moon_globals');
+  allLevels = getLevels();
+  adminGlobals = getGlobals();
+  populatePhysicsFields();
   loadLevelForEdit(0);
   setStatus('Reset to defaults.');
+}
+
+function duplicateLevel() {
+  allLevels[currentLevelIdx] = JSON.parse(JSON.stringify(adminLevel));
+  const newId = Math.max(...allLevels.map(l => l.id)) + 1;
+  const newLevel = JSON.parse(JSON.stringify(adminLevel));
+  newLevel.id = newId;
+  allLevels.splice(currentLevelIdx + 1, 0, newLevel);
+  loadLevelForEdit(currentLevelIdx + 1);
+  setStatus('Level duplicated.');
 }
 
 function toggleTest() {
@@ -752,15 +794,13 @@ function updateTestPhysics(dt) {
     testPlayerBar = { x: pb.x * ADMIN_W, y: pb.y * ADMIN_H, rotation: pb.rotation, length: pb.length, glowT: 0 };
   }
 
-  const { gravity, bounciness } = adminLevel;
-  if (testSlowMo) testSlowMoFactor += (SLOW_MO_TARGET - testSlowMoFactor) * Math.min(dt * 3, 1);
-  else testSlowMoFactor = 1.0;
-  const sf = testSlowMoFactor;
+  const { gravity, bounciness } = adminGlobals;
 
   const SUB = 4;
-  const subDt = (dt * sf) / SUB;
+  const subDt = dt / SUB;
   const ball = testBall;
 
+  const bwalls = testBucket ? getBucketWalls(testBucket) : null;
   let bucketBottomHit = false;
 
   for (let s = 0; s < SUB; s++) {
@@ -783,20 +823,20 @@ function updateTestPhysics(dt) {
       );
     }
 
-    if (testBucket) {
-      const { px: bx, py: by, width, height } = testBucket;
-      const hw = width / 2;
-      resolveSegmentCollision(ball, bx-hw, by, bx-hw, by+height, bounciness);
-      resolveSegmentCollision(ball, bx+hw, by, bx+hw, by+height, bounciness);
+    if (bwalls) {
+      const { tl, tr, bl, br, inX, inY, openMidX, openMidY } = bwalls;
+      resolveSegmentCollision(ball, tl.x, tl.y, bl.x, bl.y, bounciness);
+      resolveSegmentCollision(ball, tr.x, tr.y, br.x, br.y, bounciness);
       if (testBucketSealed) {
-        resolveSegmentCollision(ball, bx-hw, by+height, bx+hw, by+height, bounciness);
-        resolveSegmentCollision(ball, bx-hw, by, bx+hw, by, bounciness);
+        resolveSegmentCollision(ball, bl.x, bl.y, br.x, br.y, bounciness);
+        resolveSegmentCollision(ball, tl.x, tl.y, tr.x, tr.y, bounciness);
       } else {
-        if (resolveSegmentCollision(ball, bx-hw, by+height, bx+hw, by+height, bounciness)) {
+        if (resolveSegmentCollision(ball, bl.x, bl.y, br.x, br.y, bounciness)) {
           bucketBottomHit = true;
         }
-        if (ball.y > by) {
-          resolveSegmentCollision(ball, bx-hw, by, bx+hw, by, bounciness);
+        const dx = ball.x - openMidX, dy = ball.y - openMidY;
+        if (dx * inX + dy * inY > 0) {
+          resolveSegmentCollision(ball, tl.x, tl.y, tr.x, tr.y, bounciness);
         }
       }
     }
@@ -823,7 +863,7 @@ function updateTestPhysics(dt) {
 
   testBallTrail.push({ x: ball.x, y: ball.y, a: 1.0 });
   while (testBallTrail.length > 28) testBallTrail.shift();
-  testBallTrail.forEach(p => { p.a -= dt * (testSlowMo ? 1.5 : 5); });
+  testBallTrail.forEach(p => { p.a -= dt * 5; });
   testBallTrail = testBallTrail.filter(p => p.a > 0);
 }
 
@@ -916,19 +956,13 @@ function renderTestMode(ctx) {
     ctx.globalAlpha = 1; ctx.restore();
   }
 
-  if (testBall) {
+  if (testBall && !testBall.inBucket) {
     testBallTrail.forEach(p => {
       const r = Math.max(1, BALL_RADIUS * 0.3 * p.a);
       ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI*2);
       ctx.fillStyle = `rgba(190,205,255,${p.a*0.18})`; ctx.fill();
     });
     drawBallAt(ctx, testBall.x, testBall.y, testBall.squash);
-  }
-
-  if (testSlowMo && testSlowMoFactor < 0.85) {
-    const a = (1 - testSlowMoFactor/0.85) * 0.2;
-    ctx.fillStyle = `rgba(70,130,255,${Math.min(a,0.2)})`;
-    ctx.fillRect(0, 0, ADMIN_W, ADMIN_H);
   }
 }
 

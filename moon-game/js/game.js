@@ -23,6 +23,7 @@ const G = {
   nextBtnShownAt: 0,
 
   levelData: null,
+  globals: null,
   stars: [],
   ballTrail: [],
 
@@ -47,6 +48,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   bindButtons();
   bindPointerEvents();
+  bindKeyboard();
 
   const p = new URLSearchParams(location.search);
   if (p.get('test') === '1') {
@@ -96,6 +98,7 @@ function showScreen(name) {
 function loadLevel(num) {
   const data = getLevel(num);
   G.levelData = data;
+  G.globals = getGlobals();
   G.level = data.id;
   G.attempts = 0;
 
@@ -174,19 +177,12 @@ function update(dt) {
   const ball = G.ball;
   if (!ball || !ball.dropped) return;
 
-  const { gravity, bounciness } = G.levelData;
-
-  // Ramp slow-motion factor
-  if (G.slowMo) {
-    G.slowMoFactor += (SLOW_MO_TARGET - G.slowMoFactor) * Math.min(dt * 3, 1);
-  } else {
-    G.slowMoFactor = 1.0;
-  }
-  const sf = G.slowMoFactor;
+  const { gravity, bounciness } = G.globals;
 
   const SUB = 4;
-  const subDt = (dt * sf) / SUB;
+  const subDt = dt / SUB;
 
+  const bwalls = G.bucket ? getBucketWalls(G.bucket) : null;
   let bucketBottomHit = false;
 
   for (let s = 0; s < SUB; s++) {
@@ -221,23 +217,23 @@ function update(dt) {
     }
 
     // Bucket walls
-    if (G.bucket) {
-      const { px: bx, py: by, width, height } = G.bucket;
-      const hw = width / 2;
-      resolveSegmentCollision(ball, bx - hw, by, bx - hw, by + height, bounciness); // left inner
-      resolveSegmentCollision(ball, bx + hw, by, bx + hw, by + height, bounciness); // right inner
+    if (bwalls) {
+      const { tl, tr, bl, br, inX, inY, openMidX, openMidY } = bwalls;
+      resolveSegmentCollision(ball, tl.x, tl.y, bl.x, bl.y, bounciness); // left
+      resolveSegmentCollision(ball, tr.x, tr.y, br.x, br.y, bounciness); // right
       if (G.bucketSealed) {
         // Fully sealed — all 4 walls keep the ball contained
-        resolveSegmentCollision(ball, bx - hw, by + height, bx + hw, by + height, bounciness); // bottom
-        resolveSegmentCollision(ball, bx - hw, by, bx + hw, by, bounciness);                   // top cap
+        resolveSegmentCollision(ball, bl.x, bl.y, br.x, br.y, bounciness); // bottom
+        resolveSegmentCollision(ball, tl.x, tl.y, tr.x, tr.y, bounciness); // top cap
       } else {
         // Win triggers when ball hits the bottom wall
-        if (resolveSegmentCollision(ball, bx - hw, by + height, bx + hw, by + height, bounciness)) {
+        if (resolveSegmentCollision(ball, bl.x, bl.y, br.x, br.y, bounciness)) {
           bucketBottomHit = true;
         }
-        // One-way lid: only blocks when ball center is inside, so entry is free but exit is not
-        if (ball.y > by) {
-          resolveSegmentCollision(ball, bx - hw, by, bx + hw, by, bounciness);
+        // One-way lid: only blocks when ball is on the interior side of the opening
+        const dx = ball.x - openMidX, dy = ball.y - openMidY;
+        if (dx * inX + dy * inY > 0) {
+          resolveSegmentCollision(ball, tl.x, tl.y, tr.x, tr.y, bounciness);
         }
       }
     }
@@ -245,6 +241,12 @@ function update(dt) {
 
   if (bucketBottomHit && !G.bucketSealed) {
     onBucketEntry();
+  }
+
+  // Timeout — restart if attempt takes longer than 30 seconds
+  if (!ball.inBucket && ball.droppedAt && Date.now() - ball.droppedAt > 30000) {
+    onBallLost();
+    return;
   }
 
   // Out-of-bounds check (no side/bottom walls — ball just vanishes)
@@ -268,7 +270,7 @@ function update(dt) {
   // Ball trail
   G.ballTrail.push({ x: ball.x, y: ball.y, a: 1.0 });
   while (G.ballTrail.length > 28) G.ballTrail.shift();
-  const trailDecay = G.slowMo ? 1.5 : 5;
+  const trailDecay = 5;
   G.ballTrail.forEach(p => { p.a -= dt * trailDecay; });
   G.ballTrail = G.ballTrail.filter(p => p.a > 0);
 
@@ -441,6 +443,22 @@ function onUp() {
   G.drag.active = false;
 }
 
+function bindKeyboard() {
+  window.addEventListener('keydown', e => {
+    if (e.code !== 'Space') return;
+    e.preventDefault();
+    if (G.screen !== 'game') return;
+    const nextBtn = document.getElementById('next-level-btn');
+    if (nextBtn && nextBtn.style.display !== 'none') {
+      nextBtn.click();
+    } else if (G.ball && !G.ball.dropped) {
+      G.ball.dropped = true;
+      G.ball.droppedAt = Date.now();
+      showDropBtn(false);
+    }
+  });
+}
+
 // ── Buttons ───────────────────────────────────────────────────────
 function bindButtons() {
   const $ = id => document.getElementById(id);
@@ -473,6 +491,7 @@ function bindButtons() {
   $('drop-btn').addEventListener('click', () => {
     if (G.ball && !G.ball.dropped) {
       G.ball.dropped = true;
+      G.ball.droppedAt = Date.now();
       showDropBtn(false);
     }
   });
