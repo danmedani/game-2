@@ -532,7 +532,10 @@ function bindButtons() {
 // ── HUD helpers ───────────────────────────────────────────────────
 function updateHUD() {
   const lvlEl = document.getElementById('level-display');
-  if (lvlEl) lvlEl.textContent = `Level ${G.level}`;
+  if (lvlEl) {
+    const by = G.levelData && G.levelData.madeBy ? ` · by ${G.levelData.madeBy}` : '';
+    lvlEl.textContent = `Level ${G.level}${by}`;
+  }
   const attEl = document.getElementById('attempts-display');
   if (attEl) attEl.textContent = G.attempts > 0 ? `${G.attempts} attempt${G.attempts !== 1 ? 's' : ''}` : '';
 }

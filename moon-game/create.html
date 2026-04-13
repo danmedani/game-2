@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moon Game — Create a Level</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a18; --surface: #13132a; --surface2: #1e1e38;
+      --border: rgba(200,200,255,0.12); --accent: #8899ff;
+      --gold: #ffd700; --text: #e0e0f0; --text-dim: #7777aa;
+      --green: #44cc66; --red: #ff4455;
+    }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'Nunito', sans-serif; font-size: 14px;
+      height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 20px; background: var(--surface);
+      border-bottom: 1px solid var(--border); flex-shrink: 0;
+    }
+    .header h1 { font-family: 'Fredoka One', cursive; font-size: 20px; color: var(--accent); }
+    .mode-badge {
+      padding: 3px 10px; border-radius: 20px; font-size: 11px;
+      font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .mode-edit { background: rgba(100,120,255,0.2); color: var(--accent); }
+    .mode-test { background: rgba(50,200,80,0.2); color: var(--green); animation: pulse 1s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+    .win-badge {
+      padding: 3px 10px; border-radius: 20px; font-size: 11px;
+      font-weight: 800; letter-spacing: 1px;
+      background: rgba(255,215,0,0.18); color: var(--gold);
+    }
+    .header-btns { display: flex; gap: 8px; margin-left: auto; }
+
+    /* ── Layout ── */
+    .body { display: flex; flex: 1; overflow: hidden; }
+    .canvas-panel {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 16px; background: #060612; gap: 10px; overflow: hidden;
+    }
+    #creator-canvas {
+      display: block; cursor: crosshair; border-radius: 6px;
+      box-shadow: 0 0 30px rgba(100,100,200,0.2); touch-action: none;
+    }
+    .controls-panel {
+      flex: 0 0 300px; overflow-y: auto; padding: 16px;
+      display: flex; flex-direction: column; gap: 14px;
+      border-left: 1px solid var(--border); background: var(--surface);
+    }
+
+    /* ── Sections ── */
+    .section {
+      background: var(--surface2); border-radius: 10px;
+      padding: 12px; display: flex; flex-direction: column; gap: 8px;
+    }
+    .section-title {
+      font-size: 11px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--text-dim); margin-bottom: 2px;
+    }
+    label { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 2px; }
+    input[type="number"], input[type="text"] {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+      color: var(--text); font-family: 'Nunito', sans-serif; font-size: 13px;
+      padding: 5px 8px; width: 100%; outline: none; transition: border-color 0.15s;
+    }
+    input[type="number"]:focus, input[type="text"]:focus { border-color: var(--accent); }
+    .row { display: flex; gap: 8px; }
+    .row > * { flex: 1; }
+
+    /* ── Buttons ── */
+    button {
+      border: none; border-radius: 8px; font-family: 'Nunito', sans-serif;
+      font-weight: 800; font-size: 13px; cursor: pointer;
+      padding: 8px 14px; transition: opacity 0.15s, transform 0.1s;
+    }
+    button:active { transform: scale(0.96); }
+    button:disabled { opacity: 0.4; cursor: default; }
+    .btn-primary { background: var(--accent); color: #0a0a22; }
+    .btn-primary:hover:not(:disabled) { opacity: 0.85; }
+    .btn-success { background: var(--green); color: #001a08; }
+    .btn-success:hover:not(:disabled) { opacity: 0.85; }
+    .btn-danger  { background: var(--red); color: #fff; }
+    .btn-ghost   { background: transparent; color: var(--text-dim); border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--text); border-color: rgba(200,200,255,0.25); }
+    .btn-gold    { background: var(--gold); color: #1a0800; font-weight: 900; font-size: 14px; padding: 10px; width: 100%; }
+    .btn-gold:hover:not(:disabled) { opacity: 0.9; }
+
+    /* ── Item list ── */
+    .item-list { display: flex; flex-direction: column; gap: 4px; max-height: 150px; overflow-y: auto; }
+    .item-entry {
+      display: flex; align-items: center; gap: 8px; padding: 6px 8px;
+      border-radius: 6px; cursor: pointer; border: 1px solid transparent; transition: background 0.1s;
+    }
+    .item-entry:hover { background: rgba(255,255,255,0.05); }
+    .item-entry.selected { background: rgba(100,120,255,0.15); border-color: rgba(100,120,255,0.4); }
+    .item-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .item-label { flex: 1; font-size: 12px; }
+    .item-delete { color: var(--red); font-size: 16px; padding: 0 4px; background: none; border: none; cursor: pointer; }
+    .add-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+    .add-btn {
+      flex: 1; min-width: 60px; font-size: 12px; padding: 6px 8px;
+      border-radius: 6px; background: var(--surface); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .add-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Selected item props ── */
+    #selected-panel { display: none; }
+    #selected-panel.visible { display: flex; }
+
+    /* ── Validate / Submit section ── */
+    .validate-hint {
+      font-size: 12px; color: var(--text-dim); text-align: center; padding: 4px 0;
+    }
+    .validate-hint.won { color: var(--gold); font-weight: 700; }
+    .initials-row { display: flex; gap: 8px; align-items: flex-end; }
+    .initials-row input { letter-spacing: 6px; font-family: 'Fredoka One', cursive; font-size: 20px; text-align: center; text-transform: uppercase; }
+    .submit-status { font-size: 12px; text-align: center; min-height: 16px; color: var(--green); }
+    .submit-status.error { color: var(--red); }
+
+    /* ── Status bar ── */
+    .status-bar {
+      padding: 4px 16px; font-size: 11px; color: var(--text-dim);
+      background: var(--surface); border-top: 1px solid var(--border); flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <span>🌙</span>
+  <h1>Create a Level</h1>
+  <span id="mode-badge" class="mode-badge mode-edit">Edit</span>
+  <span id="win-badge" class="win-badge" style="display:none">✓ Validated</span>
+  <div class="header-btns">
+    <button class="btn-ghost" id="test-toggle-btn" onclick="toggleTest()">▶ Test</button>
+    <a href="index.html" style="text-decoration:none;">
+      <button class="btn-ghost">← Game</button>
+    </a>
+  </div>
+</div>
+
+<div class="body">
+
+  <div class="canvas-panel">
+    <canvas id="creator-canvas"></canvas>
+  </div>
+
+  <div class="controls-panel">
+
+    <!-- Add Items -->
+    <div class="section">
+      <div class="section-title">Add Items</div>
+      <div class="add-btns">
+        <button class="add-btn" onclick="addItem('bar')">+ Bar</button>
+        <button class="add-btn" onclick="addItem('circle')">+ Circle</button>
+        <button class="add-btn" onclick="addItem('triangle')">+ Triangle</button>
+      </div>
+      <div class="item-list" id="item-list"></div>
+    </div>
+
+    <!-- Selected item props -->
+    <div class="section" id="selected-panel">
+      <div class="section-title">Selected — <span id="selected-type-label"></span></div>
+      <div class="row">
+        <label>X (0–1)<input type="number" id="si-x" min="0" max="1" step="0.005" oninput="updateSelectedItem()"></label>
+        <label>Y (0–1)<input type="number" id="si-y" min="0" max="1" step="0.005" oninput="updateSelectedItem()"></label>
+      </div>
+      <div id="si-rot-row">
+        <label>Rotation (°)<input type="number" id="si-rot" min="-180" max="180" step="1" oninput="updateSelectedItem()"></label>
+      </div>
+      <div id="si-len-row" style="display:none">
+        <label>Length (px)<input type="number" id="si-len" min="20" max="500" step="1" oninput="updateSelectedItem()"></label>
+      </div>
+      <div id="si-rad-row" style="display:none">
+        <label>Radius (px)<input type="number" id="si-rad" min="5" max="150" step="1" oninput="updateSelectedItem()"></label>
+      </div>
+      <div id="si-siz-row" style="display:none">
+        <label>Size (px)<input type="number" id="si-siz" min="5" max="150" step="1" oninput="updateSelectedItem()"></label>
+      </div>
+      <button class="btn-danger" onclick="deleteSelectedItem()" style="margin-top:4px; width:100%;">Delete Item</button>
+    </div>
+
+    <!-- Golden Bucket -->
+    <div class="section">
+      <div class="section-title">Golden Bucket</div>
+      <div class="row">
+        <label>X (0–1)<input type="number" id="bkt-x" min="0" max="1" step="0.005" oninput="updateBucket()"></label>
+        <label>Y (0–1)<input type="number" id="bkt-y" min="0" max="1" step="0.005" oninput="updateBucket()"></label>
+      </div>
+      <div class="row">
+        <label>Width (px)<input type="number" id="bkt-w" min="30" max="300" step="1" oninput="updateBucket()"></label>
+        <label>Height (px)<input type="number" id="bkt-h" min="20" max="300" step="1" oninput="updateBucket()"></label>
+      </div>
+      <div class="row">
+        <label>Wall Thickness<input type="number" id="bkt-wt" min="3" max="30" step="1" oninput="updateBucket()"></label>
+        <label>Rotation (°)<input type="number" id="bkt-rot" min="-180" max="180" step="1" oninput="updateBucket()"></label>
+      </div>
+    </div>
+
+    <!-- Player Bar -->
+    <div class="section">
+      <div class="section-title">Player Bar (start position)</div>
+      <div class="row">
+        <label>X (0–1)<input type="number" id="pb-x" min="0" max="1" step="0.005" oninput="updatePlayerBar()"></label>
+        <label>Y (0–1)<input type="number" id="pb-y" min="0" max="1" step="0.005" oninput="updatePlayerBar()"></label>
+      </div>
+      <div class="row">
+        <label>Rotation (°)<input type="number" id="pb-rot" min="-180" max="180" step="1" oninput="updatePlayerBar()"></label>
+        <label>Length (px)<input type="number" id="pb-len" min="40" max="400" step="1" oninput="updatePlayerBar()"></label>
+      </div>
+    </div>
+
+    <!-- Ball Start -->
+    <div class="section">
+      <div class="section-title">Ball Start</div>
+      <label>X position (0–1)
+        <input type="number" id="ballX" min="0" max="1" step="0.01" oninput="updateBallX()">
+      </label>
+    </div>
+
+    <!-- Submit section -->
+    <div class="section" id="submit-section">
+      <div class="section-title">Submit Your Level</div>
+      <p class="validate-hint" id="validate-hint">Test your level and get the ball in the bucket to unlock submission.</p>
+      <div id="submit-form" style="display:none; flex-direction:column; gap:8px;">
+        <p class="validate-hint won">✓ Level validated! Enter your initials to submit.</p>
+        <label>Your initials (3 letters)
+          <input type="text" id="creator-initials" maxlength="3" autocomplete="off"
+                 autocorrect="off" spellcheck="false" placeholder="AAA"
+                 oninput="this.value=this.value.toUpperCase().replace(/[^A-Z]/g,'').slice(0,3)">
+        </label>
+        <button class="btn-gold" id="submit-btn" onclick="submitLevel()">Submit to Game Admins ★</button>
+        <p class="submit-status" id="submit-status"></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="status-bar" id="status-bar">Add items to build your level. Test it to see how it plays!</div>
+
+<script src="js/config.js"></script>
+<script src="js/physics.js"></script>
+<script>
+'use strict';
+
+const CW = 400, CH = 700;
+const GRAVITY = 0.095, BOUNCINESS = 0.9;
+
+// ── Starting level template ──────────────────────────────────────────────────
+const defaultLevel = () => ({
+  ballX: 0.5,
+  playerBar: { x: 0.5, y: 0.5, rotation: 0, length: 160 },
+  items: [],
+  bucket: { x: 0.65, y: 0.75, width: 68, height: 54, wallThickness: 10, rotation: 0 },
+});
+
+let level = defaultLevel();
+let selectedId = null;
+let hasWon = false;
+let submitted = false;
+
+// ── Canvas ───────────────────────────────────────────────────────────────────
+let canvas, ctx, stars = [];
+
+window.addEventListener('DOMContentLoaded', () => {
+  canvas = document.getElementById('creator-canvas');
+  ctx = canvas.getContext('2d');
+  canvas.width = CW; canvas.height = CH;
+  generateStars(stars);
+  scaleCanvas();
+  window.addEventListener('resize', scaleCanvas);
+  populateAll();
+  bindPointer();
+  startLoop();
+  window.addEventListener('keydown', e => {
+    if (e.code === 'Space' && e.target.tagName !== 'INPUT') {
+      e.preventDefault(); toggleTest();
+    }
+  });
+});
+
+function scaleCanvas() {
+  const panel = canvas.parentElement;
+  const avW = panel.clientWidth - 32;
+  const avH = window.innerHeight - 80;
+  const scale = Math.min(avW / CW, avH / CH, 1.0);
+  canvas.style.width  = Math.round(CW * scale) + 'px';
+  canvas.style.height = Math.round(CH * scale) + 'px';
+}
+
+// ── Main render loop ─────────────────────────────────────────────────────────
+let rafId, lastTs = 0;
+function startLoop() {
+  if (rafId) cancelAnimationFrame(rafId);
+  lastTs = performance.now();
+  function loop(ts) {
+    const dt = Math.min((ts - lastTs) / 1000, 0.05);
+    lastTs = ts;
+    if (testMode) updateTestPhysics(dt);
+    render();
+    rafId = requestAnimationFrame(loop);
+  }
+  rafId = requestAnimationFrame(loop);
+}
+
+// ── Populate fields ───────────────────────────────────────────────────────────
+function populateAll() {
+  document.getElementById('ballX').value  = level.ballX;
+  document.getElementById('pb-x').value   = level.playerBar.x;
+  document.getElementById('pb-y').value   = level.playerBar.y;
+  document.getElementById('pb-rot').value = level.playerBar.rotation;
+  document.getElementById('pb-len').value = level.playerBar.length;
+  document.getElementById('bkt-x').value  = level.bucket.x;
+  document.getElementById('bkt-y').value  = level.bucket.y;
+  document.getElementById('bkt-w').value  = level.bucket.width;
+  document.getElementById('bkt-h').value  = level.bucket.height;
+  document.getElementById('bkt-wt').value = level.bucket.wallThickness;
+  document.getElementById('bkt-rot').value = level.bucket.rotation || 0;
+  buildItemList();
+}
+
+function updateBallX()    { level.ballX = parseFloat(document.getElementById('ballX').value) || 0.5; invalidateWin('item'); }
+function updatePlayerBar() {
+  const pb = level.playerBar;
+  pb.x        = parseFloat(document.getElementById('pb-x').value) || 0;
+  pb.y        = parseFloat(document.getElementById('pb-y').value) || 0;
+  pb.rotation = parseFloat(document.getElementById('pb-rot').value) || 0;
+  pb.length   = parseFloat(document.getElementById('pb-len').value) || 160;
+  // playerBar changes don't invalidate win
+}
+function updateBucket() {
+  const b = level.bucket;
+  b.x             = parseFloat(document.getElementById('bkt-x').value) || 0;
+  b.y             = parseFloat(document.getElementById('bkt-y').value) || 0;
+  b.width         = parseFloat(document.getElementById('bkt-w').value) || 68;
+  b.height        = parseFloat(document.getElementById('bkt-h').value) || 54;
+  b.wallThickness = parseFloat(document.getElementById('bkt-wt').value) || 10;
+  b.rotation      = parseFloat(document.getElementById('bkt-rot').value) || 0;
+  invalidateWin('item');
+}
+
+// ── Win state ────────────────────────────────────────────────────────────────
+function invalidateWin(source) {
+  if (source === 'playerbar') return; // moving playerbar never invalidates
+  if (!hasWon) return;
+  hasWon = false;
+  document.getElementById('win-badge').style.display = 'none';
+  document.getElementById('submit-form').style.display = 'none';
+  document.getElementById('validate-hint').style.display = '';
+  setStatus('Level changed — test again to re-validate.');
+}
+
+function onLevelValidated() {
+  hasWon = true;
+  document.getElementById('win-badge').style.display = '';
+  document.getElementById('submit-form').style.display = 'flex';
+  document.getElementById('validate-hint').style.display = 'none';
+  document.getElementById('submit-status').textContent = '';
+  setStatus('Level validated! You can now submit.');
+}
+
+// ── Item management ───────────────────────────────────────────────────────────
+function addItem(type) {
+  const id = type + '-' + Date.now();
+  const defaults = {
+    bar:      { x: 0.5, y: 0.4, rotation: 0, length: 130 },
+    circle:   { x: 0.5, y: 0.4, radius: 28 },
+    triangle: { x: 0.5, y: 0.4, rotation: 0, size: 32 },
+  };
+  level.items.push({ id, type, ...defaults[type] });
+  selectItem(id);
+  buildItemList();
+  invalidateWin('item');
+  setStatus('Added ' + type + '. Drag to position it.');
+}
+
+function deleteItemById(id) {
+  level.items = level.items.filter(i => i.id !== id);
+  if (selectedId === id) { selectedId = null; updateSelectedPanel(); }
+  buildItemList();
+  invalidateWin('item');
+}
+
+function deleteSelectedItem() {
+  if (selectedId && selectedId !== 'bucket' && selectedId !== 'player-bar' && selectedId !== 'ball-start') {
+    deleteItemById(selectedId);
+  }
+}
+
+function selectItem(id) {
+  selectedId = id;
+  buildItemList();
+  updateSelectedPanel();
+}
+
+function buildItemList() {
+  const list = document.getElementById('item-list');
+  list.innerHTML = level.items.map(item => {
+    const color = itemColor(item.type);
+    const sel = item.id === selectedId;
+    return `<div class="item-entry${sel?' selected':''}" onclick="selectItem('${item.id}')">
+      <div class="item-dot" style="background:${color}"></div>
+      <span class="item-label">${item.type} (${item.id.split('-')[1]||item.id})</span>
+      <button class="item-delete" onclick="event.stopPropagation();deleteItemById('${item.id}')">×</button>
+    </div>`;
+  }).join('');
+}
+
+function updateSelectedPanel() {
+  const panel = document.getElementById('selected-panel');
+  if (!selectedId) { panel.classList.remove('visible'); return; }
+  const item = level.items.find(i => i.id === selectedId);
+  if (!item) { panel.classList.remove('visible'); return; }
+  panel.classList.add('visible');
+  document.getElementById('selected-type-label').textContent = item.type;
+  document.getElementById('si-x').value = item.x;
+  document.getElementById('si-y').value = item.y;
+  document.getElementById('si-rot-row').style.display = item.type !== 'circle' ? '' : 'none';
+  document.getElementById('si-len-row').style.display = item.type === 'bar' ? '' : 'none';
+  document.getElementById('si-rad-row').style.display = item.type === 'circle' ? '' : 'none';
+  document.getElementById('si-siz-row').style.display = item.type === 'triangle' ? '' : 'none';
+  if (item.type !== 'circle')   document.getElementById('si-rot').value = item.rotation || 0;
+  if (item.type === 'bar')      document.getElementById('si-len').value = item.length;
+  if (item.type === 'circle')   document.getElementById('si-rad').value = item.radius;
+  if (item.type === 'triangle') document.getElementById('si-siz').value = item.size;
+}
+
+function updateSelectedItem() {
+  const item = level.items.find(i => i.id === selectedId);
+  if (!item) return;
+  item.x = parseFloat(document.getElementById('si-x').value) || 0;
+  item.y = parseFloat(document.getElementById('si-y').value) || 0;
+  if (item.type !== 'circle')   item.rotation = parseFloat(document.getElementById('si-rot').value) || 0;
+  if (item.type === 'bar')      item.length   = parseFloat(document.getElementById('si-len').value) || 130;
+  if (item.type === 'circle')   item.radius   = parseFloat(document.getElementById('si-rad').value) || 28;
+  if (item.type === 'triangle') item.size     = parseFloat(document.getElementById('si-siz').value) || 32;
+  invalidateWin('item');
+}
+
+// ── Test Mode ─────────────────────────────────────────────────────────────────
+let testMode = false, testBall = null, testBallTrail = [], testItems = [],
+    testBucket = null, testPlayerBar = null, testBucketSealed = false,
+    testBucketEnteredAt = 0;
+
+function toggleTest() {
+  if (testMode) stopTest(); else startTest();
+}
+
+function startTest() {
+  testMode = true;
+  testBall = { x: level.ballX * CW, y: BALL_RADIUS + 8, vx: 0, vy: 0, squash: 1.0, inBucket: false };
+  testItems = level.items.map(i => ({ ...i, px: i.x*CW, py: i.y*CH, glowT: 0 }));
+  const b = level.bucket;
+  testBucket = { ...b, px: b.x*CW, py: b.y*CH, glowT: 0 };
+  const pb = level.playerBar;
+  testPlayerBar = { x: pb.x*CW, y: pb.y*CH, rotation: pb.rotation, length: pb.length, glowT: 0 };
+  testBucketSealed = false;
+  testBucketEnteredAt = 0;
+  testBallTrail = [];
+  document.getElementById('test-toggle-btn').textContent = '■ Stop';
+  document.getElementById('mode-badge').className = 'mode-badge mode-test';
+  document.getElementById('mode-badge').textContent = 'Testing';
+  setTimeout(() => { if (testMode && testBall) testBall.dropped = true; }, 700);
+  setStatus('Testing… get the ball in the bucket!');
+}
+
+function stopTest() {
+  testMode = false;
+  testBall = null; testItems = []; testBucket = null; testPlayerBar = null;
+  testBallTrail = []; testBucketSealed = false; testBucketEnteredAt = 0;
+  document.getElementById('test-toggle-btn').textContent = '▶ Test';
+  document.getElementById('mode-badge').className = 'mode-badge mode-edit';
+  document.getElementById('mode-badge').textContent = 'Edit';
+  setStatus('Edit your level and test again.');
+}
+
+function resetTestBall() {
+  testBall = { x: level.ballX * CW, y: BALL_RADIUS + 8, vx: 0, vy: 0, squash: 1.0, inBucket: false };
+  testBucketSealed = false; testBucketEnteredAt = 0; testBallTrail = [];
+  if (testItems.length) testItems.forEach(i => i.glowT = 0);
+  if (testBucket) testBucket.glowT = 0;
+  setTimeout(() => { if (testMode && testBall) testBall.dropped = true; }, 700);
+}
+
+function updateTestPhysics(dt) {
+  if (!testBall) return;
+
+  if (testBall.inBucket) {
+    if (testBucketEnteredAt && Date.now() - testBucketEnteredAt > 2000) {
+      resetTestBall(); return;
+    }
+  } else if (!testBall.dropped) {
+    return;
+  }
+
+  const bwalls = testBucket ? getBucketWalls(testBucket) : null;
+  let bucketBottomHit = false;
+
+  const SUB = 4, subDt = dt / SUB;
+  const ball = testBall;
+
+  for (let s = 0; s < SUB; s++) {
+    ball.vy += GRAVITY * subDt * 60;
+    ball.x  += ball.vx * subDt * 60;
+    ball.y  += ball.vy * subDt * 60;
+
+    for (const item of testItems) {
+      if (collideItemWithBall(ball, item, BOUNCINESS)) item.glowT = GLOW_DURATION;
+    }
+
+    if (testPlayerBar) {
+      const pb = testPlayerBar;
+      const angle = pb.rotation * Math.PI / 180;
+      const hLen = pb.length / 2;
+      resolveSegmentCollision(ball,
+        pb.x - Math.cos(angle)*hLen, pb.y - Math.sin(angle)*hLen,
+        pb.x + Math.cos(angle)*hLen, pb.y + Math.sin(angle)*hLen,
+        BOUNCINESS);
+    }
+
+    if (bwalls) {
+      const { tl, tr, bl, br, inX, inY, openMidX, openMidY } = bwalls;
+      resolveSegmentCollision(ball, tl.x, tl.y, bl.x, bl.y, BOUNCINESS);
+      resolveSegmentCollision(ball, tr.x, tr.y, br.x, br.y, BOUNCINESS);
+      if (testBucketSealed) {
+        resolveSegmentCollision(ball, bl.x, bl.y, br.x, br.y, BOUNCINESS);
+        resolveSegmentCollision(ball, tl.x, tl.y, tr.x, tr.y, BOUNCINESS);
+      } else {
+        if (resolveSegmentCollision(ball, bl.x, bl.y, br.x, br.y, BOUNCINESS)) bucketBottomHit = true;
+        const dx = ball.x - openMidX, dy = ball.y - openMidY;
+        if (dx * inX + dy * inY > 0) resolveSegmentCollision(ball, tl.x, tl.y, tr.x, tr.y, BOUNCINESS);
+      }
+    }
+  }
+
+  if (bucketBottomHit && !testBucketSealed) {
+    ball.inBucket = true;
+    testBucketSealed = true;
+    testBucket.glowT = 999;
+    testBucketEnteredAt = Date.now();
+    if (!hasWon) onLevelValidated();
+  }
+
+  if (!ball.inBucket && (ball.x < -BALL_RADIUS-10 || ball.x > CW+BALL_RADIUS+10 || ball.y > CH+BALL_RADIUS+10)) {
+    resetTestBall(); return;
+  }
+
+  if (ball.squash < 1.0) ball.squash += (1.0 - ball.squash) * Math.min(dt * 14, 1);
+  testItems.forEach(i => { if (i.glowT > 0) i.glowT -= dt; });
+  if (testBucket && testBucket.glowT > 0 && testBucket.glowT < 999) testBucket.glowT -= dt;
+  testBallTrail.push({ x: ball.x, y: ball.y, a: 1.0 });
+  while (testBallTrail.length > 28) testBallTrail.shift();
+  testBallTrail.forEach(p => { p.a -= dt * 5; });
+  testBallTrail = testBallTrail.filter(p => p.a > 0);
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render() {
+  ctx.fillStyle = '#050510';
+  ctx.fillRect(0, 0, CW, CH);
+  renderStars(ctx, stars);
+
+  if (testMode) {
+    const items = testItems.length ? testItems : level.items.map(i=>({...i,px:i.x*CW,py:i.y*CH,glowT:0}));
+    items.forEach(i => drawItem(ctx, i));
+    const bucket = testBucket || {...level.bucket, px:level.bucket.x*CW, py:level.bucket.y*CH, glowT:0};
+    drawBucket(ctx, bucket, testBucketSealed);
+    const pb = level.playerBar;
+    drawPlayerBar(ctx, {x:pb.x*CW, y:pb.y*CH, rotation:pb.rotation, length:pb.length, glowT:0}, false);
+    if (testBall && !testBall.dropped) {
+      ctx.save(); ctx.globalAlpha = 0.45;
+      drawBallAt(ctx, level.ballX*CW, BALL_RADIUS+8, 1.0);
+      ctx.globalAlpha = 1; ctx.restore();
+    }
+    if (testBall && !testBall.inBucket) {
+      testBallTrail.forEach(p => {
+        ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(1,BALL_RADIUS*0.3*p.a), 0, Math.PI*2);
+        ctx.fillStyle = `rgba(190,205,255,${p.a*0.18})`; ctx.fill();
+      });
+      drawBallAt(ctx, testBall.x, testBall.y, testBall.squash);
+    }
+  } else {
+    level.items.forEach(item => {
+      const enriched = {...item, px:item.x*CW, py:item.y*CH};
+      drawItem(ctx, enriched);
+      if (item.id === selectedId) drawSelectionRing(ctx, enriched);
+    });
+
+    const bucket = {...level.bucket, px:level.bucket.x*CW, py:level.bucket.y*CH, glowT:0};
+    drawBucket(ctx, bucket, false);
+    if (selectedId === 'bucket') drawBucketSelection(ctx, bucket);
+
+    const pb = level.playerBar;
+    const pbObj = {x:pb.x*CW, y:pb.y*CH, rotation:pb.rotation, length:pb.length, glowT:0};
+    drawPlayerBar(ctx, pbObj, true);
+
+    // Ghost ball + start handle
+    const gx = level.ballX * CW;
+    ctx.save(); ctx.globalAlpha = 0.4;
+    drawBallAt(ctx, gx, BALL_RADIUS+8, 1.0);
+    ctx.globalAlpha = 1;
+    ctx.beginPath(); ctx.arc(gx, BALL_RADIUS+8, 14, 0, Math.PI*2);
+    ctx.strokeStyle = selectedId==='ball-start' ? '#fff' : 'rgba(200,200,255,0.4)';
+    ctx.lineWidth = 1.5; ctx.setLineDash([4,4]); ctx.stroke(); ctx.setLineDash([]);
+    ctx.restore();
+  }
+}
+
+function drawSelectionRing(ctx, item) {
+  ctx.save(); ctx.strokeStyle = 'rgba(200,210,255,0.8)'; ctx.lineWidth = 1.5; ctx.setLineDash([5,4]);
+  if (item.type === 'circle') {
+    ctx.beginPath(); ctx.arc(item.px, item.py, item.radius+8, 0, Math.PI*2); ctx.stroke();
+  } else if (item.type === 'triangle') {
+    const verts = getTriangleVertices(item);
+    ctx.beginPath(); verts.forEach((v,i) => i===0?ctx.moveTo(v.x,v.y):ctx.lineTo(v.x,v.y)); ctx.closePath(); ctx.stroke();
+  } else if (item.type === 'bar') {
+    const {ax,ay,bx,by} = getBarEndpoints(item);
+    ctx.beginPath(); ctx.moveTo(ax,ay); ctx.lineTo(bx,by); ctx.stroke();
+  }
+  ctx.setLineDash([]); ctx.restore();
+}
+
+function drawBucketSelection(ctx, bucket) {
+  ctx.save(); ctx.strokeStyle = 'rgba(255,215,0,0.7)'; ctx.lineWidth = 2; ctx.setLineDash([5,4]);
+  const {px:bx, py:by, width, height, wallThickness:wt} = bucket;
+  ctx.strokeRect(bx-width/2-wt-3, by-3, width+wt*2+6, height+wt+6);
+  ctx.setLineDash([]); ctx.restore();
+}
+
+// ── Pointer events ────────────────────────────────────────────────────────────
+let drag = { active: false, type: null, ox: 0, oy: 0, pivotX: 0, pivotY: 0, id: null };
+
+function bindPointer() {
+  canvas.addEventListener('mousedown',  e => { if(!testMode) onDown(cpos(e)); });
+  canvas.addEventListener('mousemove',  e => { if(!testMode) onMove(cpos(e)); });
+  canvas.addEventListener('mouseup',    () => onUp());
+  canvas.addEventListener('mouseleave', () => onUp());
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); if(!testMode) onDown(cpos(e.touches[0])); }, {passive:false});
+  canvas.addEventListener('touchmove',  e => { e.preventDefault(); if(!testMode) onMove(cpos(e.touches[0])); }, {passive:false});
+  canvas.addEventListener('touchend',   e => { e.preventDefault(); onUp(); }, {passive:false});
+}
+
+function cpos(e) {
+  const r = canvas.getBoundingClientRect();
+  return { x:(e.clientX-r.left)*(CW/r.width), y:(e.clientY-r.top)*(CH/r.height) };
+}
+
+function onDown(pos) {
+  const HIT = 18;
+
+  // Ball start handle
+  const gx = level.ballX * CW, gy = BALL_RADIUS + 8;
+  if (Math.hypot(pos.x-gx, pos.y-gy) < HIT+4) {
+    selectItem('ball-start');
+    drag = {active:true, type:'ball-start', ox:pos.x-gx, oy:0};
+    return;
+  }
+
+  // Player bar ends (rotate)
+  const pb = level.playerBar;
+  const pbAngle = pb.rotation*Math.PI/180, pbHL = pb.length/2;
+  const pbCx = pb.x*CW, pbCy = pb.y*CH;
+  const pbEx = pbCx+Math.cos(pbAngle)*pbHL, pbEy = pbCy+Math.sin(pbAngle)*pbHL;
+  const pbAx = pbCx-Math.cos(pbAngle)*pbHL, pbAy = pbCy-Math.sin(pbAngle)*pbHL;
+  if (Math.hypot(pos.x-pbEx,pos.y-pbEy)<HIT || Math.hypot(pos.x-pbAx,pos.y-pbAy)<HIT) {
+    selectItem('player-bar');
+    drag = {active:true, type:'rotate-playerbar', pivotX:pbCx, pivotY:pbCy};
+    return;
+  }
+  const {x:cpx,y:cpy} = closestPointOnSeg(pos.x,pos.y,pbAx,pbAy,pbEx,pbEy);
+  if (Math.hypot(pos.x-cpx,pos.y-cpy) < 16) {
+    selectItem('player-bar');
+    drag = {active:true, type:'move-playerbar', ox:pos.x-pbCx, oy:pos.y-pbCy};
+    return;
+  }
+
+  // Level items
+  for (let i = level.items.length-1; i >= 0; i--) {
+    const item = level.items[i];
+    const enriched = {...item, px:item.x*CW, py:item.y*CH};
+    if (item.type === 'bar') {
+      const {ax,ay,bx,by} = getBarEndpoints(enriched);
+      if (Math.hypot(pos.x-bx,pos.y-by)<HIT || Math.hypot(pos.x-ax,pos.y-ay)<HIT) {
+        selectItem(item.id);
+        drag = {active:true, type:'rotate-item', id:item.id, pivotX:enriched.px, pivotY:enriched.py};
+        return;
+      }
+      const {x:c2,y:c3} = closestPointOnSeg(pos.x,pos.y,ax,ay,bx,by);
+      if (Math.hypot(pos.x-c2,pos.y-c3) < 14) {
+        selectItem(item.id); drag = {active:true, type:'move-item', id:item.id, ox:pos.x-enriched.px, oy:pos.y-enriched.py}; return;
+      }
+    } else if (item.type === 'circle') {
+      if (Math.hypot(pos.x-enriched.px,pos.y-enriched.py) < enriched.radius+8) {
+        selectItem(item.id); drag = {active:true, type:'move-item', id:item.id, ox:pos.x-enriched.px, oy:pos.y-enriched.py}; return;
+      }
+    } else if (item.type === 'triangle') {
+      const verts = getTriangleVertices(enriched);
+      let near = false;
+      for (let j=0;j<3;j++){const a=verts[j],b=verts[(j+1)%3];const{x:tp,y:tq}=closestPointOnSeg(pos.x,pos.y,a.x,a.y,b.x,b.y);if(Math.hypot(pos.x-tp,pos.y-tq)<14){near=true;break;}}
+      if (near) { selectItem(item.id); drag = {active:true, type:'move-item', id:item.id, ox:pos.x-enriched.px, oy:pos.y-enriched.py}; return; }
+    }
+  }
+
+  // Bucket
+  const bkt = level.bucket, bkx = bkt.x*CW, bky = bkt.y*CH;
+  if (pos.x>bkx-bkt.width/2-bkt.wallThickness-8 && pos.x<bkx+bkt.width/2+bkt.wallThickness+8 &&
+      pos.y>bky-8 && pos.y<bky+bkt.height+bkt.wallThickness+8) {
+    selectItem('bucket'); drag = {active:true, type:'move-bucket', ox:pos.x-bkx, oy:pos.y-bky}; return;
+  }
+
+  selectedId = null; buildItemList(); updateSelectedPanel(); drag.active = false;
+}
+
+function onMove(pos) {
+  if (!drag.active) return;
+  if (drag.type === 'ball-start') {
+    level.ballX = Math.max(0, Math.min(1, (pos.x-drag.ox)/CW));
+    document.getElementById('ballX').value = level.ballX.toFixed(3);
+    return;
+  }
+  if (drag.type === 'move-playerbar') {
+    const pb = level.playerBar;
+    pb.x = Math.max(0,Math.min(1,(pos.x-drag.ox)/CW));
+    pb.y = Math.max(0,Math.min(1,(pos.y-drag.oy)/CH));
+    document.getElementById('pb-x').value = pb.x.toFixed(4);
+    document.getElementById('pb-y').value = pb.y.toFixed(4);
+    return;
+  }
+  if (drag.type === 'rotate-playerbar') {
+    const angle = Math.atan2(pos.y-drag.pivotY, pos.x-drag.pivotX);
+    level.playerBar.rotation = Math.round(angle*180/Math.PI);
+    document.getElementById('pb-rot').value = level.playerBar.rotation;
+    return;
+  }
+  if (drag.type === 'move-bucket') {
+    level.bucket.x = Math.max(0,Math.min(1,(pos.x-drag.ox)/CW));
+    level.bucket.y = Math.max(0,Math.min(1,(pos.y-drag.oy)/CH));
+    document.getElementById('bkt-x').value = level.bucket.x.toFixed(4);
+    document.getElementById('bkt-y').value = level.bucket.y.toFixed(4);
+    invalidateWin('item');
+    return;
+  }
+  if (drag.type === 'move-item') {
+    const item = level.items.find(i=>i.id===drag.id);
+    if (item) { item.x=Math.max(0,Math.min(1,(pos.x-drag.ox)/CW)); item.y=Math.max(0,Math.min(1,(pos.y-drag.oy)/CH)); updateSelectedPanel(); }
+    return;
+  }
+  if (drag.type === 'rotate-item') {
+    const item = level.items.find(i=>i.id===drag.id);
+    if (item) { item.rotation=Math.round(Math.atan2(pos.y-drag.pivotY,pos.x-drag.pivotX)*180/Math.PI); updateSelectedPanel(); }
+    return;
+  }
+}
+
+function onUp() {
+  if (drag.active && drag.type !== 'move-playerbar' && drag.type !== 'rotate-playerbar') {
+    invalidateWin(drag.type);
+  }
+  drag.active = false;
+}
+
+// ── Submit ────────────────────────────────────────────────────────────────────
+async function submitLevel() {
+  if (submitted) return;
+  const raw = document.getElementById('creator-initials').value.trim().toUpperCase().replace(/[^A-Z]/g,'').slice(0,3);
+  if (!/^[A-Z]{3}$/.test(raw)) {
+    document.getElementById('submit-status').textContent = 'Enter exactly 3 letters.';
+    document.getElementById('submit-status').className = 'submit-status error';
+    return;
+  }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+  document.getElementById('submit-status').textContent = '';
+
+  const payload = {
+    type: 'level_submission',
+    initials: raw,
+    level: {
+      ballX: level.ballX,
+      playerBar: { ...level.playerBar },
+      items: level.items.map(i => ({ ...i })),
+      bucket: { ...level.bucket },
+    },
+    timestamp: new Date().toISOString(),
+  };
+
+  try {
+    const url = (typeof CONFIG !== 'undefined') && CONFIG.scoresUrl;
+    if (!url) throw new Error('No server URL configured.');
+    await fetch(url, { method: 'POST', body: JSON.stringify(payload) });
+    submitted = true;
+    document.getElementById('submit-status').textContent = '★ Submitted! Thanks ' + raw + '!';
+    document.getElementById('submit-status').className = 'submit-status';
+    btn.textContent = 'Submitted ✓';
+    setStatus('Level submitted! Thanks for playing. 🌙');
+  } catch (e) {
+    document.getElementById('submit-status').textContent = 'Submission failed — try again.';
+    document.getElementById('submit-status').className = 'submit-status error';
+    btn.disabled = false;
+    btn.textContent = 'Submit to Game Admins ★';
+  }
+}
+
+function setStatus(msg) { document.getElementById('status-bar').textContent = msg; }
+</script>
+</body>
+</html>

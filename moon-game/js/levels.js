@@ -172,6 +172,79 @@ const DEFAULT_LEVELS = [
       "wallThickness": 10,
       "rotation": 90
     }
+  },
+  {
+    "id": 4,
+    "ballX": 0.5,
+    "playerBar": {
+      "x": 0.7165648854961835,
+      "y": 0.3260341693929479,
+      "rotation": 30,
+      "length": 160
+    },
+    "items": [
+      {
+        "id": "bar-1",
+        "type": "bar",
+        "x": 0.28,
+        "y": 0.31,
+        "rotation": -38,
+        "length": 130
+      },
+      {
+        "id": "circle-1",
+        "type": "circle",
+        "x": 0.645,
+        "y": 0.7142857142857144,
+        "radius": 34
+      },
+      {
+        "id": "circle-1776051359100",
+        "type": "circle",
+        "x": 0.28,
+        "y": 0.1757142857142857,
+        "radius": 80
+      },
+      {
+        "id": "circle-1776051365947",
+        "type": "circle",
+        "x": 0.7375,
+        "y": 0.14,
+        "radius": 67
+      },
+      {
+        "id": "bar-1776051392082",
+        "type": "bar",
+        "x": 0.07499999999999993,
+        "y": 0.55,
+        "rotation": 96,
+        "length": 90
+      },
+      {
+        "id": "triangle-1776051487268",
+        "type": "triangle",
+        "x": 0.825,
+        "y": 0.5471428571428572,
+        "rotation": 0,
+        "size": 90
+      },
+      {
+        "id": "bar-1776051973843",
+        "type": "bar",
+        "x": 0.0625,
+        "y": 0.7,
+        "rotation": 86,
+        "length": 130
+      }
+    ],
+    "bucket": {
+      "x": 0.2244147582697201,
+      "y": 0.8076990185387133,
+      "width": 68,
+      "height": 54,
+      "wallThickness": 10,
+      "rotation": 4
+    }
   }
 ];
 

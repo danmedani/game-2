@@ -1,8 +1,9 @@
 // Google Apps Script for DinoQuest + CenozoiQuest + MoonGame global leaderboards
+// and MoonGame user-submitted levels.
 //
 // Setup:
-//   1. Create a Google Sheet with tabs: "DinoQuest", "CenozoiQuest", "MoonGame"
-//      (or let the script auto-create them on first write)
+//   1. Create a Google Sheet with tabs: "DinoQuest", "CenozoiQuest", "MoonGame",
+//      "MoonLevelSubmission" (or let the script auto-create them on first write)
 //   2. Extensions → Apps Script → paste this file → Save
 //   3. Deploy → New Deployment → Web App
 //      - Execute as: Me
@@ -45,7 +46,13 @@ function doGet(e) {
 
 function doPost(e) {
   try {
-    const { initials, score, date, game } = JSON.parse(e.postData.contents);
+    const body = JSON.parse(e.postData.contents);
+
+    if (body.type === 'level_submission') {
+      return handleLevelSubmission(body);
+    }
+
+    const { initials, score, date, game } = body;
 
     // Basic validation
     if (!/^[A-Z]{3}$/.test(initials)) return json({ error: 'bad initials' });
@@ -64,6 +71,30 @@ function doPost(e) {
   } catch(err) {
     return json({ error: err.message });
   }
+}
+
+function handleLevelSubmission(body) {
+  const { initials, level, timestamp } = body;
+
+  if (!/^[A-Z]{3}$/.test(initials)) return json({ error: 'bad initials' });
+  if (!level || typeof level !== 'object') return json({ error: 'bad level' });
+
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheetName = 'MoonLevelSubmission';
+  let sheet = ss.getSheetByName(sheetName);
+  if (!sheet) {
+    sheet = ss.insertSheet(sheetName);
+    sheet.appendRow(['initials', 'timestamp', 'level_json']);
+    sheet.setFrozenRows(1);
+  }
+
+  sheet.appendRow([
+    initials,
+    timestamp || new Date().toISOString(),
+    JSON.stringify(level),
+  ]);
+
+  return json({ ok: true });
 }
 
 function json(data) {
