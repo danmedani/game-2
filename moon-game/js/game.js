@@ -149,7 +149,7 @@ function resetAttempt(keepBar) {
   if (G.bucket) G.bucket.glowT = 0;
   if (G.playerBar) G.playerBar.glowT = 0;
 
-  showDropBtn(true);
+  setDropBtn('drop');
   showNextBtn(false);
   delete document.getElementById('next-level-btn').dataset.shown;
 }
@@ -184,6 +184,7 @@ function update(dt) {
 
   const bwalls = G.bucket ? getBucketWalls(G.bucket) : null;
   let bucketBottomHit = false;
+  let bucketWallHit = false;
 
   for (let s = 0; s < SUB; s++) {
     // Apply gravity (normalised to 60fps)
@@ -223,8 +224,9 @@ function update(dt) {
       resolveSegmentCollision(ball, tr.x, tr.y, br.x, br.y, bounciness); // right
       if (G.bucketSealed) {
         // Fully sealed — all 4 walls keep the ball contained
-        resolveSegmentCollision(ball, bl.x, bl.y, br.x, br.y, bounciness); // bottom
-        resolveSegmentCollision(ball, tl.x, tl.y, tr.x, tr.y, bounciness); // top cap
+        const hitB = resolveSegmentCollision(ball, bl.x, bl.y, br.x, br.y, bounciness); // bottom
+        const hitT = resolveSegmentCollision(ball, tl.x, tl.y, tr.x, tr.y, bounciness); // top cap
+        if (hitB || hitT) bucketWallHit = true;
       } else {
         // Win triggers when ball hits the bottom wall
         if (resolveSegmentCollision(ball, bl.x, bl.y, br.x, br.y, bounciness)) {
@@ -242,11 +244,8 @@ function update(dt) {
   if (bucketBottomHit && !G.bucketSealed) {
     onBucketEntry();
   }
-
-  // Timeout — restart if attempt takes longer than 30 seconds
-  if (!ball.inBucket && ball.droppedAt && Date.now() - ball.droppedAt > 30000) {
-    onBallLost();
-    return;
+  if (bucketWallHit) {
+    playBucketWallHit();
   }
 
   // Out-of-bounds check (no side/bottom walls — ball just vanishes)
@@ -293,7 +292,7 @@ function onBucketEntry() {
   G.levelDone = true;
   G.bucket.glowT = 999;
   playBucketEntry();
-  showDropBtn(false);
+  setDropBtn('hide');
 }
 
 function onBallLost() {
@@ -451,10 +450,11 @@ function bindKeyboard() {
     const nextBtn = document.getElementById('next-level-btn');
     if (nextBtn && nextBtn.style.display !== 'none') {
       nextBtn.click();
+    } else if (G.ball && G.ball.dropped && !G.ball.inBucket) {
+      onBallLost();
     } else if (G.ball && !G.ball.dropped) {
       G.ball.dropped = true;
-      G.ball.droppedAt = Date.now();
-      showDropBtn(false);
+      setDropBtn('stop');
     }
   });
 }
@@ -489,10 +489,11 @@ function bindButtons() {
   $('gameover-home-btn').addEventListener('click', () => showScreen('title'));
 
   $('drop-btn').addEventListener('click', () => {
-    if (G.ball && !G.ball.dropped) {
+    if (G.ball && G.ball.dropped && !G.ball.inBucket) {
+      onBallLost();
+    } else if (G.ball && !G.ball.dropped) {
       G.ball.dropped = true;
-      G.ball.droppedAt = Date.now();
-      showDropBtn(false);
+      setDropBtn('stop');
     }
   });
 
@@ -536,9 +537,23 @@ function updateHUD() {
   if (attEl) attEl.textContent = G.attempts > 0 ? `${G.attempts} attempt${G.attempts !== 1 ? 's' : ''}` : '';
 }
 
-function showDropBtn(show) {
+function setDropBtn(mode) {
   const btn = document.getElementById('drop-btn');
-  if (btn) btn.style.display = show ? '' : 'none';
+  if (!btn) return;
+  if (mode === 'drop') {
+    btn.textContent = 'Drop';
+    btn.className = 'btn btn-drop';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+  } else if (mode === 'stop') {
+    btn.textContent = 'Stop';
+    btn.className = 'btn btn-stop';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+  } else {
+    btn.disabled = true;
+    btn.style.opacity = '0';
+  }
 }
 
 function showNextBtn(show) {
@@ -613,6 +628,22 @@ function playHit(type) {
     gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.1);
     osc.start(ac.currentTime);
     osc.stop(ac.currentTime + 0.1);
+  } catch (e) {}
+}
+
+function playBucketWallHit() {
+  try {
+    const ac = getAC();
+    const osc = ac.createOscillator();
+    const gain = ac.createGain();
+    osc.connect(gain);
+    gain.connect(ac.destination);
+    osc.frequency.value = 180;
+    osc.type = 'sine';
+    gain.gain.setValueAtTime(0.1, ac.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.2);
+    osc.start(ac.currentTime);
+    osc.stop(ac.currentTime + 0.2);
   } catch (e) {}
 }
 

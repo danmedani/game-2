@@ -146,6 +146,19 @@ html, body {
 .btn-drop:hover { box-shadow: 0 6px 28px rgba(255,180,0,0.7); transform: translateY(-2px); }
 .btn-drop:active { transform: scale(0.95) translateY(0); }
 
+.btn-stop {
+  background: linear-gradient(135deg, #ff4455, #cc1122);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 16px 48px;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(255,50,70,0.5);
+  letter-spacing: 1px;
+}
+.btn-stop:hover { box-shadow: 0 6px 28px rgba(255,50,70,0.7); transform: translateY(-2px); }
+.btn-stop:active { transform: scale(0.95) translateY(0); }
+
 .btn-next {
   background: linear-gradient(135deg, #44cc66, #228844);
   color: #fff;
