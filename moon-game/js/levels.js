@@ -339,9 +339,9 @@ const DEFAULT_LEVELS = [
     "madeBy": "DAN",
     "ballX": 0.5,
     "playerBar": {
-      "x": 0.12972292191435775,
-      "y": 0.9308357348703167,
-      "rotation": -116,
+      "x": 0.6097229219143577,
+      "y": 0.9394071634417452,
+      "rotation": -171,
       "length": 160
     },
     "items": [
