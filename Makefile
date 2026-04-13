@@ -3,6 +3,9 @@
 all:
 	open http://localhost:8080 & python3 -m http.server 8080
 
+moon:
+	open http://localhost:8080/moon-game & python3 -m http.server 8080
+
 local:
 	open "http://localhost:8080?dev=1" & python3 -m http.server 8080
 

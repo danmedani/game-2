@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moon Game — Create a Level (use desktop)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Moon Game — Create a Level</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,7 +33,6 @@
     .mode-edit { background: rgba(100,120,255,0.2); color: var(--accent); }
     .mode-test { background: rgba(50,200,80,0.2); color: var(--green); animation: pulse 1s ease-in-out infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
-
     .win-badge {
       padding: 3px 10px; border-radius: 20px; font-size: 11px;
       font-weight: 800; letter-spacing: 1px;
@@ -53,10 +52,22 @@
       box-shadow: 0 0 30px rgba(100,100,200,0.2); touch-action: none;
     }
     .controls-panel {
-      flex: 0 0 300px; overflow-y: auto; padding: 16px;
-      display: flex; flex-direction: column; gap: 14px;
+      flex: 0 0 240px; overflow-y: auto; padding: 14px;
+      display: flex; flex-direction: column; gap: 12px;
       border-left: 1px solid var(--border); background: var(--surface);
     }
+
+    /* ── Selection bar ── */
+    #selection-bar {
+      background: var(--surface2); border-radius: 10px;
+      padding: 10px 12px; display: flex; align-items: center;
+      justify-content: space-between; gap: 8px;
+      border: 1px solid rgba(136,153,255,0.25);
+      animation: popIn 0.15s ease-out;
+    }
+    @keyframes popIn { from{opacity:0;transform:scale(0.95)} to{opacity:1;transform:scale(1)} }
+    .sel-label { color: var(--accent); font-size: 13px; font-weight: 800; text-transform: capitalize; }
+    .sel-hint  { color: var(--text-dim); font-size: 11px; margin-top: 1px; }
 
     /* ── Sections ── */
     .section {
@@ -67,15 +78,6 @@
       font-size: 11px; font-weight: 800; text-transform: uppercase;
       letter-spacing: 1px; color: var(--text-dim); margin-bottom: 2px;
     }
-    label { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 2px; }
-    input[type="number"], input[type="text"] {
-      background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
-      color: var(--text); font-family: 'Nunito', sans-serif; font-size: 13px;
-      padding: 5px 8px; width: 100%; outline: none; transition: border-color 0.15s;
-    }
-    input[type="number"]:focus, input[type="text"]:focus { border-color: var(--accent); }
-    .row { display: flex; gap: 8px; }
-    .row > * { flex: 1; }
 
     /* ── Buttons ── */
     button {
@@ -90,48 +92,70 @@
     .btn-success { background: var(--green); color: #001a08; }
     .btn-success:hover:not(:disabled) { opacity: 0.85; }
     .btn-danger  { background: var(--red); color: #fff; }
+    .btn-danger:hover:not(:disabled) { opacity: 0.85; }
     .btn-ghost   { background: transparent; color: var(--text-dim); border: 1px solid var(--border); }
     .btn-ghost:hover { color: var(--text); border-color: rgba(200,200,255,0.25); }
     .btn-gold    { background: var(--gold); color: #1a0800; font-weight: 900; font-size: 14px; padding: 10px; width: 100%; }
     .btn-gold:hover:not(:disabled) { opacity: 0.9; }
 
+    /* ── Add item buttons ── */
+    .add-btns { display: flex; gap: 6px; }
+    .add-btn {
+      flex: 1; font-size: 13px; padding: 10px 6px;
+      border-radius: 8px; background: var(--surface); color: var(--text);
+      border: 1px solid var(--border); text-align: center;
+    }
+    .add-btn:hover { border-color: var(--accent); color: var(--accent); }
+
     /* ── Item list ── */
-    .item-list { display: flex; flex-direction: column; gap: 4px; max-height: 150px; overflow-y: auto; }
+    .item-list { display: flex; flex-direction: column; gap: 4px; max-height: 130px; overflow-y: auto; }
     .item-entry {
       display: flex; align-items: center; gap: 8px; padding: 6px 8px;
       border-radius: 6px; cursor: pointer; border: 1px solid transparent; transition: background 0.1s;
     }
     .item-entry:hover { background: rgba(255,255,255,0.05); }
     .item-entry.selected { background: rgba(100,120,255,0.15); border-color: rgba(100,120,255,0.4); }
-    .item-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-    .item-label { flex: 1; font-size: 12px; }
-    .item-delete { color: var(--red); font-size: 16px; padding: 0 4px; background: none; border: none; cursor: pointer; }
-    .add-btns { display: flex; gap: 6px; flex-wrap: wrap; }
-    .add-btn {
-      flex: 1; min-width: 60px; font-size: 12px; padding: 6px 8px;
-      border-radius: 6px; background: var(--surface); color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .add-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-    /* ── Selected item props ── */
-    #selected-panel { display: none; }
-    #selected-panel.visible { display: flex; }
+    .item-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .item-label { flex: 1; font-size: 12px; color: var(--text-dim); }
+    .item-delete { color: var(--red); font-size: 17px; padding: 0 4px; background: none; border: none; cursor: pointer; line-height: 1; }
 
     /* ── Validate / Submit section ── */
-    .validate-hint {
-      font-size: 12px; color: var(--text-dim); text-align: center; padding: 4px 0;
-    }
+    .validate-hint { font-size: 12px; color: var(--text-dim); text-align: center; padding: 4px 0; }
     .validate-hint.won { color: var(--gold); font-weight: 700; }
-    .initials-row { display: flex; gap: 8px; align-items: flex-end; }
-    .initials-row input { letter-spacing: 6px; font-family: 'Fredoka One', cursive; font-size: 20px; text-align: center; text-transform: uppercase; }
+    label { display: block; font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+    input[type="text"] {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+      color: var(--text); font-family: 'Nunito', sans-serif; font-size: 13px;
+      padding: 5px 8px; width: 100%; outline: none; transition: border-color 0.15s;
+    }
+    input[type="text"]:focus { border-color: var(--accent); }
+    #creator-initials { letter-spacing: 8px; font-family: 'Fredoka One', cursive; font-size: 22px; text-align: center; text-transform: uppercase; padding: 8px; }
     .submit-status { font-size: 12px; text-align: center; min-height: 16px; color: var(--green); }
     .submit-status.error { color: var(--red); }
 
     /* ── Status bar ── */
     .status-bar {
-      padding: 4px 16px; font-size: 11px; color: var(--text-dim);
+      padding: 5px 16px; font-size: 11px; color: var(--text-dim);
       background: var(--surface); border-top: 1px solid var(--border); flex-shrink: 0;
+    }
+
+    /* ── Mobile layout ── */
+    @media (max-width: 680px) {
+      .body { flex-direction: column; }
+      .header { padding: 8px 12px; gap: 8px; }
+      .header h1 { font-size: 16px; }
+      .mode-badge { display: none; }
+      .canvas-panel { flex: 1; min-height: 0; padding: 6px 6px 2px; }
+      .controls-panel {
+        flex: 0 0 auto; width: 100%; max-height: 44vh;
+        border-left: none; border-top: 1px solid var(--border);
+        padding: 10px 12px 14px; overflow-y: auto; -webkit-overflow-scrolling: touch;
+      }
+      .add-btn { padding: 13px 8px; font-size: 14px; }
+      .btn-gold { padding: 14px; font-size: 16px; }
+      .item-delete { font-size: 22px; padding: 2px 8px; }
+      .header-btns button { padding: 10px 16px; font-size: 14px; }
+      .status-bar { font-size: 10px; padding: 3px 10px; }
     }
   </style>
 </head>
@@ -158,6 +182,15 @@
 
   <div class="controls-panel">
 
+    <!-- Selection bar: shown when something is selected -->
+    <div id="selection-bar" style="display:none">
+      <div>
+        <div class="sel-label" id="selection-label">Bar</div>
+        <div class="sel-hint" id="selection-hint">Drag handles to rotate/resize</div>
+      </div>
+      <button id="delete-btn" class="btn-danger" style="display:none" onclick="deleteSelectedItem()">✕</button>
+    </div>
+
     <!-- Add Items -->
     <div class="section">
       <div class="section-title">Add Items</div>
@@ -169,72 +202,12 @@
       <div class="item-list" id="item-list"></div>
     </div>
 
-    <!-- Selected item props -->
-    <div class="section" id="selected-panel">
-      <div class="section-title">Selected — <span id="selected-type-label"></span></div>
-      <div class="row">
-        <label>X (0–1)<input type="number" id="si-x" min="0" max="1" step="0.005" oninput="updateSelectedItem()"></label>
-        <label>Y (0–1)<input type="number" id="si-y" min="0" max="1" step="0.005" oninput="updateSelectedItem()"></label>
-      </div>
-      <div id="si-rot-row">
-        <label>Rotation (°)<input type="number" id="si-rot" min="-180" max="180" step="1" oninput="updateSelectedItem()"></label>
-      </div>
-      <div id="si-len-row" style="display:none">
-        <label>Length (px)<input type="number" id="si-len" min="20" max="500" step="1" oninput="updateSelectedItem()"></label>
-      </div>
-      <div id="si-rad-row" style="display:none">
-        <label>Radius (px)<input type="number" id="si-rad" min="5" max="150" step="1" oninput="updateSelectedItem()"></label>
-      </div>
-      <div id="si-siz-row" style="display:none">
-        <label>Size (px)<input type="number" id="si-siz" min="5" max="150" step="1" oninput="updateSelectedItem()"></label>
-      </div>
-      <button class="btn-danger" onclick="deleteSelectedItem()" style="margin-top:4px; width:100%;">Delete Item</button>
-    </div>
-
-    <!-- Golden Bucket -->
-    <div class="section">
-      <div class="section-title">Golden Bucket</div>
-      <div class="row">
-        <label>X (0–1)<input type="number" id="bkt-x" min="0" max="1" step="0.005" oninput="updateBucket()"></label>
-        <label>Y (0–1)<input type="number" id="bkt-y" min="0" max="1" step="0.005" oninput="updateBucket()"></label>
-      </div>
-      <div class="row">
-        <label>Width (px)<input type="number" id="bkt-w" min="30" max="300" step="1" oninput="updateBucket()"></label>
-        <label>Height (px)<input type="number" id="bkt-h" min="20" max="300" step="1" oninput="updateBucket()"></label>
-      </div>
-      <div class="row">
-        <label>Wall Thickness<input type="number" id="bkt-wt" min="3" max="30" step="1" oninput="updateBucket()"></label>
-        <label>Rotation (°)<input type="number" id="bkt-rot" min="-180" max="180" step="1" oninput="updateBucket()"></label>
-      </div>
-    </div>
-
-    <!-- Player Bar -->
-    <div class="section">
-      <div class="section-title">Player Bar (start position)</div>
-      <div class="row">
-        <label>X (0–1)<input type="number" id="pb-x" min="0" max="1" step="0.005" oninput="updatePlayerBar()"></label>
-        <label>Y (0–1)<input type="number" id="pb-y" min="0" max="1" step="0.005" oninput="updatePlayerBar()"></label>
-      </div>
-      <div class="row">
-        <label>Rotation (°)<input type="number" id="pb-rot" min="-180" max="180" step="1" oninput="updatePlayerBar()"></label>
-        <label>Length (px)<input type="number" id="pb-len" min="40" max="400" step="1" oninput="updatePlayerBar()"></label>
-      </div>
-    </div>
-
-    <!-- Ball Start -->
-    <div class="section">
-      <div class="section-title">Ball Start</div>
-      <label>X position (0–1)
-        <input type="number" id="ballX" min="0" max="1" step="0.01" oninput="updateBallX()">
-      </label>
-    </div>
-
     <!-- Submit section -->
     <div class="section" id="submit-section">
       <div class="section-title">Submit Your Level</div>
       <p class="validate-hint" id="validate-hint">Test your level and get the ball in the bucket to unlock submission.</p>
       <div id="submit-form" style="display:none; flex-direction:column; gap:8px;">
-        <p class="validate-hint won">✓ Level validated! Enter your initials to submit.</p>
+        <p class="validate-hint won">✓ Level validated!</p>
         <label>Your initials (3 letters)
           <input type="text" id="creator-initials" maxlength="3" autocomplete="off"
                  autocorrect="off" spellcheck="false" placeholder="AAA"
@@ -248,7 +221,7 @@
   </div>
 </div>
 
-<div class="status-bar" id="status-bar">Add items to build your level. Test it to see how it plays!</div>
+<div class="status-bar" id="status-bar">Tap an item to select it, then drag its handles to resize and rotate.</div>
 
 <script src="js/config.js"></script>
 <script src="js/physics.js"></script>
@@ -257,6 +230,10 @@
 
 const CW = 400, CH = 700;
 const GRAVITY = 0.095, BOUNCINESS = 0.9;
+
+// Handle visual/hit sizes
+const H_R   = 14;   // visual radius
+const H_HIT = 22;   // hit detection radius (larger for touch)
 
 // ── Starting level template ──────────────────────────────────────────────────
 const defaultLevel = () => ({
@@ -280,20 +257,23 @@ window.addEventListener('DOMContentLoaded', () => {
   generateStars(stars);
   scaleCanvas();
   window.addEventListener('resize', scaleCanvas);
-  populateAll();
+  buildItemList();
   bindPointer();
   startLoop();
   window.addEventListener('keydown', e => {
     if (e.code === 'Space' && e.target.tagName !== 'INPUT') {
       e.preventDefault(); toggleTest();
     }
+    if ((e.key === 'Delete' || e.key === 'Backspace') && e.target.tagName !== 'INPUT') {
+      deleteSelectedItem();
+    }
   });
 });
 
 function scaleCanvas() {
   const panel = canvas.parentElement;
-  const avW = panel.clientWidth - 32;
-  const avH = window.innerHeight - 80;
+  const avW = Math.max(panel.clientWidth  || window.innerWidth,  1) - 16;
+  const avH = Math.max(panel.clientHeight || window.innerHeight, 1) - 16;
   const scale = Math.min(avW / CW, avH / CH, 1.0);
   canvas.style.width  = Math.round(CW * scale) + 'px';
   canvas.style.height = Math.round(CH * scale) + 'px';
@@ -314,45 +294,9 @@ function startLoop() {
   rafId = requestAnimationFrame(loop);
 }
 
-// ── Populate fields ───────────────────────────────────────────────────────────
-function populateAll() {
-  document.getElementById('ballX').value  = level.ballX;
-  document.getElementById('pb-x').value   = level.playerBar.x;
-  document.getElementById('pb-y').value   = level.playerBar.y;
-  document.getElementById('pb-rot').value = level.playerBar.rotation;
-  document.getElementById('pb-len').value = level.playerBar.length;
-  document.getElementById('bkt-x').value  = level.bucket.x;
-  document.getElementById('bkt-y').value  = level.bucket.y;
-  document.getElementById('bkt-w').value  = level.bucket.width;
-  document.getElementById('bkt-h').value  = level.bucket.height;
-  document.getElementById('bkt-wt').value = level.bucket.wallThickness;
-  document.getElementById('bkt-rot').value = level.bucket.rotation || 0;
-  buildItemList();
-}
-
-function updateBallX()    { level.ballX = parseFloat(document.getElementById('ballX').value) || 0.5; invalidateWin('item'); }
-function updatePlayerBar() {
-  const pb = level.playerBar;
-  pb.x        = parseFloat(document.getElementById('pb-x').value) || 0;
-  pb.y        = parseFloat(document.getElementById('pb-y').value) || 0;
-  pb.rotation = parseFloat(document.getElementById('pb-rot').value) || 0;
-  pb.length   = parseFloat(document.getElementById('pb-len').value) || 160;
-  // playerBar changes don't invalidate win
-}
-function updateBucket() {
-  const b = level.bucket;
-  b.x             = parseFloat(document.getElementById('bkt-x').value) || 0;
-  b.y             = parseFloat(document.getElementById('bkt-y').value) || 0;
-  b.width         = parseFloat(document.getElementById('bkt-w').value) || 68;
-  b.height        = parseFloat(document.getElementById('bkt-h').value) || 54;
-  b.wallThickness = parseFloat(document.getElementById('bkt-wt').value) || 10;
-  b.rotation      = parseFloat(document.getElementById('bkt-rot').value) || 0;
-  invalidateWin('item');
-}
-
 // ── Win state ────────────────────────────────────────────────────────────────
 function invalidateWin(source) {
-  if (source === 'playerbar') return; // moving playerbar never invalidates
+  if (source === 'playerbar') return;
   if (!hasWon) return;
   hasWon = false;
   document.getElementById('win-badge').style.display = 'none';
@@ -367,7 +311,7 @@ function onLevelValidated() {
   document.getElementById('submit-form').style.display = 'flex';
   document.getElementById('validate-hint').style.display = 'none';
   document.getElementById('submit-status').textContent = '';
-  setStatus('Level validated! You can now submit.');
+  setStatus('Level validated! Enter your initials and submit.');
 }
 
 // ── Item management ───────────────────────────────────────────────────────────
@@ -382,7 +326,7 @@ function addItem(type) {
   selectItem(id);
   buildItemList();
   invalidateWin('item');
-  setStatus('Added ' + type + '. Drag to position it.');
+  setStatus('Added ' + type + '. Drag to move, use handles to rotate/resize.');
 }
 
 function deleteItemById(id) {
@@ -411,41 +355,113 @@ function buildItemList() {
     const sel = item.id === selectedId;
     return `<div class="item-entry${sel?' selected':''}" onclick="selectItem('${item.id}')">
       <div class="item-dot" style="background:${color}"></div>
-      <span class="item-label">${item.type} (${item.id.split('-')[1]||item.id})</span>
+      <span class="item-label">${item.type}</span>
       <button class="item-delete" onclick="event.stopPropagation();deleteItemById('${item.id}')">×</button>
     </div>`;
   }).join('');
 }
 
 function updateSelectedPanel() {
-  const panel = document.getElementById('selected-panel');
-  if (!selectedId) { panel.classList.remove('visible'); return; }
-  const item = level.items.find(i => i.id === selectedId);
-  if (!item) { panel.classList.remove('visible'); return; }
-  panel.classList.add('visible');
-  document.getElementById('selected-type-label').textContent = item.type;
-  document.getElementById('si-x').value = item.x;
-  document.getElementById('si-y').value = item.y;
-  document.getElementById('si-rot-row').style.display = item.type !== 'circle' ? '' : 'none';
-  document.getElementById('si-len-row').style.display = item.type === 'bar' ? '' : 'none';
-  document.getElementById('si-rad-row').style.display = item.type === 'circle' ? '' : 'none';
-  document.getElementById('si-siz-row').style.display = item.type === 'triangle' ? '' : 'none';
-  if (item.type !== 'circle')   document.getElementById('si-rot').value = item.rotation || 0;
-  if (item.type === 'bar')      document.getElementById('si-len').value = item.length;
-  if (item.type === 'circle')   document.getElementById('si-rad').value = item.radius;
-  if (item.type === 'triangle') document.getElementById('si-siz').value = item.size;
+  const bar = document.getElementById('selection-bar');
+  const delBtn = document.getElementById('delete-btn');
+  const label = document.getElementById('selection-label');
+  const hint = document.getElementById('selection-hint');
+  if (!selectedId) {
+    bar.style.display = 'none';
+    return;
+  }
+  bar.style.display = 'flex';
+  if (selectedId === 'bucket') {
+    label.textContent = 'Golden Bucket';
+    hint.textContent = 'Drag handles to rotate/resize';
+    delBtn.style.display = 'none';
+  } else if (selectedId === 'player-bar') {
+    label.textContent = 'Player Bar';
+    hint.textContent = 'Drag endpoints to rotate';
+    delBtn.style.display = 'none';
+  } else if (selectedId === 'ball-start') {
+    label.textContent = 'Ball Start';
+    hint.textContent = 'Drag left/right to reposition';
+    delBtn.style.display = 'none';
+  } else {
+    const item = level.items.find(i => i.id === selectedId);
+    if (item) {
+      label.textContent = item.type;
+      hint.textContent = item.type === 'bar'
+        ? 'Drag endpoints to rotate/stretch'
+        : 'Purple = rotate  ·  Green = resize';
+      delBtn.style.display = '';
+    }
+  }
 }
 
-function updateSelectedItem() {
-  const item = level.items.find(i => i.id === selectedId);
-  if (!item) return;
-  item.x = parseFloat(document.getElementById('si-x').value) || 0;
-  item.y = parseFloat(document.getElementById('si-y').value) || 0;
-  if (item.type !== 'circle')   item.rotation = parseFloat(document.getElementById('si-rot').value) || 0;
-  if (item.type === 'bar')      item.length   = parseFloat(document.getElementById('si-len').value) || 130;
-  if (item.type === 'circle')   item.radius   = parseFloat(document.getElementById('si-rad').value) || 28;
-  if (item.type === 'triangle') item.size     = parseFloat(document.getElementById('si-siz').value) || 32;
-  invalidateWin('item');
+// ── Geometry helpers ─────────────────────────────────────────────────────────
+function pointInTriangle(px, py, verts) {
+  function cross(x0, y0, x1, y1, x2, y2) {
+    return (x0 - x2) * (y1 - y2) - (x1 - x2) * (y0 - y2);
+  }
+  const d1 = cross(px, py, verts[0].x, verts[0].y, verts[1].x, verts[1].y);
+  const d2 = cross(px, py, verts[1].x, verts[1].y, verts[2].x, verts[2].y);
+  const d3 = cross(px, py, verts[2].x, verts[2].y, verts[0].x, verts[0].y);
+  return !((d1 < 0 || d2 < 0 || d3 < 0) && (d1 > 0 || d2 > 0 || d3 > 0));
+}
+
+// ── On-canvas handles ────────────────────────────────────────────────────────
+function drawHandle(x, y, color) {
+  ctx.save();
+  ctx.beginPath(); ctx.arc(x, y, H_R + 3, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(0,0,0,0.55)'; ctx.fill();
+  ctx.beginPath(); ctx.arc(x, y, H_R, 0, Math.PI * 2);
+  ctx.fillStyle = color; ctx.fill();
+  ctx.strokeStyle = 'rgba(255,255,255,0.85)'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.restore();
+}
+
+function drawDashedLine(x1, y1, x2, y2, color) {
+  ctx.save();
+  ctx.strokeStyle = color; ctx.lineWidth = 1.5; ctx.setLineDash([5, 4]);
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  ctx.setLineDash([]); ctx.restore();
+}
+
+// On-canvas handles per item type
+function drawItemHandles(ctx, item) {
+  const cx = item.px, cy = item.py;
+  if (item.type === 'bar') {
+    // Blue endpoint handles — drag to rotate
+    const {ax, ay, bx, by} = getBarEndpoints(item);
+    drawHandle(ax, ay, 'rgba(80,155,255,0.95)');
+    drawHandle(bx, by, 'rgba(80,155,255,0.95)');
+  } else if (item.type === 'circle') {
+    // Circles: resize only (no rotation)
+    drawHandle(cx + item.radius + H_R * 0.5, cy, 'rgba(50,200,130,0.95)');
+  } else if (item.type === 'triangle') {
+    const outerR = item.size || 30;
+    // Rotate handle (purple, above center)
+    const rh = { x: cx, y: cy - outerR - 40 };
+    drawDashedLine(cx, cy, rh.x, rh.y, 'rgba(170,90,255,0.45)');
+    drawHandle(rh.x, rh.y, 'rgba(170,90,255,0.95)');
+    // Resize handle at top vertex
+    const verts = getTriangleVertices(item);
+    drawHandle(verts[0].x, verts[0].y, 'rgba(50,200,130,0.95)');
+  }
+}
+
+// Bucket: rotate handle only (above opening)
+function drawBucketHandles(ctx, bkt) {
+  const bw = getBucketWalls(bkt);
+  const rh = { x: bw.openMidX - bw.inX * 44, y: bw.openMidY - bw.inY * 44 };
+  drawDashedLine(bw.openMidX, bw.openMidY, rh.x, rh.y, 'rgba(170,90,255,0.45)');
+  drawHandle(rh.x, rh.y, 'rgba(170,90,255,0.95)');
+}
+
+// Handles for the player bar: blue endpoint handles (rotate + stretch)
+function drawPlayerBarHandles() {
+  const pb = level.playerBar;
+  const pbObj = { px: pb.x * CW, py: pb.y * CH, rotation: pb.rotation, length: pb.length };
+  const {ax, ay, bx, by} = getBarEndpoints(pbObj);
+  drawHandle(ax, ay, 'rgba(80,155,255,0.95)');
+  drawHandle(bx, by, 'rgba(80,155,255,0.95)');
 }
 
 // ── Test Mode ─────────────────────────────────────────────────────────────────
@@ -453,9 +469,7 @@ let testMode = false, testBall = null, testBallTrail = [], testItems = [],
     testBucket = null, testPlayerBar = null, testBucketSealed = false,
     testBucketEnteredAt = 0;
 
-function toggleTest() {
-  if (testMode) stopTest(); else startTest();
-}
+function toggleTest() { if (testMode) stopTest(); else startTest(); }
 
 function startTest() {
   testMode = true;
@@ -465,9 +479,7 @@ function startTest() {
   testBucket = { ...b, px: b.x*CW, py: b.y*CH, glowT: 0 };
   const pb = level.playerBar;
   testPlayerBar = { x: pb.x*CW, y: pb.y*CH, rotation: pb.rotation, length: pb.length, glowT: 0 };
-  testBucketSealed = false;
-  testBucketEnteredAt = 0;
-  testBallTrail = [];
+  testBucketSealed = false; testBucketEnteredAt = 0; testBallTrail = [];
   document.getElementById('test-toggle-btn').textContent = '■ Stop';
   document.getElementById('mode-badge').className = 'mode-badge mode-test';
   document.getElementById('mode-badge').textContent = 'Testing';
@@ -482,7 +494,7 @@ function stopTest() {
   document.getElementById('test-toggle-btn').textContent = '▶ Test';
   document.getElementById('mode-badge').className = 'mode-badge mode-edit';
   document.getElementById('mode-badge').textContent = 'Edit';
-  setStatus('Edit your level and test again.');
+  setStatus('Tap an item to select it, then drag its handles to resize and rotate.');
 }
 
 function resetTestBall() {
@@ -495,18 +507,14 @@ function resetTestBall() {
 
 function updateTestPhysics(dt) {
   if (!testBall) return;
-
   if (testBall.inBucket) {
-    if (testBucketEnteredAt && Date.now() - testBucketEnteredAt > 2000) {
-      resetTestBall(); return;
-    }
+    if (testBucketEnteredAt && Date.now() - testBucketEnteredAt > 2000) { resetTestBall(); return; }
   } else if (!testBall.dropped) {
     return;
   }
 
   const bwalls = testBucket ? getBucketWalls(testBucket) : null;
   let bucketBottomHit = false;
-
   const SUB = 4, subDt = dt / SUB;
   const ball = testBall;
 
@@ -591,19 +599,29 @@ function render() {
       drawBallAt(ctx, testBall.x, testBall.y, testBall.squash);
     }
   } else {
+    // Items
     level.items.forEach(item => {
-      const enriched = {...item, px:item.x*CW, py:item.y*CH};
+      const enriched = {...item, px:item.x*CW, py:item.y*CH, glowT:0};
       drawItem(ctx, enriched);
-      if (item.id === selectedId) drawSelectionRing(ctx, enriched);
+      if (item.id === selectedId) {
+        drawSelectionRing(ctx, enriched);
+        drawItemHandles(ctx, enriched);
+      }
     });
 
+    // Bucket
     const bucket = {...level.bucket, px:level.bucket.x*CW, py:level.bucket.y*CH, glowT:0};
     drawBucket(ctx, bucket, false);
-    if (selectedId === 'bucket') drawBucketSelection(ctx, bucket);
+    if (selectedId === 'bucket') {
+      drawBucketSelection(ctx, bucket);
+      drawBucketHandles(ctx, bucket);
+    }
 
+    // Player bar
     const pb = level.playerBar;
-    const pbObj = {x:pb.x*CW, y:pb.y*CH, rotation:pb.rotation, length:pb.length, glowT:0};
-    drawPlayerBar(ctx, pbObj, true);
+    const pbObj = { x: pb.x*CW, y: pb.y*CH, rotation: pb.rotation, length: pb.length, glowT: 0 };
+    drawPlayerBar(ctx, pbObj, false);
+    if (selectedId === 'player-bar') drawPlayerBarHandles();
 
     // Ghost ball + start handle
     const gx = level.ballX * CW;
@@ -618,9 +636,9 @@ function render() {
 }
 
 function drawSelectionRing(ctx, item) {
-  ctx.save(); ctx.strokeStyle = 'rgba(200,210,255,0.8)'; ctx.lineWidth = 1.5; ctx.setLineDash([5,4]);
+  ctx.save(); ctx.strokeStyle = 'rgba(200,210,255,0.7)'; ctx.lineWidth = 1.5; ctx.setLineDash([5,4]);
   if (item.type === 'circle') {
-    ctx.beginPath(); ctx.arc(item.px, item.py, item.radius+8, 0, Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.arc(item.px, item.py, item.radius + 8, 0, Math.PI*2); ctx.stroke();
   } else if (item.type === 'triangle') {
     const verts = getTriangleVertices(item);
     ctx.beginPath(); verts.forEach((v,i) => i===0?ctx.moveTo(v.x,v.y):ctx.lineTo(v.x,v.y)); ctx.closePath(); ctx.stroke();
@@ -632,9 +650,9 @@ function drawSelectionRing(ctx, item) {
 }
 
 function drawBucketSelection(ctx, bucket) {
-  ctx.save(); ctx.strokeStyle = 'rgba(255,215,0,0.7)'; ctx.lineWidth = 2; ctx.setLineDash([5,4]);
+  ctx.save(); ctx.strokeStyle = 'rgba(255,215,0,0.6)'; ctx.lineWidth = 2; ctx.setLineDash([5,4]);
   const {px:bx, py:by, width, height, wallThickness:wt} = bucket;
-  ctx.strokeRect(bx-width/2-wt-3, by-3, width+wt*2+6, height+wt+6);
+  ctx.strokeRect(bx-width/2-wt-4, by-4, width+wt*2+8, height+wt+8);
   ctx.setLineDash([]); ctx.restore();
 }
 
@@ -642,130 +660,254 @@ function drawBucketSelection(ctx, bucket) {
 let drag = { active: false, type: null, ox: 0, oy: 0, pivotX: 0, pivotY: 0, id: null };
 
 function bindPointer() {
-  canvas.addEventListener('mousedown',  e => { if(!testMode) onDown(cpos(e)); });
-  canvas.addEventListener('mousemove',  e => { if(!testMode) onMove(cpos(e)); });
+  canvas.addEventListener('mousedown',  e => { if (!testMode) onDown(cpos(e)); });
+  canvas.addEventListener('mousemove',  e => { if (!testMode) onMove(cpos(e)); });
   canvas.addEventListener('mouseup',    () => onUp());
   canvas.addEventListener('mouseleave', () => onUp());
-  canvas.addEventListener('touchstart', e => { e.preventDefault(); if(!testMode) onDown(cpos(e.touches[0])); }, {passive:false});
-  canvas.addEventListener('touchmove',  e => { e.preventDefault(); if(!testMode) onMove(cpos(e.touches[0])); }, {passive:false});
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); if (!testMode) onDown(cpos(e.touches[0])); }, {passive:false});
+  canvas.addEventListener('touchmove',  e => { e.preventDefault(); if (!testMode) onMove(e.touches[0] ? cpos(e.touches[0]) : null); }, {passive:false});
   canvas.addEventListener('touchend',   e => { e.preventDefault(); onUp(); }, {passive:false});
 }
 
 function cpos(e) {
   const r = canvas.getBoundingClientRect();
-  return { x:(e.clientX-r.left)*(CW/r.width), y:(e.clientY-r.top)*(CH/r.height) };
+  return { x: (e.clientX - r.left) * (CW / r.width), y: (e.clientY - r.top) * (CH / r.height) };
 }
 
 function onDown(pos) {
-  const HIT = 18;
-
-  // Ball start handle
-  const gx = level.ballX * CW, gy = BALL_RADIUS + 8;
-  if (Math.hypot(pos.x-gx, pos.y-gy) < HIT+4) {
-    selectItem('ball-start');
-    drag = {active:true, type:'ball-start', ox:pos.x-gx, oy:0};
-    return;
-  }
-
-  // Player bar ends (rotate)
-  const pb = level.playerBar;
-  const pbAngle = pb.rotation*Math.PI/180, pbHL = pb.length/2;
-  const pbCx = pb.x*CW, pbCy = pb.y*CH;
-  const pbEx = pbCx+Math.cos(pbAngle)*pbHL, pbEy = pbCy+Math.sin(pbAngle)*pbHL;
-  const pbAx = pbCx-Math.cos(pbAngle)*pbHL, pbAy = pbCy-Math.sin(pbAngle)*pbHL;
-  if (Math.hypot(pos.x-pbEx,pos.y-pbEy)<HIT || Math.hypot(pos.x-pbAx,pos.y-pbAy)<HIT) {
-    selectItem('player-bar');
-    drag = {active:true, type:'rotate-playerbar', pivotX:pbCx, pivotY:pbCy};
-    return;
-  }
-  const {x:cpx,y:cpy} = closestPointOnSeg(pos.x,pos.y,pbAx,pbAy,pbEx,pbEy);
-  if (Math.hypot(pos.x-cpx,pos.y-cpy) < 16) {
-    selectItem('player-bar');
-    drag = {active:true, type:'move-playerbar', ox:pos.x-pbCx, oy:pos.y-pbCy};
-    return;
-  }
-
-  // Level items
-  for (let i = level.items.length-1; i >= 0; i--) {
-    const item = level.items[i];
-    const enriched = {...item, px:item.x*CW, py:item.y*CH};
-    if (item.type === 'bar') {
-      const {ax,ay,bx,by} = getBarEndpoints(enriched);
-      if (Math.hypot(pos.x-bx,pos.y-by)<HIT || Math.hypot(pos.x-ax,pos.y-ay)<HIT) {
-        selectItem(item.id);
-        drag = {active:true, type:'rotate-item', id:item.id, pivotX:enriched.px, pivotY:enriched.py};
+  // ── Check handles of the currently-selected item FIRST ────────────────────
+  if (selectedId && selectedId !== 'ball-start') {
+    if (selectedId === 'bucket') {
+      const bkt = { ...level.bucket, px: level.bucket.x*CW, py: level.bucket.y*CH };
+      const bw = getBucketWalls(bkt);
+      // Rotate handle only
+      const rh = { x: bw.openMidX - bw.inX*44, y: bw.openMidY - bw.inY*44 };
+      if (Math.hypot(pos.x - rh.x, pos.y - rh.y) < H_HIT) {
+        drag = { active:true, type:'rotate-bucket',
+                 pivotX: bkt.px, pivotY: bkt.py + bkt.height/2 };
         return;
       }
-      const {x:c2,y:c3} = closestPointOnSeg(pos.x,pos.y,ax,ay,bx,by);
-      if (Math.hypot(pos.x-c2,pos.y-c3) < 14) {
-        selectItem(item.id); drag = {active:true, type:'move-item', id:item.id, ox:pos.x-enriched.px, oy:pos.y-enriched.py}; return;
+
+    } else if (selectedId === 'player-bar') {
+      const pb = level.playerBar;
+      const pbObj = { px: pb.x*CW, py: pb.y*CH, rotation: pb.rotation, length: pb.length };
+      const {ax, ay, bx, by} = getBarEndpoints(pbObj);
+      if (Math.hypot(pos.x-ax, pos.y-ay) < H_HIT || Math.hypot(pos.x-bx, pos.y-by) < H_HIT) {
+        drag = { active:true, type:'rotate-playerbar', pivotX: pbObj.px, pivotY: pbObj.py };
+        return;
       }
-    } else if (item.type === 'circle') {
-      if (Math.hypot(pos.x-enriched.px,pos.y-enriched.py) < enriched.radius+8) {
-        selectItem(item.id); drag = {active:true, type:'move-item', id:item.id, ox:pos.x-enriched.px, oy:pos.y-enriched.py}; return;
+
+    } else {
+      // Level item selected — check its handles
+      const item = level.items.find(i => i.id === selectedId);
+      if (item) {
+        const enriched = { ...item, px: item.x*CW, py: item.y*CH };
+        const cx = enriched.px, cy = enriched.py;
+
+        if (item.type === 'bar') {
+          const {ax, ay, bx, by} = getBarEndpoints(enriched);
+          if (Math.hypot(pos.x-ax, pos.y-ay) < H_HIT || Math.hypot(pos.x-bx, pos.y-by) < H_HIT) {
+            drag = { active:true, type:'resize-bar', id: item.id, pivotX: cx, pivotY: cy };
+            return;
+          }
+        } else if (item.type === 'circle') {
+          // Circles: resize handle only
+          const rsh = { x: cx + item.radius + H_R*0.5, y: cy };
+          if (Math.hypot(pos.x - rsh.x, pos.y - rsh.y) < H_HIT) {
+            drag = { active:true, type:'resize-circle', id: item.id, pivotX: cx, pivotY: cy };
+            return;
+          }
+        } else if (item.type === 'triangle') {
+          // Rotate handle (above center)
+          const outerR = item.size || 30;
+          const rh = { x: cx, y: cy - outerR - 40 };
+          if (Math.hypot(pos.x - rh.x, pos.y - rh.y) < H_HIT) {
+            drag = { active:true, type:'rotate-item-handle', id: item.id, pivotX: cx, pivotY: cy };
+            return;
+          }
+          // Resize handle (top vertex)
+          const verts = getTriangleVertices(enriched);
+          if (Math.hypot(pos.x - verts[0].x, pos.y - verts[0].y) < H_HIT) {
+            drag = { active:true, type:'resize-triangle', id: item.id, pivotX: cx, pivotY: cy };
+            return;
+          }
+        }
       }
-    } else if (item.type === 'triangle') {
-      const verts = getTriangleVertices(enriched);
-      let near = false;
-      for (let j=0;j<3;j++){const a=verts[j],b=verts[(j+1)%3];const{x:tp,y:tq}=closestPointOnSeg(pos.x,pos.y,a.x,a.y,b.x,b.y);if(Math.hypot(pos.x-tp,pos.y-tq)<14){near=true;break;}}
-      if (near) { selectItem(item.id); drag = {active:true, type:'move-item', id:item.id, ox:pos.x-enriched.px, oy:pos.y-enriched.py}; return; }
     }
   }
 
-  // Bucket
-  const bkt = level.bucket, bkx = bkt.x*CW, bky = bkt.y*CH;
-  if (pos.x>bkx-bkt.width/2-bkt.wallThickness-8 && pos.x<bkx+bkt.width/2+bkt.wallThickness+8 &&
-      pos.y>bky-8 && pos.y<bky+bkt.height+bkt.wallThickness+8) {
-    selectItem('bucket'); drag = {active:true, type:'move-bucket', ox:pos.x-bkx, oy:pos.y-bky}; return;
+  // ── Ball start handle ─────────────────────────────────────────────────────
+  const gx = level.ballX * CW, gy = BALL_RADIUS + 8;
+  if (Math.hypot(pos.x - gx, pos.y - gy) < H_HIT + 4) {
+    selectItem('ball-start');
+    drag = { active:true, type:'ball-start', ox: pos.x - gx };
+    return;
   }
 
-  selectedId = null; buildItemList(); updateSelectedPanel(); drag.active = false;
+  // ── Player bar ─────────────────────────────────────────────────────────────
+  const pb = level.playerBar;
+  const pbAngle = pb.rotation * Math.PI / 180, pbHL = pb.length / 2;
+  const pbCx = pb.x*CW, pbCy = pb.y*CH;
+  const pbEx = pbCx + Math.cos(pbAngle)*pbHL, pbEy = pbCy + Math.sin(pbAngle)*pbHL;
+  const pbAx = pbCx - Math.cos(pbAngle)*pbHL, pbAy = pbCy - Math.sin(pbAngle)*pbHL;
+  // Check endpoint first → select + rotate
+  if (Math.hypot(pos.x-pbEx, pos.y-pbEy) < H_HIT || Math.hypot(pos.x-pbAx, pos.y-pbAy) < H_HIT) {
+    selectItem('player-bar');
+    drag = { active:true, type:'rotate-playerbar', pivotX: pbCx, pivotY: pbCy };
+    return;
+  }
+  // Bar body
+  const {x:cpx, y:cpy} = closestPointOnSeg(pos.x, pos.y, pbAx, pbAy, pbEx, pbEy);
+  if (Math.hypot(pos.x-cpx, pos.y-cpy) < 16) {
+    selectItem('player-bar');
+    drag = { active:true, type:'move-playerbar', ox: pos.x-pbCx, oy: pos.y-pbCy };
+    return;
+  }
+
+  // ── Level items ────────────────────────────────────────────────────────────
+  for (let i = level.items.length - 1; i >= 0; i--) {
+    const item = level.items[i];
+    const enriched = { ...item, px: item.x*CW, py: item.y*CH };
+    if (item.type === 'bar') {
+      const {ax,ay,bx,by} = getBarEndpoints(enriched);
+      // Endpoint → select + resize-rotate immediately
+      if (Math.hypot(pos.x-bx, pos.y-by) < H_HIT || Math.hypot(pos.x-ax, pos.y-ay) < H_HIT) {
+        selectItem(item.id);
+        drag = { active:true, type:'resize-bar', id:item.id, pivotX:enriched.px, pivotY:enriched.py };
+        return;
+      }
+      // Body
+      const {x:c2,y:c3} = closestPointOnSeg(pos.x, pos.y, ax, ay, bx, by);
+      if (Math.hypot(pos.x-c2, pos.y-c3) < 16) {
+        selectItem(item.id);
+        drag = { active:true, type:'move-item', id:item.id, ox:pos.x-enriched.px, oy:pos.y-enriched.py };
+        return;
+      }
+    } else if (item.type === 'circle') {
+      if (Math.hypot(pos.x-enriched.px, pos.y-enriched.py) < enriched.radius + 8) {
+        selectItem(item.id);
+        drag = { active:true, type:'move-item', id:item.id, ox:pos.x-enriched.px, oy:pos.y-enriched.py };
+        return;
+      }
+    } else if (item.type === 'triangle') {
+      const verts = getTriangleVertices(enriched);
+      let hit = pointInTriangle(pos.x, pos.y, verts);
+      if (!hit) {
+        for (let j=0;j<3;j++){const a=verts[j],b=verts[(j+1)%3];const{x:tp,y:tq}=closestPointOnSeg(pos.x,pos.y,a.x,a.y,b.x,b.y);if(Math.hypot(pos.x-tp,pos.y-tq)<14){hit=true;break;}}
+      }
+      if (hit) {
+        selectItem(item.id);
+        drag = { active:true, type:'move-item', id:item.id, ox:pos.x-enriched.px, oy:pos.y-enriched.py };
+        return;
+      }
+    }
+  }
+
+  // ── Bucket ─────────────────────────────────────────────────────────────────
+  const bkt = level.bucket, bkx = bkt.x*CW, bky = bkt.y*CH;
+  if (pos.x > bkx-bkt.width/2-bkt.wallThickness-8 && pos.x < bkx+bkt.width/2+bkt.wallThickness+8 &&
+      pos.y > bky-8 && pos.y < bky+bkt.height+bkt.wallThickness+8) {
+    selectItem('bucket');
+    drag = { active:true, type:'move-bucket', ox:pos.x-bkx, oy:pos.y-bky };
+    return;
+  }
+
+  // Deselect
+  selectedId = null;
+  buildItemList();
+  updateSelectedPanel();
+  drag.active = false;
 }
 
 function onMove(pos) {
-  if (!drag.active) return;
-  if (drag.type === 'ball-start') {
-    level.ballX = Math.max(0, Math.min(1, (pos.x-drag.ox)/CW));
-    document.getElementById('ballX').value = level.ballX.toFixed(3);
-    return;
-  }
-  if (drag.type === 'move-playerbar') {
-    const pb = level.playerBar;
-    pb.x = Math.max(0,Math.min(1,(pos.x-drag.ox)/CW));
-    pb.y = Math.max(0,Math.min(1,(pos.y-drag.oy)/CH));
-    document.getElementById('pb-x').value = pb.x.toFixed(4);
-    document.getElementById('pb-y').value = pb.y.toFixed(4);
-    return;
-  }
-  if (drag.type === 'rotate-playerbar') {
-    const angle = Math.atan2(pos.y-drag.pivotY, pos.x-drag.pivotX);
-    level.playerBar.rotation = Math.round(angle*180/Math.PI);
-    document.getElementById('pb-rot').value = level.playerBar.rotation;
-    return;
-  }
-  if (drag.type === 'move-bucket') {
-    level.bucket.x = Math.max(0,Math.min(1,(pos.x-drag.ox)/CW));
-    level.bucket.y = Math.max(0,Math.min(1,(pos.y-drag.oy)/CH));
-    document.getElementById('bkt-x').value = level.bucket.x.toFixed(4);
-    document.getElementById('bkt-y').value = level.bucket.y.toFixed(4);
-    invalidateWin('item');
-    return;
-  }
-  if (drag.type === 'move-item') {
-    const item = level.items.find(i=>i.id===drag.id);
-    if (item) { item.x=Math.max(0,Math.min(1,(pos.x-drag.ox)/CW)); item.y=Math.max(0,Math.min(1,(pos.y-drag.oy)/CH)); updateSelectedPanel(); }
-    return;
-  }
-  if (drag.type === 'rotate-item') {
-    const item = level.items.find(i=>i.id===drag.id);
-    if (item) { item.rotation=Math.round(Math.atan2(pos.y-drag.pivotY,pos.x-drag.pivotX)*180/Math.PI); updateSelectedPanel(); }
-    return;
+  if (!drag.active || !pos) return;
+
+  switch (drag.type) {
+    case 'ball-start':
+      level.ballX = Math.max(0, Math.min(1, (pos.x - drag.ox) / CW));
+      break;
+
+    case 'move-playerbar': {
+      const pb = level.playerBar;
+      pb.x = Math.max(0, Math.min(1, (pos.x - drag.ox) / CW));
+      pb.y = Math.max(0, Math.min(1, (pos.y - drag.oy) / CH));
+      break;
+    }
+
+    case 'rotate-playerbar': {
+      const pb = level.playerBar;
+      const dx = pos.x - drag.pivotX, dy = pos.y - drag.pivotY;
+      pb.rotation = Math.round(Math.atan2(dy, dx) * 180 / Math.PI);
+      break;
+    }
+
+    case 'move-bucket':
+      level.bucket.x = Math.max(0, Math.min(1, (pos.x - drag.ox) / CW));
+      level.bucket.y = Math.max(0, Math.min(1, (pos.y - drag.oy) / CH));
+      invalidateWin('item');
+      break;
+
+    case 'rotate-bucket': {
+      const dx = pos.x - drag.pivotX, dy = pos.y - drag.pivotY;
+      level.bucket.rotation = Math.round(Math.atan2(dy, dx) * 180 / Math.PI + 90);
+      invalidateWin('item');
+      break;
+    }
+
+    case 'move-item': {
+      const item = level.items.find(i => i.id === drag.id);
+      if (item) {
+        item.x = Math.max(0, Math.min(1, (pos.x - drag.ox) / CW));
+        item.y = Math.max(0, Math.min(1, (pos.y - drag.oy) / CH));
+      }
+      break;
+    }
+
+    case 'resize-bar': {
+      const item = level.items.find(i => i.id === drag.id);
+      if (item) {
+        const dx = pos.x - drag.pivotX, dy = pos.y - drag.pivotY;
+        item.rotation = Math.round(Math.atan2(dy, dx) * 180 / Math.PI);
+        item.length = Math.max(30, Math.min(400, Math.hypot(dx, dy) * 2));
+        invalidateWin('item');
+      }
+      break;
+    }
+
+    case 'rotate-item-handle': {
+      const item = level.items.find(i => i.id === drag.id);
+      if (item) {
+        const dx = pos.x - drag.pivotX, dy = pos.y - drag.pivotY;
+        item.rotation = Math.round(Math.atan2(dy, dx) * 180 / Math.PI + 90);
+        invalidateWin('item');
+      }
+      break;
+    }
+
+    case 'resize-circle': {
+      const item = level.items.find(i => i.id === drag.id);
+      if (item) {
+        item.radius = Math.max(10, Math.min(130, Math.hypot(pos.x - drag.pivotX, pos.y - drag.pivotY)));
+        invalidateWin('item');
+      }
+      break;
+    }
+
+    case 'resize-triangle': {
+      const item = level.items.find(i => i.id === drag.id);
+      if (item) {
+        item.size = Math.max(12, Math.min(130, Math.hypot(pos.x - drag.pivotX, pos.y - drag.pivotY)));
+        invalidateWin('item');
+      }
+      break;
+    }
   }
 }
 
 function onUp() {
-  if (drag.active && drag.type !== 'move-playerbar' && drag.type !== 'rotate-playerbar') {
-    invalidateWin(drag.type);
+  if (drag.active) {
+    const isPlayerbar = drag.type === 'move-playerbar' || drag.type === 'rotate-playerbar';
+    if (!isPlayerbar) invalidateWin(drag.type);
   }
   drag.active = false;
 }
@@ -804,7 +946,6 @@ async function submitLevel() {
     document.getElementById('submit-status').className = 'submit-status';
     btn.textContent = 'Submitted ✓';
     setStatus('Level submitted! Keep building. 🌙');
-    // Re-enable after a moment so they can tweak and submit again
     setTimeout(() => {
       btn.disabled = false;
       btn.textContent = 'Submit Again ★';
