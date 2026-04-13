@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Moon Game — Create a Level</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -133,6 +133,55 @@
       padding: 4px 16px; font-size: 11px; color: var(--text-dim);
       background: var(--surface); border-top: 1px solid var(--border); flex-shrink: 0;
     }
+
+    /* ── Mobile layout (portrait / narrow screens) ── */
+    @media (max-width: 680px) {
+      .body { flex-direction: column; }
+
+      .header { padding: 8px 12px; gap: 8px; }
+      .header h1 { font-size: 16px; }
+      .mode-badge { display: none; }
+
+      .canvas-panel {
+        flex: 1;
+        min-height: 0;
+        padding: 6px 6px 2px;
+        gap: 4px;
+      }
+
+      .controls-panel {
+        flex: 0 0 auto;
+        width: 100%;
+        max-height: 44vh;
+        border-left: none;
+        border-top: 1px solid var(--border);
+        padding: 10px 12px 14px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 10px;
+      }
+
+      /* Hide numeric detail panels — drag on canvas handles positioning */
+      #selected-panel, #bucket-section, #playerbar-section, #ballstart-section {
+        display: none !important;
+      }
+
+      /* Bigger touch targets */
+      .add-btn { padding: 11px 10px; font-size: 14px; min-width: 72px; }
+      .btn-gold { padding: 14px; font-size: 16px; }
+
+      /* Compact item list */
+      .item-list { max-height: 90px; }
+
+      /* Delete button easier to tap */
+      .item-delete { font-size: 20px; padding: 2px 8px; }
+
+      /* Bigger header buttons */
+      .header-btns button { padding: 10px 16px; font-size: 14px; }
+
+      /* Status bar smaller */
+      .status-bar { font-size: 10px; padding: 3px 10px; }
+    }
   </style>
 </head>
 <body>
@@ -192,7 +241,7 @@
     </div>
 
     <!-- Golden Bucket -->
-    <div class="section">
+    <div class="section" id="bucket-section">
       <div class="section-title">Golden Bucket</div>
       <div class="row">
         <label>X (0–1)<input type="number" id="bkt-x" min="0" max="1" step="0.005" oninput="updateBucket()"></label>
@@ -209,7 +258,7 @@
     </div>
 
     <!-- Player Bar -->
-    <div class="section">
+    <div class="section" id="playerbar-section">
       <div class="section-title">Player Bar (start position)</div>
       <div class="row">
         <label>X (0–1)<input type="number" id="pb-x" min="0" max="1" step="0.005" oninput="updatePlayerBar()"></label>
@@ -222,7 +271,7 @@
     </div>
 
     <!-- Ball Start -->
-    <div class="section">
+    <div class="section" id="ballstart-section">
       <div class="section-title">Ball Start</div>
       <label>X position (0–1)
         <input type="number" id="ballX" min="0" max="1" step="0.01" oninput="updateBallX()">
@@ -292,8 +341,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function scaleCanvas() {
   const panel = canvas.parentElement;
-  const avW = panel.clientWidth - 32;
-  const avH = window.innerHeight - 80;
+  const avW = (panel.clientWidth  || window.innerWidth)  - 16;
+  const avH = (panel.clientHeight || window.innerHeight) - 16;
   const scale = Math.min(avW / CW, avH / CH, 1.0);
   canvas.style.width  = Math.round(CW * scale) + 'px';
   canvas.style.height = Math.round(CH * scale) + 'px';
