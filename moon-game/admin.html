@@ -58,15 +58,15 @@
 
     /* ── Left: Canvas ── */
     .canvas-panel {
-      flex: 0 0 auto;
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       padding: 16px;
       background: #060612;
       gap: 10px;
-      overflow: auto;
+      overflow: hidden;
     }
 
     #admin-canvas {
@@ -85,7 +85,7 @@
 
     /* ── Right: Controls ── */
     .controls-panel {
-      flex: 1;
+      flex: 0 0 300px;
       overflow-y: auto;
       padding: 16px;
       display: flex;
@@ -93,8 +93,6 @@
       gap: 14px;
       border-left: 1px solid var(--border);
       background: var(--surface);
-      min-width: 260px;
-      max-width: 340px;
     }
 
     /* ── Sections ── */
@@ -441,7 +439,7 @@ window.addEventListener('DOMContentLoaded', () => {
 function scaleAdminCanvas() {
   const panel = document.getElementById('canvas-panel');
   const avW = panel.clientWidth - 32;
-  const avH = window.innerHeight - 100;
+  const avH = window.innerHeight - 80;
   const scale = Math.min(avW / ADMIN_W, avH / ADMIN_H, 1.0);
   adminCanvas.style.width  = Math.round(ADMIN_W * scale) + 'px';
   adminCanvas.style.height = Math.round(ADMIN_H * scale) + 'px';
