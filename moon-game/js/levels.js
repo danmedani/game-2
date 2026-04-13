@@ -5,7 +5,7 @@
 // ── Global physics (apply to all levels) ────────────────────────────────────
 
 const DEFAULT_GLOBALS = {
-  "gravity": 0.095,
+  "gravity": 0.08,
   "bounciness": 0.9
 };
 
@@ -104,9 +104,9 @@ const DEFAULT_LEVELS = [
     "id": 3,
     "ballX": 0.5,
     "playerBar": {
-      "x": 0.5940712468193386,
-      "y": 0.6575754271174117,
-      "rotation": -99,
+      "x": 0.7615712468193386,
+      "y": 0.8961468556888402,
+      "rotation": -29,
       "length": 160
     },
     "items": [
