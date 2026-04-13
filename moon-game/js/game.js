@@ -10,6 +10,7 @@ const G = {
   level: 1,
   levelsCompleted: 0,
   attempts: 0,
+  freePlay: false,   // true when jumped to via ?level=N — scores not saved
 
   // Physics objects (populated by loadLevel / resetAttempt)
   ball: null,
@@ -54,6 +55,14 @@ window.addEventListener('DOMContentLoaded', () => {
   if (p.get('test') === '1') {
     const lvl = parseInt(p.get('level') || '1');
     loadLevel(lvl);
+    showScreen('game');
+    return;
+  }
+  const levelParam = parseInt(p.get('level'));
+  if (!isNaN(levelParam) && levelParam > 0) {
+    G.freePlay = true;
+    G.levelsCompleted = 0;
+    loadLevel(levelParam);
     showScreen('game');
     return;
   }
@@ -464,6 +473,7 @@ function bindButtons() {
   const $ = id => document.getElementById(id);
 
   $('play-btn').addEventListener('click', () => {
+    G.freePlay = false;
     G.levelsCompleted = 0;
     saveSession(1, 0);
     loadLevel(1);
@@ -473,6 +483,7 @@ function bindButtons() {
   $('continue-btn').addEventListener('click', () => {
     const saved = getSavedSession();
     if (saved) {
+      G.freePlay = false;
       G.levelsCompleted = saved.levelsCompleted || 0;
       loadLevel(saved.level);
       showScreen('game');
@@ -520,7 +531,7 @@ function bindButtons() {
     const levels = getLevels();
     const nextData = levels.find(l => l.id === nextNum);
     if (nextData) {
-      saveSession(nextNum, G.levelsCompleted);
+      if (!G.freePlay) saveSession(nextNum, G.levelsCompleted);
       loadLevel(nextNum);
     } else {
       endGame();
@@ -591,9 +602,11 @@ function endGame() {
     `${G.levelsCompleted} level${G.levelsCompleted !== 1 ? 's' : ''} complete!`;
   const best = getLocalBest();
   const isHigh = G.levelsCompleted > 0 && G.levelsCompleted >= best;
-  document.getElementById('gameover-best').textContent =
-    isHigh ? '★ New high score!' : `Best: ${best} level${best !== 1 ? 's' : ''}`;
-  document.getElementById('gameover-submit-section').style.display = G.levelsCompleted > 0 ? '' : 'none';
+  document.getElementById('gameover-best').textContent = G.freePlay
+    ? 'Free play — scores not saved'
+    : isHigh ? '★ New high score!' : `Best: ${best} level${best !== 1 ? 's' : ''}`;
+  document.getElementById('gameover-submit-section').style.display =
+    (G.levelsCompleted > 0 && !G.freePlay) ? '' : 'none';
   document.getElementById('gameover-submitted').style.display = 'none';
   document.getElementById('gameover-submit-btn').disabled = false;
   document.getElementById('initials-input').value = '';
