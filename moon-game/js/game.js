@@ -220,8 +220,8 @@ function update(dt) {
     // Bucket walls
     if (bwalls) {
       const { tl, tr, bl, br, inX, inY, openMidX, openMidY } = bwalls;
-      resolveSegmentCollision(ball, tl.x, tl.y, bl.x, bl.y, bounciness); // left
-      resolveSegmentCollision(ball, tr.x, tr.y, br.x, br.y, bounciness); // right
+      if (resolveSegmentCollision(ball, tl.x, tl.y, bl.x, bl.y, bounciness)) bucketWallHit = true; // left
+      if (resolveSegmentCollision(ball, tr.x, tr.y, br.x, br.y, bounciness)) bucketWallHit = true; // right
       if (G.bucketSealed) {
         // Fully sealed — all 4 walls keep the ball contained
         const hitB = resolveSegmentCollision(ball, bl.x, bl.y, br.x, br.y, bounciness); // bottom

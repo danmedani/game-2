@@ -377,14 +377,6 @@ function drawBucket(ctx, bucket, sealed) {
   ctx.fillStyle = 'rgba(255,200,0,0.08)';
   ctx.fillRect(bx - hw, by, width, height);
 
-  // "GOAL" label
-  if (!sealed) {
-    ctx.font = 'bold 10px Nunito, sans-serif';
-    ctx.fillStyle = 'rgba(255,215,0,0.6)';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'bottom';
-    ctx.fillText('GOAL', bx, by - 7);
-  }
 
   ctx.restore();
 }
