@@ -130,6 +130,9 @@ html, body {
   color: var(--text-dim);
   font-size: 15px;
   padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
 }
 .btn-ghost:hover { color: var(--text); }
 
@@ -203,7 +206,63 @@ html, body {
   font-size: 13px;
   color: var(--text-dim);
   min-width: 80px;
+  text-align: center;
+}
+
+.hud-quit-btn {
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 8px;
+  min-width: 60px;
   text-align: right;
+}
+.hud-quit-btn:hover { color: #ff6677; }
+
+/* ── Confirm dialog ─────────────────────────────────────────────── */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,10,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.confirm-dialog {
+  background: var(--surface2);
+  border: 1.5px solid rgba(200,200,255,0.15);
+  border-radius: 20px;
+  padding: 32px 28px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 280px;
+  width: 90%;
+  box-shadow: var(--shadow);
+}
+
+.confirm-msg {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.confirm-sub {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+
+.confirm-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .canvas-container {

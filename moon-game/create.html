@@ -269,7 +269,6 @@ const defaultLevel = () => ({
 let level = defaultLevel();
 let selectedId = null;
 let hasWon = false;
-let submitted = false;
 
 // ── Canvas ───────────────────────────────────────────────────────────────────
 let canvas, ctx, stars = [];
@@ -773,7 +772,6 @@ function onUp() {
 
 // ── Submit ────────────────────────────────────────────────────────────────────
 async function submitLevel() {
-  if (submitted) return;
   const raw = document.getElementById('creator-initials').value.trim().toUpperCase().replace(/[^A-Z]/g,'').slice(0,3);
   if (!/^[A-Z]{3}$/.test(raw)) {
     document.getElementById('submit-status').textContent = 'Enter exactly 3 letters.';
@@ -802,11 +800,15 @@ async function submitLevel() {
     const url = (typeof CONFIG !== 'undefined') && CONFIG.scoresUrl;
     if (!url) throw new Error('No server URL configured.');
     await fetch(url, { method: 'POST', body: JSON.stringify(payload) });
-    submitted = true;
     document.getElementById('submit-status').textContent = '★ Submitted! Thanks ' + raw + '!';
     document.getElementById('submit-status').className = 'submit-status';
     btn.textContent = 'Submitted ✓';
-    setStatus('Level submitted! Thanks for playing. 🌙');
+    setStatus('Level submitted! Keep building. 🌙');
+    // Re-enable after a moment so they can tweak and submit again
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.textContent = 'Submit Again ★';
+    }, 2500);
   } catch (e) {
     document.getElementById('submit-status').textContent = 'Submission failed — try again.';
     document.getElementById('submit-status').className = 'submit-status error';

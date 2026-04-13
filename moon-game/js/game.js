@@ -488,6 +488,23 @@ function bindButtons() {
   $('back-to-title-btn').addEventListener('click', () => showScreen('title'));
   $('gameover-home-btn').addEventListener('click', () => showScreen('title'));
 
+  $('quit-btn').addEventListener('click', () => {
+    const overlay = document.getElementById('quit-overlay');
+    if (overlay) overlay.style.display = 'flex';
+  });
+  $('quit-cancel-btn').addEventListener('click', () => {
+    const overlay = document.getElementById('quit-overlay');
+    if (overlay) overlay.style.display = 'none';
+  });
+  $('quit-confirm-btn').addEventListener('click', () => {
+    const overlay = document.getElementById('quit-overlay');
+    if (overlay) overlay.style.display = 'none';
+    showScreen('title');
+  });
+  document.getElementById('quit-overlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) e.currentTarget.style.display = 'none';
+  });
+
   $('drop-btn').addEventListener('click', () => {
     if (G.ball && G.ball.dropped && !G.ball.inBucket) {
       onBallLost();

@@ -31,6 +31,7 @@
   <div class="game-hud">
     <span id="level-display" class="hud-level">Level 1</span>
     <span id="attempts-display" class="hud-attempts"></span>
+    <button class="btn hud-quit-btn" id="quit-btn">✕ Quit</button>
   </div>
 
   <div class="canvas-container">
@@ -80,6 +81,17 @@
     </div>
 
     <button class="btn btn-ghost" id="gameover-home-btn">← Home</button>
+  </div>
+</div>
+
+<!-- ── Quit Confirmation ─────────────────────────────────────────── -->
+<div class="confirm-overlay" id="quit-overlay" style="display:none">
+  <div class="confirm-dialog">
+    <p class="confirm-msg">Quit to home?<br><span class="confirm-sub">Your progress will be saved.</span></p>
+    <div class="confirm-buttons">
+      <button class="btn btn-primary" id="quit-confirm-btn">Quit</button>
+      <button class="btn btn-ghost" id="quit-cancel-btn">Keep Playing</button>
+    </div>
   </div>
 </div>
 
