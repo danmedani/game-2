@@ -1,0 +1,26 @@
+{
+  "name": "Katie Porter",
+  "party": "Democratic",
+  "slug": "katie-porter",
+  "background": "Former Member of Congress, consumer protection attorney, single mother of three. Previously recovered billions for California homeowners from banks, fought drug company overcharging.",
+  "statement": "I've spent my entire career holding those in power accountable when they lie or break the rules. As Governor, I will go toe-to-toe with Donald Trump and anyone who tries to harm California families. As a Member of Congress, I took on billionaire CEOs and incompetent Trump officials, using a whiteboard to show the facts and expose corruption and cheating. I recovered billions for California homeowners when big banks ripped them off, forced drug companies to stop overcharging taxpayers, and made the Trump Administration deliver free COVID tests for everyone. Unlike most other Democrats, I refuse donations from corporations and lobbyists. Those special interests and PACs have too much power in Sacramento and are making California unaffordable for the rest of us. I cannot be bought, so you can count on me to bring down your costs, guarantee quality healthcare, and protect the environment. As the single mom of three kids, I personally push the grocery cart, fill the minivan gas tank, and pay the monthly bills. I have watched expenses like utilities and insurance go up and dollars not stretch as far, just like so many Californians. As your Governor, I will bring down costs for families and increase wages for workers. Here's how: I will eliminate income taxes for Californians earning less than $100,000, build housing that workers can afford, stop charging tuition at our public universities, and make childcare free for all Californians.",
+  "positions": {
+    "economy": "Eliminate income taxes for Californians earning under $100,000; increase wages for workers",
+    "housing": "Build affordable housing for workers",
+    "healthcare": "Guarantee quality healthcare for all",
+    "education": "Free tuition at public universities; free childcare for all Californians",
+    "environment": "Protect the environment",
+    "immigration": "Not explicitly stated",
+    "publicSafety": "Not explicitly stated",
+    "corruption": "Refuses donations from corporations and lobbyists; anti-special interests",
+    "trump": "Will oppose Trump administration policies"
+  },
+  "website": "KatiePorter.com",
+  "contact": {
+    "address": "1700 Tribute Rd., Suite 201, Sacramento, CA 95815",
+    "phone": "(909) 457-7850",
+    "email": "info@katieporter.com",
+    "facebook": "@KatiePorterCA",
+    "x": "@KatiePorterCA"
+  }
+}

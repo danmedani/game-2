@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Who's Your Governor? 🐻</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════ TITLE -->
+<div id="screen-title" class="screen">
+  <div class="title-bears" aria-hidden="true">
+    <span class="title-bear">🐻</span>
+    <span class="title-bear">🐻</span>
+    <span class="title-bear">🐻</span>
+  </div>
+  <h1 class="game-title">Who's Your<br>Governor?</h1>
+  <p class="game-subtitle">Find your match · 2026 California Primary</p>
+  <button class="big-btn" id="btn-play">▶ START QUIZ</button>
+  <p class="play-hint">10 questions &nbsp;·&nbsp; ~2 minutes</p>
+  <p class="play-hint" style="margin-top:24px">
+    <a href="../" style="color:var(--accent);text-decoration:none;font-weight:700">← Back to games</a>
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ LOADING -->
+<div id="screen-loading" class="screen">
+  <div class="loading-spinner">🐻</div>
+  <p id="loading-msg">Loading candidates...</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ GAME -->
+<div id="screen-game" class="screen">
+  <div class="game-body">
+    <div class="question-col">
+      <div id="question-area"></div>
+      <div class="kb-hint">← → navigate &nbsp;·&nbsp; Space to select</div>
+    </div>
+    <div id="progress-track">
+      <div class="track-qnum">
+        <div id="hud-q-num" class="hud-q-num">1</div>
+        <div class="track-q-label">of 10</div>
+      </div>
+      <div id="progress-boxes"></div>
+      <button class="hud-quit" id="btn-quit-game">✕ Quit</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ RESULTS -->
+<div id="screen-results" class="screen">
+  <div class="results-wrap">
+    <div class="results-header">
+      <div class="results-bear">🐻</div>
+      <h2 class="results-title">Your Match!</h2>
+      <p class="results-subtitle">Based on your answers to 10 policy questions</p>
+    </div>
+
+    <div id="results-podium"></div>
+
+    <div class="results-actions">
+      <button class="big-btn" id="btn-retake">🔄 Retake Quiz</button>
+      <button class="big-btn secondary" id="btn-toggle-all">📋 All 32 Candidates</button>
+    </div>
+
+    <div id="all-candidates-panel" class="all-cands-panel" style="display:none">
+      <h3 class="all-cands-title">All Candidates — Ranked by Your Match</h3>
+      <div id="all-candidates-list"></div>
+      <button class="big-btn secondary" id="btn-hide-all" style="margin-top:12px">▲ Hide</button>
+    </div>
+
+    <p class="play-hint" style="margin-top:24px">
+      <a href="../" style="color:var(--accent);text-decoration:none;font-weight:700">← Back to games</a>
+    </p>
+    <p class="disclaimer">For entertainment &amp; educational purposes only. Positions derived from official candidate statements and websites.</p>
+  </div>
+</div>
+
+<script src="js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "Tony K. Thurmond",
+  "party": "Democratic",
+  "slug": "tony-thurmond",
+  "background": "Current California State Superintendent of Public Instruction. Former Assemblymember, School Board Member, City Councilmember, and social worker. Born to immigrant mother from Panama; raised in poverty.",
+  "statement": "Born to an immigrant mother from Panama, Tony Thurmond and his brother were raised by a cousin they had never met after their mother died when Tony was just six years old. Growing up in poverty, Tony's family relied on public assistance and great public schools to rise out of hardship, experiences that inspired his lifelong dedication to equity and opportunity for all Californians. He ultimately became a social worker, City Councilmember, School Board Member, Assemblymember, and eventually Superintendent of California's $150 billion public school system. As State Superintendent, Tony sponsored a law to keep ICE out of California Schools. He helped create universal preschool for 4-year-olds, and universal meals for hungry kids. Thurmond helped pass billions in funds to make schools safer by removing asbestos and other toxins. Tony understands that our political system is broken. From skyrocketing costs of food and groceries to a federal government assaulting our civil liberties, our state is in a crisis. Meanwhile, the billionaires just get richer and richer. That's why he's fighting for a tax on billionaires, healthcare for all, abolishing ICE, 2 million new units of housing, finally fully funding our public schools, abortion care that is legal and accessible, getting weapons of war off of our streets, and protecting democracy. We need a leader who will stand up to the billionaires, to the federal government, and fight for everyday working-class Californians.",
+  "positions": {
+    "economy": "Tax on billionaires; fight for working-class Californians",
+    "housing": "2 million new units of housing",
+    "healthcare": "Healthcare for all",
+    "education": "Fully fund public schools; universal preschool; universal school meals",
+    "environment": "Not explicitly stated",
+    "immigration": "Abolish ICE; keep ICE out of schools",
+    "publicSafety": "Get weapons of war off streets",
+    "abortion": "Legal and accessible abortion care",
+    "democracy": "Protect democracy against federal overreach"
+  },
+  "website": "tonythurmond.com",
+  "contact": {
+    "address": "312 Clay St. #300, Oakland, CA 94607",
+    "email": "tony@tonythurmond.com",
+    "x": "x.com/TonyThurmond",
+    "facebook": "www.facebook.com/tonythurmond"
+  }
+}
