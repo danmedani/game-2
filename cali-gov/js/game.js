@@ -2,6 +2,20 @@
 let QUESTIONS  = null;   // from questions.json
 let CANDIDATES = null;   // from candidates/index.json
 
+// ── Planet image per question (Q1=Mercury → Q10=Sun) ─────────────────────────
+const PLANET_IMGS = [
+  { file: 'mercury.jpg',  name: 'Mercury'  },
+  { file: 'venus.jpeg',   name: 'Venus'    },
+  { file: 'earth.jpg',    name: 'Earth'    },
+  { file: 'mars.png',     name: 'Mars'     },
+  { file: 'jupiter.png',  name: 'Jupiter'  },
+  { file: 'saturn.jpg',   name: 'Saturn'   },
+  { file: 'uranus.png',   name: 'Uranus'   },
+  { file: 'neptune.png',  name: 'Neptune'  },
+  { file: 'pluto.jpg',    name: 'Pluto'    },
+  { file: 'sun.jpg',      name: 'The Sun'  },
+];
+
 // ── State ─────────────────────────────────────────────────────────────────────
 let state = {
   questionIndex:    0,
@@ -75,6 +89,8 @@ function renderQuestion() {
     { value:  10, cls: 'scale-sa', emoji: '😊', label: 'Strongly\nAgree'    },
   ];
 
+  const planet = PLANET_IMGS[state.questionIndex % PLANET_IMGS.length];
+
   const wrapper = document.createElement('div');
   wrapper.className = 'q-animate-in';
   wrapper.innerHTML = `
@@ -83,6 +99,11 @@ function renderQuestion() {
       <span class="q-counter">Q ${state.questionIndex + 1} of ${QUESTIONS.questions.length}</span>
     </div>
     <p class="q-text">"${escHtml(q.text)}"</p>
+    ${planet ? `
+    <div class="q-planet-wrap">
+      <img class="q-planet-img" src="images/${encodeURIComponent(planet.file)}" alt="${escHtml(planet.name)}">
+      <span class="q-planet-name">${escHtml(planet.name)}</span>
+    </div>` : ''}
     <div class="options-scale">
       ${OPTIONS.map(o => `
         <button class="scale-btn ${o.cls}" data-value="${o.value}">
@@ -129,6 +150,63 @@ async function handleAnswer(value) {
   }
 }
 
+// ── Candidate detail (lazy-loaded) ───────────────────────────────────────────
+const _candCache = {};
+
+async function fetchCandidate(slug) {
+  if (_candCache[slug]) return _candCache[slug];
+  const res = await fetch(`candidates/${slug}.json`);
+  _candCache[slug] = await res.json();
+  return _candCache[slug];
+}
+
+function renderCandidateDetail(cand) {
+  const TOPIC_LABELS = {
+    economy: 'Economy', housing: 'Housing', healthcare: 'Healthcare',
+    education: 'Education', environment: 'Environment',
+    immigration: 'Immigration', publicSafety: 'Public Safety',
+  };
+  const knownPositions = Object.entries(cand.positions || {})
+    .filter(([, v]) => v && v !== 'Not explicitly stated')
+    .map(([k, v]) => `<div class="pos-row"><span class="pos-topic">${TOPIC_LABELS[k] || k}</span><span class="pos-val">${escHtml(v)}</span></div>`)
+    .join('');
+
+  let websiteUrl = cand.website ? cand.website.trim() : '';
+  if (websiteUrl && !websiteUrl.startsWith('http')) websiteUrl = 'https://' + websiteUrl;
+
+  return `
+    ${cand.background ? `<p class="cand-bio">${escHtml(cand.background)}</p>` : ''}
+    ${knownPositions ? `<div class="cand-positions">${knownPositions}</div>` : ''}
+    ${websiteUrl ? `<a class="cand-website-link" href="${websiteUrl}" target="_blank" rel="noopener noreferrer">${escHtml(cand.website)} ↗</a>` : ''}
+  `.trim();
+}
+
+function setupLearnMoreHandlers() {
+  document.querySelectorAll('.learn-more-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const slug = btn.dataset.slug;
+      const detail = document.getElementById('cand-detail-' + slug);
+      const open   = detail.style.display !== 'none';
+
+      if (open) {
+        detail.style.display = 'none';
+        btn.textContent = 'Learn more ▾';
+        return;
+      }
+
+      btn.textContent = '...';
+      try {
+        const cand = await fetchCandidate(slug);
+        detail.innerHTML = renderCandidateDetail(cand);
+      } catch {
+        detail.innerHTML = '<p class="cand-bio" style="opacity:.5">Could not load details.</p>';
+      }
+      detail.style.display = 'block';
+      btn.textContent = 'Less ▴';
+    });
+  });
+}
+
 // ── Results ───────────────────────────────────────────────────────────────────
 function calcResults() {
   const numQ   = QUESTIONS.questions.length;
@@ -162,6 +240,8 @@ async function showResults() {
   document.getElementById('all-candidates-list').innerHTML =
     state.sortedResults.map((c, i) => candRowHTML(c, i)).join('');
 
+  setupLearnMoreHandlers();
+
   // Animate bars in after a tick (so CSS transition fires)
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
@@ -190,20 +270,26 @@ function resultCardHTML(c, i) {
           </div>
           <span class="result-match-emoji">${matchEmoji(c.matchPct)}</span>
         </div>
+        <button class="learn-more-btn" data-slug="${c.slug}">Learn more ▾</button>
+        <div class="cand-detail" id="cand-detail-${c.slug}" style="display:none"></div>
       </div>
     </div>`;
 }
 
 function candRowHTML(c, i) {
   return `
-    <div class="cand-row">
-      <span class="cand-rank">${i + 1}.</span>
-      <span class="cand-name">${escHtml(c.name)}</span>
-      <span class="cand-party-badge ${partyClass(c.party)}">${partyInitial(c.party)}</span>
-      <div class="cand-bar-wrap">
-        <div class="cand-bar-fill" data-pct="${c.matchPct}" style="width:0"></div>
+    <div class="cand-item">
+      <div class="cand-row">
+        <span class="cand-rank">${i + 1}.</span>
+        <span class="cand-name">${escHtml(c.name)}</span>
+        <span class="cand-party-badge ${partyClass(c.party)}">${partyInitial(c.party)}</span>
+        <div class="cand-bar-wrap">
+          <div class="cand-bar-fill" data-pct="${c.matchPct}" style="width:0"></div>
+        </div>
+        <span class="cand-pct">${c.matchPct}%</span>
+        <button class="learn-more-btn learn-more-sm" data-slug="${c.slug}">▾</button>
       </div>
-      <span class="cand-pct">${c.matchPct}%</span>
+      <div class="cand-detail" id="cand-detail-${c.slug}" style="display:none"></div>
     </div>`;
 }
 
@@ -214,8 +300,7 @@ function showCelebration() {
     overlay.className = 'celebrate-overlay';
     overlay.innerHTML = `
       <div class="cel-bear">🐻</div>
-      <div class="cel-main">Done!</div>
-      <div class="cel-sub">Crunching the numbers...</div>
+      <div class="cel-sub">Calculating your match...</div>
       <div class="cel-sparks" aria-hidden="true">
         ${Array.from({ length: 12 }, (_, i) =>
           `<span class="cel-spark" style="--i:${i}"></span>`
@@ -237,7 +322,9 @@ function showCelebration() {
 function updateProgressTrack() {
   const boxes = document.getElementById('progress-boxes');
   if (!boxes) return;
-  const total = QUESTIONS ? QUESTIONS.questions.length : 10;
+  const total = QUESTIONS ? QUESTIONS.questions.length : 16;
+  const label = document.getElementById('hud-q-total');
+  if (label) label.textContent = `of ${total}`;
   boxes.innerHTML = '';
   // Render reversed: bottom = Q1, top = Q10
   for (let i = total - 1; i >= 0; i--) {
